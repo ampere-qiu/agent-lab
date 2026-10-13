@@ -1,0 +1,1773 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A local-environment companion to Hugging Face Agents Course Unit 1.">
+      
+      
+      
+      
+        <link rel="prev" href="../understand-the-template/">
+      
+      
+        <link rel="next" href="../quizzes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>06 · Build your tools - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-open-the-adapted-starter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06 · Build your tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before you start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Basic setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Lessons & quick quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Build
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Build
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Dummy steps 1–3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Get the agent template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Understand the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Build your tools
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Build your tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-open-the-adapted-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Open the adapted starter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-provided-and-what-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is provided and what you build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-walk-through-apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Walk through app.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enable-the-time-zone-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Enable the time-zone tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enable the time-zone tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-read-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Read the function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-it-without-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Test it without the agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-it-with-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Register it with the agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ask-for-a-real-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Ask for a real tool call
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-explore-the-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Explore the search tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Explore the search tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-understand-what-this-tool-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Understand what this tool returns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-search-directly-before-using-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Test search directly before using the LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-the-search-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Register the search instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-give-the-agent-a-specific-search-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Give the agent a specific search task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-follow-the-evidence-into-the-final-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Follow the evidence into the final answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-improve-one-query-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Improve one query yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-diagnose-search-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. Diagnose search failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-two-core-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verify the two core tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-create-your-own-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Optional: create your own tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Optional: create your own tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-function-before-the-agent-calls-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the function before the agent calls it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-scaffold-if-python-functions-are-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A scaffold if Python functions are new
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-instructions-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Inspect instructions and settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-demonstrate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Demonstrate the result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-complete-the-local-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Complete the local practical
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Quick quizzes & completion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-open-the-adapted-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Open the adapted starter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-provided-and-what-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is provided and what you build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-walk-through-apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Walk through app.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enable-the-time-zone-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Enable the time-zone tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enable the time-zone tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-read-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Read the function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-it-without-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Test it without the agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-it-with-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Register it with the agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ask-for-a-real-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Ask for a real tool call
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-explore-the-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Explore the search tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Explore the search tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-understand-what-this-tool-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Understand what this tool returns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-search-directly-before-using-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Test search directly before using the LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-the-search-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Register the search instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-give-the-agent-a-specific-search-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Give the agent a specific search task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-follow-the-evidence-into-the-final-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Follow the evidence into the final answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-improve-one-query-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Improve one query yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-diagnose-search-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. Diagnose search failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-two-core-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verify the two core tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-create-your-own-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Optional: create your own tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Optional: create your own tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-function-before-the-agent-calls-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the function before the agent calls it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-scaffold-if-python-functions-are-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A scaffold if Python functions are new
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-instructions-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Inspect instructions and settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-demonstrate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Demonstrate the result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-complete-the-local-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Complete the local practical
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="build-the-first-agent-local-walkthrough">Build the first agent: local walkthrough<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="Permanent link">&para;</a></h1>
+<div class="template-download">
+<p class="template-download__label">Files for this practical</p>
+<p><strong>Start with the complete agent template</strong></p>
+<p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">Download agent template (.zip)</a></p>
+<p>First time here? <a href="../run-your-first-agent/#3-download-the-groq-starter">Follow the download and setup guide</a> after completing the dummy exercises. Already set up? Continue with your existing folder so you keep your edits.</p>
+</div>
+<p>This practical adapts the <a href="https://huggingface.co/learn/agents-course/en/unit1/tutorial">Hugging Face starter tutorial</a>. Follow the complete local steps below to enable <strong>time</strong> and <strong>web search</strong>. The source link is attribution and optional reading, not a prerequisite.</p>
+<p>Before editing, read <a href="../understand-the-template/">Understand smolagents and the template</a>. It explains the components, each file, the model/action/observation loop, and the startup code. Return here to implement the tool activities.</p>
+<h2 id="1-open-the-adapted-starter">1. Open the adapted starter<a class="headerlink" href="#1-open-the-adapted-starter" title="Permanent link">&para;</a></h2>
+<p>Finish the <a href="../dummy-agent-local/">three dummy stages</a>, then <a href="../run-your-first-agent/">download and run the template</a>. Open the downloaded <code>First_agent_template</code> folder in a code editor. Save a copy of <code>app.py</code> as <code>app.before-tools.py</code> for comparison.</p>
+<p>Where the original says to use the Space's Files tab, edit your local file. After each change: stop with Control + C, save, run <code>python app.py</code>, and refresh the local browser page.</p>
+<p>For help opening the editor and saving a file, use <a href="../before-you-start/#edit-a-file-without-losing-your-place">Before you start</a>. If you opened a new terminal, first use the setup guide's <a href="../run-your-first-agent/#11-stop-and-restart">restart commands</a> to enter the project and activate its environment.</p>
+<h2 id="what-is-provided-and-what-you-build">What is provided and what you build<a class="headerlink" href="#what-is-provided-and-what-you-build" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Provided</th>
+<th>Your work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groq connection and hidden key prompt</td>
+<td>Verify a real response</td>
+</tr>
+<tr>
+<td>Chat interface and agent instructions</td>
+<td>Inspect the action and observation trace</td>
+</tr>
+<tr>
+<td>Working timezone function, initially unregistered</td>
+<td>Register and test it</td>
+</tr>
+<tr>
+<td>Search-tool import, initially unregistered</td>
+<td>Add an instance and verify results</td>
+</tr>
+<tr>
+<td>Custom-tool placeholder, initially unregistered</td>
+<td>Optional: design, test, and register your own tool</td>
+</tr>
+</tbody>
+</table>
+<p>Use the <strong>complete ZIP</strong> above for this practical. The <a href="../downloads/agent-template.py">app.py source preview</a> is for reference only; it cannot run without the other ZIP files. The <code>STUDENT TASK</code> comments identify your edit points. Keep the infrastructure unchanged for the first run.</p>
+<h2 id="2-walk-through-apppy">2. Walk through app.py<a class="headerlink" href="#2-walk-through-apppy" title="Permanent link">&para;</a></h2>
+<p>Locate these parts in your installed file:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imports</td>
+<td>CodeAgent, tool decorator, search tool, model class, interface</td>
+</tr>
+<tr>
+<td>my_custom_tool</td>
+<td>Placeholder for an optional extension</td>
+</tr>
+<tr>
+<td>get_current_time_in_timezone</td>
+<td>Existing working function</td>
+</tr>
+<tr>
+<td>Model constructor</td>
+<td>Model identifier, temperature, output limit</td>
+</tr>
+<tr>
+<td>Groq key prompt</td>
+<td>Private key input at startup</td>
+</tr>
+<tr>
+<td>prompts.yaml loading</td>
+<td>Instructions supplied to the agent</td>
+</tr>
+<tr>
+<td>CodeAgent constructor</td>
+<td>Model, available tools, step limit</td>
+</tr>
+<tr>
+<td>GradioUI launch</td>
+<td>Starting the interface</td>
+</tr>
+</tbody>
+</table>
+<p>The Groq starter uses <code>OpenAIServerModel</code> in <code>main()</code>. Follow this file rather than copying the online tutorial's entire model block. Keep added function definitions above <code>main()</code> and register them in the <code>tools</code> argument inside it.</p>
+<h2 id="3-enable-the-time-zone-tool">3. Enable the time-zone tool<a class="headerlink" href="#3-enable-the-time-zone-tool" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> make the agent obtain a time from an actual function call and distinguish that result from a model guess.</p>
+<h3 id="a-read-the-function">A. Read the function<a class="headerlink" href="#a-read-the-function" title="Permanent link">&para;</a></h3>
+<p>Find <code>get_current_time_in_timezone</code> in <code>app.py</code>. Its input is a timezone identifier such as <code>Asia/Tokyo</code>. Its output is a string containing the date and time.</p>
+<table>
+<thead>
+<tr>
+<th>Code in the function</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@tool</code></td>
+<td>Wraps the function with metadata the agent can use</td>
+</tr>
+<tr>
+<td><code>timezone: str</code></td>
+<td>Describes the input as a string</td>
+</tr>
+<tr>
+<td><code>pytz.timezone(timezone)</code></td>
+<td>Looks up the timezone rules for that identifier</td>
+</tr>
+<tr>
+<td><code>datetime.datetime.now(tz)</code></td>
+<td>Reads the current time in that timezone using your computer's clock</td>
+</tr>
+<tr>
+<td><code>.strftime(...)</code></td>
+<td>Formats the result as readable text</td>
+</tr>
+<tr>
+<td><code>return ...</code></td>
+<td>Supplies the result to the caller</td>
+</tr>
+<tr>
+<td><code>except Exception ...</code></td>
+<td>Returns an error message if the input or operation fails</td>
+</tr>
+</tbody>
+</table>
+<p>Timezone names identify regions, not fixed offsets. Some regions change offset during daylight saving time. Use <code>Asia/Tokyo</code> for your first test. The function cannot correct an inaccurate computer clock.</p>
+<h3 id="b-test-it-without-the-agent">B. Test it without the agent<a class="headerlink" href="#b-test-it-without-the-agent" title="Permanent link">&para;</a></h3>
+<p>Stop the app with <strong>Control + C</strong>, leaving the virtual environment active. Create <code>check_time.py</code> next to <code>app.py</code> and save:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_time_in_timezone</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Not/A_Real_Zone"</span><span class="p">))</span>
+</code></pre></div>
+<p>Run in the terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>check_time.py
+</code></pre></div>
+<p>The first line should report Tokyo's date and time. The second should start with <code>Error fetching time</code>. The second test checks how invalid input is handled; it is not a successful time lookup. Neither call uses Groq or needs a key. Importing <code>app</code> defines the tools without launching the chat.</p>
+<p><strong>Checkpoint:</strong> compare the valid result with a clock set to Tokyo. Do not proceed to an agent test if the direct function call fails.</p>
+<h3 id="c-register-it-with-the-agent">C. Register it with the agent<a class="headerlink" href="#c-register-it-with-the-agent" title="Permanent link">&para;</a></h3>
+<p>In <code>app.py</code>, find <code>tools=[final_answer]</code> inside <code>CodeAgent(...)</code>. Replace that argument only with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">],</span>
+</code></pre></div>
+<p>Keep the leading indentation and trailing comma. There should be only one <code>tools=</code> argument. Do not write <code>get_current_time_in_timezone()</code> here: you are registering the capability, not calling it during startup.</p>
+<p>Save, run <code>python app.py</code>, enter your Groq key, and refresh the local chat page.</p>
+<h3 id="d-ask-for-a-real-tool-call">D. Ask for a real tool call<a class="headerlink" href="#d-ask-for-a-real-tool-call" title="Permanent link">&para;</a></h3>
+<p>Send in the chat:</p>
+<blockquote>
+<p>Use get_current_time_in_timezone with Asia/Tokyo. Report the returned time and say where it came from.</p>
+</blockquote>
+<p>Click <strong>Used tool python_interpreter</strong>, then <strong>Execution Logs</strong> inside it to reveal the returned value. You can also inspect the terminal. A possible action is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<p>This is illustrative output to recognize, not another block to paste into <code>app.py</code>. The model may use different variable names or call <code>final_answer</code> within the same block.</p>
+<p><strong>Checkpoint:</strong> find the function call, the returned date/time, and a final answer consistent with it. A statement such as “It is 10:00 in Tokyo” without execution evidence is not enough.</p>
+<p>If the direct test works but the agent reports an undefined function, check the registration, spelling, saved file, and restart. If it ignores the function, repeat the explicit tool request in a freshly restarted app.</p>
+<h2 id="4-explore-the-search-tool">4. Explore the search tool<a class="headerlink" href="#4-explore-the-search-tool" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> let the agent retrieve search results, use them in an answer, and distinguish source evidence from unsupported claims.</p>
+<h3 id="a-understand-what-this-tool-returns">A. Understand what this tool returns<a class="headerlink" href="#a-understand-what-this-tool-returns" title="Permanent link">&para;</a></h3>
+<p><code>WebSearchTool</code> is a small adapter supplied in our template’s <code>tools/web_search.py</code>. It connects smolagents to the maintained <code>ddgs</code> Python package, with <strong>DuckDuckGo explicitly selected as the search service</strong>. The agent sees the name <strong><code>web_search</code></strong>. Its input is one text argument, <code>query</code>. Its output contains result titles, links, and short snippets.</p>
+<p>The Python tool contacts a search service. Groq generates the agent's actions and answer; it does not perform this search itself. This starter's search integration requires no separate search API key, but the service can still fail or limit requests.</p>
+<p><strong>Search is not full-page reading.</strong> This tool returns search-result snippets; it does not fetch and read the full contents of each linked page. When the agent summarizes results, it may only have seen those snippets. You will open a source yourself to verify it. Automatically reading pages would require another tool and is outside the two-tool core practical.</p>
+<h3 id="b-test-search-directly-before-using-the-llm">B. Test search directly before using the LLM<a class="headerlink" href="#b-test-search-directly-before-using-the-llm" title="Permanent link">&para;</a></h3>
+<p>Stop the app with <strong>Control + C</strong>. Create <code>check_search.py</code> next to <code>app.py</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tools.web_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">search_tool</span> <span class="o">=</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Agent-facing name:"</span><span class="p">,</span> <span class="n">search_tool</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">search_tool</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">))</span>
+</code></pre></div>
+<p>Run in your activated terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>check_search.py
+</code></pre></div>
+<p>This uses the search service directly, without a Groq request or key. It lets you check search connectivity independently of the LLM.</p>
+<p><code>max_results=3</code> requests up to three results. We use a small number to keep the result readable and reduce how much search text is sent to the model later. It does not limit the number of search calls an agent can make.</p>
+<p>Expect the name <code>web_search</code>, followed by a <code>Search Results</code> heading and entries containing a title, URL, and snippet. Exact results and order vary. A shortened <strong>illustration</strong>, not a live result, is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Agent-facing name: web_search
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>## Search Results
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>[The Python Tutorial](https://docs.python.org/3/tutorial/)
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>A short search-result description would appear here.
+</code></pre></div>
+<p><strong>Checkpoint:</strong> at least one relevant result is returned and its link opens. If the direct test fails, use the troubleshooting table below before changing the model or API key.</p>
+<h3 id="c-register-the-search-instance">C. Register the search instance<a class="headerlink" href="#c-register-the-search-instance" title="Permanent link">&para;</a></h3>
+<p>The starter already imports <code>WebSearchTool</code> from <code>tools.web_search</code> near the top of <code>app.py</code>. The import alone does not register it. Find your existing <code>tools=</code> argument and replace it with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">final_answer</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">get_current_time_in_timezone</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">],</span>
+</code></pre></div>
+<p>Indent this block to match the other arguments inside <code>CodeAgent(...)</code>. Keep the surrounding constructor and all its other arguments.</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WebSearchTool</code></td>
+<td>The class imported into your app</td>
+</tr>
+<tr>
+<td><code>WebSearchTool(max_results=3)</code></td>
+<td>A configured instance that can be registered</td>
+</tr>
+<tr>
+<td><code>web_search(query="...")</code></td>
+<td>The name and call the agent uses in generated Python</td>
+</tr>
+</tbody>
+</table>
+<p>Do not rename the class to <code>web_search</code> in your import. The tool supplies that agent-facing name itself. Open <code>tools/web_search.py</code> to see the adapter: <code>DDGS(timeout=15).text(..., backend="duckduckgo")</code> sends the search; the adapter formats the returned dictionaries for the agent. The <a href="https://pypi.org/project/ddgs/">DDGS package documentation</a> describes its backend options.</p>
+<p>Save and restart with <code>python app.py</code>, paste your key, and refresh the local browser page.</p>
+<h3 id="d-give-the-agent-a-specific-search-task">D. Give the agent a specific search task<a class="headerlink" href="#d-give-the-agent-a-specific-search-task" title="Permanent link">&para;</a></h3>
+<p>Send:</p>
+<blockquote>
+<p>Use web_search to find the official Python tutorial. Return one relevant title and URL from the results, and briefly explain why that source matches. Say if you only saw a search snippet.</p>
+</blockquote>
+<p>This asks for an observable action and a bounded answer. For the first test, avoid a broad task such as “research everything about AI,” which can lead to many calls and a hard-to-check answer.</p>
+<p>The trace may contain code like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</code></pre></div>
+<p>The model can then use those results in another step, or finish in the same step. <code>python_interpreter</code> in the trace is expected: CodeAgent runs Python that calls the registered search tool.</p>
+<h3 id="e-follow-the-evidence-into-the-final-answer">E. Follow the evidence into the final answer<a class="headerlink" href="#e-follow-the-evidence-into-the-final-answer" title="Permanent link">&para;</a></h3>
+<p>Check these in order:</p>
+<p>Open <strong>Used tool python_interpreter → Execution Logs</strong> to inspect returned search entries.</p>
+<ol>
+<li><strong>Action:</strong> does generated code actually call <code>web_search</code> with a relevant query?</li>
+<li><strong>Observation:</strong> did that call return search results, rather than an error?</li>
+<li><strong>Answer:</strong> is the cited URL present in the observation?</li>
+<li><strong>Source:</strong> open the URL in your browser. Does its domain and page content support the claim?</li>
+</ol>
+<p>For the Python example, the official documentation uses <code>docs.python.org</code>. A good-looking title alone does not establish who published a page. For current information, also inspect publication or update dates; a page appearing in search does not make it current.</p>
+<p>If the final answer claims details absent from the snippets, verify them on the actual page. Do not treat an invented quotation or a model-generated link as retrieved evidence. Text returned by a search is source material, not an instruction to change the agent's task.</p>
+<p><strong>Checkpoint:</strong> you can point to a search call, one returned result, and a supported statement in the final answer. An error is useful for diagnosis but does not complete this checkpoint.</p>
+<h3 id="f-improve-one-query-yourself">F. Improve one query yourself<a class="headerlink" href="#f-improve-one-query-yourself" title="Permanent link">&para;</a></h3>
+<p>Keep the working code and change only the chat request. Choose a topic, then compare a broad query with a more specific query containing the subject and source you want. For example, compare “Python” with “Python documentation defining functions.”</p>
+<p>Record which result is useful and why. This small exercise is about judging retrieved evidence, not copying a predetermined answer. Each agent run may use multiple model requests, so run the examples one at a time and respect usage limits.</p>
+<h3 id="g-diagnose-search-failures">G. Diagnose search failures<a class="headerlink" href="#g-diagnose-search-failures" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Search availability check</p>
+<p>A fresh Mac test exposed failures in the original <code>duckduckgo_search</code> integration. The current starter uses <code>ddgs==9.16.0</code> with an explicit DuckDuckGo backend. Direct search and a real agent search returned official Python sources, but later searches returned no results even after rephrasing. Search is intermittent. In one combined run the model supplied a correct-looking URL from memory after search failed; that did not pass the search checkpoint.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Meaning and next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError</code> mentioning <code>ddgs</code></td>
+<td>Activate the template's <code>.venv</code> and run <code>python -m pip install -r requirements.txt</code> from its folder. Then rerun <code>check_search.py</code>.</td>
+</tr>
+<tr>
+<td>Warning that the package was renamed to <code>ddgs</code></td>
+<td>You are using the older built-in search tool. Use the updated starter’s <code>tools/web_search.py</code>, import <code>WebSearchTool</code> from that file, and reinstall the updated requirements. Do not just rename the old import from smolagents.</td>
+</tr>
+<tr>
+<td><code>No results found</code></td>
+<td>Shorten or rephrase the query, then try the direct test once. Empty results are not evidence that the information does not exist.</td>
+</tr>
+<tr>
+<td>Timeout, connection error, or search-service block</td>
+<td>Check internet access and whether the search site opens in your browser. A browser working does not guarantee automated requests are allowed. Retry later or on another permitted network.</td>
+</tr>
+<tr>
+<td>Search-service rate limit</td>
+<td>Pause and retry later. Do not repeatedly restart or send rapid retries. A new Groq key cannot resolve a search-service limit.</td>
+</tr>
+<tr>
+<td>Groq <code>429</code> during the agent test</td>
+<td>Read the terminal: “Request too large” needs a smaller output budget or shorter input; other exhausted limits need the indicated reset. See the setup troubleshooting table. A successful direct search does not prove Groq has remaining capacity.</td>
+</tr>
+<tr>
+<td><code>web_search</code> undefined in generated code</td>
+<td>Check that a search-tool instance is in <code>tools</code>, save, and restart the app.</td>
+</tr>
+<tr>
+<td>Direct search works, but the agent does not call it</td>
+<td>Use the explicit prompt in Step D, verify registration, and retry with fresh agent memory by restarting the app.</td>
+</tr>
+<tr>
+<td>Search returns results, but the answer gives another URL</td>
+<td>Compare the answer with the observation and request a URL actually present in the results.</td>
+</tr>
+</tbody>
+</table>
+<p>If external search remains unavailable, continue reading the trace explanation and return to the live checkpoint later. Label the search test incomplete; do not replace it with invented results.</p>
+<h2 id="5-verify-the-two-core-tools">5. Verify the two core tools<a class="headerlink" href="#5-verify-the-two-core-tools" title="Permanent link">&para;</a></h2>
+<p>Time and search are a useful first pair: time provides an easily checked local result, while search introduces an external service and source evaluation. Neither requires adding another API key in this starter. Search can still be blocked or rate-limited independently of Groq.</p>
+<p>Test each separately before combining them. For a combined test, ask:</p>
+<blockquote>
+<p>Get the current time in Asia/Tokyo using the time tool, then search for the official Python documentation. Give me a source link actually returned by web_search. If search fails, say that it failed; do not substitute a link from memory.</p>
+</blockquote>
+<p>Inspect the trace for <strong>both</strong> calls and their successful outputs. Compare the time with a trusted clock and open the returned documentation link. The link must occur in the search observation, even if you already know it is correct. If the agent skips a tool, ask explicitly for it and inspect the next run. Do not count a fabricated time or a link supplied from memory as successful execution. This prompt makes the requirement clearer but does not replace checking the evidence yourself.</p>
+<p><code>final_answer</code> remains in the tools list as the framework's completion mechanism; it is separate from the two capabilities you are learning to enable.</p>
+<p>Image generation has been removed from this adaptation. There is no image tool to register or image-service setup to complete.</p>
+<h2 id="6-optional-create-your-own-tool">6. Optional: create your own tool<a class="headerlink" href="#6-optional-create-your-own-tool" title="Permanent link">&para;</a></h2>
+<p><strong>What you learn:</strong> turn your own Python function into a capability the model can select. The function signature specifies inputs, the docstring explains its purpose, the implementation produces a result, and registration makes it available to the agent. You are responsible for all four parts.</p>
+<p>The placeholder deliberately raises <code>NotImplementedError</code> if called. It is not registered, so the starter still runs. If you want an extension after the two core tools, return to <code>my_custom_tool</code> and choose its purpose. Replace its placeholder implementation and update its types and description.</p>
+<ol>
+<li>Decide the inputs and output.</li>
+<li>Implement the function above the agent constructor, retaining <code>@tool</code>.</li>
+<li>Describe every argument in the docstring's <code>Args:</code> section and specify its return type.</li>
+<li>Test the function directly with one ordinary input and one edge case. Then add <code>my_custom_tool</code> to the tools list, or the new name if renamed.</li>
+<li>Restart and ask for a task that needs that function.</li>
+<li>Compare the actual execution result with the expected result.</li>
+</ol>
+<p>Register a decorated function by name without calling it. A tool class such as the supplied <code>WebSearchTool</code> needs an instance, written <code>WebSearchTool()</code>.</p>
+<p>The topic remains your choice; there is no required replacement temperature-converter assignment.</p>
+<h3 id="check-the-function-before-the-agent-calls-it">Check the function before the agent calls it<a class="headerlink" href="#check-the-function-before-the-agent-calls-it" title="Permanent link">&para;</a></h3>
+<p>After implementing your function, create <code>check_my_tool.py</code> next to <code>app.py</code>. Import it with <code>from app import my_custom_tool</code>, then call it using inputs that match your new signature and print its return value. Run <code>python check_my_tool.py</code>. Importing <code>app</code> does not launch the chat because startup is guarded by <code>if __name__ == "__main__"</code>.</p>
+<p>For each case, write down the expected result before running it. If the direct result is wrong, fix the function before testing through the agent. If only the agent test fails, inspect the tool registration, description, and generated arguments.</p>
+<h3 id="a-scaffold-if-python-functions-are-new">A scaffold if Python functions are new<a class="headerlink" href="#a-scaffold-if-python-functions-are-new" title="Permanent link">&para;</a></h3>
+<p>This is an editing aid for the original open-ended tool task, not a new assignment. A decorated function needs this shape:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@tool</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_custom_tool</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="sd">"""Describe when the agent should use your tool.</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="sd">        value: Describe the input this function accepts.</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="sd">    """</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Write your tool implementation here"</span><span class="p">)</span>
+</code></pre></div>
+<p>As written, this intentionally raises an error until you implement it. Change the purpose, types, description, and body to implement your chosen behavior. Replace the existing decorated placeholder block completely so there is only one definition of <code>my_custom_tool</code>. Retain the other tool functions.</p>
+<p>To register it while keeping the time tool, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">,</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">my_custom_tool</span><span class="p">],</span>
+</code></pre></div>
+<p>If you enabled search, retain its entry in the list as well. Save, restart, and test with an input whose expected result you can check yourself. Use the <a href="https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions">Python functions reference</a> if you need a refresher on parameters, return values, or docstrings.</p>
+<h2 id="7-inspect-instructions-and-settings">7. Inspect instructions and settings<a class="headerlink" href="#7-inspect-instructions-and-settings" title="Permanent link">&para;</a></h2>
+<p>A prompt is text sent as part of a model request. The system instructions in <code>prompts.yaml</code> describe available tools and the expected response structure. They guide generation; they do not execute functions or train the model. The template placeholders are filled with information such as tool descriptions when the agent builds its instructions.</p>
+<p>Open <code>prompts.yaml</code> and locate the instructions. Compare one formatting instruction with a response in your trace. See the <a href="../understand-the-template/#instructions-and-agent-construction">template explanation</a> for how those instructions reach the model. If experimenting, back up the file and preserve its YAML indentation and template placeholders.</p>
+<p>In <code>app.py</code>, locate the model identifier and <code>max_steps</code>. Keep working settings for the first run. <code>max_steps</code> limits the action loop, while <code>max_tokens</code> limits the output allowance of an individual completion. Neither grants extra API credits or guarantees a correct answer. Experiments with other models remain possible, subject to access and library compatibility.</p>
+<h2 id="8-demonstrate-the-result">8. Demonstrate the result<a class="headerlink" href="#8-demonstrate-the-result" title="Permanent link">&para;</a></h2>
+<p>Demonstrate timezone lookup and web search, showing each call, observation, and final answer. If you completed the optional custom tool, demonstrate that too. Use errors to revise your implementation or description and retry.</p>
+<p>Demonstrate the local app. Publishing a Space is the environment-specific exception and is not required. A temporary public link, if deliberately enabled, uses the app owner's credentials and is not permanent hosting.</p>
+<h2 id="9-complete-the-local-practical">9. Complete the local practical<a class="headerlink" href="#9-complete-the-local-practical" title="Permanent link">&para;</a></h2>
+<p>Review the <a href="../quizzes/#finish-the-practical">completion checks</a>. The two quick quizzes appear in the foundations lesson; there is no final-quiz or certificate requirement.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../understand-the-template/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 05 · Understand the template">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                05 · Understand the template
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../quizzes/" class="md-footer__link md-footer__link--next" aria-label="Next: 07 · Quick quizzes &amp; completion">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                07 · Quick quizzes & completion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Local classroom companion · Original course by Hugging Face
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

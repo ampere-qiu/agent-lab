@@ -1,0 +1,1775 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A local-environment companion to Hugging Face Agents Course Unit 1.">
+      
+      
+      
+      
+        <link rel="prev" href="../dummy-agent-local/">
+      
+      
+        <link rel="next" href="../understand-the-template/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>04 · Get the agent template - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-create-your-groq-account" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 · Get the agent template
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before you start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Basic setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Lessons & quick quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Build
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Build
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Dummy steps 1–3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Get the agent template
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Get the agent template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-your-groq-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create your Groq account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install Python 3.11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Install Python 3.11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Download the Groq starter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create a virtual environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create a virtual environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-install-the-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Install the libraries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-your-groq-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Create your Groq API key
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create your Groq API key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-open-the-key-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Open the key page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-understand-how-the-app-uses-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Understand how the app uses it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-model-selection-is-already-configured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Model selection is already configured
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-verification-happens-with-a-real-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Verification happens with a real response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-confirm-local-only-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Confirm local-only sharing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-start-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Start the agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-test-the-connection-to-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Test the connection to the LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-understand-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Understand token usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stop-and-restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Stop and restart
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Stop and restart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model connection problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-editing-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common editing mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation status
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Understand the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Build your tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Quick quizzes & completion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-your-groq-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create your Groq account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install Python 3.11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Install Python 3.11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Download the Groq starter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create a virtual environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create a virtual environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-install-the-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Install the libraries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-your-groq-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Create your Groq API key
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create your Groq API key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-open-the-key-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Open the key page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-understand-how-the-app-uses-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Understand how the app uses it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-model-selection-is-already-configured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Model selection is already configured
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-verification-happens-with-a-real-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Verification happens with a real response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-confirm-local-only-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Confirm local-only sharing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-start-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Start the agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-test-the-connection-to-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Test the connection to the LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-understand-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Understand token usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stop-and-restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Stop and restart
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Stop and restart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model connection problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-editing-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common editing mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation status
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="download-and-run-the-first-agent-template">Download and run the first-agent template<a class="headerlink" href="#download-and-run-the-first-agent-template" title="Permanent link">&para;</a></h1>
+<div class="template-download">
+<p class="template-download__label">Step 04 · Starter files</p>
+<p><strong>Download the complete agent template</strong></p>
+<p>One ZIP with all the Python files, tools, instructions, and library requirements. Use this after the three dummy exercises.</p>
+<p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">Download agent template (.zip)</a></p>
+<p><strong>Next:</strong> Extract the ZIP, then <a href="#3-download-the-groq-starter">follow Step 3 below</a>. No API key is included; you will enter your own Groq key when starting the app.</p>
+</div>
+<blockquote>
+<p><strong>Why local setup?</strong> The original tutorial's Space duplication step was blocked in our setup: CPU Basic was disabled, ZeroGPU asked for PRO, and custom hardware was paid. An API token does not unlock hosting. This guide uses a local app and Groq for model calls, with local lessons, time and search activities, and two original quick quizzes. See the <a href="../">course introduction</a>.</p>
+</blockquote>
+<p><strong>When to use this page:</strong> Finish the <a href="../dummy-agent-local/">three dummy stages</a> first. You will now receive the full template and let CodeAgent manage the model/action/observation loop. Reuse your existing Groq key; create a separate virtual environment for this template. If Python and your account are ready, begin at Step 3. Reuse the same Groq key at Step 6; you do not need to create another key. Before switching from the dummy exercise, run <code>deactivate</code>, then create and activate the template’s separate environment as shown below.</p>
+<p>Follow this guide on Windows or Mac to run our Groq adaptation of the Hugging Face Agents Course starter app.</p>
+<p>If this is your first Python project, read <a href="../before-you-start/">Before you start</a>. Follow only your operating system's commands; steps labelled for either system apply to everyone.</p>
+<p>Your computer runs the app and its tools. A remote large language model (LLM) generates responses, so an internet connection is required. You are running an existing model, not training one.</p>
+<p>You do not need a Hugging Face token for this version's chat. Groq provides the model API. Local lessons supply the instructions, and only the two HF quick quizzes remain in the course route. The final quiz and certification are excluded. Image generation has been removed.</p>
+<h2 id="1-create-your-groq-account">1. Create your Groq account<a class="headerlink" href="#1-create-your-groq-account" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <a href="https://console.groq.com">Groq Console</a>.</li>
+<li>Sign up or sign in with your own account and complete any verification requested.</li>
+<li>Stay on the <strong>Free</strong> plan for this exercise. A paid upgrade is not a setup requirement.</li>
+<li>Key creation is explained in Step 6 below.</li>
+</ol>
+<p>Free access has request and token limits. A multi-step agent can make several calls for one message. Check your account's Limits page; creating extra keys does not increase an organization's quota. See <a href="https://console.groq.com/docs/rate-limits">Groq's current limits</a>.</p>
+<h2 id="2-install-python-311">2. Install Python 3.11<a class="headerlink" href="#2-install-python-311" title="Permanent link">&para;</a></h2>
+<p>Python runs the app. Install it only if Python 3.11 is not already available. The ZIP route does not require Git.</p>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<p>Open <strong>Command Prompt</strong>, then run each command separately:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>winget install --exact --id Python.Python.3.11
+</code></pre></div>
+<p>Accept the installer prompts, close and reopen Command Prompt, then check:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>py -3.11 --version
+</code></pre></div>
+<p>If <code>winget</code> is unavailable, open the <a href="https://www.python.org/downloads/release/python-3119/">Python 3.11.9 release page</a>, scroll to <strong>Files</strong>, and download the <strong>Windows installer (64-bit)</strong> for an x64 PC. Run it, enable <strong>Add python.exe to PATH</strong> and the Python launcher, finish installation, then reopen Command Prompt and retry <code>py -3.11 --version</code>. Use <strong>Command Prompt</strong>, not PowerShell, for this guide's Windows commands.</p>
+<h3 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
+<p>Open <strong>Terminal</strong>. If Homebrew is installed, run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.11
+</code></pre></div>
+<p>If Homebrew is missing, follow <a href="https://brew.sh">its installation instructions</a>, including the final setup instructions, then retry.</p>
+<p>Check the installations:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>--version
+</code></pre></div>
+<p><strong>Checkpoint:</strong> You see Python 3.11.x. On Mac, <code>python3</code> may still point to an older version; this is fine. Use <code>python3.11</code> below.</p>
+<h2 id="3-download-the-groq-starter">3. Download the Groq starter<a class="headerlink" href="#3-download-the-groq-starter" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">Download agent template (.zip)</a></p>
+<ol>
+<li>Click <strong>Download agent template (.zip)</strong> above. If you already downloaded it from the top of this page, use that same ZIP.</li>
+<li>Extract the ZIP: double-click it on Mac, or right-click and choose <strong>Extract All</strong> on Windows.</li>
+<li>Locate the extracted folder containing <code>app.py</code>, <code>Gradio_UI.py</code>, <code>requirements.txt</code>, <code>prompts.yaml</code>, and <code>tools</code>. Its name is <code>First_agent_template</code>; it also includes <code>STUDENT_TASKS.md</code> with the tasks you will complete.</li>
+<li>Create an <code>agent-course</code> folder inside your home/user folder and move <code>First_agent_template</code> into it. If a folder of that name already exists, keep a backup before replacing it.</li>
+<li>Open a terminal and enter the project folder:</li>
+</ol>
+<p><strong>Windows — Command Prompt</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+</code></pre></div>
+<p><strong>Mac — Terminal</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+</code></pre></div>
+<p>Do not work inside an unopened ZIP. If extraction created two nested folders with the same name, use the inner folder containing <code>app.py</code>.</p>
+<p><strong>Checkpoint:</strong> Run <code>dir</code> on Windows or <code>ls</code> on Mac. Confirm <code>app.py</code> and <code>requirements.txt</code> are listed. This ZIP contains code only, not a virtual environment or anyone's API key.</p>
+<h2 id="4-create-a-virtual-environment">4. Create a virtual environment<a class="headerlink" href="#4-create-a-virtual-environment" title="Permanent link">&para;</a></h2>
+<p>This keeps the project's libraries separate from other Python projects.</p>
+<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>py -3.11 -m venv .venv
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>python --version
+</code></pre></div>
+<h3 id="mac_1">Mac<a class="headerlink" href="#mac_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>python<span class="w"> </span>--version
+</code></pre></div>
+<p><strong>Checkpoint:</strong> The prompt starts with <code>(.venv)</code> and Python reports version 3.11.x. Keep using this terminal window.</p>
+<h2 id="5-install-the-libraries">5. Install the libraries<a class="headerlink" href="#5-install-the-libraries" title="Permanent link">&para;</a></h2>
+<p>On either operating system:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p>Wait for installation to finish and the prompt to return. Download progress bars are normal.</p>
+<p><strong>Checkpoint:</strong> There is no final <code>ERROR</code> message. You may see <code>Successfully installed</code> or <code>Requirement already satisfied</code>. Do not enter the next command while installation is still running.</p>
+<p>Use the <code>requirements.txt</code> included in the Groq ZIP. It includes the <code>openai</code> client library, used here to connect to Groq through its compatible API; you do not need an OpenAI account.</p>
+<h2 id="6-create-your-groq-api-key">6. Create your Groq API key<a class="headerlink" href="#6-create-your-groq-api-key" title="Permanent link">&para;</a></h2>
+<h3 id="a-open-the-key-page">A. Open the key page<a class="headerlink" href="#a-open-the-key-page" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In your browser, sign in to <a href="https://console.groq.com">Groq Console</a>.</li>
+<li>Open <strong>API Keys</strong> in the console navigation, or use the <a href="https://console.groq.com/keys">direct API Keys link</a>.</li>
+<li>Click <strong>Create API Key</strong>.</li>
+<li>Enter a descriptive name such as <code>agents-course</code> in the name field. If an expiration choice is offered, choose one that covers your course sessions.</li>
+<li>Confirm creation using the dialog's create/submit button.</li>
+<li>Copy the generated secret key and keep it in a password manager so you can retrieve it at startup. Do not share it with classmates or paste it into this guide, source code, or chat.</li>
+</ol>
+<p>The name <code>agents-course</code> is only a label. The generated secret value is the actual key. The console's labels may vary; Groq's <a href="https://console.groq.com/docs/quickstart">official quickstart</a> also links to key creation.</p>
+<p><strong>Checkpoint:</strong> You have your own Groq key ready. Creating a key does not choose a model or prove that a model request will succeed.</p>
+<h3 id="b-understand-how-the-app-uses-it">B. Understand how the app uses it<a class="headerlink" href="#b-understand-how-the-app-uses-it" title="Permanent link">&para;</a></h3>
+<p>The starter asks for your key when you run <code>python app.py</code> in Step 8. Do not run a Hugging Face login or <code>whoami</code> command: those check a different service and do not validate Groq access.</p>
+<p>The key is hidden while you paste and is held in memory for that running app. It is not saved by the app. Unless you separately configured <code>GROQ_API_KEY</code>, you will paste it again each time you restart.</p>
+<h3 id="c-model-selection-is-already-configured">C. Model selection is already configured<a class="headerlink" href="#c-model-selection-is-already-configured" title="Permanent link">&para;</a></h3>
+<p>The supplied <code>app.py</code> selects:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">model_id</span><span class="o">=</span><span class="s2">"qwen/qwen3.8-27b"</span><span class="p">,</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">api_base</span><span class="o">=</span><span class="s2">"https://api.groq.com/openai/v1"</span><span class="p">,</span>
+</code></pre></div>
+<p>These lines select the model and Groq endpoint. The app also sets <code>reasoning_effort="none"</code> so this model returns its code-agent response without a reasoning preamble. Keep them unchanged for the first test. Do not replace the key prompt with a literal key in the code.</p>
+<h3 id="d-verification-happens-with-a-real-response">D. Verification happens with a real response<a class="headerlink" href="#d-verification-happens-with-a-real-response" title="Permanent link">&para;</a></h3>
+<p>This version does not print a username after key creation. In Step 9, a successful answer from the model verifies that the key, account access, endpoint, and model worked for that request. Opening the chat page alone is not that verification.</p>
+<p>If a key is exposed or lost, manage/revoke it on the <a href="https://console.groq.com/keys">Groq API Keys page</a>, create a replacement if needed, and restart the app with the new key.</p>
+<h2 id="7-confirm-local-only-sharing">7. Confirm local-only sharing<a class="headerlink" href="#7-confirm-local-only-sharing" title="Permanent link">&para;</a></h2>
+<p>The Groq starter already uses <code>share=False</code> in <code>Gradio_UI.py</code> and binds the app to <code>127.0.0.1</code>. No edit is required.</p>
+<p>If checking an older copy, find <code>demo.launch</code> in <code>Gradio_UI.py</code> and confirm it contains <code>share=False</code>. A public link would allow other people to send requests using the running app's Groq credentials.</p>
+<h2 id="8-start-the-agent">8. Start the agent<a class="headerlink" href="#8-start-the-agent" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>app.py
+</code></pre></div>
+<p>Terminal first asks:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Paste your Groq API key (hidden):
+</code></pre></div>
+<p>Paste your key and press Enter/Return. Nothing appears while pasting; that is normal. The app then prints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Using Groq: qwen/qwen3.8-27b
+</code></pre></div>
+<p>This names the configured model; it does not yet mean the key was accepted by Groq. If no key prompt appears, the app found <code>GROQ_API_KEY</code> in its environment. Never print that variable to share it.</p>
+<p>The local <code>app.py</code> configures the model and starts the agent interface.</p>
+<p>Wait for output similar to:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Running on local URL: http://127.0.0.1:7860
+</code></pre></div>
+<p>Open the exact address shown in your browser. Keep the terminal running.</p>
+<p>The address goes in your browser's address bar, not the agent chat. If the terminal prints a different port, use that port. The command will not return to its normal prompt while the app is running; that is expected.</p>
+<h2 id="9-test-the-connection-to-the-llm">9. Test the connection to the LLM<a class="headerlink" href="#9-test-the-connection-to-the-llm" title="Permanent link">&para;</a></h2>
+<p>Send:</p>
+<blockquote>
+<p>What is 12 multiplied by 8?</p>
+</blockquote>
+<p>Look for a final answer containing <strong>96</strong>. You may also see generated Python code and a <code>python_interpreter</code> step.</p>
+<p>The request flows from your browser to the local app, then to a remote LLM. Your app executes the generated code and displays the result. The configured model is <code>qwen/qwen3.8-27b</code>, served by Groq; availability may change.</p>
+<p>Opening the page confirms the interface works. Receiving a model-generated answer also tests the remote model connection. The starter app has limited tools; do not assume it can search the web.</p>
+<h2 id="10-understand-token-usage">10. Understand token usage<a class="headerlink" href="#10-understand-token-usage" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access token / API key</td>
+<td>Your reusable authentication credential.</td>
+</tr>
+<tr>
+<td>Input tokens</td>
+<td>Pieces of text sent to the model, including instructions and conversation context.</td>
+</tr>
+<tr>
+<td>Output tokens</td>
+<td>Pieces of text generated by the model.</td>
+</tr>
+</tbody>
+</table>
+<p>The app reuses your key while it is running. After stopping and restarting, it asks again unless <code>GROQ_API_KEY</code> is configured. Input/output token counts describe model usage, not credentials.</p>
+<h2 id="11-stop-and-restart">11. Stop and restart<a class="headerlink" href="#11-stop-and-restart" title="Permanent link">&para;</a></h2>
+<p>To stop the app, click the terminal and press <strong>Control + C</strong>.</p>
+<p>To restart another day, open a new terminal and run:</p>
+<h3 id="windows_2">Windows<a class="headerlink" href="#windows_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>python app.py
+</code></pre></div>
+<h3 id="mac_2">Mac<a class="headerlink" href="#mac_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>python<span class="w"> </span>app.py
+</code></pre></div>
+<p>You do not need to reinstall libraries. Paste your Groq key again when prompted, then open the printed local URL.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="model-connection-problems">Model connection problems<a class="headerlink" href="#model-connection-problems" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Next step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python is the wrong version</td>
+<td>Activate the Python 3.11 environment from Step 4.</td>
+</tr>
+<tr>
+<td><code>app.py</code> or <code>requirements.txt</code> cannot be found</td>
+<td>Enter the extracted <code>First_agent_template</code> folder.</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: openai</code></td>
+<td>Activate <code>.venv</code> and rerun Step 5.</td>
+</tr>
+<tr>
+<td>No Groq key entered</td>
+<td>Restart and paste your key into the hidden prompt.</td>
+</tr>
+<tr>
+<td>400 / <code>tool_use_failed</code> / “Tool choice is none”</td>
+<td>Use the current starter's <code>app.py</code> and <code>prompts.yaml</code>, stop the old process, and restart. It now selects Qwen rather than GPT-OSS and explicitly requests Python text. If it repeats, check <a href="https://console.groq.com/docs/tool-use/local-tool-calling">Groq’s tool-call behavior</a> and the model ID against the current download. Do not enable native tools blindly: this exercise expects Python text.</td>
+</tr>
+<tr>
+<td>401 / invalid API key</td>
+<td>Use the full Groq key, not its label or an HF token. Check it has not expired or been revoked.</td>
+</tr>
+<tr>
+<td>403 / access denied</td>
+<td>Check your Groq account/project's model access and any organization restrictions.</td>
+</tr>
+<tr>
+<td>429 / Request too large</td>
+<td>Read the limit named in the terminal. For output tokens, lower <code>max_tokens</code> in <code>app.py</code> (the current starter uses 512), save, and restart. For input tokens, restart to clear chat history or shorten the prompt. Waiting alone does not fix an oversized request.</td>
+</tr>
+<tr>
+<td>429 / rate limit (usage exhausted)</td>
+<td>Follow the retry interval. Free-tier limits apply to both requests and tokens. Avoid rapid repeated messages.</td>
+</tr>
+<tr>
+<td>404 / model unavailable</td>
+<td>Compare <code>model_id</code> with <a href="https://console.groq.com/docs/models">Groq’s supported models</a> and check your console’s model permissions. Model IDs must match exactly.</td>
+</tr>
+<tr>
+<td>HF router 402 / no credits</td>
+<td>You are still running the old HF model connection. Stop that app and use the Groq starter; buying HF credits is not required for this version.</td>
+</tr>
+<tr>
+<td>Old <code>NoneType</code> token-count crash</td>
+<td>Confirm you are using the updated <code>Gradio_UI.py</code> from the starter ZIP.</td>
+</tr>
+<tr>
+<td>Page opens but chat fails</td>
+<td>Read the model error in the terminal; the page alone does not test API access.</td>
+</tr>
+<tr>
+<td>Connection error or timeout</td>
+<td>Check internet access and Groq service availability, then retry once. The current starter uses a 30-second timeout per attempt and at most two automatic retries; do not repeatedly submit messages while it is waiting.</td>
+</tr>
+<tr>
+<td>Browser cannot connect</td>
+<td>Keep the app running and use its printed local URL.</td>
+</tr>
+<tr>
+<td>Port already in use</td>
+<td>Stop the older app process before launching again.</td>
+</tr>
+</tbody>
+</table>
+<p>For help, share your operating system, command, and final error lines. Exclude credentials.</p>
+<h3 id="common-editing-mistakes">Common editing mistakes<a class="headerlink" href="#common-editing-mistakes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Message or symptom</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IndentationError</code></td>
+<td>Restore the leading spaces around your edit. Use the original file or backup as a reference.</td>
+</tr>
+<tr>
+<td><code>SyntaxError</code></td>
+<td>Check for a missing comma, quote, square bracket, or parenthesis in the edited lines.</td>
+</tr>
+<tr>
+<td><code>NameError</code> after adding a tool</td>
+<td>Check the function name's spelling, that it is defined above the agent, and that the file was saved.</td>
+</tr>
+<tr>
+<td>File appears to be <code>app.py.txt</code></td>
+<td>Save from a code editor as <code>app.py</code>; do not add <code>.txt</code>.</td>
+</tr>
+<tr>
+<td>Changes have no effect</td>
+<td>Save the file, stop and restart the app, then refresh its browser page.</td>
+</tr>
+<tr>
+<td>Terminal shows <code>&gt;&gt;&gt;</code></td>
+<td>Type <code>exit()</code> to return to the command prompt before running shell commands.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Completion check:</strong> You can start the app, obtain an LLM response, explain where the model runs, and stop the app.</p>
+<h2 id="validation-status">Validation status<a class="headerlink" href="#validation-status" title="Permanent link">&para;</a></h2>
+<p>On 12 October 2026, a separate Mac test folder with new Python 3.11 environments passed dependency installation, all three dummy stages against Groq, browser chat, timezone lookup, and individual live web search after the search adapter was updated. A later combined run completed a final answer, but search returned no results, so it did not pass the search-evidence checkpoint. The starter now requests 512 output tokens per completion and allows two automatic retries after an account rejected the former 2,096-token budget. These are tested settings, not a guarantee for every account. Windows installation, account creation, and installing Python on a machine without Python remain untested. Search is intermittent and model usage limits still apply. Use the checkpoints to validate your own installation. Some dependencies remain unpinned.</p>
+<p><strong>Next:</strong> <a href="../understand-the-template/">Understand smolagents and what the template does</a>, then <a href="../first-agent-practical/">build your agent’s tools</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dummy-agent-local/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 03 · Dummy steps 1–3">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                03 · Dummy steps 1–3
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../understand-the-template/" class="md-footer__link md-footer__link--next" aria-label="Next: 05 · Understand the template">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                05 · Understand the template
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Local classroom companion · Original course by Hugging Face
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
