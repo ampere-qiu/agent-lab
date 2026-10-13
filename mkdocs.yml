@@ -1,0 +1,62 @@
+site_name: "Agent Lab"
+site_description: "A local-environment companion to Hugging Face Agents Course Unit 1."
+docs_dir: docs
+site_dir: site
+theme:
+  name: material
+  language: en
+  font: false
+  icon:
+    logo: material/robot-outline
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.footer
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+      toc_depth: 2-3
+extra_css:
+  - stylesheets/extra.css
+copyright: "Local classroom companion · Original course by Hugging Face"
+nav:
+  - Start here: index.md
+  - Week 1 · Foundations:
+    - Before you start: before-you-start.md
+    - 01 · Basic setup: prepare-your-computer.md
+    - 02 · Lessons & quick quizzes: unit-1-walkthrough.md
+  - Week 1 · Build:
+    - 03 · Dummy steps 1–3: dummy-agent-local.md
+    - 04 · Get the agent template: run-your-first-agent.md
+    - 05 · Understand the template: understand-the-template.md
+    - 06 · Build your tools: first-agent-practical.md
+    - 07 · Quick quizzes & completion: quizzes.md
+  - Reference:
+    - Course route: week-1-learning-plan.md
