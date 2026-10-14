@@ -63,7 +63,28 @@ tools=[final_answer],
 
 Keep `final_answer` in this list. You will add the existing timezone function and a search-tool instance in the next steps. The `STUDENT TASK` comments mark these edit points. Keep the working model connection and interface settings as they are.
 
-For the optional custom tool later, add its function definition above `main()` and register it in this same `tools` list.
+For the optional custom tool later, follow [Step 6: create and connect a new tool](#6-optional-create-your-own-tool).
+
+### How does the agent know which tools it can use?
+
+`tools=[...]` is the connection between your Python tools and the agent. `CodeAgent` includes each registered tool's **name, description, input descriptions, and types** in the instructions sent to the model. The model receives this information together with your chat request and chooses a suitable action.
+
+For example, a request for Tokyo's current time fits the description of `get_current_time_in_timezone`. A request to find an official website fits `web_search`. The model generates Python using those names; the local executor runs it. See [what CodeAgent handles automatically](understand-the-template.md#what-codeagent-handles-automatically).
+
+| Part | Where to edit | Purpose |
+| --- | --- | --- |
+| Function implementation | The function body in `app.py`, above `main()` | Does the actual work |
+| Function description | The docstring directly below `def` | Tells the model when to use the tool |
+| Input descriptions | The docstring's `Args:` section | Helps the model supply suitable arguments |
+| Tool registration | `tools=[...]` inside `CodeAgent(...)` in `main()` | Makes the tool available to this agent |
+
+The timezone function is already defined in `app.py`; it needs registration, not another implementation file. `check_time.py` only tests it. Search is defined separately in `tools/web_search.py`: its class has a `description` field, and the import in `app.py` makes the class available to your program. Registering `WebSearchTool(max_results=3)` makes an instance available to the agent.
+
+### How does it decide when to call a tool?
+
+There is no fixed rule such as “if the user says time, call this function.” The model uses the request and tool descriptions to choose. For a first test, ask explicitly: **“Use get_current_time_in_timezone with Asia/Tokyo.”** Then inspect the code and execution output. Registration makes a tool available; it does not guarantee the model chooses it or supplies the correct inputs.
+
+`prompts.yaml` contains general instructions and examples. Some examples mention `search` or `wiki`, but examples do not register tools. A generated `search(...)` call is not a successful search; our registered search tool is named `web_search`. Use the tools list and the actual execution logs to check what happened.
 
 ## 3. Enable the time-zone tool
 
@@ -295,51 +316,122 @@ Image generation has been removed from this adaptation. There is no image tool t
 
 ## 6. Optional: create your own tool
 
-**What you learn:** turn your own Python function into a capability the model can select. The function signature specifies inputs, the docstring explains its purpose, the implementation produces a result, and registration makes it available to the agent. You are responsible for all four parts.
+You choose the purpose of your tool. The example below uses a tiny **invented Mordor-style glossary** to show where the code and descriptions go. These demo words are not authentic translations, and this is not a general translator. You can use another topic for your own tool.
 
-The placeholder deliberately raises `NotImplementedError` if called. It is not registered, so the starter still runs. If you want an extension after the two core tools, return to `my_custom_tool` and choose its purpose. Replace its placeholder implementation and update its types and description.
+The process is **write → describe → test directly → register → ask the agent → inspect execution**. A description tells the model what your function does; you must still implement that behavior.
 
-1. Decide the inputs and output.
-2. Implement the function above the agent constructor, retaining `@tool`.
-3. Describe every argument in the docstring's `Args:` section and specify its return type.
-4. Test the function directly with one ordinary input and one edge case. Then add `my_custom_tool` to the tools list, or the new name if renamed.
-5. Restart and ask for a task that needs that function.
-6. Compare the actual execution result with the expected result.
+### A. Write the function and its description { #a-scaffold-if-python-functions-are-new }
 
-Register a decorated function by name without calling it. A tool class such as the supplied `WebSearchTool` needs an instance, written `WebSearchTool()`.
-
-The topic remains your choice; there is no required replacement temperature-converter assignment.
-
-### Check the function before the agent calls it
-
-After implementing your function, create `check_my_tool.py` next to `app.py`. Import it with `from app import my_custom_tool`, then call it using inputs that match your new signature and print its return value. Run `python check_my_tool.py`. Importing `app` does not launch the chat because startup is guarded by `if __name__ == "__main__"`.
-
-For each case, write down the expected result before running it. If the direct result is wrong, fix the function before testing through the agent. If only the agent test fails, inspect the tool registration, description, and generated arguments.
-
-### A scaffold if Python functions are new
-
-This is an editing aid for the original open-ended tool task, not a new assignment. A decorated function needs this shape:
+Stop the app with **Control + C**. In `app.py`, find the optional `@tool` / `my_custom_tool` placeholder **above `main()`**. Replace that entire decorated function, including its old docstring and `raise NotImplementedError(...)`, with this example. Keep the existing timezone function and the rest of the app.
 
 ```python
-@tool
-def my_custom_tool(value: str) -> str:
-    """Describe when the agent should use your tool.
+@tool  # Make the function's name, description, and inputs available to smolagents.
+def translate_to_mordor(text: str) -> str:
+    """Translate one supported English word using an invented Mordor-style demo glossary.
 
     Args:
-        value: Describe the input this function accepts.
+        text: One English word to translate: hello, friend, or goodbye.
     """
-    raise NotImplementedError("Write your tool implementation here")
+    glossary = {"hello": "mor", "friend": "dur", "goodbye": "nak"}  # Invented demo words.
+    word = text.strip().lower()  # Ignore surrounding spaces and capital letters.
+    if word not in glossary:
+        return "Unsupported word. Choose hello, friend, or goodbye."
+    return glossary[word]  # Return the dictionary result; no model or online translator is called.
 ```
 
-As written, this intentionally raises an error until you implement it. Change the purpose, types, description, and body to implement your chosen behavior. Replace the existing decorated placeholder block completely so there is only one definition of `my_custom_tool`. Retain the other tool functions.
+| Code | Meaning |
+| --- | --- |
+| `translate_to_mordor` | Name the agent will use to call the tool |
+| `text: str` | The input is a string |
+| `-> str` | The result is a string |
+| First sentence inside triple quotes | Tool description: what it does and when it is useful |
+| `Args:` / `text:` | Description of the input the model should supply |
+| `glossary`, lookup, and `return` | Actual Python implementation |
 
-To register it while keeping the time tool, for example:
+**Where do you change the description?** Edit the docstring under `def`, not the chat message or `prompts.yaml`. Describe the real capability and its limits. This function supports only three words, so its description says so.
+
+### B. Test the function before the agent calls it { #check-the-function-before-the-agent-calls-it }
+
+In your editor, create a new file named **`check_my_tool.py`** beside `app.py`, paste the following, and save it. Keep the app stopped and the template's `.venv` active.
 
 ```python
-tools=[final_answer, get_current_time_in_timezone, WebSearchTool(max_results=3), my_custom_tool],
+from app import translate_to_mordor  # Import the new function; do not launch the chat.
+
+print(translate_to_mordor(text="Hello"))  # Normal input; capital letters are accepted.
+print(translate_to_mordor(text="unknown"))  # Unsupported input checks the function's limit.
 ```
 
-If you enabled search, retain its entry in the list as well. Save, restart, and test with an input whose expected result you can check yourself. Use the [Python functions reference](https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions) if you need a refresher on parameters, return values, or docstrings.
+In the terminal, from `First_agent_template`, run:
+
+```bash
+python check_my_tool.py
+```
+
+Expected output:
+
+```text
+mor
+Unsupported word. Choose hello, friend, or goodbye.
+```
+
+This is a direct Python test. It does not use Groq or require a key. If you choose a different tool, change the import and inputs to match your function, and write down expected results before running it. Fix direct-test failures before testing through the agent.
+
+### C. Connect the tool to CodeAgent
+
+Inside `main()`, find `CodeAgent(...)`. Add your function's name to its **existing** tools list, keeping the time, search, and final-answer tools:
+
+```python
+tools=[
+    final_answer,
+    get_current_time_in_timezone,
+    WebSearchTool(max_results=3),
+    translate_to_mordor,  # ADDED: allow the agent to call the new function.
+],
+```
+
+Register a decorated function by name: `translate_to_mordor`, without parentheses. Writing `translate_to_mordor(...)` here would call it during startup instead of registering it. `WebSearchTool(max_results=3)` uses parentheses because it creates a tool-class instance. Keep only one `tools=` argument inside `CodeAgent(...)`.
+
+You do not need another `.py` file for the tool itself when its definition is in `app.py`. `check_my_tool.py` is only the test script.
+
+### D. Restart and ask for a tool call
+
+Save `app.py`, run `python app.py`, enter your Groq key when prompted, and refresh the chat page. Send:
+
+> Use translate_to_mordor to translate the word Hello using the demo glossary. Report the returned value.
+
+`CodeAgent` supplies the model with your registered tool's name and docstring. The model can generate an action such as:
+
+```python
+translated = translate_to_mordor(text="Hello")
+print(translated)
+final_answer(translated)
+```
+
+This is an example of generated action code to recognize in the trace; do not paste it into your function definition. The local executor runs the call. If another step is needed, CodeAgent supplies the result or error to the model, which can continue toward an answer. You do not write that action loop yourself as you did in the dummy exercise.
+
+### E. Check that the new tool actually ran
+
+Open **Used tool python_interpreter → Execution Logs**. Find the `translate_to_mordor` call, the returned `mor`, and a final answer consistent with that result. The model saying “I translated it” without an executed call is insufficient.
+
+Then ask for an unsupported word. The answer should report the function's limit instead of inventing a translation. If the function works directly but the agent test fails, check the saved file, registration, exact function name, docstring, generated arguments, and restart. Tool choice is made by the model, so inspect the trace even when you explicitly name the tool.
+
+### If you later put the tool in a separate file
+
+For your first tool, keeping it above `main()` in `app.py` is simplest. If you choose to organize it as `tools/mordor.py`, move the complete decorated function there and add this import at the top of that file:
+
+```python
+from smolagents import tool
+```
+
+Then import the function near the top of `app.py`:
+
+```python
+from tools.mordor import translate_to_mordor
+```
+
+Keep its registration in `CodeAgent`'s tools list. Remove the duplicate definition from `app.py`, and update the direct test to import from `tools.mordor`. **Importing loads the tool into your program; registering exposes it to the agent.** The folder name `tools/` alone does not connect anything.
+
+For the interface details, see the [smolagents 1.13.0 tools guide](https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools). For Python parameters, returns, and docstrings, see [Python's function guide](https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions).
 
 ## 7. Inspect instructions and settings
 

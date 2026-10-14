@@ -56,6 +56,27 @@ The **model generates that code**. The **local executor runs it**. Its output be
 
 This explains why one chat message can consume multiple API requests. It also explains why a model saying “I checked the time” is insufficient evidence: look for the executed call and its result.
 
+### What CodeAgent handles automatically
+
+Yes: **CodeAgent manages the action–observation loop for you.** The model chooses proposed actions; the framework runs the generated Python locally and records the result.
+
+| Responsibility | Who handles it? |
+| --- | --- |
+| Write the tool's function and describe its inputs | You |
+| Register the function in `tools=[...]` | You |
+| Supply registered tool names and descriptions in the model's instructions | CodeAgent |
+| Choose whether to use a tool and generate Python arguments | The model |
+| Execute the Python, call the tool, and record output or errors | CodeAgent's local executor |
+| Include observations in later requests when another step is needed | CodeAgent |
+| Generate code calling `final_answer(...)` | The model |
+| Finish the run and return the final result | CodeAgent |
+
+For a request such as “Use the time tool for Asia/Tokyo,” CodeAgent supplies the task and the registered tools to the model, executes the proposed call, and continues if needed. The run can end with a final answer, reach its step limit, or stop because of an error. Registration and automatic execution do not guarantee correct choices or correct answers.
+
+The dummy exercise asked you to inspect an action and call a hard-coded function yourself. Here, CodeAgent handles that execution loop. A simple Python calculation such as `12 * 8` uses the built-in executor; a real search needs a registered search tool. Neither a generated “Thought” nor a function name appearing in text proves execution.
+
+Follow [how tools are connected and selected](first-agent-practical.md#how-does-the-agent-know-which-tools-it-can-use) and [the new-tool example](first-agent-practical.md#6-optional-create-your-own-tool) in the practical to see where each part is edited.
+
 ## 4. What does the downloaded template provide?
 
 The template is a starting program with the connection and interface already assembled. It can answer a simple question immediately. The student version deliberately leaves the two core tools (time and web search) unregistered. The unfinished custom tool is an optional extension. Image generation has been removed.
@@ -160,7 +181,7 @@ def get_current_time_in_timezone(timezone: str) -> str:
 
 Registering the existing function means adding its name to `tools`. Use the name without calling it: calling it yourself would produce a result immediately instead of registering the capability. `WebSearchTool()` is different syntax because it creates an instance of a supplied tool class.
 
-For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is **direct function call → registration → agent request → trace inspection**.
+For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is **direct function call → registration → agent request → trace inspection**. See [the optional new-tool walkthrough](first-agent-practical.md#6-optional-create-your-own-tool) for a complete example with a description, a test file, registration, and a chat request.
 
 ## 7. Why final_answer is already included
 
