@@ -12,6 +12,39 @@ In the terminal running your app, press **Control + C** to stop it. Leave the te
 
 After each edit, save the file, run `python app.py` in that same terminal, enter your Groq key when prompted, and refresh the chat page. Stop the app before making the next change. If returning in a new terminal, use the [restart commands](run-your-first-agent.md#11-stop-and-restart) to reactivate this project's environment.
 
+## Files used in this practical
+
+The small test scripts are **new files you create during this lesson**. They are not in the original starter ZIP. Use the exact name `check_time.py` (with an underscore), not `checktime.py`.
+
+| File | What to do |
+| --- | --- |
+| `app.py` | Edit the existing agent program to register tools |
+| `check_time.py` | Create beside `app.py` in Step 3B to test the time function directly |
+| `check_search.py` | Create beside `app.py` in Step 4B to test search directly |
+| `tools/web_search.py` | Already supplied; keep it inside the `tools` folder |
+
+Your folder will look like this after creating the two test files:
+
+```text
+First_agent_template/
+├── app.py
+├── check_time.py
+├── check_search.py
+├── Gradio_UI.py
+├── prompts.yaml
+├── requirements.txt
+├── tools/
+│   ├── final_answer.py
+│   └── web_search.py
+└── .venv/
+```
+
+Keep the test scripts here, not inside `tools/` or `.venv/`. Put each test's code in its own file, not in `app.py`. Save Python files without an extra `.txt` extension.
+
+!!! note "If you already have the completed app.py"
+
+    The completed reference has both tools registered. Keep its existing tools list. Run the direct tests in **3B** and **4B**, then the chat tests in **3D** and **4D**. You can skip the registration edits in **3C** and **4C**. The optional custom tool is still unfinished.
+
 ## What you will add
 
 | Already in your template | Your work now |
@@ -54,7 +87,12 @@ Timezone names identify regions, not fixed offsets. Some regions change offset d
 
 ### B. Test it without the agent
 
-With the app stopped and the template's virtual environment still active, create `check_time.py` next to `app.py` and save:
+With the app stopped and the template's virtual environment still active:
+
+1. In your code editor, choose **New File**.
+2. Paste the following code into the new file.
+3. Save it as **`check_time.py`** inside your existing `First_agent_template` folder, next to `app.py`.
+
 
 ```python
 from app import get_current_time_in_timezone
@@ -63,7 +101,7 @@ print(get_current_time_in_timezone(timezone="Asia/Tokyo"))
 print(get_current_time_in_timezone(timezone="Not/A_Real_Zone"))
 ```
 
-Run in the terminal:
+In the terminal, make sure you are in `First_agent_template` with `(.venv)` active, then run:
 
 ```bash
 python check_time.py
@@ -71,11 +109,13 @@ python check_time.py
 
 The first line should report Tokyo's date and time. The second should start with `Error fetching time`. The second test checks how invalid input is handled; it is not a successful time lookup. Neither call uses Groq or needs a key. Importing `app` defines the tools without launching the chat.
 
-**Checkpoint:** compare the valid result with a clock set to Tokyo. Do not proceed to an agent test if the direct function call fails.
+**Checkpoint:** compare the valid result with a clock set to Tokyo. The invalid-timezone error on the second line is intentional. If the valid Tokyo call fails, fix it before testing through the agent.
+
+If Python says it cannot open `check_time.py`, confirm that you saved it beside `app.py` and that the terminal is in that folder. `dir` on Windows or `ls` on Mac should list both files. If an `ImportError` names the time function, check that you kept the function in `app.py` and saved the file.
 
 ### C. Register it with the agent
 
-In `app.py`, find `tools=[final_answer]` inside `CodeAgent(...)`. Replace that argument only with:
+If `get_current_time_in_timezone` is already in your `tools` list, leave it there and go to Step D. Otherwise, in the original starter's `app.py`, find `tools=[final_answer]` inside `CodeAgent(...)` and replace that argument only with:
 
 ```python
 tools=[final_answer, get_current_time_in_timezone],
@@ -118,7 +158,12 @@ The Python tool contacts a search service. Groq generates the agent's actions an
 
 ### B. Test search directly before using the LLM
 
-Stop the app with **Control + C**. Create `check_search.py` next to `app.py`:
+Stop the app with **Control + C** if it is running; leave the template's `.venv` active.
+
+1. In your code editor, choose **New File**.
+2. Paste the following code into it.
+3. Save it as **`check_search.py`** inside `First_agent_template`, next to `app.py` and `check_time.py`.
+
 
 ```python
 from tools.web_search import WebSearchTool
@@ -128,7 +173,7 @@ print("Agent-facing name:", search_tool.name)
 print(search_tool(query="Python official documentation tutorial"))
 ```
 
-Run in your activated terminal:
+Run from the `First_agent_template` folder in your activated terminal:
 
 ```bash
 python check_search.py
@@ -148,11 +193,11 @@ Agent-facing name: web_search
 A short search-result description would appear here.
 ```
 
-**Checkpoint:** at least one relevant result is returned and its link opens. If the direct test fails, use the troubleshooting table below before changing the model or API key.
+**Checkpoint:** at least one relevant result is returned and its link opens. If Python cannot open `check_search.py`, check the file's name, saved location, and current terminal folder as in Step 3B. For a search-service error, use the troubleshooting table below before changing the model or API key.
 
 ### C. Register the search instance
 
-The starter already imports `WebSearchTool` from `tools.web_search` near the top of `app.py`. The import alone does not register it. Find your existing `tools=` argument and replace it with:
+If your `tools` list already contains `WebSearchTool(max_results=3)`, keep it and go to Step D. Otherwise, the starter already imports `WebSearchTool` from `tools.web_search` near the top of `app.py`. The import alone does not register it. Find your existing `tools=` argument and replace it with:
 
 ```python
 tools=[
