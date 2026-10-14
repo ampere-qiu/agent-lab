@@ -1,57 +1,36 @@
 # Build the first agent: local walkthrough
 
-<div class="template-download" markdown>
+Continue with the `First_agent_template` you already downloaded, set up, and ran in [Get the agent template](run-your-first-agent.md). You should have received a model response and read [Understand the template](understand-the-template.md).
 
-<p class="template-download__label">Files for this practical</p>
+Now extend that working app with **timezone lookup** and **web search**. Use your existing project folder, its `.venv`, and your Groq key throughout this practical.
 
-**Start with the complete agent template**
+This practical adapts the [Hugging Face starter tutorial](https://huggingface.co/learn/agents-course/en/unit1/tutorial) for our local app.
 
-[Download agent template (.zip)](downloads/groq-agent-starter.zip){ .md-button .md-button--primary .template-download__button download="groq-agent-starter.zip" }
+## 1. Prepare your existing app for editing { #1-open-the-adapted-starter }
 
-First time here? [Follow the download and setup guide](run-your-first-agent.md#3-download-the-groq-starter) after completing the dummy exercises. Already set up? Continue with your existing folder so you keep your edits.
+In the terminal running your app, press **Control + C** to stop it. Leave the template's virtual environment active. Open your existing `First_agent_template` folder in a code editor and save a copy of `app.py` as `app.before-tools.py` for comparison.
 
-</div>
+After each edit, save the file, run `python app.py` in that same terminal, enter your Groq key when prompted, and refresh the chat page. Stop the app before making the next change. If returning in a new terminal, use the [restart commands](run-your-first-agent.md#11-stop-and-restart) to reactivate this project's environment.
 
-This practical adapts the [Hugging Face starter tutorial](https://huggingface.co/learn/agents-course/en/unit1/tutorial). Follow the complete local steps below to enable **time** and **web search**. The source link is attribution and optional reading, not a prerequisite.
+## What you will add
 
-Before editing, read [Understand smolagents and the template](understand-the-template.md). It explains the components, each file, the model/action/observation loop, and the startup code. Return here to implement the tool activities.
-
-## 1. Open the adapted starter
-
-Finish the [three dummy stages](dummy-agent-local.md), then [download and run the template](run-your-first-agent.md). Open the downloaded `First_agent_template` folder in a code editor. Save a copy of `app.py` as `app.before-tools.py` for comparison.
-
-Where the original says to use the Space's Files tab, edit your local file. After each change: stop with Control + C, save, run `python app.py`, and refresh the local browser page.
-
-For help opening the editor and saving a file, use [Before you start](before-you-start.md#edit-a-file-without-losing-your-place). If you opened a new terminal, first use the setup guide's [restart commands](run-your-first-agent.md#11-stop-and-restart) to enter the project and activate its environment.
-
-## What is provided and what you build
-
-| Provided | Your work |
+| Already in your template | Your work now |
 | --- | --- |
-| Groq connection and hidden key prompt | Verify a real response |
-| Chat interface and agent instructions | Inspect the action and observation trace |
-| Working timezone function, initially unregistered | Register and test it |
-| Search-tool import, initially unregistered | Add an instance and verify results |
-| Custom-tool placeholder, initially unregistered | Optional: design, test, and register your own tool |
+| Working timezone function, not registered | Test it directly, register it, and inspect a real agent call |
+| Search tool, not registered | Test it directly, add an instance, and verify returned sources |
+| Custom-tool placeholder, not registered | Optional: implement, test, and register your own tool |
 
-Use the **complete ZIP** above for this practical. The [app.py source preview](downloads/agent-template.py) is for reference only; it cannot run without the other ZIP files. The `STUDENT TASK` comments identify your edit points. Keep the infrastructure unchanged for the first run.
+## 2. Find the tool registration { #2-walk-through-apppy }
 
-## 2. Walk through app.py
+Open `app.py` and find `CodeAgent(...)` inside `main()`. Its initial registration is:
 
-Locate these parts in your installed file:
+```python
+tools=[final_answer],
+```
 
-| Part | What to inspect |
-| --- | --- |
-| Imports | CodeAgent, tool decorator, search tool, model class, interface |
-| my_custom_tool | Placeholder for an optional extension |
-| get_current_time_in_timezone | Existing working function |
-| Model constructor | Model identifier, temperature, output limit |
-| Groq key prompt | Private key input at startup |
-| prompts.yaml loading | Instructions supplied to the agent |
-| CodeAgent constructor | Model, available tools, step limit |
-| GradioUI launch | Starting the interface |
+Keep `final_answer` in this list. You will add the existing timezone function and a search-tool instance in the next steps. The `STUDENT TASK` comments mark these edit points. Keep the working model connection and interface settings as they are.
 
-The Groq starter uses `OpenAIServerModel` in `main()`. Follow this file rather than copying the online tutorial's entire model block. Keep added function definitions above `main()` and register them in the `tools` argument inside it.
+For the optional custom tool later, add its function definition above `main()` and register it in this same `tools` list.
 
 ## 3. Enable the time-zone tool
 
@@ -75,7 +54,7 @@ Timezone names identify regions, not fixed offsets. Some regions change offset d
 
 ### B. Test it without the agent
 
-Stop the app with **Control + C**, leaving the virtual environment active. Create `check_time.py` next to `app.py` and save:
+With the app stopped and the template's virtual environment still active, create `check_time.py` next to `app.py` and save:
 
 ```python
 from app import get_current_time_in_timezone
