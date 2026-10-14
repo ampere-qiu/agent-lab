@@ -141,18 +141,10 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
-      <details class="course-language">
-  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  </summary>
-  <div class="course-language__menu course-language__help">
-    <p lang="ja"><strong>日本語で読む</strong></p>
-    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
-    <p>Browser Translate → Japanese</p>
-    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
-    <a href="./" lang="ja">詳しい手順 / Translation guide →</a>
-  </div>
-</details>
+      <a class="md-header__button md-icon course-translate" href="https://translate.google.com/translate?sl=en&tl=ja&hl=ja&u=http%3A%2F%2Fmondheera.website%2Fagent-lab%2Fja%2F" target="_blank" rel="noopener noreferrer" data-course-translate lang="ja" translate="no" title="Open this lesson in Japanese with Google Translate" aria-label="Read this page in Japanese with Google Translate (opens new tab)">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span>日本語</span>
+</a>
     
     
       
@@ -920,7 +912,9 @@
 
 <h1 id="browser-translation">日本語で読む / Browser translation<a class="headerlink" href="#browser-translation" title="Permanent link">&para;</a></h1>
 <div lang="ja">
-<p>この教材は英語で管理しています。日本語で読むときは、ブラウザーの翻訳機能を使ってください。</p>
+<p>この教材は英語で管理しています。ページ上部の <strong>日本語</strong> ボタンを押すと、そのレッスンをGoogle翻訳で開きます。元の英語ページは別のタブに残ります。</p>
+<p>ローカルプレビューのボタンも公開済みのページを開きます。まだ公開していない変更は翻訳ページには反映されません。</p>
+<p>ブラウザー自体の翻訳機能を使う場合は、以下の手順で操作してください。</p>
 <h2 id="chrome">Chrome<a class="headerlink" href="#chrome" title="Permanent link">&para;</a></h2>
 <ol>
 <li>読みたいレッスンを開きます。</li>
@@ -934,11 +928,11 @@
 <p>アプリ内のブラウザーに翻訳機能がない場合は、同じページのURLをChromeなどの通常のブラウザーで開いてください。</p>
 <h2 id="_2">コードと英語の原文<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><strong>コード、コマンド、ファイル名は変更せず、そのままコピーしてください。</strong> コードは翻訳対象から除外するよう設定しています。説明が分かりにくい場合は、ブラウザーの翻訳メニューから原文を表示し、英語を確認してください。</p>
-<p>ページ上部の言語アイコンには、この操作の案内があります。翻訳はブラウザーのメニューから有効にします。</p>
+<p>Google翻訳の画面では、上部のメニューで翻訳と原文を切り替えられます。<a href="https://support.google.com/translate/answer/2534559?hl=ja&amp;co=GENIE.Platform%3DDesktop">Google翻訳の公式手順</a>も参照してください。</p>
 <p><a class="md-button md-button--primary" href="../">コースに戻る</a></p>
 </div>
 <h2 id="english">English<a class="headerlink" href="#english" title="Permanent link">&para;</a></h2>
-<p>Open the lesson you want to read, use your browser's <strong>Translate</strong> option, and choose <strong>Japanese</strong>. Use the browser's original-page option to return to English. Copy code and commands in their original form.</p>
+<p>Click the header's <strong>日本語</strong> button to open this lesson's published version in Google Translate in a new tab. Alternatively, use your browser's <strong>Translate → Japanese</strong> option. Copy code and commands in their original form.</p>
 
 
 
