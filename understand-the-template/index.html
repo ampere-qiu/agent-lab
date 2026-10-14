@@ -611,6 +611,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. From a message to an answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-codeagent-handles-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What CodeAgent handles automatically
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -995,6 +1012,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. From a message to an answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-codeagent-handles-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What CodeAgent handles automatically
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1223,6 +1257,53 @@
 </code></pre></div>
 <p>The <strong>model generates that code</strong>. The <strong>local executor runs it</strong>. Its output becomes an <strong>observation</strong> that can be included in the next request. The model might then generate <code translate="no">final_answer(...)</code> to finish. It can also call a tool and finish within one code block, so every task does not have the same number of steps.</p>
 <p>This explains why one chat message can consume multiple API requests. It also explains why a model saying “I checked the time” is insufficient evidence: look for the executed call and its result.</p>
+<h3 id="what-codeagent-handles-automatically">What CodeAgent handles automatically<a class="headerlink" href="#what-codeagent-handles-automatically" title="Permanent link">&para;</a></h3>
+<p>Yes: <strong>CodeAgent manages the action–observation loop for you.</strong> The model chooses proposed actions; the framework runs the generated Python locally and records the result.</p>
+<table>
+<thead>
+<tr>
+<th>Responsibility</th>
+<th>Who handles it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write the tool's function and describe its inputs</td>
+<td>You</td>
+</tr>
+<tr>
+<td>Register the function in <code translate="no">tools=[...]</code></td>
+<td>You</td>
+</tr>
+<tr>
+<td>Supply registered tool names and descriptions in the model's instructions</td>
+<td>CodeAgent</td>
+</tr>
+<tr>
+<td>Choose whether to use a tool and generate Python arguments</td>
+<td>The model</td>
+</tr>
+<tr>
+<td>Execute the Python, call the tool, and record output or errors</td>
+<td>CodeAgent's local executor</td>
+</tr>
+<tr>
+<td>Include observations in later requests when another step is needed</td>
+<td>CodeAgent</td>
+</tr>
+<tr>
+<td>Generate code calling <code translate="no">final_answer(...)</code></td>
+<td>The model</td>
+</tr>
+<tr>
+<td>Finish the run and return the final result</td>
+<td>CodeAgent</td>
+</tr>
+</tbody>
+</table>
+<p>For a request such as “Use the time tool for Asia/Tokyo,” CodeAgent supplies the task and the registered tools to the model, executes the proposed call, and continues if needed. The run can end with a final answer, reach its step limit, or stop because of an error. Registration and automatic execution do not guarantee correct choices or correct answers.</p>
+<p>The dummy exercise asked you to inspect an action and call a hard-coded function yourself. Here, CodeAgent handles that execution loop. A simple Python calculation such as <code translate="no">12 * 8</code> uses the built-in executor; a real search needs a registered search tool. Neither a generated “Thought” nor a function name appearing in text proves execution.</p>
+<p>Follow <a href="../first-agent-practical/#how-does-the-agent-know-which-tools-it-can-use">how tools are connected and selected</a> and <a href="../first-agent-practical/#6-optional-create-your-own-tool">the new-tool example</a> in the practical to see where each part is edited.</p>
 <h2 id="4-what-does-the-downloaded-template-provide">4. What does the downloaded template provide?<a class="headerlink" href="#4-what-does-the-downloaded-template-provide" title="Permanent link">&para;</a></h2>
 <p>The template is a starting program with the connection and interface already assembled. It can answer a simple question immediately. The student version deliberately leaves the two core tools (time and web search) unregistered. The unfinished custom tool is an optional extension. Image generation has been removed.</p>
 <table>
@@ -1360,7 +1441,7 @@
 </code></pre></div>
 <p><code translate="no">@tool</code> is a Python decorator: it wraps the function with information smolagents can use. The type hints describe the expected argument and return types. The docstring describes the capability and its arguments. These descriptions help the model select a function and construct inputs; they do not implement its behavior. The <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools">versioned tools guide</a> explains this interface.</p>
 <p>Registering the existing function means adding its name to <code translate="no">tools</code>. Use the name without calling it: calling it yourself would produce a result immediately instead of registering the capability. <code translate="no">WebSearchTool()</code> is different syntax because it creates an instance of a supplied tool class.</p>
-<p>For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is <strong>direct function call → registration → agent request → trace inspection</strong>.</p>
+<p>For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is <strong>direct function call → registration → agent request → trace inspection</strong>. See <a href="../first-agent-practical/#6-optional-create-your-own-tool">the optional new-tool walkthrough</a> for a complete example with a description, a test file, registration, and a chat request.</p>
 <h2 id="7-why-final_answer-is-already-included">7. Why final_answer is already included<a class="headerlink" href="#7-why-final_answer-is-already-included" title="Permanent link">&para;</a></h2>
 <p>In the template, <code translate="no">final_answer = FinalAnswerTool()</code> creates the object registered under that name. Generated Python such as <code translate="no">final_answer(96)</code> signals completion and supplies the result to display. This function does not make an additional LLM request on its own.</p>
 <p>That is why a greeting can show a <code translate="no">python_interpreter</code> step even when it needs no search or external lookup: this CodeAgent may execute a small Python block that calls <code translate="no">final_answer</code>.</p>
