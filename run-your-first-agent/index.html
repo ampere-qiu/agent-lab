@@ -17,12 +17,6 @@
         <link rel="next" href="../understand-the-template/">
       
       
-        
-          <link rel="alternate" href="./" hreflang="en">
-        
-          <link rel="alternate" href="../ja/run-your-first-agent/" hreflang="ja">
-        
-      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
@@ -150,16 +144,16 @@
     
     
       <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="Select language">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   </summary>
-  <nav class="course-language__menu" aria-label="Language">
-    
-    <a href="./" hreflang="en" lang="en" data-course-language="en" aria-current="true">English</a>
-    
-    <a href="../ja/run-your-first-agent/" hreflang="ja" lang="ja" data-course-language="ja" >日本語</a>
-    
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="../ja/" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>
     
     
@@ -562,7 +556,7 @@
   <a href="#1-create-your-groq-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create your Groq account
+        1. Have your Groq API key ready
       
     </span>
   </a>
@@ -573,12 +567,34 @@
   <a href="#2-install-python-311" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Install Python 3.11
+        2. Use your existing Python installation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Install Python 3.11">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Download the agent template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create a virtual environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create a virtual environment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -609,56 +625,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-download-the-groq-starter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Download the Groq starter
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-create-a-virtual-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Create a virtual environment
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Create a virtual environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mac_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mac
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#5-install-the-libraries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -673,60 +639,10 @@
   <a href="#6-create-your-groq-api-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Create your Groq API key
+        6. Keep the supplied model settings
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="6. Create your Groq API key">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-open-the-key-page" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. Open the key page
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-understand-how-the-app-uses-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        B. Understand how the app uses it
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-model-selection-is-already-configured" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C. Model selection is already configured
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-verification-happens-with-a-real-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        D. Verification happens with a real response
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -767,7 +683,7 @@
   <a href="#10-understand-token-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Understand token usage
+        10. Check your usage limits
       
     </span>
   </a>
@@ -787,7 +703,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#windows_2" class="md-nav__link">
+  <a href="#windows_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Windows
@@ -798,7 +714,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mac_2" class="md-nav__link">
+  <a href="#mac_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Mac
@@ -849,17 +765,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation status
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1045,6 +950,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日本語で読む / Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1080,7 +1013,7 @@
   <a href="#1-create-your-groq-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create your Groq account
+        1. Have your Groq API key ready
       
     </span>
   </a>
@@ -1091,12 +1024,34 @@
   <a href="#2-install-python-311" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Install Python 3.11
+        2. Use your existing Python installation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Install Python 3.11">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Download the agent template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create a virtual environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create a virtual environment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1127,56 +1082,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-download-the-groq-starter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Download the Groq starter
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-create-a-virtual-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Create a virtual environment
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Create a virtual environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mac_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mac
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#5-install-the-libraries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1191,60 +1096,10 @@
   <a href="#6-create-your-groq-api-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Create your Groq API key
+        6. Keep the supplied model settings
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="6. Create your Groq API key">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-open-the-key-page" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. Open the key page
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-understand-how-the-app-uses-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        B. Understand how the app uses it
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-model-selection-is-already-configured" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C. Model selection is already configured
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-verification-happens-with-a-real-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        D. Verification happens with a real response
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1285,7 +1140,7 @@
   <a href="#10-understand-token-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Understand token usage
+        10. Check your usage limits
       
     </span>
   </a>
@@ -1305,7 +1160,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#windows_2" class="md-nav__link">
+  <a href="#windows_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Windows
@@ -1316,7 +1171,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mac_2" class="md-nav__link">
+  <a href="#mac_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Mac
@@ -1370,17 +1225,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#validation-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation status
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1399,125 +1243,77 @@
 
 
 <h1 id="download-and-run-the-first-agent-template">Download and run the first-agent template<a class="headerlink" href="#download-and-run-the-first-agent-template" title="Permanent link">&para;</a></h1>
+<p>Finish the <a href="../dummy-agent-local/">three dummy stages</a> first. Then use this page to download the complete template, prepare its own environment, and start the app. CodeAgent will manage the model/action/observation loop that you assembled manually in the dummy exercise.</p>
+<p>Your earlier <a href="../prepare-your-computer/">basic setup</a> already provided Python 3.11 and your Groq key. This page continues from that setup. Your computer runs the app and tools; Groq provides the remote model, so you still need an internet connection.</p>
+<p>Follow only the commands for your operating system. For help with terminals, folders, and editing, see <a href="../before-you-start/">Before you start</a>.</p>
+<h2 id="1-create-your-groq-account">1. Have your Groq API key ready<a class="headerlink" href="#1-create-your-groq-account" title="Permanent link">&para;</a></h2>
+<p>Use the same Groq API key you prepared during <a href="../prepare-your-computer/#4-create-your-groq-api-key">basic setup</a>. Have it ready to paste into the hidden terminal prompt when you start the app in Step 8. You do not need to create another account or key.</p>
+<p>If you have not prepared your key yet, complete the linked setup step before continuing.</p>
+<h2 id="2-install-python-311">2. Use your existing Python installation<a class="headerlink" href="#2-install-python-311" title="Permanent link">&para;</a></h2>
+<p>Use Python 3.11 from basic setup. The new environment in Step 4 will check its version. If you have not installed it yet, complete <a href="../prepare-your-computer/#1-install-python-311">the Python setup step</a> before continuing.</p>
+<p>If your dummy exercise is still running, stop it with <strong>Control + C</strong>. If its virtual environment is active (the prompt shows <code translate="no">(.venv)</code>), run <code translate="no">deactivate</code> before switching to the template folder.</p>
+<h2 id="3-download-the-groq-starter">3. Download the agent template<a class="headerlink" href="#3-download-the-groq-starter" title="Permanent link">&para;</a></h2>
 <div class="template-download">
-<p class="template-download__label">Step 04 · Starter files</p>
-<p><strong>Download the complete agent template</strong></p>
-<p>One ZIP with all the Python files, tools, instructions, and library requirements. Use this after the three dummy exercises.</p>
+<p class="template-download__label">Complete agent template</p>
+<p>One ZIP containing <code translate="no">app.py</code>, the interface, tools, instructions, and library requirements. “Groq starter” and “agent template” refer to this same download. It includes no API key or virtual environment.</p>
 <p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">Download agent template (.zip)</a></p>
-<p><strong>Next:</strong> Extract the ZIP, then <a href="#3-download-the-groq-starter">follow Step 3 below</a>. No API key is included; you will enter your own Groq key when starting the app.</p>
 </div>
-<blockquote>
-<p><strong>Why local setup?</strong> The original tutorial's Space duplication step was blocked in our setup: CPU Basic was disabled, ZeroGPU asked for PRO, and custom hardware was paid. An API token does not unlock hosting. This guide uses a local app and Groq for model calls, with local lessons, time and search activities, and two original quick quizzes. See the <a href="../">course introduction</a>.</p>
-</blockquote>
-<p><strong>When to use this page:</strong> Finish the <a href="../dummy-agent-local/">three dummy stages</a> first. You will now receive the full template and let CodeAgent manage the model/action/observation loop. Reuse your existing Groq key; create a separate virtual environment for this template. If Python and your account are ready, begin at Step 3. Reuse the same Groq key at Step 6; you do not need to create another key. Before switching from the dummy exercise, run <code>deactivate</code>, then create and activate the template’s separate environment as shown below.</p>
-<p>Follow this guide on Windows or Mac to run our Groq adaptation of the Hugging Face Agents Course starter app.</p>
-<p>If this is your first Python project, read <a href="../before-you-start/">Before you start</a>. Follow only your operating system's commands; steps labelled for either system apply to everyone.</p>
-<p>Your computer runs the app and its tools. A remote large language model (LLM) generates responses, so an internet connection is required. You are running an existing model, not training one.</p>
-<p>You do not need a Hugging Face token for this version's chat. Groq provides the model API. Local lessons supply the instructions, and only the two HF quick quizzes remain in the course route. The final quiz and certification are excluded. Image generation has been removed.</p>
-<h2 id="1-create-your-groq-account">1. Create your Groq account<a class="headerlink" href="#1-create-your-groq-account" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open <a href="https://console.groq.com">Groq Console</a>.</li>
-<li>Sign up or sign in with your own account and complete any verification requested.</li>
-<li>Stay on the <strong>Free</strong> plan for this exercise. A paid upgrade is not a setup requirement.</li>
-<li>Key creation is explained in Step 6 below.</li>
-</ol>
-<p>Free access has request and token limits. A multi-step agent can make several calls for one message. Check your account's Limits page; creating extra keys does not increase an organization's quota. See <a href="https://console.groq.com/docs/rate-limits">Groq's current limits</a>.</p>
-<h2 id="2-install-python-311">2. Install Python 3.11<a class="headerlink" href="#2-install-python-311" title="Permanent link">&para;</a></h2>
-<p>Python runs the app. Install it only if Python 3.11 is not already available. The ZIP route does not require Git.</p>
-<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
-<p>Open <strong>Command Prompt</strong>, then run each command separately:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>winget install --exact --id Python.Python.3.11
-</code></pre></div>
-<p>Accept the installer prompts, close and reopen Command Prompt, then check:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>py -3.11 --version
-</code></pre></div>
-<p>If <code>winget</code> is unavailable, open the <a href="https://www.python.org/downloads/release/python-3119/">Python 3.11.9 release page</a>, scroll to <strong>Files</strong>, and download the <strong>Windows installer (64-bit)</strong> for an x64 PC. Run it, enable <strong>Add python.exe to PATH</strong> and the Python launcher, finish installation, then reopen Command Prompt and retry <code>py -3.11 --version</code>. Use <strong>Command Prompt</strong>, not PowerShell, for this guide's Windows commands.</p>
-<h3 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
-<p>Open <strong>Terminal</strong>. If Homebrew is installed, run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.11
-</code></pre></div>
-<p>If Homebrew is missing, follow <a href="https://brew.sh">its installation instructions</a>, including the final setup instructions, then retry.</p>
-<p>Check the installations:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>--version
-</code></pre></div>
-<p><strong>Checkpoint:</strong> You see Python 3.11.x. On Mac, <code>python3</code> may still point to an older version; this is fine. Use <code>python3.11</code> below.</p>
-<h2 id="3-download-the-groq-starter">3. Download the Groq starter<a class="headerlink" href="#3-download-the-groq-starter" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">Download agent template (.zip)</a></p>
-<ol>
-<li>Click <strong>Download agent template (.zip)</strong> above. If you already downloaded it from the top of this page, use that same ZIP.</li>
+<li>Click <strong>Download agent template (.zip)</strong> above.</li>
 <li>Extract the ZIP: double-click it on Mac, or right-click and choose <strong>Extract All</strong> on Windows.</li>
-<li>Locate the extracted folder containing <code>app.py</code>, <code>Gradio_UI.py</code>, <code>requirements.txt</code>, <code>prompts.yaml</code>, and <code>tools</code>. Its name is <code>First_agent_template</code>; it also includes <code>STUDENT_TASKS.md</code> with the tasks you will complete.</li>
-<li>Create an <code>agent-course</code> folder inside your home/user folder and move <code>First_agent_template</code> into it. If a folder of that name already exists, keep a backup before replacing it.</li>
+<li>Locate the extracted folder containing <code translate="no">app.py</code>, <code translate="no">Gradio_UI.py</code>, <code translate="no">requirements.txt</code>, <code translate="no">prompts.yaml</code>, and <code translate="no">tools</code>. Its name is <code translate="no">First_agent_template</code>; it also includes <code translate="no">STUDENT_TASKS.md</code> with the tasks you will complete.</li>
+<li>Move <code translate="no">First_agent_template</code> into the <code translate="no">agent-course</code> folder you created during basic setup. If a <code translate="no">First_agent_template</code> folder already exists, keep a backup before replacing it.</li>
 <li>Open a terminal and enter the project folder:</li>
 </ol>
 <p><strong>Windows — Command Prompt</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
 </code></pre></div>
 <p><strong>Mac — Terminal</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
 </code></pre></div>
-<p>Do not work inside an unopened ZIP. If extraction created two nested folders with the same name, use the inner folder containing <code>app.py</code>.</p>
-<p><strong>Checkpoint:</strong> Run <code>dir</code> on Windows or <code>ls</code> on Mac. Confirm <code>app.py</code> and <code>requirements.txt</code> are listed. This ZIP contains code only, not a virtual environment or anyone's API key.</p>
+<p>Do not work inside an unopened ZIP. If extraction created two nested folders with the same name, use the inner folder containing <code translate="no">app.py</code>.</p>
+<p><strong>Checkpoint:</strong> Run <code translate="no">dir</code> on Windows or <code translate="no">ls</code> on Mac. Confirm <code translate="no">app.py</code> and <code translate="no">requirements.txt</code> are listed.</p>
 <h2 id="4-create-a-virtual-environment">4. Create a virtual environment<a class="headerlink" href="#4-create-a-virtual-environment" title="Permanent link">&para;</a></h2>
-<p>This keeps the project's libraries separate from other Python projects.</p>
-<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>py -3.11 -m venv .venv
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>.venv\Scripts\activate.bat
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>python --version
+<p>Create a new environment inside <code translate="no">First_agent_template</code> so its libraries stay separate from the dummy exercise. Run these commands once, after entering the folder in Step 3.</p>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>py -3.11 -m venv .venv
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python --version
 </code></pre></div>
-<h3 id="mac_1">Mac<a class="headerlink" href="#mac_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>python<span class="w"> </span>--version
+<h3 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python<span class="w"> </span>--version
 </code></pre></div>
-<p><strong>Checkpoint:</strong> The prompt starts with <code>(.venv)</code> and Python reports version 3.11.x. Keep using this terminal window.</p>
+<p><strong>Checkpoint:</strong> The prompt starts with <code translate="no">(.venv)</code> and Python reports version 3.11.x. Keep using this terminal window.</p>
 <h2 id="5-install-the-libraries">5. Install the libraries<a class="headerlink" href="#5-install-the-libraries" title="Permanent link">&para;</a></h2>
 <p>On either operating system:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <p>Wait for installation to finish and the prompt to return. Download progress bars are normal.</p>
-<p><strong>Checkpoint:</strong> There is no final <code>ERROR</code> message. You may see <code>Successfully installed</code> or <code>Requirement already satisfied</code>. Do not enter the next command while installation is still running.</p>
-<p>Use the <code>requirements.txt</code> included in the Groq ZIP. It includes the <code>openai</code> client library, used here to connect to Groq through its compatible API; you do not need an OpenAI account.</p>
-<h2 id="6-create-your-groq-api-key">6. Create your Groq API key<a class="headerlink" href="#6-create-your-groq-api-key" title="Permanent link">&para;</a></h2>
-<h3 id="a-open-the-key-page">A. Open the key page<a class="headerlink" href="#a-open-the-key-page" title="Permanent link">&para;</a></h3>
-<ol>
-<li>In your browser, sign in to <a href="https://console.groq.com">Groq Console</a>.</li>
-<li>Open <strong>API Keys</strong> in the console navigation, or use the <a href="https://console.groq.com/keys">direct API Keys link</a>.</li>
-<li>Click <strong>Create API Key</strong>.</li>
-<li>Enter a descriptive name such as <code>agents-course</code> in the name field. If an expiration choice is offered, choose one that covers your course sessions.</li>
-<li>Confirm creation using the dialog's create/submit button.</li>
-<li>Copy the generated secret key and keep it in a password manager so you can retrieve it at startup. Do not share it with classmates or paste it into this guide, source code, or chat.</li>
-</ol>
-<p>The name <code>agents-course</code> is only a label. The generated secret value is the actual key. The console's labels may vary; Groq's <a href="https://console.groq.com/docs/quickstart">official quickstart</a> also links to key creation.</p>
-<p><strong>Checkpoint:</strong> You have your own Groq key ready. Creating a key does not choose a model or prove that a model request will succeed.</p>
-<h3 id="b-understand-how-the-app-uses-it">B. Understand how the app uses it<a class="headerlink" href="#b-understand-how-the-app-uses-it" title="Permanent link">&para;</a></h3>
-<p>The starter asks for your key when you run <code>python app.py</code> in Step 8. Do not run a Hugging Face login or <code>whoami</code> command: those check a different service and do not validate Groq access.</p>
-<p>The key is hidden while you paste and is held in memory for that running app. It is not saved by the app. Unless you separately configured <code>GROQ_API_KEY</code>, you will paste it again each time you restart.</p>
-<h3 id="c-model-selection-is-already-configured">C. Model selection is already configured<a class="headerlink" href="#c-model-selection-is-already-configured" title="Permanent link">&para;</a></h3>
-<p>The supplied <code>app.py</code> selects:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">model_id</span><span class="o">=</span><span class="s2">"qwen/qwen3.8-27b"</span><span class="p">,</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">api_base</span><span class="o">=</span><span class="s2">"https://api.groq.com/openai/v1"</span><span class="p">,</span>
+<p><strong>Checkpoint:</strong> There is no final <code translate="no">ERROR</code> message. You may see <code translate="no">Successfully installed</code> or <code translate="no">Requirement already satisfied</code>. Do not enter the next command while installation is still running.</p>
+<p>Use the <code translate="no">requirements.txt</code> included in the Groq ZIP. It includes the <code translate="no">openai</code> client library, used here to connect to Groq through its compatible API; you do not need an OpenAI account.</p>
+<h2 id="6-create-your-groq-api-key">6. Keep the supplied model settings<a class="headerlink" href="#6-create-your-groq-api-key" title="Permanent link">&para;</a></h2>
+<p>The template already connects to Groq using these settings in <code translate="no">app.py</code>:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">model_id</span><span class="o">=</span><span class="s2">"qwen/qwen3.8-27b"</span><span class="p">,</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">api_base</span><span class="o">=</span><span class="s2">"https://api.groq.com/openai/v1"</span><span class="p">,</span>
 </code></pre></div>
-<p>These lines select the model and Groq endpoint. The app also sets <code>reasoning_effort="none"</code> so this model returns its code-agent response without a reasoning preamble. Keep them unchanged for the first test. Do not replace the key prompt with a literal key in the code.</p>
-<h3 id="d-verification-happens-with-a-real-response">D. Verification happens with a real response<a class="headerlink" href="#d-verification-happens-with-a-real-response" title="Permanent link">&para;</a></h3>
-<p>This version does not print a username after key creation. In Step 9, a successful answer from the model verifies that the key, account access, endpoint, and model worked for that request. Opening the chat page alone is not that verification.</p>
-<p>If a key is exposed or lost, manage/revoke it on the <a href="https://console.groq.com/keys">Groq API Keys page</a>, create a replacement if needed, and restart the app with the new key.</p>
+<p>It also sets <code translate="no">reasoning_effort="none"</code> for code-agent responses. Leave these settings unchanged for the first run. Keep your API key out of the source code; the app will ask for it at startup.</p>
 <h2 id="7-confirm-local-only-sharing">7. Confirm local-only sharing<a class="headerlink" href="#7-confirm-local-only-sharing" title="Permanent link">&para;</a></h2>
-<p>The Groq starter already uses <code>share=False</code> in <code>Gradio_UI.py</code> and binds the app to <code>127.0.0.1</code>. No edit is required.</p>
-<p>If checking an older copy, find <code>demo.launch</code> in <code>Gradio_UI.py</code> and confirm it contains <code>share=False</code>. A public link would allow other people to send requests using the running app's Groq credentials.</p>
+<p>The Groq starter already uses <code translate="no">share=False</code> in <code translate="no">Gradio_UI.py</code> and binds the app to <code translate="no">127.0.0.1</code>. No edit is required.</p>
+<p>If checking an older copy, find <code translate="no">demo.launch</code> in <code translate="no">Gradio_UI.py</code> and confirm it contains <code translate="no">share=False</code>. A public link would allow other people to send requests using the running app's Groq credentials.</p>
 <h2 id="8-start-the-agent">8. Start the agent<a class="headerlink" href="#8-start-the-agent" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>app.py
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>app.py
 </code></pre></div>
 <p>Terminal first asks:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Paste your Groq API key (hidden):
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Paste your Groq API key (hidden):
 </code></pre></div>
 <p>Paste your key and press Enter/Return. Nothing appears while pasting; that is normal. The app then prints:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Using Groq: qwen/qwen3.8-27b
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Using Groq: qwen/qwen3.8-27b
 </code></pre></div>
-<p>This names the configured model; it does not yet mean the key was accepted by Groq. If no key prompt appears, the app found <code>GROQ_API_KEY</code> in its environment. Never print that variable to share it.</p>
-<p>The local <code>app.py</code> configures the model and starts the agent interface.</p>
+<p>The key stays in memory while the app runs; it is not saved. If you separately configured <code translate="no">GROQ_API_KEY</code>, the app uses that value instead of prompting. Never print or share it.</p>
 <p>Wait for output similar to:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Running on local URL: http://127.0.0.1:7860
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Running on local URL: http://127.0.0.1:7860
 </code></pre></div>
 <p>Open the exact address shown in your browser. Keep the terminal running.</p>
 <p>The address goes in your browser's address bar, not the agent chat. If the terminal prints a different port, use that port. The command will not return to its normal prompt while the app is running; that is expected.</p>
@@ -1526,45 +1322,23 @@
 <blockquote>
 <p>What is 12 multiplied by 8?</p>
 </blockquote>
-<p>Look for a final answer containing <strong>96</strong>. You may also see generated Python code and a <code>python_interpreter</code> step.</p>
-<p>The request flows from your browser to the local app, then to a remote LLM. Your app executes the generated code and displays the result. The configured model is <code>qwen/qwen3.8-27b</code>, served by Groq; availability may change.</p>
-<p>Opening the page confirms the interface works. Receiving a model-generated answer also tests the remote model connection. The starter app has limited tools; do not assume it can search the web.</p>
-<h2 id="10-understand-token-usage">10. Understand token usage<a class="headerlink" href="#10-understand-token-usage" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Term</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access token / API key</td>
-<td>Your reusable authentication credential.</td>
-</tr>
-<tr>
-<td>Input tokens</td>
-<td>Pieces of text sent to the model, including instructions and conversation context.</td>
-</tr>
-<tr>
-<td>Output tokens</td>
-<td>Pieces of text generated by the model.</td>
-</tr>
-</tbody>
-</table>
-<p>The app reuses your key while it is running. After stopping and restarting, it asks again unless <code>GROQ_API_KEY</code> is configured. Input/output token counts describe model usage, not credentials.</p>
+<p>Look for a final answer containing <strong>96</strong>. You may also see generated Python code and a <code translate="no">python_interpreter</code> step.</p>
+<p><strong>Checkpoint:</strong> A model-generated answer confirms that your key, account access, endpoint, and model worked for this request. Opening the chat page alone only checks the interface. If the answer fails, use the troubleshooting table below.</p>
+<p>Time and web search are not registered yet; you will enable them in the <a href="../first-agent-practical/">tools practical</a>.</p>
+<h2 id="10-understand-token-usage">10. Check your usage limits<a class="headerlink" href="#10-understand-token-usage" title="Permanent link">&para;</a></h2>
+<p>A single chat message can trigger several model requests. Check <a href="https://console.groq.com/docs/rate-limits">Groq's usage limits</a> and avoid rapid repeated submissions. API keys authenticate requests; input and output tokens measure the text used. See the <a href="../understand-the-template/#the-model-connection">template explanation</a> for the output budget and request settings.</p>
 <h2 id="11-stop-and-restart">11. Stop and restart<a class="headerlink" href="#11-stop-and-restart" title="Permanent link">&para;</a></h2>
 <p>To stop the app, click the terminal and press <strong>Control + C</strong>.</p>
 <p>To restart another day, open a new terminal and run:</p>
-<h3 id="windows_2">Windows<a class="headerlink" href="#windows_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>.venv\Scripts\activate.bat
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>python app.py
+<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>python app.py
 </code></pre></div>
-<h3 id="mac_2">Mac<a class="headerlink" href="#mac_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>python<span class="w"> </span>app.py
+<h3 id="mac_1">Mac<a class="headerlink" href="#mac_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>python<span class="w"> </span>app.py
 </code></pre></div>
 <p>You do not need to reinstall libraries. Paste your Groq key again when prompted, then open the printed local URL.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
@@ -1582,20 +1356,20 @@
 <td>Activate the Python 3.11 environment from Step 4.</td>
 </tr>
 <tr>
-<td><code>app.py</code> or <code>requirements.txt</code> cannot be found</td>
-<td>Enter the extracted <code>First_agent_template</code> folder.</td>
+<td><code translate="no">app.py</code> or <code translate="no">requirements.txt</code> cannot be found</td>
+<td>Enter the extracted <code translate="no">First_agent_template</code> folder.</td>
 </tr>
 <tr>
-<td><code>ModuleNotFoundError: openai</code></td>
-<td>Activate <code>.venv</code> and rerun Step 5.</td>
+<td><code translate="no">ModuleNotFoundError: openai</code></td>
+<td>Activate <code translate="no">.venv</code> and rerun Step 5.</td>
 </tr>
 <tr>
 <td>No Groq key entered</td>
 <td>Restart and paste your key into the hidden prompt.</td>
 </tr>
 <tr>
-<td>400 / <code>tool_use_failed</code> / “Tool choice is none”</td>
-<td>Use the current starter's <code>app.py</code> and <code>prompts.yaml</code>, stop the old process, and restart. It now selects Qwen rather than GPT-OSS and explicitly requests Python text. If it repeats, check <a href="https://console.groq.com/docs/tool-use/local-tool-calling">Groq’s tool-call behavior</a> and the model ID against the current download. Do not enable native tools blindly: this exercise expects Python text.</td>
+<td>400 / <code translate="no">tool_use_failed</code> / “Tool choice is none”</td>
+<td>Use the current starter's <code translate="no">app.py</code> and <code translate="no">prompts.yaml</code>, stop the old process, and restart. It now selects Qwen rather than GPT-OSS and explicitly requests Python text. If it repeats, check <a href="https://console.groq.com/docs/tool-use/local-tool-calling">Groq’s tool-call behavior</a> and the model ID against the current download. Do not enable native tools blindly: this exercise expects Python text.</td>
 </tr>
 <tr>
 <td>401 / invalid API key</td>
@@ -1607,7 +1381,7 @@
 </tr>
 <tr>
 <td>429 / Request too large</td>
-<td>Read the limit named in the terminal. For output tokens, lower <code>max_tokens</code> in <code>app.py</code> (the current starter uses 512), save, and restart. For input tokens, restart to clear chat history or shorten the prompt. Waiting alone does not fix an oversized request.</td>
+<td>Read the limit named in the terminal. For output tokens, lower <code translate="no">max_tokens</code> in <code translate="no">app.py</code> (the current starter uses 512), save, and restart. For input tokens, restart to clear chat history or shorten the prompt. Waiting alone does not fix an oversized request.</td>
 </tr>
 <tr>
 <td>429 / rate limit (usage exhausted)</td>
@@ -1615,15 +1389,15 @@
 </tr>
 <tr>
 <td>404 / model unavailable</td>
-<td>Compare <code>model_id</code> with <a href="https://console.groq.com/docs/models">Groq’s supported models</a> and check your console’s model permissions. Model IDs must match exactly.</td>
+<td>Compare <code translate="no">model_id</code> with <a href="https://console.groq.com/docs/models">Groq’s supported models</a> and check your console’s model permissions. Model IDs must match exactly.</td>
 </tr>
 <tr>
 <td>HF router 402 / no credits</td>
 <td>You are still running the old HF model connection. Stop that app and use the Groq starter; buying HF credits is not required for this version.</td>
 </tr>
 <tr>
-<td>Old <code>NoneType</code> token-count crash</td>
-<td>Confirm you are using the updated <code>Gradio_UI.py</code> from the starter ZIP.</td>
+<td>Old <code translate="no">NoneType</code> token-count crash</td>
+<td>Confirm you are using the updated <code translate="no">Gradio_UI.py</code> from the starter ZIP.</td>
 </tr>
 <tr>
 <td>Page opens but chat fails</td>
@@ -1654,34 +1428,32 @@
 </thead>
 <tbody>
 <tr>
-<td><code>IndentationError</code></td>
+<td><code translate="no">IndentationError</code></td>
 <td>Restore the leading spaces around your edit. Use the original file or backup as a reference.</td>
 </tr>
 <tr>
-<td><code>SyntaxError</code></td>
+<td><code translate="no">SyntaxError</code></td>
 <td>Check for a missing comma, quote, square bracket, or parenthesis in the edited lines.</td>
 </tr>
 <tr>
-<td><code>NameError</code> after adding a tool</td>
+<td><code translate="no">NameError</code> after adding a tool</td>
 <td>Check the function name's spelling, that it is defined above the agent, and that the file was saved.</td>
 </tr>
 <tr>
-<td>File appears to be <code>app.py.txt</code></td>
-<td>Save from a code editor as <code>app.py</code>; do not add <code>.txt</code>.</td>
+<td>File appears to be <code translate="no">app.py.txt</code></td>
+<td>Save from a code editor as <code translate="no">app.py</code>; do not add <code translate="no">.txt</code>.</td>
 </tr>
 <tr>
 <td>Changes have no effect</td>
 <td>Save the file, stop and restart the app, then refresh its browser page.</td>
 </tr>
 <tr>
-<td>Terminal shows <code>&gt;&gt;&gt;</code></td>
-<td>Type <code>exit()</code> to return to the command prompt before running shell commands.</td>
+<td>Terminal shows <code translate="no">&gt;&gt;&gt;</code></td>
+<td>Type <code translate="no">exit()</code> to return to the command prompt before running shell commands.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Completion check:</strong> You can start the app, obtain an LLM response, explain where the model runs, and stop the app.</p>
-<h2 id="validation-status">Validation status<a class="headerlink" href="#validation-status" title="Permanent link">&para;</a></h2>
-<p>On 12 October 2026, a separate Mac test folder with new Python 3.11 environments passed dependency installation, all three dummy stages against Groq, browser chat, timezone lookup, and individual live web search after the search adapter was updated. A later combined run completed a final answer, but search returned no results, so it did not pass the search-evidence checkpoint. The starter now requests 512 output tokens per completion and allows two automatic retries after an account rejected the former 2,096-token budget. These are tested settings, not a guarantee for every account. Windows installation, account creation, and installing Python on a machine without Python remain untested. Search is intermittent and model usage limits still apply. Use the checkpoints to validate your own installation. Some dependencies remain unpinned.</p>
 <p><strong>Next:</strong> <a href="../understand-the-template/">Understand smolagents and what the template does</a>, then <a href="../first-agent-practical/">build your agent’s tools</a>.</p>
 
 

@@ -1,12 +1,4 @@
-// Keep the same section when switching languages. Headings share stable IDs.
-document.querySelectorAll('[data-course-language]').forEach((link) => {
-  if (window.location.hash) link.hash = window.location.hash;
-});
-document.addEventListener('hashchange', () => {
-  document.querySelectorAll('[data-course-language]').forEach((link) => {
-    link.hash = window.location.hash;
-  });
-});
+// This control offers instructions; translation is controlled by the browser.
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     const menu = document.querySelector('.course-language[open]');

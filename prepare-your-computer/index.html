@@ -17,12 +17,6 @@
         <link rel="next" href="../unit-1-walkthrough/">
       
       
-        
-          <link rel="alternate" href="./" hreflang="en">
-        
-          <link rel="alternate" href="../ja/prepare-your-computer/" hreflang="ja">
-        
-      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
@@ -150,16 +144,16 @@
     
     
       <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="Select language">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   </summary>
-  <nav class="course-language__menu" aria-label="Language">
-    
-    <a href="./" hreflang="en" lang="en" data-course-language="en" aria-current="true">English</a>
-    
-    <a href="../ja/prepare-your-computer/" hreflang="ja" lang="ja" data-course-language="ja" >日本語</a>
-    
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="../ja/" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>
     
     
@@ -879,6 +873,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日本語で読む / Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1071,42 +1093,42 @@
 <h2 id="1-install-python-311">1. Install Python 3.11<a class="headerlink" href="#1-install-python-311" title="Permanent link">&para;</a></h2>
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <p>Open <strong>Command Prompt</strong>, then run each command separately:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>winget install --exact --id Python.Python.3.11
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>winget install --exact --id Python.Python.3.11
 </code></pre></div>
 <p>Accept the installer prompts, close and reopen Command Prompt, then check:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>py -3.11 --version
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>py -3.11 --version
 </code></pre></div>
-<p>If <code>winget</code> is unavailable, open the <a href="https://www.python.org/downloads/release/python-3119/">Python 3.11.9 release page</a>, scroll to <strong>Files</strong>, and download the <strong>Windows installer (64-bit)</strong> for an x64 PC. Run it, enable <strong>Add python.exe to PATH</strong> and the Python launcher, finish installation, then reopen Command Prompt and retry <code>py -3.11 --version</code>. Use <strong>Command Prompt</strong>, not PowerShell, for this guide's Windows commands.</p>
+<p>If <code translate="no">winget</code> is unavailable, open the <a href="https://www.python.org/downloads/release/python-3119/">Python 3.11.9 release page</a>, scroll to <strong>Files</strong>, and download the <strong>Windows installer (64-bit)</strong> for an x64 PC. Run it, enable <strong>Add python.exe to PATH</strong> and the Python launcher, finish installation, then reopen Command Prompt and retry <code translate="no">py -3.11 --version</code>. Use <strong>Command Prompt</strong>, not PowerShell, for this guide's Windows commands.</p>
 <h3 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
 <p>Open <strong>Terminal</strong>. If Homebrew is installed, run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.11
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.11
 </code></pre></div>
 <p>If Homebrew is missing, follow <a href="https://brew.sh">its installation instructions</a>, including the final setup instructions, then retry.</p>
 <p>Check the installations:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>--version
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>--version
 </code></pre></div>
-<p><strong>Checkpoint:</strong> You see Python 3.11.x. On Mac, <code>python3</code> may still point to an older version; this is fine. Use <code>python3.11</code> below.</p>
+<p><strong>Checkpoint:</strong> You see Python 3.11.x. On Mac, <code translate="no">python3</code> may still point to an older version; this is fine. Use <code translate="no">python3.11</code> below.</p>
 <h2 id="2-create-a-folder-for-the-dummy-exercise">2. Create a folder for the dummy exercise<a class="headerlink" href="#2-create-a-folder-for-the-dummy-exercise" title="Permanent link">&para;</a></h2>
 <p>Open your terminal and run the commands for your operating system, one at a time.</p>
 <h3 id="windows-command-prompt">Windows — Command Prompt<a class="headerlink" href="#windows-command-prompt" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">mkdir</span> <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\dummy-agent"</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">mkdir</span> <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\dummy-agent"</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\dummy-agent"</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>py -3.11 -m venv .venv
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>.venv\Scripts\activate.bat
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>python --version
 </code></pre></div>
 <h3 id="mac-terminal">Mac — Terminal<a class="headerlink" href="#mac-terminal" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/agent-course/dummy-agent
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/agent-course/dummy-agent
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/dummy-agent
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>python<span class="w"> </span>--version
 </code></pre></div>
 <p>If the folder already exists, enter it instead of creating it again. A virtual environment only needs creating once.</p>
-<p><strong>Checkpoint:</strong> Your terminal shows <code>(.venv)</code> and Python 3.11.x. Keep this window open.</p>
+<p><strong>Checkpoint:</strong> Your terminal shows <code translate="no">(.venv)</code> and Python 3.11.x. Keep this window open.</p>
 <h2 id="3-install-the-model-client">3. Install the model client<a class="headerlink" href="#3-install-the-model-client" title="Permanent link">&para;</a></h2>
 <p>On either system:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"openai&gt;=1.0,&lt;3"</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"openai&gt;=1.0,&lt;3"</span>
 </code></pre></div>
 <p>Wait for the normal terminal prompt to return without a final error. The library connects to Groq's compatible API; you do not need an OpenAI account.</p>
 <h2 id="4-create-your-groq-api-key">4. Create your Groq API key<a class="headerlink" href="#4-create-your-groq-api-key" title="Permanent link">&para;</a></h2>
@@ -1116,25 +1138,25 @@
 <li>In your browser, sign in to <a href="https://console.groq.com">Groq Console</a>.</li>
 <li>Open <strong>API Keys</strong> in the console navigation, or use the <a href="https://console.groq.com/keys">direct API Keys link</a>.</li>
 <li>Click <strong>Create API Key</strong>.</li>
-<li>Enter a descriptive name such as <code>agents-course</code> in the name field. If an expiration choice is offered, choose one that covers your course sessions.</li>
+<li>Enter a descriptive name such as <code translate="no">agents-course</code> in the name field. If an expiration choice is offered, choose one that covers your course sessions.</li>
 <li>Confirm creation using the dialog's create/submit button.</li>
 <li>Copy the generated secret key and keep it in a password manager so you can retrieve it at startup. Do not share it with classmates or paste it into this guide, source code, or chat.</li>
 </ol>
-<p>The name <code>agents-course</code> is only a label. The generated secret value is the actual key. The console's labels may vary; Groq's <a href="https://console.groq.com/docs/quickstart">official quickstart</a> also links to key creation.</p>
+<p>The name <code translate="no">agents-course</code> is only a label. The generated secret value is the actual key. The console's labels may vary; Groq's <a href="https://console.groq.com/docs/quickstart">official quickstart</a> also links to key creation.</p>
 <p><strong>Checkpoint:</strong> You have your own Groq key ready. Creating a key does not choose a model or prove that a model request will succeed.</p>
 <p>The dummy script will ask you to paste this key into a hidden terminal prompt. The full agent will use the same key later. Do not put it in your Python files.</p>
 <h2 id="5-continue-to-the-lessons">5. Continue to the lessons<a class="headerlink" href="#5-continue-to-the-lessons" title="Permanent link">&para;</a></h2>
-<p>Follow the <a href="../unit-1-walkthrough/">lessons and quick quizzes</a>, then the <a href="../dummy-agent-local/">three dummy stages</a>. At this point you do <strong>not</strong> need <code>app.py</code>, Gradio, or the full agent ZIP.</p>
+<p>Follow the <a href="../unit-1-walkthrough/">lessons and quick quizzes</a>, then the <a href="../dummy-agent-local/">three dummy stages</a>. At this point you do <strong>not</strong> need <code translate="no">app.py</code>, Gradio, or the full agent ZIP.</p>
 <h2 id="restart-the-dummy-exercise-another-day">Restart the dummy exercise another day<a class="headerlink" href="#restart-the-dummy-exercise-another-day" title="Permanent link">&para;</a></h2>
 <p>On Windows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\dummy-agent"</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\dummy-agent"</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>.venv\Scripts\activate.bat
 </code></pre></div>
 <p>On Mac:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/dummy-agent
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/dummy-agent
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </code></pre></div>
-<p>Run <code>python dummy_agent.py</code> after you have created that file during the exercise. Paste your key when prompted. Output appears in the terminal, not a browser chat.</p>
+<p>Run <code translate="no">python dummy_agent.py</code> after you have created that file during the exercise. Paste your key when prompted. Output appears in the terminal, not a browser chat.</p>
 
 
 

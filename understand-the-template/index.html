@@ -17,12 +17,6 @@
         <link rel="next" href="../first-agent-practical/">
       
       
-        
-          <link rel="alternate" href="./" hreflang="en">
-        
-          <link rel="alternate" href="../ja/understand-the-template/" hreflang="ja">
-        
-      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
@@ -150,16 +144,16 @@
     
     
       <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="Select language">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   </summary>
-  <nav class="course-language__menu" aria-label="Language">
-    
-    <a href="./" hreflang="en" lang="en" data-course-language="en" aria-current="true">English</a>
-    
-    <a href="../ja/understand-the-template/" hreflang="ja" lang="ja" data-course-language="ja" >日本語</a>
-    
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="../ja/" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>
     
     
@@ -911,6 +905,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日本語で読む / Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1131,9 +1153,9 @@
 
 
 <h1 id="understand-smolagents-and-the-template">Understand smolagents and the template<a class="headerlink" href="#understand-smolagents-and-the-template" title="Permanent link">&para;</a></h1>
-<p>Read this after your first successful response and before adding tools. Keep <code>app.py</code> open beside the guide. By the end, you should be able to explain which component generates text, which executes an action, and where to add your own capability.</p>
+<p>Read this after your first successful response and before adding tools. Keep <code translate="no">app.py</code> open beside the guide. By the end, you should be able to explain which component generates text, which executes an action, and where to add your own capability.</p>
 <h2 id="1-what-is-smolagents">1. What is smolagents?<a class="headerlink" href="#1-what-is-smolagents" title="Permanent link">&para;</a></h2>
-<p><strong>smolagents is a Python library for building agents, developed by Hugging Face.</strong> A library is reusable code you import into your program. Here, it provides the machinery for asking a model what to do, executing an action, recording the result, and continuing toward an answer. Its <code>CodeAgent</code> represents actions as Python code. See the <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/index">smolagents introduction for version 1.13.0</a>, which matches this starter.</p>
+<p><strong>smolagents is a Python library for building agents, developed by Hugging Face.</strong> A library is reusable code you import into your program. Here, it provides the machinery for asking a model what to do, executing an action, recording the result, and continuing toward an answer. Its <code translate="no">CodeAgent</code> represents actions as Python code. See the <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/index">smolagents introduction for version 1.13.0</a>, which matches this starter.</p>
 <p>In the dummy exercise, you assembled messages, called the LLM, ran a weather function, and returned its result. The template lets a framework manage that sequence. You still choose the model, provide tools, and check the outcome.</p>
 <p>We continue using Hugging Face's <strong>library</strong> and course material while using <strong>Groq's API</strong> for model requests. Installing smolagents does not require hosting a Space or buying Hugging Face inference credits for this configuration.</p>
 <h2 id="2-which-component-does-what">2. Which component does what?<a class="headerlink" href="#2-which-component-does-what" title="Permanent link">&para;</a></h2>
@@ -1158,12 +1180,12 @@
 <td>Groq's service</td>
 </tr>
 <tr>
-<td><code>OpenAIServerModel</code></td>
+<td><code translate="no">OpenAIServerModel</code></td>
 <td>Adapts smolagents messages to the compatible API</td>
 <td>Your Python process</td>
 </tr>
 <tr>
-<td><code>CodeAgent</code></td>
+<td><code translate="no">CodeAgent</code></td>
 <td>Coordinates model requests, Python execution, and observations</td>
 <td>Your Python process</td>
 </tr>
@@ -1179,11 +1201,11 @@
 </tr>
 </tbody>
 </table>
-<p>The word “OpenAI” in <code>OpenAIServerModel</code> names an API-compatible connection class. In this template its address points to Groq, and its key is a Groq key. You do not need an OpenAI account.</p>
+<p>The word “OpenAI” in <code translate="no">OpenAIServerModel</code> names an API-compatible connection class. In this template its address points to Groq, and its key is a Groq key. You do not need an OpenAI account.</p>
 <p>The time tool reads your computer's clock and applies a timezone. The search tool sends a request to an external search service. Both are Python capabilities; their sources of information differ.</p>
 <h2 id="3-from-a-message-to-an-answer">3. From a message to an answer<a class="headerlink" href="#3-from-a-message-to-an-answer" title="Permanent link">&para;</a></h2>
 <p>The arrows below show the two-way flow. The same local agent makes each model request.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Browser chat
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Browser chat
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓ user message
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Gradio → CodeAgent on your computer
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>              ↓ instructions + task + earlier observations
@@ -1196,10 +1218,10 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Browser displays the result
 </code></pre></div>
 <p>For example, after you register the timezone tool, an action could contain:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">current_time</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">current_time</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
 </code></pre></div>
-<p>The <strong>model generates that code</strong>. The <strong>local executor runs it</strong>. Its output becomes an <strong>observation</strong> that can be included in the next request. The model might then generate <code>final_answer(...)</code> to finish. It can also call a tool and finish within one code block, so every task does not have the same number of steps.</p>
+<p>The <strong>model generates that code</strong>. The <strong>local executor runs it</strong>. Its output becomes an <strong>observation</strong> that can be included in the next request. The model might then generate <code translate="no">final_answer(...)</code> to finish. It can also call a tool and finish within one code block, so every task does not have the same number of steps.</p>
 <p>This explains why one chat message can consume multiple API requests. It also explains why a model saying “I checked the time” is insufficient evidence: look for the executed call and its result.</p>
 <h2 id="4-what-does-the-downloaded-template-provide">4. What does the downloaded template provide?<a class="headerlink" href="#4-what-does-the-downloaded-template-provide" title="Permanent link">&para;</a></h2>
 <p>The template is a starting program with the connection and interface already assembled. It can answer a simple question immediately. The student version deliberately leaves the two core tools (time and web search) unregistered. The unfinished custom tool is an optional extension. Image generation has been removed.</p>
@@ -1213,42 +1235,42 @@
 </thead>
 <tbody>
 <tr>
-<td><code>app.py</code></td>
+<td><code translate="no">app.py</code></td>
 <td>Defines tools, configures Groq, creates the agent, and launches the interface</td>
 <td>Main file for your practical edits</td>
 </tr>
 <tr>
-<td><code>Gradio_UI.py</code></td>
+<td><code translate="no">Gradio_UI.py</code></td>
 <td>Passes chat messages to the agent and displays steps, answers, and errors</td>
 <td>Read to trace the interface; no edits needed for the tasks</td>
 </tr>
 <tr>
-<td><code>prompts.yaml</code></td>
+<td><code translate="no">prompts.yaml</code></td>
 <td>Stores text templates for instructions and response formatting</td>
 <td>Inspect after the basic tool tasks</td>
 </tr>
 <tr>
-<td><code>tools/web_search.py</code></td>
+<td><code translate="no">tools/web_search.py</code></td>
 <td>Adapts the DDGS client to a smolagents tool, using the DuckDuckGo backend</td>
-<td>Register its <code>WebSearchTool</code> class in the practical</td>
+<td>Register its <code translate="no">WebSearchTool</code> class in the practical</td>
 </tr>
 <tr>
-<td><code>tools/final_answer.py</code></td>
+<td><code translate="no">tools/final_answer.py</code></td>
 <td>Defines the final-answer tool used by this starter</td>
 <td>Keep it available</td>
 </tr>
 <tr>
-<td><code>requirements.txt</code></td>
+<td><code translate="no">requirements.txt</code></td>
 <td>Lists Python packages and version constraints</td>
 <td>Install with the supplied setup command</td>
 </tr>
 <tr>
-<td><code>STUDENT_TASKS.md</code></td>
+<td><code translate="no">STUDENT_TASKS.md</code></td>
 <td>Lists the tool activities and completion checks</td>
 <td>Use alongside the practical</td>
 </tr>
 <tr>
-<td><code>.venv/</code></td>
+<td><code translate="no">.venv/</code></td>
 <td>Holds your locally installed Python environment</td>
 <td>Created during setup; not part of the downloadable code</td>
 </tr>
@@ -1257,20 +1279,20 @@
 <p>The template contains neither the model's weights nor your API key. Downloading it does not download an LLM onto your laptop.</p>
 <h2 id="5-read-apppy-in-execution-order">5. Read app.py in execution order<a class="headerlink" href="#5-read-apppy-in-execution-order" title="Permanent link">&para;</a></h2>
 <h3 id="imports-and-function-definitions">Imports and function definitions<a class="headerlink" href="#imports-and-function-definitions" title="Permanent link">&para;</a></h3>
-<p><code>from smolagents import ...</code> makes library components available to this program. Defining <code>get_current_time_in_timezone</code> creates a callable tool, but does not fetch the time at startup. Similarly, importing <code>WebSearchTool</code> does not perform a web search.</p>
-<p>The custom placeholder raises <code>NotImplementedError</code> if called. This is intentional: implement it before registering it. The initial app runs because it does not expose that placeholder to the agent.</p>
+<p><code translate="no">from smolagents import ...</code> makes library components available to this program. Defining <code translate="no">get_current_time_in_timezone</code> creates a callable tool, but does not fetch the time at startup. Similarly, importing <code translate="no">WebSearchTool</code> does not perform a web search.</p>
+<p>The custom placeholder raises <code translate="no">NotImplementedError</code> if called. This is intentional: implement it before registering it. The initial app runs because it does not expose that placeholder to the agent.</p>
 <h3 id="main-and-the-startup-guard">main() and the startup guard<a class="headerlink" href="#main-and-the-startup-guard" title="Permanent link">&para;</a></h3>
 <p>At the bottom of the file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
-<p>Running <code>python app.py</code> triggers <code>main()</code>. Importing <code>app</code> from a tool-test script defines its functions without launching the chat. That lets you test your own tool independently.</p>
+<p>Running <code translate="no">python app.py</code> triggers <code translate="no">main()</code>. Importing <code translate="no">app</code> from a tool-test script defines its functions without launching the chat. That lets you test your own tool independently.</p>
 <h3 id="the-key-prompt">The key prompt<a class="headerlink" href="#the-key-prompt" title="Permanent link">&para;</a></h3>
-<p><code>main()</code> checks the <code>GROQ_API_KEY</code> environment variable first. If it is empty, <code>getpass(...)</code> asks for a key without displaying it. The key authorizes API requests. It is different from the input and output <em>tokens</em> that measure text usage.</p>
+<p><code translate="no">main()</code> checks the <code translate="no">GROQ_API_KEY</code> environment variable first. If it is empty, <code translate="no">getpass(...)</code> asks for a key without displaying it. The key authorizes API requests. It is different from the input and output <em>tokens</em> that measure text usage.</p>
 <p>The app does not save a key entered at the prompt. You enter it again after restarting unless you configured the environment variable separately.</p>
 <h3 id="the-model-connection">The model connection<a class="headerlink" href="#the-model-connection" title="Permanent link">&para;</a></h3>
 <p>These are the working starter's settings, shown for explanation rather than as a replacement block:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">OpenAIServerModel</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">OpenAIServerModel</span><span class="p">(</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">model_id</span><span class="o">=</span><span class="s2">"qwen/qwen3.8-27b"</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">api_base</span><span class="o">=</span><span class="s2">"https://api.groq.com/openai/v1"</span><span class="p">,</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span>
@@ -1289,59 +1311,59 @@
 </thead>
 <tbody>
 <tr>
-<td><code>model_id</code></td>
+<td><code translate="no">model_id</code></td>
 <td>Exact identifier of the model requested from the service</td>
 </tr>
 <tr>
-<td><code>api_base</code></td>
+<td><code translate="no">api_base</code></td>
 <td>Address to which the client sends requests</td>
 </tr>
 <tr>
-<td><code>api_key</code></td>
+<td><code translate="no">api_key</code></td>
 <td>Credential supplied at startup</td>
 </tr>
 <tr>
-<td><code>max_tokens</code></td>
+<td><code translate="no">max_tokens</code></td>
 <td>Maximum output per completion. We start with 512 tokens for short exercises; this must fit your account allowance and is not a daily usage budget.</td>
 </tr>
 <tr>
-<td><code>client_kwargs</code></td>
+<td><code translate="no">client_kwargs</code></td>
 <td>Each network attempt has a 30-second timeout; up to two automatic retries handle temporary failures and short rate-limit waits. Longer limits can still stop the run.</td>
 </tr>
 <tr>
-<td><code>temperature</code></td>
+<td><code translate="no">temperature</code></td>
 <td>Sampling setting affecting variation; it does not measure accuracy</td>
 </tr>
 <tr>
-<td><code>reasoning_effort</code></td>
+<td><code translate="no">reasoning_effort</code></td>
 <td>A model-specific option configured here to disable the model's separate reasoning mode</td>
 </tr>
 </tbody>
 </table>
 <p>Keep these settings for the initial practical. Changing the model may change supported options and response format. It does not automatically give you a larger usage allowance.</p>
 <h3 id="instructions-and-agent-construction">Instructions and agent construction<a class="headerlink" href="#instructions-and-agent-construction" title="Permanent link">&para;</a></h3>
-<p>The program reads <code>prompts.yaml</code> next to <code>app.py</code>, then constructs <code>CodeAgent</code>. The important arguments are:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<p>The program reads <code translate="no">prompts.yaml</code> next to <code translate="no">app.py</code>, then constructs <code translate="no">CodeAgent</code>. The important arguments are:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">max_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">prompt_templates</span><span class="o">=</span><span class="n">prompt_templates</span><span class="p">,</span>
 </code></pre></div>
-<p><code>model</code> selects the connection. <code>tools</code> supplies the explicit capabilities available to the agent. <code>max_steps</code> limits its action-loop iterations for a task; it is not a guarantee of success or an exact cap on total API calls. <code>prompt_templates</code> supplies instructions for those interactions. The versioned <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/reference/agents">agent reference</a> documents these parameters and the distinction between Python-code agents and JSON tool-calling agents.</p>
-<p>The starter also supplies several optional settings as <code>None</code>, including planning and managed-agent metadata. You do not need to change them to complete the tools exercise. <code>verbosity_level=1</code> controls logging detail.</p>
+<p><code translate="no">model</code> selects the connection. <code translate="no">tools</code> supplies the explicit capabilities available to the agent. <code translate="no">max_steps</code> limits its action-loop iterations for a task; it is not a guarantee of success or an exact cap on total API calls. <code translate="no">prompt_templates</code> supplies instructions for those interactions. The versioned <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/reference/agents">agent reference</a> documents these parameters and the distinction between Python-code agents and JSON tool-calling agents.</p>
+<p>The starter also supplies several optional settings as <code translate="no">None</code>, including planning and managed-agent metadata. You do not need to change them to complete the tools exercise. <code translate="no">verbosity_level=1</code> controls logging detail.</p>
 <h3 id="launching-the-interface">Launching the interface<a class="headerlink" href="#launching-the-interface" title="Permanent link">&para;</a></h3>
-<p><code>GradioUI(agent).launch(server_name="127.0.0.1")</code> starts the local interface. Starting this server does not itself request an answer from the LLM. Sending a chat message triggers <code>agent.run(...)</code> in <code>Gradio_UI.py</code>.</p>
+<p><code translate="no">GradioUI(agent).launch(server_name="127.0.0.1")</code> starts the local interface. Starting this server does not itself request an answer from the LLM. Sending a chat message triggers <code translate="no">agent.run(...)</code> in <code translate="no">Gradio_UI.py</code>.</p>
 <p>The URL is local, but model requests still travel over the internet. Stopping the Python process stops the app. Refreshing a browser page does not reload changed Python files; restart the program after code edits.</p>
 <h2 id="6-how-does-a-function-become-a-tool">6. How does a function become a tool?<a class="headerlink" href="#6-how-does-a-function-become-a-tool" title="Permanent link">&para;</a></h2>
 <p>A useful function must exist, describe its inputs and purpose, and be registered with the agent.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@tool</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@tool</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </code></pre></div>
-<p><code>@tool</code> is a Python decorator: it wraps the function with information smolagents can use. The type hints describe the expected argument and return types. The docstring describes the capability and its arguments. These descriptions help the model select a function and construct inputs; they do not implement its behavior. The <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools">versioned tools guide</a> explains this interface.</p>
-<p>Registering the existing function means adding its name to <code>tools</code>. Use the name without calling it: calling it yourself would produce a result immediately instead of registering the capability. <code>WebSearchTool()</code> is different syntax because it creates an instance of a supplied tool class.</p>
+<p><code translate="no">@tool</code> is a Python decorator: it wraps the function with information smolagents can use. The type hints describe the expected argument and return types. The docstring describes the capability and its arguments. These descriptions help the model select a function and construct inputs; they do not implement its behavior. The <a href="https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools">versioned tools guide</a> explains this interface.</p>
+<p>Registering the existing function means adding its name to <code translate="no">tools</code>. Use the name without calling it: calling it yourself would produce a result immediately instead of registering the capability. <code translate="no">WebSearchTool()</code> is different syntax because it creates an instance of a supplied tool class.</p>
 <p>For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is <strong>direct function call → registration → agent request → trace inspection</strong>.</p>
 <h2 id="7-why-final_answer-is-already-included">7. Why final_answer is already included<a class="headerlink" href="#7-why-final_answer-is-already-included" title="Permanent link">&para;</a></h2>
-<p>In the template, <code>final_answer = FinalAnswerTool()</code> creates the object registered under that name. Generated Python such as <code>final_answer(96)</code> signals completion and supplies the result to display. This function does not make an additional LLM request on its own.</p>
-<p>That is why a greeting can show a <code>python_interpreter</code> step even when it needs no search or external lookup: this CodeAgent may execute a small Python block that calls <code>final_answer</code>.</p>
+<p>In the template, <code translate="no">final_answer = FinalAnswerTool()</code> creates the object registered under that name. Generated Python such as <code translate="no">final_answer(96)</code> signals completion and supplies the result to display. This function does not make an additional LLM request on its own.</p>
+<p>That is why a greeting can show a <code translate="no">python_interpreter</code> step even when it needs no search or external lookup: this CodeAgent may execute a small Python block that calls <code translate="no">final_answer</code>.</p>
 <p>The initial agent can use its Python executor for simple calculations even though its explicit tools list contains only the final-answer tool. Registering search or your timezone function adds those specific capabilities.</p>
 <h2 id="8-read-the-trace-and-understand-the-limits">8. Read the trace and understand the limits<a class="headerlink" href="#8-read-the-trace-and-understand-the-limits" title="Permanent link">&para;</a></h2>
 <table>
@@ -1361,7 +1383,7 @@
 <td>The action proposed by the model</td>
 </tr>
 <tr>
-<td><code>python_interpreter</code></td>
+<td><code translate="no">python_interpreter</code></td>
 <td>The framework executing generated Python</td>
 </tr>
 <tr>

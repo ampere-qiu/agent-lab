@@ -58,3 +58,6 @@
 .course-language__menu a { display: block; padding: .5rem .7rem; font-size: .7rem; white-space: nowrap; border-radius: .25rem; }
 .course-language__menu a:hover, .course-language__menu a:focus-visible { background: var(--course-surface); color: var(--md-accent-fg-color); }
 .course-language__menu a[aria-current="true"] { font-weight: 700; color: var(--md-accent-fg-color); }
+.course-language__help { width: min(16rem, calc(100vw - 2rem)); max-height: 70vh; overflow-y: auto; padding: .7rem .9rem; font-size: .7rem; line-height: 1.6; }
+.course-language__help p { margin: 0 0 .65rem; }
+.course-language__help a { white-space: normal; padding: .4rem 0; }

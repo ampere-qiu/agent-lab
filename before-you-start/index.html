@@ -17,12 +17,6 @@
         <link rel="next" href="../prepare-your-computer/">
       
       
-        
-          <link rel="alternate" href="./" hreflang="en">
-        
-          <link rel="alternate" href="../ja/before-you-start/" hreflang="ja">
-        
-      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
@@ -150,16 +144,16 @@
     
     
       <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="Select language">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   </summary>
-  <nav class="course-language__menu" aria-label="Language">
-    
-    <a href="./" hreflang="en" lang="en" data-course-language="en" aria-current="true">English</a>
-    
-    <a href="../ja/before-you-start/" hreflang="ja" lang="ja" data-course-language="ja" >日本語</a>
-    
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="../ja/" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>
     
     
@@ -812,6 +806,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日本語で読む / Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -953,11 +975,11 @@
 <tbody>
 <tr>
 <td>Terminal on Mac / Command Prompt on Windows</td>
-<td>Commands such as <code>python app.py</code></td>
+<td>Commands such as <code translate="no">python app.py</code></td>
 </tr>
 <tr>
 <td>Code editor</td>
-<td>Changes to <code>app.py</code> and other project files</td>
+<td>Changes to <code translate="no">app.py</code> and other project files</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -967,13 +989,13 @@
 </table>
 <p>Never paste terminal commands into the agent chat. Never paste your token into the chat or a Python source file.</p>
 <h3 id="open-a-command-window">Open a command window<a class="headerlink" href="#open-a-command-window" title="Permanent link">&para;</a></h3>
-<p><strong>Mac:</strong> press Command + Space, type <code>Terminal</code>, and press Return.</p>
-<p><strong>Windows:</strong> open Start, type <code>Command Prompt</code>, and open it. Use Command Prompt for this guide, not PowerShell.</p>
+<p><strong>Mac:</strong> press Command + Space, type <code translate="no">Terminal</code>, and press Return.</p>
+<p><strong>Windows:</strong> open Start, type <code translate="no">Command Prompt</code>, and open it. Use Command Prompt for this guide, not PowerShell.</p>
 <p>Copy only the text inside a command block, or use its copy button. Do not copy the surrounding triple backticks, an example prompt, or output. Run one command at a time and wait until the prompt returns before the next command.</p>
-<p><code>(.venv)</code> is part of a prompt, not a command. <code>&gt;&gt;&gt;</code> means you opened the Python interpreter; type <code>exit()</code> and press Enter/Return to get back to your normal command window.</p>
+<p><code translate="no">(.venv)</code> is part of a prompt, not a command. <code translate="no">&gt;&gt;&gt;</code> means you opened the Python interpreter; type <code translate="no">exit()</code> and press Enter/Return to get back to your normal command window.</p>
 <h2 id="find-your-downloaded-project">Find your downloaded project<a class="headerlink" href="#find-your-downloaded-project" title="Permanent link">&para;</a></h2>
-<p>During the dummy exercise, work in <code>agent-course/dummy-agent</code> and create <code>dummy_agent.py</code> there. Later, after downloading the first-agent starter, use this separate folder:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>agent-course/
+<p>During the dummy exercise, work in <code translate="no">agent-course/dummy-agent</code> and create <code translate="no">dummy_agent.py</code> there. Later, after downloading the first-agent starter, use this separate folder:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>agent-course/
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── First_agent_template/
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── app.py
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── Gradio_UI.py
@@ -982,16 +1004,16 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ├── tools/
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    └── .venv/              (created during setup; may be hidden)
 </code></pre></div>
-<p>Other files may also be present. Edit the project files, not files inside <code>.venv</code>.</p>
-<p><strong>Mac:</strong> in Finder, choose Go → Go to Folder, enter <code>~/agent-course/First_agent_template</code>, and press Return.</p>
-<p><strong>Windows:</strong> enter <code>%USERPROFILE%\agent-course\First_agent_template</code> in File Explorer's address bar and press Enter.</p>
-<p>In your editor, use <strong>File → Open Folder</strong> (if available) to open that folder. Select a file from its file list. Double-clicking a <code>.py</code> file in the file manager may run it instead of opening it for editing.</p>
+<p>Other files may also be present. Edit the project files, not files inside <code translate="no">.venv</code>.</p>
+<p><strong>Mac:</strong> in Finder, choose Go → Go to Folder, enter <code translate="no">~/agent-course/First_agent_template</code>, and press Return.</p>
+<p><strong>Windows:</strong> enter <code translate="no">%USERPROFILE%\agent-course\First_agent_template</code> in File Explorer's address bar and press Enter.</p>
+<p>In your editor, use <strong>File → Open Folder</strong> (if available) to open that folder. Select a file from its file list. Double-clicking a <code translate="no">.py</code> file in the file manager may run it instead of opening it for editing.</p>
 <h2 id="edit-a-file-without-losing-your-place">Edit a file without losing your place<a class="headerlink" href="#edit-a-file-without-losing-your-place" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open the named file in your editor.</li>
 <li>Use Find (Command + F on Mac or Control + F on Windows) to locate the exact text in the guide.</li>
 <li>Replace only that line or block. Keep its leading spaces, commas, and surrounding parentheses.</li>
-<li>Save with Command + S or Control + S. Keep the original extension: <code>app.py</code>, not <code>app.py.txt</code>.</li>
+<li>Save with Command + S or Control + S. Keep the original extension: <code translate="no">app.py</code>, not <code translate="no">app.py.txt</code>.</li>
 <li>Return to the terminal, stop the app with Control + C if it is running, and start it again.</li>
 <li>Refresh the app's browser page.</li>
 </ol>

@@ -17,12 +17,6 @@
         <link rel="next" href="../run-your-first-agent/">
       
       
-        
-          <link rel="alternate" href="./" hreflang="en">
-        
-          <link rel="alternate" href="../ja/dummy-agent-local/" hreflang="ja">
-        
-      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
@@ -150,16 +144,16 @@
     
     
       <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="Select language">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   </summary>
-  <nav class="course-language__menu" aria-label="Language">
-    
-    <a href="./" hreflang="en" lang="en" data-course-language="en" aria-current="true">English</a>
-    
-    <a href="../ja/dummy-agent-local/" hreflang="ja" lang="ja" data-course-language="ja" >日本語</a>
-    
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="../ja/" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>
     
     
@@ -795,6 +789,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ja/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日本語で読む / Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -902,13 +924,13 @@
 <p>This local exercise adapts the manual-loop idea from the <a href="https://huggingface.co/learn/agents-course/en/unit1/dummy-agent-library">HF Dummy Agent lesson</a>. All code needed is below. The original page is optional reading; Groq replaces its model connection.</p>
 <p>You will send a request, inspect a proposed action, execute a function yourself, and send its result back. This is a teaching example, not a general-purpose autonomous agent. The full template comes later.</p>
 <h2 id="prepare-the-file">Prepare the file<a class="headerlink" href="#prepare-the-file" title="Permanent link">&para;</a></h2>
-<p>Complete <a href="../prepare-your-computer/">basic setup</a> and activate the environment in <code>agent-course/dummy-agent</code>. In your editor, create <code>dummy_agent.py</code> in that folder. Add the blocks below in order, saving after each stage. Run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>dummy_agent.py
+<p>Complete <a href="../prepare-your-computer/">basic setup</a> and activate the environment in <code translate="no">agent-course/dummy-agent</code>. In your editor, create <code translate="no">dummy_agent.py</code> in that folder. Add the blocks below in order, saving after each stage. Run:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>dummy_agent.py
 </code></pre></div>
 <p>Output appears in the terminal, not a browser chat. Each rerun repeats the requests already in your file and uses your Groq allowance. If you reach a limit, follow the provider's retry interval rather than repeatedly rerunning.</p>
 <h2 id="step-1-make-a-simple-llm-call">Step 1. Make a simple LLM call<a class="headerlink" href="#step-1-make-a-simple-llm-call" title="Permanent link">&para;</a></h2>
 <p>Put this in the new file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
@@ -927,11 +949,11 @@
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p>Save and run it. Paste your key into the hidden terminal prompt and press Enter/Return.</p>
-<p><strong>What happens:</strong> <code>messages</code> supplies the user request. The client sends it to Groq. <code>choices[0].message.content</code> reads the first returned answer. No weather function has run and no agent framework is involved.</p>
+<p><strong>What happens:</strong> <code translate="no">messages</code> supplies the user request. The client sends it to Groq. <code translate="no">choices[0].message.content</code> reads the first returned answer. No weather function has run and no agent framework is involved.</p>
 <p><strong>Checkpoint:</strong> You receive an answer identifying Paris. This tests the model connection. A traceback is a connection or request problem; use <a href="../run-your-first-agent/#troubleshooting">troubleshooting</a> before continuing.</p>
 <h2 id="step-2-inspect-a-proposed-action">Step 2. Inspect a proposed action<a class="headerlink" href="#step-2-inspect-a-proposed-action" title="Permanent link">&para;</a></h2>
 <p>Append this block below Step 1:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">SYSTEM_PROMPT</span> <span class="o">=</span> <span class="s2">"""You are demonstrating a text-based action loop.</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">SYSTEM_PROMPT</span> <span class="o">=</span> <span class="s2">"""You are demonstrating a text-based action loop.</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s2">The available capability is get_weather(location: str).</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s2">Describe an action as plain text, not a native API function call.</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s2">Use these labels in order:</span>
@@ -966,11 +988,11 @@
 <a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="nb">print</span><span class="p">(</span><span class="n">proposed_action</span><span class="p">)</span>
 </code></pre></div>
 <p>Save and rerun. You will enter the key again. Compare the two outputs.</p>
-<p><strong>What happens:</strong> the system message describes a capability, but it does not execute it. Without a stop marker, the model might invent a result, state that a result is missing, or simply stop. Do not expect identical wording on every run. The <code>stop</code> parameter stops generation if the model reaches the specified marker, reserving that point for feedback from your program.</p>
-<p><strong>Checkpoint:</strong> Inspect Step 2B for a proposed <code>get_weather</code> action with London as the input. It should not contain a claimed function result. If it names a different action or city, fix the prompt before proceeding. A stop marker alone does not guarantee the model follows every instruction.</p>
+<p><strong>What happens:</strong> the system message describes a capability, but it does not execute it. Without a stop marker, the model might invent a result, state that a result is missing, or simply stop. Do not expect identical wording on every run. The <code translate="no">stop</code> parameter stops generation if the model reaches the specified marker, reserving that point for feedback from your program.</p>
+<p><strong>Checkpoint:</strong> Inspect Step 2B for a proposed <code translate="no">get_weather</code> action with London as the input. It should not contain a claimed function result. If it names a different action or city, fix the prompt before proceeding. A stop marker alone does not guarantee the model follows every instruction.</p>
 <h2 id="step-3-execute-the-function-and-return-its-observation">Step 3. Execute the function and return its observation<a class="headerlink" href="#step-3-execute-the-function-and-return-its-observation" title="Permanent link">&para;</a></h2>
 <p>Append this block below Step 2:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">"""Return fixed demonstration data, not a live weather forecast."""</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"Demo weather for </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">: sunny, 18 degrees Celsius."</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
@@ -1003,7 +1025,7 @@
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="nb">print</span><span class="p">(</span><span class="n">final_reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>What happens:</strong> you verify the proposed action, Python calls the function, and its return value is added to the next model request. The function returns fixed demonstration data so you can trace where the answer came from. No weather API is contacted.</p>
-<p>The confirmation is deliberate: this small script does not parse arbitrary model actions or automatically choose functions. Do not paste the generated text into <code>eval</code> or <code>exec</code>. In the next practical, CodeAgent supplies the execution loop.</p>
+<p>The confirmation is deliberate: this small script does not parse arbitrary model actions or automatically choose functions. Do not paste the generated text into <code translate="no">eval</code> or <code translate="no">exec</code>. In the next practical, CodeAgent supplies the execution loop.</p>
 <p><strong>Checkpoint:</strong> The terminal prints the function result before the final model answer. The answer should reflect the supplied sunny/18-degree demonstration data and identify it as demo data. If it contradicts the observation, inspect the final request and prompt rather than treating the answer as verified.</p>
 <h2 id="what-you-have-learned">What you have learned<a class="headerlink" href="#what-you-have-learned" title="Permanent link">&para;</a></h2>
 <table>
@@ -1024,7 +1046,7 @@
 </tr>
 <tr>
 <td>Execution</td>
-<td>Your Python script actually called <code>get_weather</code></td>
+<td>Your Python script actually called <code translate="no">get_weather</code></td>
 </tr>
 <tr>
 <td>Observation</td>
