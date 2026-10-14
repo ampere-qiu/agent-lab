@@ -620,6 +620,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#files-used-in-this-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files used in this practical
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1076,6 +1087,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#files-used-in-this-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files used in this practical
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1359,6 +1381,52 @@
 <h2 id="1-open-the-adapted-starter">1. Prepare your existing app for editing<a class="headerlink" href="#1-open-the-adapted-starter" title="Permanent link">&para;</a></h2>
 <p>In the terminal running your app, press <strong>Control + C</strong> to stop it. Leave the template's virtual environment active. Open your existing <code translate="no">First_agent_template</code> folder in a code editor and save a copy of <code translate="no">app.py</code> as <code translate="no">app.before-tools.py</code> for comparison.</p>
 <p>After each edit, save the file, run <code translate="no">python app.py</code> in that same terminal, enter your Groq key when prompted, and refresh the chat page. Stop the app before making the next change. If returning in a new terminal, use the <a href="../run-your-first-agent/#11-stop-and-restart">restart commands</a> to reactivate this project's environment.</p>
+<h2 id="files-used-in-this-practical">Files used in this practical<a class="headerlink" href="#files-used-in-this-practical" title="Permanent link">&para;</a></h2>
+<p>The small test scripts are <strong>new files you create during this lesson</strong>. They are not in the original starter ZIP. Use the exact name <code translate="no">check_time.py</code> (with an underscore), not <code translate="no">checktime.py</code>.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">app.py</code></td>
+<td>Edit the existing agent program to register tools</td>
+</tr>
+<tr>
+<td><code translate="no">check_time.py</code></td>
+<td>Create beside <code translate="no">app.py</code> in Step 3B to test the time function directly</td>
+</tr>
+<tr>
+<td><code translate="no">check_search.py</code></td>
+<td>Create beside <code translate="no">app.py</code> in Step 4B to test search directly</td>
+</tr>
+<tr>
+<td><code translate="no">tools/web_search.py</code></td>
+<td>Already supplied; keep it inside the <code translate="no">tools</code> folder</td>
+</tr>
+</tbody>
+</table>
+<p>Your folder will look like this after creating the two test files:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>First_agent_template/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── app.py
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── check_time.py
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── check_search.py
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── Gradio_UI.py
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── prompts.yaml
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── requirements.txt
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── tools/
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── final_answer.py
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── web_search.py
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>└── .venv/
+</code></pre></div>
+<p>Keep the test scripts here, not inside <code translate="no">tools/</code> or <code translate="no">.venv/</code>. Put each test's code in its own file, not in <code translate="no">app.py</code>. Save Python files without an extra <code translate="no">.txt</code> extension.</p>
+<div class="admonition note">
+<p class="admonition-title">If you already have the completed app.py</p>
+<p>The completed reference has both tools registered. Keep its existing tools list. Run the direct tests in <strong>3B</strong> and <strong>4B</strong>, then the chat tests in <strong>3D</strong> and <strong>4D</strong>. You can skip the registration edits in <strong>3C</strong> and <strong>4C</strong>. The optional custom tool is still unfinished.</p>
+</div>
 <h2 id="what-you-will-add">What you will add<a class="headerlink" href="#what-you-will-add" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1384,7 +1452,7 @@
 </table>
 <h2 id="2-walk-through-apppy">2. Find the tool registration<a class="headerlink" href="#2-walk-through-apppy" title="Permanent link">&para;</a></h2>
 <p>Open <code translate="no">app.py</code> and find <code translate="no">CodeAgent(...)</code> inside <code translate="no">main()</code>. Its initial registration is:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
 </code></pre></div>
 <p>Keep <code translate="no">final_answer</code> in this list. You will add the existing timezone function and a search-tool instance in the next steps. The <code translate="no">STUDENT TASK</code> comments mark these edit points. Keep the working model connection and interface settings as they are.</p>
 <p>For the optional custom tool later, add its function definition above <code translate="no">main()</code> and register it in this same <code translate="no">tools</code> list.</p>
@@ -1432,20 +1500,26 @@
 </table>
 <p>Timezone names identify regions, not fixed offsets. Some regions change offset during daylight saving time. Use <code translate="no">Asia/Tokyo</code> for your first test. The function cannot correct an inaccurate computer clock.</p>
 <h3 id="b-test-it-without-the-agent">B. Test it without the agent<a class="headerlink" href="#b-test-it-without-the-agent" title="Permanent link">&para;</a></h3>
-<p>With the app stopped and the template's virtual environment still active, create <code translate="no">check_time.py</code> next to <code translate="no">app.py</code> and save:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_time_in_timezone</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Not/A_Real_Zone"</span><span class="p">))</span>
+<p>With the app stopped and the template's virtual environment still active:</p>
+<ol>
+<li>In your code editor, choose <strong>New File</strong>.</li>
+<li>Paste the following code into the new file.</li>
+<li>Save it as <strong><code translate="no">check_time.py</code></strong> inside your existing <code translate="no">First_agent_template</code> folder, next to <code translate="no">app.py</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_time_in_timezone</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Not/A_Real_Zone"</span><span class="p">))</span>
 </code></pre></div>
-<p>Run in the terminal:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>check_time.py
+<p>In the terminal, make sure you are in <code translate="no">First_agent_template</code> with <code translate="no">(.venv)</code> active, then run:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>check_time.py
 </code></pre></div>
 <p>The first line should report Tokyo's date and time. The second should start with <code translate="no">Error fetching time</code>. The second test checks how invalid input is handled; it is not a successful time lookup. Neither call uses Groq or needs a key. Importing <code translate="no">app</code> defines the tools without launching the chat.</p>
-<p><strong>Checkpoint:</strong> compare the valid result with a clock set to Tokyo. Do not proceed to an agent test if the direct function call fails.</p>
+<p><strong>Checkpoint:</strong> compare the valid result with a clock set to Tokyo. The invalid-timezone error on the second line is intentional. If the valid Tokyo call fails, fix it before testing through the agent.</p>
+<p>If Python says it cannot open <code translate="no">check_time.py</code>, confirm that you saved it beside <code translate="no">app.py</code> and that the terminal is in that folder. <code translate="no">dir</code> on Windows or <code translate="no">ls</code> on Mac should list both files. If an <code translate="no">ImportError</code> names the time function, check that you kept the function in <code translate="no">app.py</code> and saved the file.</p>
 <h3 id="c-register-it-with-the-agent">C. Register it with the agent<a class="headerlink" href="#c-register-it-with-the-agent" title="Permanent link">&para;</a></h3>
-<p>In <code translate="no">app.py</code>, find <code translate="no">tools=[final_answer]</code> inside <code translate="no">CodeAgent(...)</code>. Replace that argument only with:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">],</span>
+<p>If <code translate="no">get_current_time_in_timezone</code> is already in your <code translate="no">tools</code> list, leave it there and go to Step D. Otherwise, in the original starter's <code translate="no">app.py</code>, find <code translate="no">tools=[final_answer]</code> inside <code translate="no">CodeAgent(...)</code> and replace that argument only with:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">],</span>
 </code></pre></div>
 <p>Keep the leading indentation and trailing comma. There should be only one <code translate="no">tools=</code> argument. Do not write <code translate="no">get_current_time_in_timezone()</code> here: you are registering the capability, not calling it during startup.</p>
 <p>Save, run <code translate="no">python app.py</code>, enter your Groq key, and refresh the local chat page.</p>
@@ -1455,8 +1529,8 @@
 <p>Use get_current_time_in_timezone with Asia/Tokyo. Report the returned time and say where it came from.</p>
 </blockquote>
 <p>Click <strong>Used tool python_interpreter</strong>, then <strong>Execution Logs</strong> inside it to reveal the returned value. You can also inspect the terminal. A possible action is:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
 <p>This is illustrative output to recognize, not another block to paste into <code translate="no">app.py</code>. The model may use different variable names or call <code translate="no">final_answer</code> within the same block.</p>
 <p><strong>Checkpoint:</strong> find the function call, the returned date/time, and a final answer consistent with it. A statement such as “It is 10:00 in Tokyo” without execution evidence is not enough.</p>
@@ -1468,33 +1542,38 @@
 <p>The Python tool contacts a search service. Groq generates the agent's actions and answer; it does not perform this search itself. This starter's search integration requires no separate search API key, but the service can still fail or limit requests.</p>
 <p><strong>Search is not full-page reading.</strong> This tool returns search-result snippets; it does not fetch and read the full contents of each linked page. When the agent summarizes results, it may only have seen those snippets. You will open a source yourself to verify it. Automatically reading pages would require another tool and is outside the two-tool core practical.</p>
 <h3 id="b-test-search-directly-before-using-the-llm">B. Test search directly before using the LLM<a class="headerlink" href="#b-test-search-directly-before-using-the-llm" title="Permanent link">&para;</a></h3>
-<p>Stop the app with <strong>Control + C</strong>. Create <code translate="no">check_search.py</code> next to <code translate="no">app.py</code>:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tools.web_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">search_tool</span> <span class="o">=</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Agent-facing name:"</span><span class="p">,</span> <span class="n">search_tool</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">search_tool</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">))</span>
+<p>Stop the app with <strong>Control + C</strong> if it is running; leave the template's <code translate="no">.venv</code> active.</p>
+<ol>
+<li>In your code editor, choose <strong>New File</strong>.</li>
+<li>Paste the following code into it.</li>
+<li>Save it as <strong><code translate="no">check_search.py</code></strong> inside <code translate="no">First_agent_template</code>, next to <code translate="no">app.py</code> and <code translate="no">check_time.py</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tools.web_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">search_tool</span> <span class="o">=</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Agent-facing name:"</span><span class="p">,</span> <span class="n">search_tool</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">search_tool</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">))</span>
 </code></pre></div>
-<p>Run in your activated terminal:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>check_search.py
+<p>Run from the <code translate="no">First_agent_template</code> folder in your activated terminal:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>check_search.py
 </code></pre></div>
 <p>This uses the search service directly, without a Groq request or key. It lets you check search connectivity independently of the LLM.</p>
 <p><code translate="no">max_results=3</code> requests up to three results. We use a small number to keep the result readable and reduce how much search text is sent to the model later. It does not limit the number of search calls an agent can make.</p>
 <p>Expect the name <code translate="no">web_search</code>, followed by a <code translate="no">Search Results</code> heading and entries containing a title, URL, and snippet. Exact results and order vary. A shortened <strong>illustration</strong>, not a live result, is:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Agent-facing name: web_search
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>## Search Results
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>[The Python Tutorial](https://docs.python.org/3/tutorial/)
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>A short search-result description would appear here.
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Agent-facing name: web_search
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>## Search Results
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>[The Python Tutorial](https://docs.python.org/3/tutorial/)
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>A short search-result description would appear here.
 </code></pre></div>
-<p><strong>Checkpoint:</strong> at least one relevant result is returned and its link opens. If the direct test fails, use the troubleshooting table below before changing the model or API key.</p>
+<p><strong>Checkpoint:</strong> at least one relevant result is returned and its link opens. If Python cannot open <code translate="no">check_search.py</code>, check the file's name, saved location, and current terminal folder as in Step 3B. For a search-service error, use the troubleshooting table below before changing the model or API key.</p>
 <h3 id="c-register-the-search-instance">C. Register the search instance<a class="headerlink" href="#c-register-the-search-instance" title="Permanent link">&para;</a></h3>
-<p>The starter already imports <code translate="no">WebSearchTool</code> from <code translate="no">tools.web_search</code> near the top of <code translate="no">app.py</code>. The import alone does not register it. Find your existing <code translate="no">tools=</code> argument and replace it with:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">final_answer</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">get_current_time_in_timezone</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">],</span>
+<p>If your <code translate="no">tools</code> list already contains <code translate="no">WebSearchTool(max_results=3)</code>, keep it and go to Step D. Otherwise, the starter already imports <code translate="no">WebSearchTool</code> from <code translate="no">tools.web_search</code> near the top of <code translate="no">app.py</code>. The import alone does not register it. Find your existing <code translate="no">tools=</code> argument and replace it with:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">final_answer</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">get_current_time_in_timezone</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">],</span>
 </code></pre></div>
 <p>Indent this block to match the other arguments inside <code translate="no">CodeAgent(...)</code>. Keep the surrounding constructor and all its other arguments.</p>
 <table>
@@ -1528,8 +1607,8 @@
 </blockquote>
 <p>This asks for an observable action and a bounded answer. For the first test, avoid a broad task such as “research everything about AI,” which can lead to many calls and a hard-to-check answer.</p>
 <p>The trace may contain code like:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </code></pre></div>
 <p>The model can then use those results in another step, or finish in the same step. <code translate="no">python_interpreter</code> in the trace is expected: CodeAgent runs Python that calls the registered search tool.</p>
 <h3 id="e-follow-the-evidence-into-the-final-answer">E. Follow the evidence into the final answer<a class="headerlink" href="#e-follow-the-evidence-into-the-final-answer" title="Permanent link">&para;</a></h3>
@@ -1626,18 +1705,18 @@
 <p>For each case, write down the expected result before running it. If the direct result is wrong, fix the function before testing through the agent. If only the agent test fails, inspect the tool registration, description, and generated arguments.</p>
 <h3 id="a-scaffold-if-python-functions-are-new">A scaffold if Python functions are new<a class="headerlink" href="#a-scaffold-if-python-functions-are-new" title="Permanent link">&para;</a></h3>
 <p>This is an editing aid for the original open-ended tool task, not a new assignment. A decorated function needs this shape:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@tool</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_custom_tool</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="sd">"""Describe when the agent should use your tool.</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="sd">    Args:</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="sd">        value: Describe the input this function accepts.</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="sd">    """</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Write your tool implementation here"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nd">@tool</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_custom_tool</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">"""Describe when the agent should use your tool.</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">        value: Describe the input this function accepts.</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="sd">    """</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Write your tool implementation here"</span><span class="p">)</span>
 </code></pre></div>
 <p>As written, this intentionally raises an error until you implement it. Change the purpose, types, description, and body to implement your chosen behavior. Replace the existing decorated placeholder block completely so there is only one definition of <code translate="no">my_custom_tool</code>. Retain the other tool functions.</p>
 <p>To register it while keeping the time tool, for example:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">,</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">my_custom_tool</span><span class="p">],</span>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">,</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">my_custom_tool</span><span class="p">],</span>
 </code></pre></div>
 <p>If you enabled search, retain its entry in the list as well. Save, restart, and test with an input whose expected result you can check yourself. Use the <a href="https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions">Python functions reference</a> if you need a refresher on parameters, return values, or docstrings.</p>
 <h2 id="7-inspect-instructions-and-settings">7. Inspect instructions and settings<a class="headerlink" href="#7-inspect-instructions-and-settings" title="Permanent link">&para;</a></h2>
