@@ -2,7 +2,11 @@
 
 <div lang="ja" markdown>
 
-この教材は英語で管理しています。日本語で読むときは、ブラウザーの翻訳機能を使ってください。
+この教材は英語で管理しています。ページ上部の **日本語** ボタンを押すと、そのレッスンをGoogle翻訳で開きます。元の英語ページは別のタブに残ります。
+
+ローカルプレビューのボタンも公開済みのページを開きます。まだ公開していない変更は翻訳ページには反映されません。
+
+ブラウザー自体の翻訳機能を使う場合は、以下の手順で操作してください。
 
 ## Chrome
 
@@ -24,7 +28,7 @@
 
 **コード、コマンド、ファイル名は変更せず、そのままコピーしてください。** コードは翻訳対象から除外するよう設定しています。説明が分かりにくい場合は、ブラウザーの翻訳メニューから原文を表示し、英語を確認してください。
 
-ページ上部の言語アイコンには、この操作の案内があります。翻訳はブラウザーのメニューから有効にします。
+Google翻訳の画面では、上部のメニューで翻訳と原文を切り替えられます。[Google翻訳の公式手順](https://support.google.com/translate/answer/2534559?hl=ja&co=GENIE.Platform%3DDesktop)も参照してください。
 
 [コースに戻る](../index.md){ .md-button .md-button--primary }
 
@@ -32,4 +36,4 @@
 
 ## English
 
-Open the lesson you want to read, use your browser's **Translate** option, and choose **Japanese**. Use the browser's original-page option to return to English. Copy code and commands in their original form.
+Click the header's **日本語** button to open this lesson's published version in Google Translate in a new tab. Alternatively, use your browser's **Translate → Japanese** option. Copy code and commands in their original form.

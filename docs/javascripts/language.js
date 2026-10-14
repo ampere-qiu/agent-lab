@@ -1,14 +1,14 @@
-// This control offers instructions; translation is controlled by the browser.
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    const menu = document.querySelector('.course-language[open]');
-    if (menu) {
-      menu.open = false;
-      menu.querySelector('summary').focus();
-    }
-  }
-});
-document.addEventListener('click', (event) => {
-  const menu = document.querySelector('.course-language[open]');
-  if (menu && !menu.contains(event.target)) menu.open = false;
-});
+// Link to the same section on the public lesson when the section exists here.
+function updateTranslationSection() {
+  const fragment = window.location.hash;
+  const heading = fragment ? document.getElementById(decodeURIComponent(fragment.slice(1))) : null;
+  document.querySelectorAll('[data-course-translate]').forEach((link) => {
+    const translationUrl = new URL(link.href);
+    const publicPage = new URL(translationUrl.searchParams.get('u'));
+    publicPage.hash = heading ? fragment : '';
+    translationUrl.searchParams.set('u', publicPage.href);
+    link.href = translationUrl.href;
+  });
+}
+updateTranslationSection();
+window.addEventListener('hashchange', updateTranslationSection);

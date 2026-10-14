@@ -3,6 +3,26 @@ from pathlib import Path
 import html
 import json
 import re
+from urllib.parse import urlencode, urljoin
+
+
+def translate_link(public_url):
+    return 'https://translate.google.com/translate?' + urlencode({
+        'sl': 'en', 'tl': 'ja', 'hl': 'ja', 'u': public_url,
+    })
+
+
+def on_config(config):
+    config.extra['translation_home_url'] = translate_link(config.extra['translation_base_url'])
+    return config
+
+
+def on_page_context(context, page, config, nav):
+    # Use the published counterpart even in a localhost preview. Google cannot
+    # fetch a site running only on the student's computer.
+    context['course_translation_url'] = translate_link(
+        urljoin(config.extra['translation_base_url'], page.url))
+    return context
 
 
 def on_post_page(output, page, config):

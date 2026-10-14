@@ -69,3 +69,4 @@ extra_javascript:
 - javascripts/language.js
 extra:
   alternate: true
+  translation_base_url: http://mondheera.website/agent-lab/

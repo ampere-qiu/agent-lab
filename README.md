@@ -24,10 +24,12 @@ The starter uses smolagents, Gradio, and Groq-hosted inference. External search 
 
 ## Japanese reading
 
-Lessons are maintained in English. Use the header language icon for instructions
-on reading them in Japanese with your browser's translation feature. Code and
-commands are marked to retain their original text. The former Japanese lesson URLs
-redirect to the matching English lessons; `/ja/` now provides translation help.
+Lessons are maintained in English. The header's 日本語 button opens the matching
+published lesson in Google Translate in a new tab. In a localhost preview it also
+uses the live counterpart, because Google cannot fetch a local-only site.
+Browser-native translation is another option; instructions remain at `/ja/`.
+Code and commands are marked to retain their original text. Former Japanese lesson
+URLs redirect to the matching English lessons.
 
 Build using `python -m mkdocs build --strict`. No separate Japanese build or
 translation plugin is needed.
