@@ -30,7 +30,7 @@ During our original setup, free Space duplication was unavailable and HF inferen
 New to terminals or editing Python? Read [Before you start](before-you-start.md) first. It explains which window to use, how to locate files, and how to save edits.
 
 1. [Prepare Python, the dummy exercise folder, and your Groq key](prepare-your-computer.md).
-2. [Read the local lessons and complete the two quick quizzes](unit-1-walkthrough.md).
+2. Read [our lesson notes](unit-1-walkthrough.md) alongside the [original Hugging Face lessons](https://huggingface.co/learn/agents-course/en/unit1/introduction), and complete the two HF quick quizzes linked in our notes.
 3. [Build the dummy exercise in three stages](dummy-agent-local.md).
 4. [Download and run the full template](run-your-first-agent.md), then [understand its components](understand-the-template.md).
 5. [Build and test your agent’s tools](first-agent-practical.md).

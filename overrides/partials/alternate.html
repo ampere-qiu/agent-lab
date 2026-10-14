@@ -1,0 +1,10 @@
+<details class="course-language">
+  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="{{ '言語を選択' if config.theme.language == 'ja' else 'Select language' }}">
+    {% include ".icons/material/translate.svg" %}
+  </summary>
+  <nav class="course-language__menu" aria-label="{{ '言語' if config.theme.language == 'ja' else 'Language' }}">
+    {% for alt in config.extra.alternate %}
+    <a href="{{ alt.href }}" hreflang="{{ alt.lang }}" lang="{{ alt.lang }}" data-course-language="{{ alt.lang }}" {% if alt.lang == config.theme.language %}aria-current="true"{% endif %}>{{ alt.name }}</a>
+    {% endfor %}
+  </nav>
+</details>

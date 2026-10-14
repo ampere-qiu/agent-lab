@@ -1,0 +1,37 @@
+INHERIT: mkdocs.yml
+site_description: Hugging Face Agents Course Unit 1を基にした、ローカル環境で学ぶ教材。
+docs_dir: docs-ja
+site_dir: site/ja
+theme:
+  language: ja
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切り替え
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切り替え
+plugins:
+  - search:
+      lang: ja
+copyright: SI Labの学生向けにAmpereが作成 · 原典：Hugging Face
+nav:
+  - はじめに: index.md
+  - 第1週 · 基礎:
+    - 始める前に: before-you-start.md
+    - 01 · 基本設定: prepare-your-computer.md
+    - 02 · レッスンと小テスト: unit-1-walkthrough.md
+  - 第1週 · 実習:
+    - 03 · ダミー演習の3段階: dummy-agent-local.md
+    - 04 · テンプレートの入手: run-your-first-agent.md
+    - 05 · テンプレートを理解: understand-the-template.md
+    - 06 · ツールを実装・登録: first-agent-practical.md
+    - 07 · 小テストと完了確認: quizzes.md
+  - 参考:
+    - 学習の順序: week-1-learning-plan.md

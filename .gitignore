@@ -1,0 +1,12 @@
+.venv/
+venv/
+site/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+*-key.txt
+*-key.text
+test-runs/
+backups/
