@@ -1,10 +1,12 @@
 <details class="course-language">
-  <summary class="md-header__button md-icon" title="English / 日本語" aria-label="{{ '言語を選択' if config.theme.language == 'ja' else 'Select language' }}">
+  <summary class="md-header__button md-icon" title="日本語で読む / Browser translation" aria-label="Browser translation help">
     {% include ".icons/material/translate.svg" %}
   </summary>
-  <nav class="course-language__menu" aria-label="{{ '言語' if config.theme.language == 'ja' else 'Language' }}">
-    {% for alt in config.extra.alternate %}
-    <a href="{{ alt.href }}" hreflang="{{ alt.lang }}" lang="{{ alt.lang }}" data-course-language="{{ alt.lang }}" {% if alt.lang == config.theme.language %}aria-current="true"{% endif %}>{{ alt.name }}</a>
-    {% endfor %}
-  </nav>
+  <div class="course-language__menu course-language__help">
+    <p lang="ja"><strong>日本語で読む</strong></p>
+    <p lang="ja">ブラウザーの「翻訳」を開き、日本語を選んでください。</p>
+    <p>Browser Translate → Japanese</p>
+    <p lang="ja">英語に戻すには「原文を表示」を選びます。コードやコマンドは元のままコピーしてください。</p>
+    <a href="{{ 'ja/' | url }}" lang="ja">詳しい手順 / Translation guide →</a>
+  </div>
 </details>

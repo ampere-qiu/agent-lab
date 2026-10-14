@@ -21,3 +21,13 @@ Edit lesson files under docs/. The student download is docs/downloads/groq-agent
 Adapted from the [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/introduction) and [First_agent_template](https://huggingface.co/spaces/agents-course/First_agent_template). Source notices are retained. This adaptation changes hosting and inference setup, removes image generation, and focuses on time and web search. Only the original two quick quizzes are retained.
 
 The starter uses smolagents, Gradio, and Groq-hosted inference. External search is intermittent; students must verify returned evidence. The Mac path was tested; Windows installation remains untested.
+
+## Japanese reading
+
+Lessons are maintained in English. Use the header language icon for instructions
+on reading them in Japanese with your browser's translation feature. Code and
+commands are marked to retain their original text. The former Japanese lesson URLs
+redirect to the matching English lessons; `/ja/` now provides translation help.
+
+Build using `python -m mkdocs build --strict`. No separate Japanese build or
+translation plugin is needed.

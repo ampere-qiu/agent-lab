@@ -62,15 +62,10 @@ nav:
   - 07 · Quick quizzes & completion: quizzes.md
 - Reference:
   - Course route: week-1-learning-plan.md
+  - 日本語で読む / Translation: ja/index.md
 hooks:
-- hooks/bilingual.py
+- hooks/translation.py
 extra_javascript:
 - javascripts/language.js
 extra:
-  alternate:
-  - name: English
-    link: .
-    lang: en
-  - name: 日本語
-    link: ja/
-    lang: ja
+  alternate: true
