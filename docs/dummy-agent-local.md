@@ -4,9 +4,21 @@ This local exercise adapts the manual-loop idea from the [HF Dummy Agent lesson]
 
 You will send a request, inspect a proposed action, execute a function yourself, and send its result back. This is a teaching example, not a general-purpose autonomous agent. The full template comes later.
 
+## Where does the weather information come from? { #where-weather-comes-from }
+
+| Stage | What actually happens | Weather information |
+| --- | --- | --- |
+| Step 1 | The model answers a general question | No weather request or function call |
+| Step 2 | The model writes a proposed action as text | No function has run; any weather it invents is unverified |
+| Step 3 | Your Python program calls `get_weather("London")` | The function returns fixed demo data: sunny, 18°C |
+
+In **Step 3**, you add `get_weather` to **the same `dummy_agent.py` file**. Its `return` line contains `sunny, 18 degrees Celsius`. We chose those values for the exercise; they are not measurements or a live forecast. Python sends that returned string to the model, which uses it to write the final response.
+
+If you have an older script whose prompt says “invent an example weather result,” that is a text-only simulation. The model invents its weather, and no Python weather function runs. Use the three stages below together in a new file; do not append them to a different older script.
+
 ## Prepare the file { #prepare-the-file }
 
-Complete [basic setup](prepare-your-computer.md) and activate the environment in `agent-course/dummy-agent`. In your editor, create `dummy_agent.py` in that folder. Add the blocks below in order, saving after each stage. Run:
+Complete [basic setup](prepare-your-computer.md) and activate the environment in `agent-course/dummy-agent`. In your editor, create `dummy_agent.py` in that folder. Add the blocks below in order to this one file, saving after each stage. After pasting and saving the Step 1 code, run:
 
 ```bash
 python dummy_agent.py
@@ -127,6 +139,8 @@ final_reply = client.chat.completions.create(
 print("STEP 3 — model answer using the observation:")
 print(final_reply.choices[0].message.content)
 ```
+
+**Run Step 3:** Save `dummy_agent.py` and run `python dummy_agent.py` again in the same activated terminal. The earlier stages run again first. Enter your key, read the output labelled **STEP 2B**, then type `yes` only if it proposes `get_weather` for London. Step 3 then prints the function result followed by the model’s final answer.
 
 **What happens:** you verify the proposed action, Python calls the function, and its return value is added to the next model request. The function returns fixed demonstration data so you can trace where the answer came from. No weather API is contacted.
 

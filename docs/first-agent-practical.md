@@ -1,8 +1,10 @@
-# Build the first agent: local walkthrough { #build-the-first-agent-local-walkthrough }
+# Enable and test the template’s tools { #build-the-first-agent-local-walkthrough }
 
 Continue with the `First_agent_template` you already downloaded, set up, and ran in [Get the agent template](run-your-first-agent.md). You should have received a model response and read [Understand the template](understand-the-template.md).
 
-Now extend that working app with **timezone lookup** and **web search**. Use your existing project folder, its `.venv`, and your Groq key throughout this practical.
+Now enable **timezone lookup** and **web search** in that working app. Both implementations are supplied. In the required exercise, you test and register them; writing a new tool is optional. Use your existing project folder, its `.venv`, and your Groq key throughout this practical.
+
+**Your required tasks:** create the two direct-test files, add the two supplied tools to the agent’s existing `tools=[...]` list, restart the app, and show successful calls and results in the chat’s execution logs. You do not need to edit `Gradio_UI.py` or the model connection.
 
 This practical adapts the [Hugging Face starter tutorial](https://huggingface.co/learn/agents-course/en/unit1/tutorial) for our local app.
 
@@ -45,7 +47,7 @@ Keep the test scripts here, not inside `tools/` or `.venv/`. Put each test's cod
 
     The completed reference has both tools registered. Keep its existing tools list. Run the direct tests in **3B** and **4B**, then the chat tests in **3D** and **4D**. You can skip the registration edits in **3C** and **4C**. The optional custom tool is still unfinished.
 
-## What you will add { #what-you-will-add }
+## Supplied tools and your edits { #what-you-will-add }
 
 | Already in your template | Your work now |
 | --- | --- |
@@ -60,6 +62,8 @@ Open `app.py` and find `CodeAgent(...)` inside `main()`. Its initial registratio
 ```python
 tools=[final_answer],
 ```
+
+At this point, only `final_answer` is registered. The time function and search class exist in your files, but the agent cannot call those supplied tools yet. Importing `WebSearchTool` does not enable web search. If the model produces a `web_search(...)` call before registration, that call fails; a link from model memory is not a search result.
 
 Keep `final_answer` in this list. You will add the existing timezone function and a search-tool instance in the next steps. The `STUDENT TASK` comments mark these edit points. Keep the working model connection and interface settings as they are.
 

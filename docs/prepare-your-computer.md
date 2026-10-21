@@ -62,6 +62,8 @@ source .venv/bin/activate
 python --version
 ```
 
+A virtual environment is a separate set of Python libraries for this exercise. Creating `.venv` makes that environment; activating it makes the terminal use it. Keep the dummy exercise and the Week 2 template in their own environments.
+
 If the folder already exists, enter it instead of creating it again. A virtual environment only needs creating once.
 
 **Checkpoint:** Your terminal shows `(.venv)` and Python 3.11.x. Keep this window open.

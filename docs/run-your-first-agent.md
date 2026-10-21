@@ -145,7 +145,7 @@ Look for a final answer containing **96**. You may also see generated Python cod
 
 **Checkpoint:** A model-generated answer confirms that your key, account access, endpoint, and model worked for this request. Opening the chat page alone only checks the interface. If the answer fails, use the troubleshooting table below.
 
-Time and web search are not registered yet; you will enable them in the [tools practical](first-agent-practical.md).
+The download includes working time and search implementations, but only `final_answer` is registered initially. You will test and register the two supplied tools in the [tools practical](first-agent-practical.md). Until then, the agent cannot use the supplied `web_search` tool. It may still answer from model knowledge or produce a URL; neither proves that it searched.
 
 ## 10. Check your usage limits { #10-understand-token-usage }
 
