@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prepare-the-file" class="md-skip">
+        <a href="#where-weather-comes-from" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -485,6 +485,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-weather-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        天気の情報はどこから来る？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prepare-the-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -707,7 +718,7 @@
   <span class="md-ellipsis">
     
   
-    06 · ツールを組み込む
+    06 · ツールの登録とテスト
   
 
     
@@ -870,6 +881,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-weather-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        天気の情報はどこから来る？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prepare-the-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -944,8 +966,37 @@
 <h1 id="dummy-agent-build-the-loop-in-three-stages">ダミーエージェント：3段階でループを作る<a class="headerlink" href="#dummy-agent-build-the-loop-in-three-stages" title="この見出しへのリンク">&para;</a></h1>
 <p><a href="https://huggingface.co/learn/agents-course/en/unit1/dummy-agent-library">HFのDummy Agentレッスン</a>にある手動ループの考え方を、ローカル用に構成した実習です。必要なコードはすべて下にあります。原典は任意の参考資料で、モデル接続をGroqに置き換えています。</p>
 <p>問い合わせを送り、提案された行動を確認し、自分で関数を実行して結果を返します。仕組みを学ぶための例で、汎用の自律エージェントではありません。完全なテンプレートは後で扱います。</p>
+<h2 id="where-weather-comes-from">天気の情報はどこから来る？<a class="headerlink" href="#where-weather-comes-from" title="この見出しへのリンク">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>実際に起こること</th>
+<th>天気の情報</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ステップ1</td>
+<td>モデルが一般的な質問に答える</td>
+<td>天気の問い合わせも関数呼び出しもない</td>
+</tr>
+<tr>
+<td>ステップ2</td>
+<td>モデルが行動の提案をテキストで書く</td>
+<td>関数はまだ実行されていない。天気を出力しても未検証</td>
+</tr>
+<tr>
+<td>ステップ3</td>
+<td>Pythonが<code translate="no">get_weather("London")</code>を実行する</td>
+<td>関数が固定のデモデータ「晴れ、18°C」を返す</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ステップ3</strong>で、<strong>同じ<code translate="no">dummy_agent.py</code>ファイル</strong>に<code translate="no">get_weather</code>を追加します。その<code translate="no">return</code>行に<code translate="no">sunny, 18 degrees Celsius</code>と書いてあります。演習用に決めた値で、観測値や実際の天気予報ではありません。Pythonがその戻り値をモデルに渡し、モデルが最終応答に使います。</p>
+<p>古いスクリプトのプロンプトに「invent an example weather result」（天気の例を作って）とあれば、それはテキストだけのシミュレーションです。その版ではモデルが天気を作り、Pythonの天気関数は実行しません。以下の3段階は新しいファイルにまとめて使い、別の古いスクリプトの末尾には追加しないでください。</p>
 <h2 id="prepare-the-file">ファイルを準備する<a class="headerlink" href="#prepare-the-file" title="この見出しへのリンク">&para;</a></h2>
-<p><a href="../prepare-your-computer/">基本設定</a>を済ませ、<code translate="no">agent-course/dummy-agent</code>の仮想環境を有効にします。エディターでそのフォルダーに<code translate="no">dummy_agent.py</code>を作り、以下のブロックを順に追加して段階ごとに保存します。実行コマンドは次のとおりです。</p>
+<p><a href="../prepare-your-computer/">基本設定</a>を済ませ、<code translate="no">agent-course/dummy-agent</code>の仮想環境を有効にします。エディターでそのフォルダーに<code translate="no">dummy_agent.py</code>を作り、以下のブロックをこの1つのファイルに順に追加して、段階ごとに保存します。ステップ1のコードを貼って保存してから、次のコマンドで実行します。</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>dummy_agent.py
 </code></pre></div>
 <p>出力はブラウザーチャットではなくターミナルに表示されます。再実行するたびに、ファイルに追加済みのリクエストがすべて繰り返され、Groqの利用枠を使います。上限に達したら、何度も再実行せずサービスの再試行間隔に従います。</p>
@@ -1045,7 +1096,7 @@
 <a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"STEP 3 — model answer using the observation:"</span><span class="p">)</span>
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="nb">print</span><span class="p">(</span><span class="n">final_reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
-<p>確認の入力では、ステップ2BがLondonの<code translate="no">get_weather</code>を求めていることを読んでから<code translate="no">yes</code>と入力します。それ以外では「行動とプロンプトを確認してから関数を実行してください」として終了します。</p>
+<p><strong>ステップ3を実行する：</strong><code translate="no">dummy_agent.py</code>を保存し、仮想環境を有効にした同じターミナルで<code translate="no">python dummy_agent.py</code>をもう一度実行します。先に前の段階も実行されます。キーを入力し、<strong>STEP 2B</strong>の出力がLondonの<code translate="no">get_weather</code>を求めていることを読んでから、<code translate="no">yes</code>と入力します。続いてステップ3の関数の結果、モデルの最終応答の順に表示されます。それ以外では「行動とプロンプトを確認してから関数を実行してください」として終了します。</p>
 <p><strong>動作の説明：</strong>人が提案を確かめ、Pythonが関数を呼び、その戻り値が次のモデルリクエストに加わります。答えの出所をたどれるよう、関数は「晴れ、摂氏18度」という固定データを返します。実際の天気APIには接続しません。最終応答でもデモデータと明示するよう指示しています。</p>
 <p>確認を挟むのは意図的です。この小さなスクリプトは任意の行動を解析したり、自動で関数を選んだりしません。生成されたテキストを<code translate="no">eval</code>や<code translate="no">exec</code>に貼らないでください。次の実習ではCodeAgentが実行ループを担います。</p>
 <p><strong>確認：</strong>最終的なモデル応答より先に、関数の結果がターミナルに出ます。最終応答が晴れ・18度という値を反映し、デモだと分かることを確認します。観測と矛盾する場合は、検証済みの答えとして扱わず、最後のリクエストとプロンプトを調べます。</p>

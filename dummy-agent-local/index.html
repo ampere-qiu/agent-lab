@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prepare-the-file" class="md-skip">
+        <a href="#where-weather-comes-from" class="md-skip">
           Skip to content
         </a>
       
@@ -485,6 +485,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-weather-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where does the weather information come from?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prepare-the-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -707,7 +718,7 @@
   <span class="md-ellipsis">
     
   
-    06 · Build your tools
+    06 · Enable & test tools
   
 
     
@@ -870,6 +881,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-weather-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where does the weather information come from?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prepare-the-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -944,8 +966,37 @@
 <h1 id="dummy-agent-build-the-loop-in-three-stages">Dummy agent: build the loop in three stages<a class="headerlink" href="#dummy-agent-build-the-loop-in-three-stages" title="Permanent link">&para;</a></h1>
 <p>This local exercise adapts the manual-loop idea from the <a href="https://huggingface.co/learn/agents-course/en/unit1/dummy-agent-library">HF Dummy Agent lesson</a>. All code needed is below. The original page is optional reading; Groq replaces its model connection.</p>
 <p>You will send a request, inspect a proposed action, execute a function yourself, and send its result back. This is a teaching example, not a general-purpose autonomous agent. The full template comes later.</p>
+<h2 id="where-weather-comes-from">Where does the weather information come from?<a class="headerlink" href="#where-weather-comes-from" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What actually happens</th>
+<th>Weather information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step 1</td>
+<td>The model answers a general question</td>
+<td>No weather request or function call</td>
+</tr>
+<tr>
+<td>Step 2</td>
+<td>The model writes a proposed action as text</td>
+<td>No function has run; any weather it invents is unverified</td>
+</tr>
+<tr>
+<td>Step 3</td>
+<td>Your Python program calls <code translate="no">get_weather("London")</code></td>
+<td>The function returns fixed demo data: sunny, 18°C</td>
+</tr>
+</tbody>
+</table>
+<p>In <strong>Step 3</strong>, you add <code translate="no">get_weather</code> to <strong>the same <code translate="no">dummy_agent.py</code> file</strong>. Its <code translate="no">return</code> line contains <code translate="no">sunny, 18 degrees Celsius</code>. We chose those values for the exercise; they are not measurements or a live forecast. Python sends that returned string to the model, which uses it to write the final response.</p>
+<p>If you have an older script whose prompt says “invent an example weather result,” that is a text-only simulation. The model invents its weather, and no Python weather function runs. Use the three stages below together in a new file; do not append them to a different older script.</p>
 <h2 id="prepare-the-file">Prepare the file<a class="headerlink" href="#prepare-the-file" title="Permanent link">&para;</a></h2>
-<p>Complete <a href="../prepare-your-computer/">basic setup</a> and activate the environment in <code translate="no">agent-course/dummy-agent</code>. In your editor, create <code translate="no">dummy_agent.py</code> in that folder. Add the blocks below in order, saving after each stage. Run:</p>
+<p>Complete <a href="../prepare-your-computer/">basic setup</a> and activate the environment in <code translate="no">agent-course/dummy-agent</code>. In your editor, create <code translate="no">dummy_agent.py</code> in that folder. Add the blocks below in order to this one file, saving after each stage. After pasting and saving the Step 1 code, run:</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>dummy_agent.py
 </code></pre></div>
 <p>Output appears in the terminal, not a browser chat. Each rerun repeats the requests already in your file and uses your Groq allowance. If you reach a limit, follow the provider's retry interval rather than repeatedly rerunning.</p>
@@ -1045,6 +1096,7 @@
 <a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"STEP 3 — model answer using the observation:"</span><span class="p">)</span>
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="nb">print</span><span class="p">(</span><span class="n">final_reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
+<p><strong>Run Step 3:</strong> Save <code translate="no">dummy_agent.py</code> and run <code translate="no">python dummy_agent.py</code> again in the same activated terminal. The earlier stages run again first. Enter your key, read the output labelled <strong>STEP 2B</strong>, then type <code translate="no">yes</code> only if it proposes <code translate="no">get_weather</code> for London. Step 3 then prints the function result followed by the model’s final answer.</p>
 <p><strong>What happens:</strong> you verify the proposed action, Python calls the function, and its return value is added to the next model request. The function returns fixed demonstration data so you can trace where the answer came from. No weather API is contacted.</p>
 <p>The confirmation is deliberate: this small script does not parse arbitrary model actions or automatically choose functions. Do not paste the generated text into <code translate="no">eval</code> or <code translate="no">exec</code>. In the next practical, CodeAgent supplies the execution loop.</p>
 <p><strong>Checkpoint:</strong> The terminal prints the function result before the final model answer. The answer should reflect the supplied sunny/18-degree demonstration data and identify it as demo data. If it contradicts the observation, inspect the final request and prompt rather than treating the answer as verified.</p>

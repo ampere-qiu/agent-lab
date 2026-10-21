@@ -23,7 +23,7 @@
     
     
       
-        <title>06 · ツールを組み込む - Agent Lab</title>
+        <title>06 · ツールの登録とテスト - Agent Lab</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06 · ツールを組み込む
+              06 · ツールの登録とテスト
             
           </span>
         </div>
@@ -616,7 +616,7 @@
   <span class="md-ellipsis">
     
   
-    06 · ツールを組み込む
+    06 · ツールの登録とテスト
   
 
     
@@ -634,7 +634,7 @@
   <span class="md-ellipsis">
     
   
-    06 · ツールを組み込む
+    06 · ツールの登録とテスト
   
 
     
@@ -683,7 +683,7 @@
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
-        追加するもの
+        用意済みのツールと編集する部分
       
     </span>
   </a>
@@ -1194,7 +1194,7 @@
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
-        追加するもの
+        用意済みのツールと編集する部分
       
     </span>
   </a>
@@ -1539,9 +1539,10 @@
 
 
 
-<h1 id="build-the-first-agent-local-walkthrough">最初のエージェントを拡張する：ローカル実習<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="この見出しへのリンク">&para;</a></h1>
+<h1 id="build-the-first-agent-local-walkthrough">テンプレートのツールを登録し、動作を確かめる<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="この見出しへのリンク">&para;</a></h1>
 <p><a href="../run-your-first-agent/">テンプレートの入手</a>で準備・起動した<code translate="no">First_agent_template</code>を引き続き使います。モデルの応答を確認し、<a href="../understand-the-template/">仕組みの解説</a>を読んでから始めます。</p>
-<p>動くアプリに<strong>タイムゾーン別の時刻取得</strong>と<strong>ウェブ検索</strong>を加えます。同じプロジェクト、その<code translate="no">.venv</code>、Groqキーを使ってください。</p>
+<p>動くアプリで<strong>タイムゾーン別の時刻取得</strong>と<strong>ウェブ検索</strong>を使えるようにします。どちらも実装済みです。必須の実習ではテストと登録を行い、新しいツールを書くのは任意です。同じプロジェクト、その<code translate="no">.venv</code>、Groqキーを使ってください。</p>
+<p><strong>必須の作業：</strong>直接テスト用のファイルを2つ作り、エージェントの既存の<code translate="no">tools=[...]</code>に配布済みツールを2つ追加します。その後、アプリを再起動し、チャットの実行ログで正常な呼び出しと結果を示します。<code translate="no">Gradio_UI.py</code>やモデル接続の編集は不要です。</p>
 <p><a href="https://huggingface.co/learn/agents-course/en/unit1/tutorial">Hugging Faceのスターターチュートリアル</a>を、ローカルアプリ用に構成した実習です。</p>
 <h2 id="1-open-the-adapted-starter">1. 既存のアプリを編集する準備<a class="headerlink" href="#1-open-the-adapted-starter" title="この見出しへのリンク">&para;</a></h2>
 <p>実行中のターミナルで<strong>Control + C</strong>を押して止めます。テンプレートの仮想環境は有効にしたままにし、エディターで既存の<code translate="no">First_agent_template</code>を開きます。比較用に<code translate="no">app.py</code>を<code translate="no">app.before-tools.py</code>としてコピーしておきます。</p>
@@ -1592,7 +1593,7 @@
 <p class="admonition-title">完成版のapp.pyを持っている場合</p>
 <p>完成版はすでに両ツールを登録しています。既存のリストを保ち、<strong>3B</strong>と<strong>4B</strong>の直接テスト、続いて<strong>3D</strong>と<strong>4D</strong>のチャットテストを行います。<strong>3C</strong>と<strong>4C</strong>の登録編集は飛ばせます。任意の独自ツールは未完成のままです。</p>
 </div>
-<h2 id="what-you-will-add">追加するもの<a class="headerlink" href="#what-you-will-add" title="この見出しへのリンク">&para;</a></h2>
+<h2 id="what-you-will-add">用意済みのツールと編集する部分<a class="headerlink" href="#what-you-will-add" title="この見出しへのリンク">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1619,6 +1620,7 @@
 <p><code translate="no">app.py</code>の<code translate="no">main()</code>内で<code translate="no">CodeAgent(...)</code>を探します。最初は次の登録です。</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
 </code></pre></div>
+<p>この時点で登録されているのは<code translate="no">final_answer</code>だけです。時刻関数と検索クラスはファイル内にあっても、エージェントからはまだ呼べません。<code translate="no">WebSearchTool</code>をインポートしただけでは検索は有効になりません。登録前にモデルが<code translate="no">web_search(...)</code>を生成しても呼び出しは失敗し、モデルが記憶から出したリンクも検索結果にはなりません。</p>
 <p><code translate="no">final_answer</code>は残します。次の手順で既存の時刻関数と検索インスタンスを加えます。<code translate="no">STUDENT TASK</code>コメントが編集箇所の目印です。動いている接続設定と画面設定は保ちます。</p>
 <p>独自ツールは後の<a href="#6-optional-create-your-own-tool">ステップ6</a>で扱います。</p>
 <h3 id="how-does-the-agent-know-which-tools-it-can-use">エージェントは使えるツールをどう知るのか？<a class="headerlink" href="#how-does-the-agent-know-which-tools-it-can-use" title="この見出しへのリンク">&para;</a></h3>

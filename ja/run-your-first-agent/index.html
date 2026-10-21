@@ -868,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    06 · ツールを組み込む
+    06 · ツールの登録とテスト
   
 
     
@@ -1345,7 +1345,7 @@
 </blockquote>
 <p>最終回答に<strong>96</strong>が含まれることを確認します。生成されたPythonや<code translate="no">python_interpreter</code>のステップも表示される場合があります。</p>
 <p><strong>確認：</strong>モデルが生成した答えが返れば、このリクエストについてキー、アカウント権限、接続先、モデルが動作したと分かります。チャット画面が開いただけでは画面の確認しかできません。失敗したら下の表を使います。</p>
-<p>時刻と検索はまだ登録されていません。<a href="../first-agent-practical/">ツール実習</a>で有効にします。</p>
+<p>時刻と検索の実装は配布済みですが、最初に登録されているのは<code translate="no">final_answer</code>だけです。<a href="../first-agent-practical/">ツール実習</a>で2つをテストして登録します。それまでは、エージェントは配布済みの<code translate="no">web_search</code>を使えません。モデルの知識から回答したりURLを出したりすることはありますが、検索の証拠にはなりません。</p>
 <h2 id="10-understand-token-usage">10. 使用量の制限を確認する<a class="headerlink" href="#10-understand-token-usage" title="この見出しへのリンク">&para;</a></h2>
 <p>1回のチャットで複数回のモデルリクエストが発生することがあります。<a href="https://console.groq.com/docs/rate-limits">Groqの利用制限</a>を確認し、短時間に送信を繰り返さないでください。APIキーは認証用、入力・出力トークンはテキストの使用量です。出力上限と設定は<a href="../understand-the-template/#the-model-connection">モデル接続の解説</a>を参照します。</p>
 <h2 id="11-stop-and-restart">11. 停止と再起動<a class="headerlink" href="#11-stop-and-restart" title="この見出しへのリンク">&para;</a></h2>

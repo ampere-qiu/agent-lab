@@ -23,7 +23,7 @@
     
     
       
-        <title>06 · Build your tools - Agent Lab</title>
+        <title>06 · Enable & test tools - Agent Lab</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06 · Build your tools
+              06 · Enable & test tools
             
           </span>
         </div>
@@ -616,7 +616,7 @@
   <span class="md-ellipsis">
     
   
-    06 · Build your tools
+    06 · Enable & test tools
   
 
     
@@ -634,7 +634,7 @@
   <span class="md-ellipsis">
     
   
-    06 · Build your tools
+    06 · Enable & test tools
   
 
     
@@ -683,7 +683,7 @@
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you will add
+        Supplied tools and your edits
       
     </span>
   </a>
@@ -1194,7 +1194,7 @@
   <a href="#what-you-will-add" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you will add
+        Supplied tools and your edits
       
     </span>
   </a>
@@ -1539,9 +1539,10 @@
 
 
 
-<h1 id="build-the-first-agent-local-walkthrough">Build the first agent: local walkthrough<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="Permanent link">&para;</a></h1>
+<h1 id="build-the-first-agent-local-walkthrough">Enable and test the template’s tools<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="Permanent link">&para;</a></h1>
 <p>Continue with the <code translate="no">First_agent_template</code> you already downloaded, set up, and ran in <a href="../run-your-first-agent/">Get the agent template</a>. You should have received a model response and read <a href="../understand-the-template/">Understand the template</a>.</p>
-<p>Now extend that working app with <strong>timezone lookup</strong> and <strong>web search</strong>. Use your existing project folder, its <code translate="no">.venv</code>, and your Groq key throughout this practical.</p>
+<p>Now enable <strong>timezone lookup</strong> and <strong>web search</strong> in that working app. Both implementations are supplied. In the required exercise, you test and register them; writing a new tool is optional. Use your existing project folder, its <code translate="no">.venv</code>, and your Groq key throughout this practical.</p>
+<p><strong>Your required tasks:</strong> create the two direct-test files, add the two supplied tools to the agent’s existing <code translate="no">tools=[...]</code> list, restart the app, and show successful calls and results in the chat’s execution logs. You do not need to edit <code translate="no">Gradio_UI.py</code> or the model connection.</p>
 <p>This practical adapts the <a href="https://huggingface.co/learn/agents-course/en/unit1/tutorial">Hugging Face starter tutorial</a> for our local app.</p>
 <h2 id="1-open-the-adapted-starter">1. Prepare your existing app for editing<a class="headerlink" href="#1-open-the-adapted-starter" title="Permanent link">&para;</a></h2>
 <p>In the terminal running your app, press <strong>Control + C</strong> to stop it. Leave the template's virtual environment active. Open your existing <code translate="no">First_agent_template</code> folder in a code editor and save a copy of <code translate="no">app.py</code> as <code translate="no">app.before-tools.py</code> for comparison.</p>
@@ -1592,7 +1593,7 @@
 <p class="admonition-title">If you already have the completed app.py</p>
 <p>The completed reference has both tools registered. Keep its existing tools list. Run the direct tests in <strong>3B</strong> and <strong>4B</strong>, then the chat tests in <strong>3D</strong> and <strong>4D</strong>. You can skip the registration edits in <strong>3C</strong> and <strong>4C</strong>. The optional custom tool is still unfinished.</p>
 </div>
-<h2 id="what-you-will-add">What you will add<a class="headerlink" href="#what-you-will-add" title="Permanent link">&para;</a></h2>
+<h2 id="what-you-will-add">Supplied tools and your edits<a class="headerlink" href="#what-you-will-add" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1619,6 +1620,7 @@
 <p>Open <code translate="no">app.py</code> and find <code translate="no">CodeAgent(...)</code> inside <code translate="no">main()</code>. Its initial registration is:</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
 </code></pre></div>
+<p>At this point, only <code translate="no">final_answer</code> is registered. The time function and search class exist in your files, but the agent cannot call those supplied tools yet. Importing <code translate="no">WebSearchTool</code> does not enable web search. If the model produces a <code translate="no">web_search(...)</code> call before registration, that call fails; a link from model memory is not a search result.</p>
 <p>Keep <code translate="no">final_answer</code> in this list. You will add the existing timezone function and a search-tool instance in the next steps. The <code translate="no">STUDENT TASK</code> comments mark these edit points. Keep the working model connection and interface settings as they are.</p>
 <p>For the optional custom tool later, follow <a href="#6-optional-create-your-own-tool">Step 6: create and connect a new tool</a>.</p>
 <h3 id="how-does-the-agent-know-which-tools-it-can-use">How does the agent know which tools it can use?<a class="headerlink" href="#how-does-the-agent-know-which-tools-it-can-use" title="Permanent link">&para;</a></h3>

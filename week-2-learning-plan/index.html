@@ -585,6 +585,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-is-supplied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is supplied, and what do you do?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#learning-sequence" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -685,7 +696,7 @@
   <span class="md-ellipsis">
     
   
-    06 · Build your tools
+    06 · Enable & test tools
   
 
     
@@ -859,6 +870,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-is-supplied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is supplied, and what do you do?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#learning-sequence" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -901,11 +923,57 @@
 <p>Start after the <a href="../week-1-learning-plan/#week-1-completion">Week 1 completion checks</a>. Suggested time: <strong>3–4 hours</strong>, plus an optional custom-tool extension of 30–60 minutes. Keep your dummy script, Python installation, and Groq key.</p>
 <h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of Week 2, you can run the chat template end to end, explain how CodeAgent manages the loop, register and test tools, and verify an answer against execution evidence and a returned source.</p>
+<h2 id="what-is-supplied">What is supplied, and what do you do?<a class="headerlink" href="#what-is-supplied" title="Permanent link">&para;</a></h2>
+<p>The download already contains the chat interface, model connection, and implementations of the time and search tools. <strong>Your required task is to test and register those supplied tools, then demonstrate that the agent actually used them.</strong> You do not need to write their function bodies.</p>
+<p>“Register” means adding a tool to the <code translate="no">tools=[...]</code> list in <code translate="no">CodeAgent(...)</code>, so the agent can use it. A file or import by itself does not register a tool.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Supplied in the download</th>
+<th>Available to the agent at first startup?</th>
+<th>Your task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">final_answer</code></td>
+<td>Implemented in <code translate="no">tools/final_answer.py</code></td>
+<td>Yes</td>
+<td>Keep it registered; it returns the final result</td>
+</tr>
+<tr>
+<td><code translate="no">get_current_time_in_timezone</code></td>
+<td>Implemented in <code translate="no">app.py</code></td>
+<td>No</td>
+<td>Test, register, and check its execution</td>
+</tr>
+<tr>
+<td><code translate="no">WebSearchTool</code> (agent name: <code translate="no">web_search</code>)</td>
+<td>Implemented in <code translate="no">tools/web_search.py</code> and imported in <code translate="no">app.py</code></td>
+<td>No</td>
+<td>Test, register, and verify a returned source</td>
+</tr>
+<tr>
+<td><code translate="no">my_custom_tool</code></td>
+<td>Unfinished placeholder in <code translate="no">app.py</code></td>
+<td>No</td>
+<td>Optional: write your own implementation, then test and register it</td>
+</tr>
+<tr>
+<td><code translate="no">get_weather</code></td>
+<td>Not included in this template</td>
+<td>No</td>
+<td>No Week 2 task; it belongs to the Week 1 dummy exercise</td>
+</tr>
+</tbody>
+</table>
+<p>The untouched template can respond to a simple question and calculate <code translate="no">12 * 8</code>. Its supplied web-search tool is unavailable until you register it. A plausible URL or the words “I searched” are not evidence that a search ran.</p>
 <h2 id="learning-sequence">Learning sequence<a class="headerlink" href="#learning-sequence" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="../run-your-first-agent/">Download and run the template</a> in its own folder and virtual environment (about 45–60 minutes). Verify the answer to <code translate="no">12 * 8</code>; opening the page alone does not verify the model connection.</li>
 <li><a href="../understand-the-template/">Understand the template</a> with <code translate="no">app.py</code> open beside the lesson (about 30–45 minutes). Compare its automated loop with your Week 1 dummy script.</li>
-<li><a href="../first-agent-practical/">Build and test tools</a> (about 90–120 minutes): test timezone lookup directly, register it, and inspect an agent call; then repeat for web search and verify a returned source.</li>
+<li><a href="../first-agent-practical/">Enable and test the supplied tools</a> (about 90–120 minutes): test timezone lookup directly, register it, and inspect an agent call; then repeat for web search and verify a returned source.</li>
 <li>Demonstrate both tools and review <a href="../quizzes/#finish-the-practical">completion checks</a> (about 15 minutes).</li>
 <li>Optional: implement, describe, test, and register a custom tool using the <a href="../first-agent-practical/#6-optional-create-your-own-tool">worked example</a>.</li>
 </ol>
