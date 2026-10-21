@@ -1,1 +1,1584 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent Lab — lesson moved</title><meta http-equiv="refresh" content="0; url=../../run-your-first-agent/"></head><body><p>This lesson is available in English with browser translation. <a href="../../run-your-first-agent/">Open lesson</a></p><script>location.replace("../../run-your-first-agent/" + location.search + location.hash);</script></body></html>
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AIエージェントの基礎から、ローカルPython実習、ツールを使うエージェントの完成までを学ぶ2週間の教材。">
+      
+      
+      
+      
+        <link rel="prev" href="../week-2-learning-plan/">
+      
+      
+        <link rel="next" href="../understand-the-template/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>04 · テンプレートを動かす - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-create-your-groq-account" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 · テンプレートを動かす
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+<a class="md-header__button md-icon course-translate" href="../../run-your-first-agent/" data-course-language lang="en" hreflang="en" title="このレッスンを英語で読む" aria-label="言語を英語に切り替える：このレッスン">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    始める前に
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基礎と小テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · ローカル環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · ダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週 · テンプレートとツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第2週 · テンプレートとツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · テンプレートを動かす
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · テンプレートを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-your-groq-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Groq APIキーを用意する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. インストール済みのPythonを使う
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. テンプレートをダウンロードする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 仮想環境を作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 仮想環境を作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-install-the-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ライブラリをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-your-groq-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 配布されたモデル設定を保つ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-confirm-local-only-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ローカルだけで公開される設定を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-start-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. エージェントを起動する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-test-the-connection-to-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. LLMへの接続をテストする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-understand-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 使用量の制限を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stop-and-restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 停止と再起動
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 停止と再起動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トラブル対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="トラブル対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モデル接続の問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-editing-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        編集でよくある間違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 仕組みを理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · ツールを組み込む
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 学習の完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース全体の流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-your-groq-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Groq APIキーを用意する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. インストール済みのPythonを使う
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-the-groq-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. テンプレートをダウンロードする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 仮想環境を作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 仮想環境を作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-install-the-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ライブラリをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-your-groq-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 配布されたモデル設定を保つ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-confirm-local-only-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ローカルだけで公開される設定を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-start-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. エージェントを起動する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-test-the-connection-to-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. LLMへの接続をテストする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-understand-token-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 使用量の制限を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stop-and-restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 停止と再起動
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 停止と再起動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トラブル対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="トラブル対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-connection-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モデル接続の問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-editing-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        編集でよくある間違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="download-and-run-the-first-agent-template">最初のエージェントのテンプレートを入手して動かす<a class="headerlink" href="#download-and-run-the-first-agent-template" title="この見出しへのリンク">&para;</a></h1>
+<p><a href="../dummy-agent-local/">ダミー演習の3段階</a>を終えたら、第2週を始めます。このページで完全なテンプレートを入手し、専用の環境を準備して起動します。ダミー演習で手動で組み立てたモデル・行動・観測のループを、今度はCodeAgentが管理します。</p>
+<p><a href="../prepare-your-computer/">基本設定</a>で用意したPython 3.11とGroqキーを引き続き使います。アプリとツールはPC、モデルはGroq側で動くので、インターネット接続は必要です。</p>
+<p>自分のOSのコマンドだけを使ってください。ターミナル、フォルダー、編集については<a href="../before-you-start/">始める前に</a>を参照します。</p>
+<h2 id="1-create-your-groq-account">1. Groq APIキーを用意する<a class="headerlink" href="#1-create-your-groq-account" title="この見出しへのリンク">&para;</a></h2>
+<p><a href="../prepare-your-computer/#4-create-your-groq-api-key">基本設定</a>で作った同じキーを、ステップ8の起動時に非表示の入力欄へ貼れるよう準備します。別のアカウントやキーは必要ありません。</p>
+<p>まだ作っていない場合は、リンク先の設定を先に済ませます。</p>
+<h2 id="2-install-python-311">2. インストール済みのPythonを使う<a class="headerlink" href="#2-install-python-311" title="この見出しへのリンク">&para;</a></h2>
+<p>基本設定のPython 3.11を使います。ステップ4で新しい環境のバージョンを確認します。未導入なら<a href="../prepare-your-computer/#1-install-python-311">Pythonの設定</a>を先に行います。</p>
+<p>ダミー演習が動いているなら<strong>Control + C</strong>で止めます。入力待ち表示に<code translate="no">(.venv)</code>があれば、<code translate="no">deactivate</code>を実行してからテンプレートのフォルダーへ移ります。</p>
+<h2 id="3-download-the-groq-starter">3. テンプレートをダウンロードする<a class="headerlink" href="#3-download-the-groq-starter" title="この見出しへのリンク">&para;</a></h2>
+<div class="template-download">
+<p class="template-download__label">エージェントの完全なテンプレート</p>
+<p><code translate="no">app.py</code>、画面、ツール、手順、必要なライブラリ一覧が1つのZIPに入っています。「Groqスターター」と「エージェントテンプレート」は同じものです。APIキーと仮想環境は含まれません。</p>
+<p><a class="md-button md-button--primary template-download__button" download="groq-agent-starter.zip" href="../downloads/groq-agent-starter.zip">テンプレートをダウンロード（.zip）</a></p>
+</div>
+<ol>
+<li>上の<strong>テンプレートをダウンロード（.zip）</strong>をクリックします。</li>
+<li>Macではダブルクリック、Windowsでは右クリックから「すべて展開」でZIPを展開します。</li>
+<li><code translate="no">app.py</code>、<code translate="no">Gradio_UI.py</code>、<code translate="no">requirements.txt</code>、<code translate="no">prompts.yaml</code>、<code translate="no">tools</code>が入った<code translate="no">First_agent_template</code>フォルダーを見つけます。課題一覧の<code translate="no">STUDENT_TASKS.md</code>も入っています。</li>
+<li>基本設定で作った<code translate="no">agent-course</code>へ移します。同名のフォルダーがある場合は、置き換える前にバックアップを取ります。</li>
+<li>ターミナルを開いてプロジェクトへ移動します。</li>
+</ol>
+<p><strong>Windows — コマンドプロンプト</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+</code></pre></div>
+<p><strong>Mac — Terminal</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+</code></pre></div>
+<p>未展開のZIP内で作業しないでください。同名フォルダーが二重になっていれば、<code translate="no">app.py</code>が入った内側を使います。</p>
+<p><strong>確認：</strong>Windowsは<code translate="no">dir</code>、Macは<code translate="no">ls</code>で、<code translate="no">app.py</code>と<code translate="no">requirements.txt</code>があることを確認します。</p>
+<h2 id="4-create-a-virtual-environment">4. 仮想環境を作る<a class="headerlink" href="#4-create-a-virtual-environment" title="この見出しへのリンク">&para;</a></h2>
+<p>ダミー演習とライブラリを分けるため、<code translate="no">First_agent_template</code>内に新しい環境を作ります。ステップ3で移動した後、一度だけ実行します。</p>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="この見出しへのリンク">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>py -3.11 -m venv .venv
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python --version
+</code></pre></div>
+<h3 id="mac">Mac<a class="headerlink" href="#mac" title="この見出しへのリンク">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python<span class="w"> </span>--version
+</code></pre></div>
+<p><strong>確認：</strong>入力待ち表示に<code translate="no">(.venv)</code>が付き、Python 3.11.xと出ます。同じターミナルを使い続けます。</p>
+<h2 id="5-install-the-libraries">5. ライブラリをインストールする<a class="headerlink" href="#5-install-the-libraries" title="この見出しへのリンク">&para;</a></h2>
+<p>どちらのOSでも次を実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p>インストールが終わり、入力待ちに戻るまで待ちます。ダウンロードの進行表示は正常です。</p>
+<p><strong>確認：</strong>最後に<code translate="no">ERROR</code>が出ていないことを確認します。<code translate="no">Successfully installed</code>や<code translate="no">Requirement already satisfied</code>は正常です。処理中に次のコマンドを入力しないでください。</p>
+<p>Groq ZIPに入った<code translate="no">requirements.txt</code>を使います。<code translate="no">openai</code>クライアントも含まれますが、ここでは互換API経由でGroqにつなぐためのもので、OpenAIアカウントは不要です。</p>
+<h2 id="6-create-your-groq-api-key">6. 配布されたモデル設定を保つ<a class="headerlink" href="#6-create-your-groq-api-key" title="この見出しへのリンク">&para;</a></h2>
+<p><code translate="no">app.py</code>にはすでにGroq接続の設定があります。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">model_id</span><span class="o">=</span><span class="s2">"qwen/qwen3.8-27b"</span><span class="p">,</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">api_base</span><span class="o">=</span><span class="s2">"https://api.groq.com/openai/v1"</span><span class="p">,</span>
+</code></pre></div>
+<p>コードエージェント用に<code translate="no">reasoning_effort="none"</code>も設定しています。初回は変えずに使います。APIキーはソースに書かず、起動時に入力します。</p>
+<h2 id="7-confirm-local-only-sharing">7. ローカルだけで公開される設定を確認する<a class="headerlink" href="#7-confirm-local-only-sharing" title="この見出しへのリンク">&para;</a></h2>
+<p>スターターの<code translate="no">Gradio_UI.py</code>はすでに<code translate="no">share=False</code>で、<code translate="no">127.0.0.1</code>にバインドします。編集は不要です。</p>
+<p>古いコピーを使う場合は<code translate="no">demo.launch</code>に<code translate="no">share=False</code>があるか確認します。公開リンクを有効にすると、他の人が実行中アプリのGroq認証情報を使ってリクエストを送れる状態になります。</p>
+<h2 id="8-start-the-agent">8. エージェントを起動する<a class="headerlink" href="#8-start-the-agent" title="この見出しへのリンク">&para;</a></h2>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>app.py
+</code></pre></div>
+<p>ターミナルで最初に次のようにキーを求められます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Paste your Groq API key (hidden):
+</code></pre></div>
+<p>キーを貼ってEnter／Returnを押します。貼っている間、何も表示されないのは正常です。その後、次のように表示されます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Using Groq: qwen/qwen3.8-27b
+</code></pre></div>
+<p>入力したキーは実行中のメモリーだけに保持され、保存されません。別途<code translate="no">GROQ_API_KEY</code>を設定していれば、その値を使い、入力を求めません。キーを表示・共有しないでください。</p>
+<p>次のような起動表示を待ちます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Running on local URL: http://127.0.0.1:7860
+</code></pre></div>
+<p>表示された正確なアドレスをブラウザーで開き、ターミナルは動かしたままにします。</p>
+<p>アドレスの入力先はブラウザーのアドレス欄です。チャットではありません。違うポートが表示されたら、そのポートを使います。アプリの実行中に通常の入力待ちに戻らないのは正常です。</p>
+<h2 id="9-test-the-connection-to-the-llm">9. LLMへの接続をテストする<a class="headerlink" href="#9-test-the-connection-to-the-llm" title="この見出しへのリンク">&para;</a></h2>
+<p>次の英語のテスト質問を送ります（12×8はいくつか、という意味です）。</p>
+<blockquote>
+<p>What is 12 multiplied by 8?</p>
+</blockquote>
+<p>最終回答に<strong>96</strong>が含まれることを確認します。生成されたPythonや<code translate="no">python_interpreter</code>のステップも表示される場合があります。</p>
+<p><strong>確認：</strong>モデルが生成した答えが返れば、このリクエストについてキー、アカウント権限、接続先、モデルが動作したと分かります。チャット画面が開いただけでは画面の確認しかできません。失敗したら下の表を使います。</p>
+<p>時刻と検索はまだ登録されていません。<a href="../first-agent-practical/">ツール実習</a>で有効にします。</p>
+<h2 id="10-understand-token-usage">10. 使用量の制限を確認する<a class="headerlink" href="#10-understand-token-usage" title="この見出しへのリンク">&para;</a></h2>
+<p>1回のチャットで複数回のモデルリクエストが発生することがあります。<a href="https://console.groq.com/docs/rate-limits">Groqの利用制限</a>を確認し、短時間に送信を繰り返さないでください。APIキーは認証用、入力・出力トークンはテキストの使用量です。出力上限と設定は<a href="../understand-the-template/#the-model-connection">モデル接続の解説</a>を参照します。</p>
+<h2 id="11-stop-and-restart">11. 停止と再起動<a class="headerlink" href="#11-stop-and-restart" title="この見出しへのリンク">&para;</a></h2>
+<p>止めるには、ターミナルを選んで<strong>Control + C</strong>を押します。</p>
+<p>別の日に再開する場合、新しいターミナルで実行します。</p>
+<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="この見出しへのリンク">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\First_agent_template"</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>python app.py
+</code></pre></div>
+<h3 id="mac_1">Mac<a class="headerlink" href="#mac_1" title="この見出しへのリンク">&para;</a></h3>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/First_agent_template
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>python<span class="w"> </span>app.py
+</code></pre></div>
+<p>ライブラリの再インストールは不要です。求められたらGroqキーを入力し、表示されたローカルURLを開きます。</p>
+<h2 id="troubleshooting">トラブル対応<a class="headerlink" href="#troubleshooting" title="この見出しへのリンク">&para;</a></h2>
+<h3 id="model-connection-problems">モデル接続の問題<a class="headerlink" href="#model-connection-problems" title="この見出しへのリンク">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>次に確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pythonの版が違う</td>
+<td>ステップ4のPython 3.11環境を有効にする。</td>
+</tr>
+<tr>
+<td><code translate="no">app.py</code>や<code translate="no">requirements.txt</code>がない</td>
+<td>展開した<code translate="no">First_agent_template</code>へ移動する。</td>
+</tr>
+<tr>
+<td><code translate="no">ModuleNotFoundError: openai</code></td>
+<td><code translate="no">.venv</code>を有効にしてステップ5をやり直す。</td>
+</tr>
+<tr>
+<td>Groqキーを入力していない</td>
+<td>再起動し、非表示の入力欄に貼る。</td>
+</tr>
+<tr>
+<td>400／<code translate="no">tool_use_failed</code>／「Tool choice is none」</td>
+<td>現行スターターの<code translate="no">app.py</code>と<code translate="no">prompts.yaml</code>を使い、古いプロセスを停止して再起動する。更新版はGPT-OSSではなくQwenを選び、Pythonテキストを明示的に求める。続く場合は<a href="https://console.groq.com/docs/tool-use/local-tool-calling">Groqのツール呼び出し仕様</a>と配布版のモデルIDを確認する。この演習はPythonテキストを期待するため、むやみにネイティブツールを有効にしない。</td>
+</tr>
+<tr>
+<td>401／キーが無効</td>
+<td>ラベルやHFトークンではなくGroqキー全体を使う。有効期限や失効を確認する。</td>
+</tr>
+<tr>
+<td>403／アクセス拒否</td>
+<td>アカウント・プロジェクトのモデル権限と組織の制限を確認する。</td>
+</tr>
+<tr>
+<td>429／Request too large</td>
+<td>ターミナルで制限の種類を読む。出力なら<code translate="no">app.py</code>の<code translate="no">max_tokens</code>を下げて保存・再起動（現行版は512）。入力なら再起動して履歴を消すか質問を短くする。大きすぎる要求は待つだけでは直らない。</td>
+</tr>
+<tr>
+<td>429／利用枠を使い切った</td>
+<td>指定された再試行間隔に従う。無料枠はリクエスト数とトークンの両方に適用される。連続送信を避ける。</td>
+</tr>
+<tr>
+<td>404／モデルが利用できない</td>
+<td><code translate="no">model_id</code>を<a href="https://console.groq.com/docs/models">対応モデル一覧</a>と照合し、権限を確認する。IDは完全一致が必要。</td>
+</tr>
+<tr>
+<td>HF router 402／no credits</td>
+<td>古いHF接続のアプリが動いている。停止しGroqスターターを使う。この版のためにHFクレジットを買う必要はない。</td>
+</tr>
+<tr>
+<td>古い<code translate="no">NoneType</code>のトークン数エラー</td>
+<td>ZIP内の更新済み<code translate="no">Gradio_UI.py</code>を使っているか確認する。</td>
+</tr>
+<tr>
+<td>画面は開くが応答しない</td>
+<td>ターミナルのモデルエラーを読む。画面だけではAPIアクセスは分からない。</td>
+</tr>
+<tr>
+<td>接続エラー・タイムアウト</td>
+<td>インターネットとGroqの稼働状況を確認し、一度再試行する。現行版は1試行30秒、最大2回の自動再試行。待機中に何度も送らない。</td>
+</tr>
+<tr>
+<td>ブラウザーから接続できない</td>
+<td>アプリを起動したまま、表示されたURLを使う。</td>
+</tr>
+<tr>
+<td>ポートが使用中</td>
+<td>古いアプリのプロセスを停止してから起動する。</td>
+</tr>
+</tbody>
+</table>
+<p>質問するときはOS、コマンド、エラー末尾を伝えます。認証情報は除いてください。</p>
+<h3 id="common-editing-mistakes">編集でよくある間違い<a class="headerlink" href="#common-editing-mistakes" title="この見出しへのリンク">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>表示・症状</th>
+<th>確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">IndentationError</code></td>
+<td>編集部分の行頭の空白を、元ファイルやバックアップと比較して戻す。</td>
+</tr>
+<tr>
+<td><code translate="no">SyntaxError</code></td>
+<td>カンマ、引用符、角括弧、丸括弧の不足を調べる。</td>
+</tr>
+<tr>
+<td>ツール追加後の<code translate="no">NameError</code></td>
+<td>名前の綴り、エージェントより上での定義、保存を確認する。</td>
+</tr>
+<tr>
+<td><code translate="no">app.py.txt</code>になっている</td>
+<td>コードエディターで<code translate="no">app.py</code>として保存し、<code translate="no">.txt</code>を付けない。</td>
+</tr>
+<tr>
+<td>編集が反映されない</td>
+<td>保存し、アプリを停止・再起動して、画面も再読み込みする。</td>
+</tr>
+<tr>
+<td>ターミナルが<code translate="no">&gt;&gt;&gt;</code></td>
+<td><code translate="no">exit()</code>で通常のコマンド入力に戻る。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>完了確認：</strong>起動し、LLMの応答を得て、モデルの実行場所を説明し、アプリを止められることを確認します。</p>
+<p><strong>次へ：</strong><a href="../understand-the-template/">smolagentsとテンプレートの仕組み</a>を読み、<a href="../first-agent-practical/">ツールを組み込みます</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../week-2-learning-plan/" class="md-footer__link md-footer__link--prev" aria-label="前: 第2週の学習計画">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                第2週の学習計画
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../understand-the-template/" class="md-footer__link md-footer__link--next" aria-label="次: 05 · 仕組みを理解する">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                05 · 仕組みを理解する
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">SI Labの学生向けにAmpereが作成 · 原典：Hugging Face</div>
+  
+  
+    
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a> で作成
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

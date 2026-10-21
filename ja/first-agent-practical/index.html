@@ -1,1 +1,2110 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent Lab — lesson moved</title><meta http-equiv="refresh" content="0; url=../../first-agent-practical/"></head><body><p>This lesson is available in English with browser translation. <a href="../../first-agent-practical/">Open lesson</a></p><script>location.replace("../../first-agent-practical/" + location.search + location.hash);</script></body></html>
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AIエージェントの基礎から、ローカルPython実習、ツールを使うエージェントの完成までを学ぶ2週間の教材。">
+      
+      
+      
+      
+        <link rel="prev" href="../understand-the-template/">
+      
+      
+        <link rel="next" href="../quizzes/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>06 · ツールを組み込む - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-open-the-adapted-starter" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06 · ツールを組み込む
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+<a class="md-header__button md-icon course-translate" href="../../first-agent-practical/" data-course-language lang="en" hreflang="en" title="このレッスンを英語で読む" aria-label="言語を英語に切り替える：このレッスン">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    始める前に
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基礎と小テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · ローカル環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · ダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週 · テンプレートとツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第2週 · テンプレートとツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · テンプレートを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 仕組みを理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · ツールを組み込む
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · ツールを組み込む
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-open-the-adapted-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 既存のアプリを編集する準備
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-used-in-this-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この実習で使うファイル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        追加するもの
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-walk-through-apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ツールの登録箇所を見つける
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ツールの登録箇所を見つける">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-the-agent-know-which-tools-it-can-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エージェントは使えるツールをどう知るのか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-it-decide-when-to-call-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        呼ぶタイミングはどう決まるのか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enable-the-time-zone-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 時刻ツールを有効にする
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 時刻ツールを有効にする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-read-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 関数を読む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-it-without-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. エージェントなしでテストする
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-it-with-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. エージェントに登録する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ask-for-a-real-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 実際の呼び出しを頼む
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-explore-the-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 検索ツールを使う
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 検索ツールを使う">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-understand-what-this-tool-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 何が返るツールかを理解する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-search-directly-before-using-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. LLMを使う前に直接検索する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-the-search-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. 検索インスタンスを登録する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-give-the-agent-a-specific-search-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 具体的な検索を依頼する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-follow-the-evidence-into-the-final-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 最終回答まで根拠をたどる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-improve-one-query-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. 自分で検索語句を改善する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-diagnose-search-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. 検索の失敗を調べる
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-two-core-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 必須の2ツールを検証する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-create-your-own-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 任意：自分のツールを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 任意：自分のツールを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-scaffold-if-python-functions-are-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 関数と説明を書く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-function-before-the-agent-calls-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. エージェントの前に関数を試す
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-connect-the-tool-to-codeagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. CodeAgentにつなぐ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-restart-and-ask-for-a-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 再起動して呼び出しを頼む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-check-that-the-new-tool-actually-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 本当に実行されたか確認する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-later-put-the-tool-in-a-separate-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        後で別ファイルに移す場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-instructions-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 指示と設定を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-demonstrate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 結果を実演する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-complete-the-local-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. ローカル実習を完了する
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 学習の完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース全体の流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-open-the-adapted-starter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 既存のアプリを編集する準備
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-used-in-this-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この実習で使うファイル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        追加するもの
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-walk-through-apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ツールの登録箇所を見つける
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ツールの登録箇所を見つける">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-the-agent-know-which-tools-it-can-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エージェントは使えるツールをどう知るのか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-it-decide-when-to-call-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        呼ぶタイミングはどう決まるのか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enable-the-time-zone-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 時刻ツールを有効にする
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 時刻ツールを有効にする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-read-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 関数を読む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-it-without-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. エージェントなしでテストする
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-it-with-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. エージェントに登録する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ask-for-a-real-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 実際の呼び出しを頼む
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-explore-the-search-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 検索ツールを使う
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 検索ツールを使う">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-understand-what-this-tool-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 何が返るツールかを理解する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-test-search-directly-before-using-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. LLMを使う前に直接検索する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-register-the-search-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. 検索インスタンスを登録する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-give-the-agent-a-specific-search-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 具体的な検索を依頼する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-follow-the-evidence-into-the-final-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 最終回答まで根拠をたどる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-improve-one-query-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. 自分で検索語句を改善する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-diagnose-search-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. 検索の失敗を調べる
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-two-core-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 必須の2ツールを検証する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-create-your-own-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 任意：自分のツールを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 任意：自分のツールを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-scaffold-if-python-functions-are-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 関数と説明を書く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-function-before-the-agent-calls-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. エージェントの前に関数を試す
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-connect-the-tool-to-codeagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. CodeAgentにつなぐ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-restart-and-ask-for-a-tool-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. 再起動して呼び出しを頼む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-check-that-the-new-tool-actually-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. 本当に実行されたか確認する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-later-put-the-tool-in-a-separate-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        後で別ファイルに移す場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-instructions-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 指示と設定を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-demonstrate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 結果を実演する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-complete-the-local-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. ローカル実習を完了する
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="build-the-first-agent-local-walkthrough">最初のエージェントを拡張する：ローカル実習<a class="headerlink" href="#build-the-first-agent-local-walkthrough" title="この見出しへのリンク">&para;</a></h1>
+<p><a href="../run-your-first-agent/">テンプレートの入手</a>で準備・起動した<code translate="no">First_agent_template</code>を引き続き使います。モデルの応答を確認し、<a href="../understand-the-template/">仕組みの解説</a>を読んでから始めます。</p>
+<p>動くアプリに<strong>タイムゾーン別の時刻取得</strong>と<strong>ウェブ検索</strong>を加えます。同じプロジェクト、その<code translate="no">.venv</code>、Groqキーを使ってください。</p>
+<p><a href="https://huggingface.co/learn/agents-course/en/unit1/tutorial">Hugging Faceのスターターチュートリアル</a>を、ローカルアプリ用に構成した実習です。</p>
+<h2 id="1-open-the-adapted-starter">1. 既存のアプリを編集する準備<a class="headerlink" href="#1-open-the-adapted-starter" title="この見出しへのリンク">&para;</a></h2>
+<p>実行中のターミナルで<strong>Control + C</strong>を押して止めます。テンプレートの仮想環境は有効にしたままにし、エディターで既存の<code translate="no">First_agent_template</code>を開きます。比較用に<code translate="no">app.py</code>を<code translate="no">app.before-tools.py</code>としてコピーしておきます。</p>
+<p>編集ごとに保存し、同じターミナルで<code translate="no">python app.py</code>を実行し、キーを入力してチャット画面を再読み込みします。次の編集前には止めます。新しいターミナルで再開する場合は<a href="../run-your-first-agent/#11-stop-and-restart">再起動のコマンド</a>でこのプロジェクトの環境を有効にします。</p>
+<h2 id="files-used-in-this-practical">この実習で使うファイル<a class="headerlink" href="#files-used-in-this-practical" title="この見出しへのリンク">&para;</a></h2>
+<p>小さなテストスクリプトは、<strong>このレッスンで新しく作るファイル</strong>です。元のZIPにはありません。<code translate="no">checktime.py</code>ではなく、アンダースコア付きの<code translate="no">check_time.py</code>という正確な名前を使います。</p>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>作業</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">app.py</code></td>
+<td>既存プログラムを編集してツールを登録する</td>
+</tr>
+<tr>
+<td><code translate="no">check_time.py</code></td>
+<td>ステップ3Bで<code translate="no">app.py</code>の横に新規作成し、時刻関数を直接試す</td>
+</tr>
+<tr>
+<td><code translate="no">check_search.py</code></td>
+<td>ステップ4Bで<code translate="no">app.py</code>の横に新規作成し、検索を直接試す</td>
+</tr>
+<tr>
+<td><code translate="no">tools/web_search.py</code></td>
+<td>配布済み。<code translate="no">tools</code>内に置いたまま使う</td>
+</tr>
+</tbody>
+</table>
+<p>テスト2つを作ると、次の構成になります。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>First_agent_template/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── app.py
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── check_time.py
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── check_search.py
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── Gradio_UI.py
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── prompts.yaml
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── requirements.txt
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── tools/
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── final_answer.py
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── web_search.py
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>└── .venv/
+</code></pre></div>
+<p>テストは<code translate="no">tools/</code>や<code translate="no">.venv/</code>に入れず、この場所に保存します。各コードはそれぞれのファイルに入れ、<code translate="no">app.py</code>に混ぜません。<code translate="no">.txt</code>を余分に付けないでください。</p>
+<div class="admonition note">
+<p class="admonition-title">完成版のapp.pyを持っている場合</p>
+<p>完成版はすでに両ツールを登録しています。既存のリストを保ち、<strong>3B</strong>と<strong>4B</strong>の直接テスト、続いて<strong>3D</strong>と<strong>4D</strong>のチャットテストを行います。<strong>3C</strong>と<strong>4C</strong>の登録編集は飛ばせます。任意の独自ツールは未完成のままです。</p>
+</div>
+<h2 id="what-you-will-add">追加するもの<a class="headerlink" href="#what-you-will-add" title="この見出しへのリンク">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>すでにあるもの</th>
+<th>今回の作業</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>動作するが未登録の時刻関数</td>
+<td>直接テスト、登録、実際のエージェント呼び出しを確認</td>
+</tr>
+<tr>
+<td>未登録の検索ツール</td>
+<td>直接テスト、インスタンスの登録、情報源の検証</td>
+</tr>
+<tr>
+<td>未登録の独自ツールの仮実装</td>
+<td>任意で実装・テスト・登録</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-walk-through-apppy">2. ツールの登録箇所を見つける<a class="headerlink" href="#2-walk-through-apppy" title="この見出しへのリンク">&para;</a></h2>
+<p><code translate="no">app.py</code>の<code translate="no">main()</code>内で<code translate="no">CodeAgent(...)</code>を探します。最初は次の登録です。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">],</span>
+</code></pre></div>
+<p><code translate="no">final_answer</code>は残します。次の手順で既存の時刻関数と検索インスタンスを加えます。<code translate="no">STUDENT TASK</code>コメントが編集箇所の目印です。動いている接続設定と画面設定は保ちます。</p>
+<p>独自ツールは後の<a href="#6-optional-create-your-own-tool">ステップ6</a>で扱います。</p>
+<h3 id="how-does-the-agent-know-which-tools-it-can-use">エージェントは使えるツールをどう知るのか？<a class="headerlink" href="#how-does-the-agent-know-which-tools-it-can-use" title="この見出しへのリンク">&para;</a></h3>
+<p><code translate="no">tools=[...]</code>がPythonツールとエージェントの接続点です。<code translate="no">CodeAgent</code>は登録済みツールの<strong>名前、説明、入力の説明と型</strong>をモデルへの指示に含めます。モデルはそれをチャットの依頼と一緒に受け取り、適切な行動を選びます。</p>
+<p>東京の現在時刻は<code translate="no">get_current_time_in_timezone</code>、公式サイト探しは<code translate="no">web_search</code>の説明に合います。モデルはその名前を使うPythonを生成し、ローカル実行器が動かします。<a href="../understand-the-template/#what-codeagent-handles-automatically">CodeAgentの自動処理</a>も参照してください。</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>編集場所</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>関数の実装</td>
+<td><code translate="no">app.py</code>の<code translate="no">main()</code>より上の関数本体</td>
+<td>実際の処理</td>
+</tr>
+<tr>
+<td>関数の説明</td>
+<td><code translate="no">def</code>直下のdocstring</td>
+<td>いつ使う機能かを伝える</td>
+</tr>
+<tr>
+<td>入力の説明</td>
+<td>docstringの<code translate="no">Args:</code></td>
+<td>適切な引数を作る手掛かり</td>
+</tr>
+<tr>
+<td>ツール登録</td>
+<td><code translate="no">main()</code>の<code translate="no">CodeAgent(...)</code>内の<code translate="no">tools=[...]</code></td>
+<td>このエージェントから利用可能にする</td>
+</tr>
+</tbody>
+</table>
+<p>時刻関数はすでに<code translate="no">app.py</code>にあり、別の実装ファイルを作る必要はありません。<code translate="no">check_time.py</code>はテスト専用です。検索は<code translate="no">tools/web_search.py</code>に定義され、クラスの<code translate="no">description</code>が説明を持ちます。<code translate="no">app.py</code>のインポートでプログラムから使えますが、エージェントには<code translate="no">WebSearchTool(max_results=3)</code>を登録して初めて公開されます。</p>
+<h3 id="how-does-it-decide-when-to-call-a-tool">呼ぶタイミングはどう決まるのか？<a class="headerlink" href="#how-does-it-decide-when-to-call-a-tool" title="この見出しへのリンク">&para;</a></h3>
+<p>「timeと言われたら必ず呼ぶ」という固定ルールではありません。モデルが依頼と説明を見て選びます。初回は<strong>「Use get_current_time_in_timezone with Asia/Tokyo.」</strong>と、ツールと入力を明示しましょう。その後、コードと実行出力を確かめます。登録しても、選択や引数が正しいとは限りません。</p>
+<p><code translate="no">prompts.yaml</code>には一般的な指示と例があります。<code translate="no">search</code>や<code translate="no">wiki</code>が例に出ても、登録されたことにはなりません。<code translate="no">search(...)</code>という生成コードは検索成功の証拠ではなく、この教材の検索名は<code translate="no">web_search</code>です。ツールのリストと実際のログで判断します。</p>
+<h2 id="3-enable-the-time-zone-tool">3. 時刻ツールを有効にする<a class="headerlink" href="#3-enable-the-time-zone-tool" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>目標：</strong>実際の関数呼び出しから時刻を取得し、モデルの推測と区別します。</p>
+<h3 id="a-read-the-function">A. 関数を読む<a class="headerlink" href="#a-read-the-function" title="この見出しへのリンク">&para;</a></h3>
+<p><code translate="no">app.py</code>で<code translate="no">get_current_time_in_timezone</code>を探します。入力は<code translate="no">Asia/Tokyo</code>などの識別子で、出力は日付と時刻の文字列です。</p>
+<table>
+<thead>
+<tr>
+<th>コード</th>
+<th>働き</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">@tool</code></td>
+<td>エージェントが使うメタデータを付ける</td>
+</tr>
+<tr>
+<td><code translate="no">timezone: str</code></td>
+<td>入力が文字列だと示す</td>
+</tr>
+<tr>
+<td><code translate="no">pytz.timezone(timezone)</code></td>
+<td>識別子のタイムゾーン規則を取得する</td>
+</tr>
+<tr>
+<td><code translate="no">datetime.datetime.now(tz)</code></td>
+<td>PCの時計から、その地域の現在時刻を読む</td>
+</tr>
+<tr>
+<td><code translate="no">.strftime(...)</code></td>
+<td>読みやすい書式にする</td>
+</tr>
+<tr>
+<td><code translate="no">return ...</code></td>
+<td>呼び出し元に結果を返す</td>
+</tr>
+<tr>
+<td><code translate="no">except Exception ...</code></td>
+<td>入力や処理の失敗時にエラー文を返す</td>
+</tr>
+</tbody>
+</table>
+<p>タイムゾーン名は固定の時差ではなく地域を表します。夏時間で時差が変わる地域もあります。最初は<code translate="no">Asia/Tokyo</code>を使います。PCの時計自体のずれは、この関数では直せません。</p>
+<h3 id="b-test-it-without-the-agent">B. エージェントなしでテストする<a class="headerlink" href="#b-test-it-without-the-agent" title="この見出しへのリンク">&para;</a></h3>
+<p>アプリを止め、テンプレートの仮想環境は有効にしたまま進めます。</p>
+<ol>
+<li>エディターで<strong>新規ファイル</strong>を選びます。</li>
+<li>下のコードを貼ります。</li>
+<li>既存の<code translate="no">First_agent_template</code>内、<code translate="no">app.py</code>の横に<strong><code translate="no">check_time.py</code></strong>として保存します。</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_time_in_timezone</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Not/A_Real_Zone"</span><span class="p">))</span>
+</code></pre></div>
+<p>ターミナルが<code translate="no">First_agent_template</code>にあり、<code translate="no">(.venv)</code>が有効な状態で実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>check_time.py
+</code></pre></div>
+<p>1行目は東京の日付と時刻、2行目は<code translate="no">Error fetching time</code>で始まるエラーになるはずです。2つ目は不正入力の扱いを試すもので、時刻取得の成功ではありません。どちらもGroqやキーは不要です。<code translate="no">app</code>のインポートではチャットは起動せず、ツールだけが定義されます。</p>
+<p><strong>確認：</strong>正常な結果を東京の時計と比較します。2行目の不正タイムゾーンのエラーは意図したものです。正常な呼び出しが失敗したら、エージェント経由のテスト前に直します。</p>
+<p>ファイルを開けないと言われたら、<code translate="no">app.py</code>の横に保存したか、ターミナルがその場所にあるかを確認します。<code translate="no">dir</code>／<code translate="no">ls</code>で両方が見えるはずです。時刻関数を示す<code translate="no">ImportError</code>なら、<code translate="no">app.py</code>に関数を残して保存したかを確認します。</p>
+<h3 id="c-register-it-with-the-agent">C. エージェントに登録する<a class="headerlink" href="#c-register-it-with-the-agent" title="この見出しへのリンク">&para;</a></h3>
+<p>すでに<code translate="no">tools</code>に<code translate="no">get_current_time_in_timezone</code>があればそのままDへ進みます。なければ、元のスターターの<code translate="no">CodeAgent(...)</code>内の<code translate="no">tools=[final_answer]</code>という引数だけを置き換えます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">final_answer</span><span class="p">,</span> <span class="n">get_current_time_in_timezone</span><span class="p">],</span>
+</code></pre></div>
+<p>行頭の空白と末尾のカンマを保ち、<code translate="no">tools=</code>は1つだけにします。ここでは<code translate="no">get_current_time_in_timezone()</code>と書きません。起動時に呼ぶのではなく、機能を登録するためです。</p>
+<p>保存し、<code translate="no">python app.py</code>で起動し、キーを入力して画面を再読み込みします。</p>
+<h3 id="d-ask-for-a-real-tool-call">D. 実際の呼び出しを頼む<a class="headerlink" href="#d-ask-for-a-real-tool-call" title="この見出しへのリンク">&para;</a></h3>
+<p>チャットで次を送ります。「Asia/Tokyoで関数を使い、戻った時刻とその出所を報告して」というテストです。</p>
+<blockquote>
+<p>Use get_current_time_in_timezone with Asia/Tokyo. Report the returned time and say where it came from.</p>
+</blockquote>
+<p><strong>Used tool python_interpreter</strong>（使用したツール）を開き、その中の<strong>Execution Logs</strong>（実行ログ）を開いて値を確認します。ターミナルでも確認できます。次は行動の例です。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">get_current_time_in_timezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<p>これは実行記録で見分けるための出力例で、<code translate="no">app.py</code>に追加するコードではありません。変数名が異なったり、同じブロックで<code translate="no">final_answer</code>まで呼んだりする場合もあります。</p>
+<p><strong>確認：</strong>関数呼び出し、返された日時、それと一致する最終回答を探します。実行の根拠なしに「東京は10時」と言っただけでは不十分です。</p>
+<p>直接テストが成功しても未定義と言われたら、登録、綴り、保存、再起動を確認します。無視される場合は、再起動して履歴を新しくし、明示的な依頼を試します。</p>
+<h2 id="4-explore-the-search-tool">4. 検索ツールを使う<a class="headerlink" href="#4-explore-the-search-tool" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>目標：</strong>検索結果を取得して回答に使わせ、情報源の根拠と裏付けのない主張を区別します。</p>
+<h3 id="a-understand-what-this-tool-returns">A. 何が返るツールかを理解する<a class="headerlink" href="#a-understand-what-this-tool-returns" title="この見出しへのリンク">&para;</a></h3>
+<p>配布済みの<code translate="no">tools/web_search.py</code>の<code translate="no">WebSearchTool</code>は、小さな接続用コードです。smolagentsと保守されている<code translate="no">ddgs</code>パッケージをつなぎ、検索先に<strong>DuckDuckGoを明示</strong>しています。モデルから見える名前は<strong><code translate="no">web_search</code></strong>、入力は文字列の<code translate="no">query</code>、出力はタイトル・リンク・短い抜粋です。</p>
+<p>検索サービスに接続するのはPythonツールです。Groqは行動と回答を生成し、検索自体は行いません。追加の検索APIキーは不要ですが、失敗や制限は起こり得ます。</p>
+<p><strong>検索はページ全文の読解ではありません。</strong> 返るのは検索結果の抜粋で、リンク先全文を取得するツールではありません。要約も抜粋しか見ていない可能性があります。自分で情報源を開いて確認します。自動の全文取得には別ツールが必要で、この必須実習の範囲外です。</p>
+<h3 id="b-test-search-directly-before-using-the-llm">B. LLMを使う前に直接検索する<a class="headerlink" href="#b-test-search-directly-before-using-the-llm" title="この見出しへのリンク">&para;</a></h3>
+<p>アプリが動いていれば<strong>Control + C</strong>で止め、<code translate="no">.venv</code>は有効なままにします。</p>
+<ol>
+<li>エディターで<strong>新規ファイル</strong>を選びます。</li>
+<li>次のコードを貼ります。</li>
+<li><code translate="no">First_agent_template</code>内の<code translate="no">app.py</code>、<code translate="no">check_time.py</code>の横に<strong><code translate="no">check_search.py</code></strong>として保存します。</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tools.web_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">search_tool</span> <span class="o">=</span> <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Agent-facing name:"</span><span class="p">,</span> <span class="n">search_tool</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">search_tool</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">))</span>
+</code></pre></div>
+<p>有効なターミナルで、<code translate="no">First_agent_template</code>から実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>check_search.py
+</code></pre></div>
+<p>Groq要求やキーなしで検索サービスに直接接続するため、LLMと独立して通信を調べられます。</p>
+<p><code translate="no">max_results=3</code>は最大3件を求めます。読みやすくし、後でモデルに送る文字量を抑えるためです。エージェントの検索回数を制限するものではありません。</p>
+<p><code translate="no">web_search</code>という名前に続いて<code translate="no">Search Results</code>の見出しと、タイトル・URL・抜粋が出ることを確認します。内容と順序は変動します。以下は短縮した<strong>説明用の例</strong>で、実際の検索結果ではありません。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Agent-facing name: web_search
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>## Search Results
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>[The Python Tutorial](https://docs.python.org/3/tutorial/)
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>A short search-result description would appear here.
+</code></pre></div>
+<p><strong>確認：</strong>関連する結果が1つ以上あり、リンクが開くことを確認します。ファイルが開けない場合は3Bと同じく名前・保存場所・作業フォルダーを確認します。検索の障害なら、モデルやキーを変える前に下の対応表を使います。</p>
+<h3 id="c-register-the-search-instance">C. 検索インスタンスを登録する<a class="headerlink" href="#c-register-the-search-instance" title="この見出しへのリンク">&para;</a></h3>
+<p>すでに<code translate="no">tools</code>に<code translate="no">WebSearchTool(max_results=3)</code>があればそのままDへ進みます。元のスターターは<code translate="no">app.py</code>上部ですでに<code translate="no">tools.web_search</code>からインポートしていますが、それだけでは登録されません。既存の<code translate="no">tools=</code>引数を置き換えます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">final_answer</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">get_current_time_in_timezone</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">],</span>
+</code></pre></div>
+<p><code translate="no">CodeAgent(...)</code>の他の引数と同じ深さにそろえ、周囲と他の引数を保ちます。</p>
+<table>
+<thead>
+<tr>
+<th>式</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">WebSearchTool</code></td>
+<td>アプリにインポートしたクラス</td>
+</tr>
+<tr>
+<td><code translate="no">WebSearchTool(max_results=3)</code></td>
+<td>登録できる、設定済みのインスタンス</td>
+</tr>
+<tr>
+<td><code translate="no">web_search(query="...")</code></td>
+<td>生成Pythonでエージェントが使う呼び出し名</td>
+</tr>
+</tbody>
+</table>
+<p>インポートするクラスを<code translate="no">web_search</code>に改名しないでください。モデル用の名前はツール側が提供します。<code translate="no">tools/web_search.py</code>の<code translate="no">DDGS(timeout=15).text(..., backend="duckduckgo")</code>が検索を送り、返った辞書を整形します。<a href="https://pypi.org/project/ddgs/">DDGSの説明</a>には検索先の選択肢があります。</p>
+<p>保存して<code translate="no">python app.py</code>で再起動し、キーを入力してローカル画面を再読み込みします。</p>
+<h3 id="d-give-the-agent-a-specific-search-task">D. 具体的な検索を依頼する<a class="headerlink" href="#d-give-the-agent-a-specific-search-task" title="この見出しへのリンク">&para;</a></h3>
+<p>次を送ります。「公式Pythonチュートリアルを探し、結果からタイトルとURLを1つ返し、合う理由と抜粋しか見ていないかを説明して」という依頼です。</p>
+<blockquote>
+<p>Use web_search to find the official Python tutorial. Return one relevant title and URL from the results, and briefly explain why that source matches. Say if you only saw a search snippet.</p>
+</blockquote>
+<p>観測できる行動と範囲の狭い答えを求めています。初回から「AIについてすべて調べて」など広すぎる課題を出すと、呼び出しが増えて検証しにくくなります。</p>
+<p>記録には次のようなコードが出る場合があります。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"Python official documentation tutorial"</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</code></pre></div>
+<p>結果を次のステップで使う場合も、同じステップで終える場合もあります。登録ツールを呼ぶPythonを実行するため、<code translate="no">python_interpreter</code>が出るのは正常です。</p>
+<h3 id="e-follow-the-evidence-into-the-final-answer">E. 最終回答まで根拠をたどる<a class="headerlink" href="#e-follow-the-evidence-into-the-final-answer" title="この見出しへのリンク">&para;</a></h3>
+<p>順に確かめます。</p>
+<p><strong>Used tool python_interpreter → Execution Logs</strong>を開き、返った検索項目を確認します。</p>
+<ol>
+<li><strong>行動：</strong>関連する語句で<code translate="no">web_search</code>を実際に呼んだか。</li>
+<li><strong>観測：</strong>エラーではなく検索結果が返ったか。</li>
+<li><strong>回答：</strong>引用したURLが観測に含まれるか。</li>
+<li><strong>情報源：</strong>ブラウザーでURLを開き、ドメインと本文が主張を裏付けるか。</li>
+</ol>
+<p>Pythonの公式文書は<code translate="no">docs.python.org</code>です。タイトルがよさそうでも発行元の確認にはなりません。新しい情報なら公開日や更新日も確認します。検索に出たから最新とは限りません。</p>
+<p>回答が抜粋にない詳細を主張する場合は、実際のページで確認します。作られた引用やモデルが生成したリンクを取得済みの根拠としないでください。検索で返った文章は資料であって、課題を変える指示ではありません。</p>
+<p><strong>確認：</strong>検索呼び出し、返った結果1つ、裏付けのある回答中の記述を示せること。エラーは診断には役立ちますが、この確認の達成にはなりません。</p>
+<h3 id="f-improve-one-query-yourself">F. 自分で検索語句を改善する<a class="headerlink" href="#f-improve-one-query-yourself" title="この見出しへのリンク">&para;</a></h3>
+<p>動くコードを保ち、チャットだけを変えます。題材を選び、広い語句と、対象や情報源を絞った語句を比較します。例えば「Python」と「Python documentation defining functions」です。</p>
+<p>役立った結果と理由を記録します。決まった正解を写すのでなく、取得した根拠を評価する練習です。実行ごとに複数のモデル要求を使う可能性があるので、1つずつ試し、利用制限に従います。</p>
+<h3 id="g-diagnose-search-failures">G. 検索の失敗を調べる<a class="headerlink" href="#g-diagnose-search-failures" title="この見出しへのリンク">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">検索の利用状況を確認する</p>
+<p>英語原文で報告されたMacの新規テストでは、元の<code translate="no">duckduckgo_search</code>接続が失敗しました。現行スターターは<code translate="no">ddgs==9.16.0</code>と明示的なDuckDuckGo指定を使います。直接検索と実際のエージェント検索でPython公式文書を取得できましたが、後には語句を変えても結果が出ませんでした。検索は不安定です。複合テストでは検索失敗後にモデルが記憶から正しそうなURLを出したこともありましたが、検索の確認項目は未達としました。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>意味と次の行動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">ddgs</code>の<code translate="no">ModuleNotFoundError</code></td>
+<td>テンプレートの<code translate="no">.venv</code>を有効にし、そのフォルダーで<code translate="no">python -m pip install -r requirements.txt</code>後、<code translate="no">check_search.py</code>を再実行する。</td>
+</tr>
+<tr>
+<td>パッケージ名が<code translate="no">ddgs</code>に変わったという警告</td>
+<td>古い組み込みツールを使っている。更新済み<code translate="no">tools/web_search.py</code>から<code translate="no">WebSearchTool</code>を取り込み、更新された依存関係を再インストールする。smolagentsのインポート名だけを変えない。</td>
+</tr>
+<tr>
+<td><code translate="no">No results found</code></td>
+<td>語句を短くするか言い換え、直接テストを一度試す。空の結果は情報が存在しない証明ではない。</td>
+</tr>
+<tr>
+<td>タイムアウト、接続エラー、遮断</td>
+<td>インターネットと検索サイトの表示を確認する。ただしブラウザーで開いても自動要求が許可されるとは限らない。後で、または別の許可されたネットワークで試す。</td>
+</tr>
+<tr>
+<td>検索側の回数制限</td>
+<td>待って後で再試行する。再起動や連続試行を繰り返さない。Groqキーを変えても検索側の制限は直らない。</td>
+</tr>
+<tr>
+<td>エージェントテスト中のGroq <code translate="no">429</code></td>
+<td>ターミナルを読む。「Request too large」は出力予算削減や入力短縮、それ以外の利用枠不足は指定のリセットを待つ。接続設定ページの対応表を参照。直接検索成功はGroq枠の残りを保証しない。</td>
+</tr>
+<tr>
+<td>生成コードの<code translate="no">web_search</code>が未定義</td>
+<td><code translate="no">tools</code>に検索インスタンスがあるか確認し、保存・再起動する。</td>
+</tr>
+<tr>
+<td>直接検索は成功するが呼ばれない</td>
+<td>Dの明示的な依頼を使い、登録を確認し、再起動で履歴を新しくして試す。</td>
+</tr>
+<tr>
+<td>結果と違うURLを回答する</td>
+<td>観測と照合し、実際に返ったURLを使うよう頼む。</td>
+</tr>
+</tbody>
+</table>
+<p>検索が使えなければ実行記録の説明を読み進め、後で動作確認に戻ります。検索テストは未完了とし、架空の結果で置き換えません。</p>
+<h2 id="5-verify-the-two-core-tools">5. 必須の2ツールを検証する<a class="headerlink" href="#5-verify-the-two-core-tools" title="この見出しへのリンク">&para;</a></h2>
+<p>時刻は確認しやすいローカル結果、検索は外部サービスと情報源評価を学ぶ、最初の組み合わせです。追加キーは不要ですが、検索はGroqと独立に遮断・制限され得ます。</p>
+<p>まず別々に試してから組み合わせます。複合テストでは次を送ります。時刻を取得した後、公式文書を検索し、検索が失敗したら記憶のリンクで代用しないよう依頼しています。</p>
+<blockquote>
+<p>Get the current time in Asia/Tokyo using the time tool, then search for the official Python documentation. Give me a source link actually returned by web_search. If search fails, say that it failed; do not substitute a link from memory.</p>
+</blockquote>
+<p><strong>両方</strong>の呼び出しと正常な出力を確認します。時刻を信頼できる時計と比べ、返った文書リンクを開きます。正しいと知っているリンクでも、検索観測に含まれる必要があります。飛ばされたら明示的に依頼し直して次の実行を確認します。架空の時刻や記憶からのリンクを成功に数えません。明確な依頼をしても、自分での確認は必要です。</p>
+<p><code translate="no">final_answer</code>は終了の仕組みとして登録を保ちます。今回有効にする2機能とは別です。</p>
+<p>画像生成は除外されています。登録する画像ツールも画像サービスの設定もありません。</p>
+<h2 id="6-optional-create-your-own-tool">6. 任意：自分のツールを作る<a class="headerlink" href="#6-optional-create-your-own-tool" title="この見出しへのリンク">&para;</a></h2>
+<p>目的は自分で決めます。以下は、コードと説明の書き場所を示す<strong>架空のモルドール風単語集</strong>です。実在の翻訳ではなく、汎用翻訳器でもありません。自分のツールは別の題材でも構いません。</p>
+<p><strong>書く → 説明する → 直接試す → 登録する → 依頼する → 実行を確認する</strong>の順で進めます。説明を付けても実装は必要です。</p>
+<h3 id="a-scaffold-if-python-functions-are-new">A. 関数と説明を書く<a class="headerlink" href="#a-scaffold-if-python-functions-are-new" title="この見出しへのリンク">&para;</a></h3>
+<p><strong>Control + C</strong>で止め、<code translate="no">app.py</code>の<strong><code translate="no">main()</code>より上</strong>にある任意の<code translate="no">@tool</code>／<code translate="no">my_custom_tool</code>を探します。デコレーター、古いdocstring、<code translate="no">raise NotImplementedError(...)</code>を含む関数全体を次に置き換えます。時刻関数と他の部分は残します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nd">@tool</span>  <span class="c1"># Make the function's name, description, and inputs available to smolagents.</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">translate_to_mordor</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">"""Translate one supported English word using an invented Mordor-style demo glossary.</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">        text: One English word to translate: hello, friend, or goodbye.</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="sd">    """</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="n">glossary</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"hello"</span><span class="p">:</span> <span class="s2">"mor"</span><span class="p">,</span> <span class="s2">"friend"</span><span class="p">:</span> <span class="s2">"dur"</span><span class="p">,</span> <span class="s2">"goodbye"</span><span class="p">:</span> <span class="s2">"nak"</span><span class="p">}</span>  <span class="c1"># Invented demo words.</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">word</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># Ignore surrounding spaces and capital letters.</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">glossary</span><span class="p">:</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="k">return</span> <span class="s2">"Unsupported word. Choose hello, friend, or goodbye."</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="k">return</span> <span class="n">glossary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>  <span class="c1"># Return the dictionary result; no model or online translator is called.</span>
+</code></pre></div>
+<p>この例の辞書は<code translate="no">hello → mor</code>、<code translate="no">friend → dur</code>、<code translate="no">goodbye → nak</code>の3語だけです。前後の空白と大文字小文字を整え、未対応なら「hello、friend、goodbyeから選んでください」というエラー文を返します。モデルやオンライン翻訳は使いません。</p>
+<table>
+<thead>
+<tr>
+<th>コード</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">translate_to_mordor</code></td>
+<td>エージェントが呼ぶ名前</td>
+</tr>
+<tr>
+<td><code translate="no">text: str</code></td>
+<td>入力は文字列</td>
+</tr>
+<tr>
+<td><code translate="no">-&gt; str</code></td>
+<td>戻り値は文字列</td>
+</tr>
+<tr>
+<td>三重引用符内の最初の文</td>
+<td>機能と用途を説明するdocstring</td>
+</tr>
+<tr>
+<td><code translate="no">Args:</code>／<code translate="no">text:</code></td>
+<td>モデルが渡す入力の説明</td>
+</tr>
+<tr>
+<td><code translate="no">glossary</code>、検索、<code translate="no">return</code></td>
+<td>実際のPython処理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>説明はどこを変える？</strong> チャットや<code translate="no">prompts.yaml</code>ではなく、<code translate="no">def</code>直下のdocstringです。実際の機能と限界を書きます。3語だけに対応するので、説明もその範囲にします。</p>
+<h3 id="check-the-function-before-the-agent-calls-it">B. エージェントの前に関数を試す<a class="headerlink" href="#check-the-function-before-the-agent-calls-it" title="この見出しへのリンク">&para;</a></h3>
+<p>エディターで<code translate="no">app.py</code>の横に<strong><code translate="no">check_my_tool.py</code></strong>を作り、次を貼って保存します。アプリは止めたまま、<code translate="no">.venv</code>を有効にします。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">translate_to_mordor</span>  <span class="c1"># Import the new function; do not launch the chat.</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">translate_to_mordor</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"Hello"</span><span class="p">))</span>  <span class="c1"># Normal input; capital letters are accepted.</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">translate_to_mordor</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"unknown"</span><span class="p">))</span>  <span class="c1"># Unsupported input checks the function's limit.</span>
+</code></pre></div>
+<p><code translate="no">First_agent_template</code>から実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>check_my_tool.py
+</code></pre></div>
+<p>期待する出力：</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>mor
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Unsupported word. Choose hello, friend, or goodbye.
+</code></pre></div>
+<p>Groqもキーも使わない直接のPythonテストです。別のツールならインポートと入力を合わせ、実行前に期待結果を書き出します。直接テストの失敗を直してからエージェントを試します。</p>
+<h3 id="c-connect-the-tool-to-codeagent">C. CodeAgentにつなぐ<a class="headerlink" href="#c-connect-the-tool-to-codeagent" title="この見出しへのリンク">&para;</a></h3>
+<p><code translate="no">main()</code>の<code translate="no">CodeAgent(...)</code>で、時刻・検索・完了用のツールを残し、<strong>既存</strong>のリストに関数名を追加します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">final_answer</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">get_current_time_in_timezone</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">WebSearchTool</span><span class="p">(</span><span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">translate_to_mordor</span><span class="p">,</span>  <span class="c1"># ADDED: allow the agent to call the new function.</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">],</span>
+</code></pre></div>
+<p>デコレーター付き関数は括弧なしの<code translate="no">translate_to_mordor</code>で登録します。<code translate="no">translate_to_mordor(...)</code>では起動時に呼んでしまいます。<code translate="no">WebSearchTool(max_results=3)</code>の括弧はクラスのインスタンス作成なので必要です。<code translate="no">tools=</code>は1つだけにします。</p>
+<p><code translate="no">app.py</code>内で定義したなら、ツール本体用の別ファイルは不要です。<code translate="no">check_my_tool.py</code>はテスト専用です。</p>
+<h3 id="d-restart-and-ask-for-a-tool-call">D. 再起動して呼び出しを頼む<a class="headerlink" href="#d-restart-and-ask-for-a-tool-call" title="この見出しへのリンク">&para;</a></h3>
+<p>保存して<code translate="no">python app.py</code>で起動し、キーを入力して画面を再読み込みします。「Helloをデモ辞書で訳して戻り値を報告して」というテストです。</p>
+<blockquote>
+<p>Use translate_to_mordor to translate the word Hello using the demo glossary. Report the returned value.</p>
+</blockquote>
+<p><code translate="no">CodeAgent</code>は登録された名前とdocstringをモデルに渡します。モデルは次のような行動を生成できます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">translated</span> <span class="o">=</span> <span class="n">translate_to_mordor</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"Hello"</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">translated</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">final_answer</span><span class="p">(</span><span class="n">translated</span><span class="p">)</span>
+</code></pre></div>
+<p>実行記録で認識するための例で、関数定義に貼るコードではありません。ローカル実行器が呼び出し、必要ならCodeAgentが結果やエラーをモデルに渡して続きを進めます。ダミー演習のように自分で行動ループを書く必要はありません。</p>
+<h3 id="e-check-that-the-new-tool-actually-ran">E. 本当に実行されたか確認する<a class="headerlink" href="#e-check-that-the-new-tool-actually-ran" title="この見出しへのリンク">&para;</a></h3>
+<p><strong>Used tool python_interpreter → Execution Logs</strong>で<code translate="no">translate_to_mordor</code>の呼び出し、<code translate="no">mor</code>、それと一致する最終回答を探します。「翻訳しました」という発言だけでは不十分です。</p>
+<p>次に未対応の語を頼みます。翻訳を作らず、関数の限界を伝えるか確認します。直接動くのにエージェントで失敗する場合は、保存、登録、正確な名前、docstring、生成引数、再起動を確認します。名前を明示しても選ぶのはモデルなので、記録を読みます。</p>
+<h3 id="if-you-later-put-the-tool-in-a-separate-file">後で別ファイルに移す場合<a class="headerlink" href="#if-you-later-put-the-tool-in-a-separate-file" title="この見出しへのリンク">&para;</a></h3>
+<p>初めは<code translate="no">app.py</code>の<code translate="no">main()</code>より上が簡単です。<code translate="no">tools/mordor.py</code>に分けるなら、デコレーター付きの関数全体を移し、そのファイル上部に追加します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</code></pre></div>
+<p>次に<code translate="no">app.py</code>上部でインポートします。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tools.mordor</span><span class="w"> </span><span class="kn">import</span> <span class="n">translate_to_mordor</span>
+</code></pre></div>
+<p><code translate="no">CodeAgent</code>の登録は残し、<code translate="no">app.py</code>の重複定義を削除します。直接テストのインポート先も<code translate="no">tools.mordor</code>に変えます。<strong>インポートはプログラムへの読み込み、登録はエージェントへの公開です。</strong> <code translate="no">tools/</code>というフォルダー名だけでは接続されません。</p>
+<p>仕様は<a href="https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools">smolagents 1.13.0ツールガイド</a>、引数・戻り値・docstringは<a href="https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions">Pythonの関数ガイド</a>を参照してください。</p>
+<h2 id="7-inspect-instructions-and-settings">7. 指示と設定を確認する<a class="headerlink" href="#7-inspect-instructions-and-settings" title="この見出しへのリンク">&para;</a></h2>
+<p>プロンプトはモデル要求の一部として送るテキストです。<code translate="no">prompts.yaml</code>のシステム指示は使えるツールと応答形式を示します。生成を導きますが、関数を実行したりモデルを訓練したりしません。エージェントが指示を組み立てるとき、ツール説明などをプレースホルダーに埋めます。</p>
+<p>ファイルを開いて指示を探し、書式の指示を1つ選んで実際の応答と比べます。<a href="../understand-the-template/#instructions-and-agent-construction">指示がモデルに届く仕組み</a>も参照します。試しに変える場合はバックアップを取り、YAMLのインデントとテンプレートのプレースホルダーを保ちます。</p>
+<p><code translate="no">app.py</code>のモデル識別子と<code translate="no">max_steps</code>を探します。初回は動く設定を保ちます。<code translate="no">max_steps</code>はループ、<code translate="no">max_tokens</code>は個々の生成の出力上限で、追加クレジットも正確さも保証しません。他モデルの実験は、アクセス権とライブラリ互換性の範囲で可能です。</p>
+<h2 id="8-demonstrate-the-result">8. 結果を実演する<a class="headerlink" href="#8-demonstrate-the-result" title="この見出しへのリンク">&para;</a></h2>
+<p>時刻と検索について、それぞれ呼び出し・観測・最終回答を示します。独自ツールを完成した場合はそれも実演します。エラーを手掛かりに実装や説明を直し、試し直します。</p>
+<p>ローカルアプリの実演で構いません。Space公開は実行環境に依存するため必須ではありません。意図的に有効にした一時公開リンクは所有者の認証情報を使い、恒久的なホスティングではありません。</p>
+<h2 id="9-complete-the-local-practical">9. ローカル実習を完了する<a class="headerlink" href="#9-complete-the-local-practical" title="この見出しへのリンク">&para;</a></h2>
+<p><a href="../quizzes/#finish-the-practical">完了確認</a>を振り返ります。小テスト2つは基礎レッスン内にあり、最終テストや認定取得は必須ではありません。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../understand-the-template/" class="md-footer__link md-footer__link--prev" aria-label="前: 05 · 仕組みを理解する">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                05 · 仕組みを理解する
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../quizzes/" class="md-footer__link md-footer__link--next" aria-label="次: 07 · 学習の完了確認">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                07 · 学習の完了確認
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">SI Labの学生向けにAmpereが作成 · 原典：Hugging Face</div>
+  
+  
+    
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a> で作成
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

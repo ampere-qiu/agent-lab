@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A local-environment companion to Hugging Face Agents Course Unit 1.">
+        <meta name="description" content="A two-week introduction to AI agents: concepts, local Python practice, and a working tool-using agent.">
       
       
       
       
-        <link rel="prev" href="../unit-1-walkthrough/">
+        <link rel="prev" href="../prepare-your-computer/">
       
       
-        <link rel="next" href="../run-your-first-agent/">
+        <link rel="next" href="../week-2-learning-plan/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>03 · Dummy steps 1–3 - Agent Lab</title>
+        <title>03 · Dummy agent - Agent Lab</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03 · Dummy steps 1–3
+              03 · Dummy agent
             
           </span>
         </div>
@@ -143,9 +143,10 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
-      <a class="md-header__button md-icon course-translate" href="https://translate.google.com/translate?sl=en&tl=ja&hl=ja&u=http%3A%2F%2Fmondheera.website%2Fagent-lab%2Fdummy-agent-local%2F" target="_blank" rel="noopener noreferrer" data-course-translate lang="ja" translate="no" title="Open this lesson in Japanese with Google Translate" aria-label="Read this page in Japanese with Google Translate (opens new tab)">
+      
+<a class="md-header__button md-icon course-translate" href="../ja/dummy-agent-local/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  <span>日本語</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
 </a>
     
     
@@ -259,8 +260,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -271,13 +274,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -287,7 +288,7 @@
   <span class="md-ellipsis">
     
   
-    Week 1 · Foundations
+    Week 1 · Concepts & dummy agent
   
 
     
@@ -298,16 +299,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Week 1 · Foundations
+    Week 1 · Concepts & dummy agent
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -344,14 +373,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../prepare-your-computer/" class="md-nav__link">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    01 · Basic setup
+    01 · Agent foundations & quizzes
   
 
     
@@ -372,14 +401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../unit-1-walkthrough/" class="md-nav__link">
+      <a href="../prepare-your-computer/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    02 · Lessons & quick quizzes
+    02 · Local setup
   
 
     
@@ -392,67 +421,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Week 1 · Build
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Week 1 · Build
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -475,7 +443,7 @@
   <span class="md-ellipsis">
     
   
-    03 · Dummy steps 1–3
+    03 · Dummy agent
   
 
     
@@ -493,7 +461,7 @@
   <span class="md-ellipsis">
     
   
-    03 · Dummy steps 1–3
+    03 · Dummy agent
   
 
     
@@ -580,6 +548,95 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 · Working template & tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 2 · Working template & tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
               
                 
   
@@ -594,7 +651,7 @@
   <span class="md-ellipsis">
     
   
-    04 · Get the agent template
+    04 · Run the template
   
 
     
@@ -678,7 +735,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Quick quizzes & completion
+    07 · Completion checks
   
 
     
@@ -760,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week-1-learning-plan/" class="md-nav__link">
+      <a href="../course-route/" class="md-nav__link">
         
   
   
@@ -768,34 +825,6 @@
     
   
     Course route
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ja/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    日本語で読む / Translation
   
 
     
@@ -1051,7 +1080,8 @@
 </tbody>
 </table>
 <p>This weather function is only a dummy example. The full agent's core tools will be <strong>real timezone lookup and web search</strong>.</p>
-<p><strong>Next:</strong> <a href="../run-your-first-agent/">Download and run the agent template</a>, then <a href="../understand-the-template/">understand how smolagents manages the loop</a>.</p>
+<p><strong>Finish Week 1:</strong> Review the <a href="../week-1-learning-plan/#week-1-completion">Week 1 completion checks</a>. You can stop here for this week.</p>
+<p><strong>Next week:</strong> Follow the <a href="../week-2-learning-plan/">Week 2 plan</a>, starting with <a href="../run-your-first-agent/">downloading and running the agent template</a>.</p>
 
 
 
@@ -1087,7 +1117,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../unit-1-walkthrough/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02 · Lessons &amp; quick quizzes">
+          <a href="../prepare-your-computer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02 · Local setup">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1097,20 +1127,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                02 · Lessons & quick quizzes
+                02 · Local setup
               </div>
             </div>
           </a>
         
         
           
-          <a href="../run-your-first-agent/" class="md-footer__link md-footer__link--next" aria-label="Next: 04 · Get the agent template">
+          <a href="../week-2-learning-plan/" class="md-footer__link md-footer__link--next" aria-label="Next: Week 2 plan">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                04 · Get the agent template
+                Week 2 plan
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1126,15 +1156,12 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
-    <div class="md-copyright__highlight">
-      Created by Ampere for SI Lab students · Original course by Hugging Face
-    </div>
+    <div class="md-copyright__highlight">Created by Ampere for SI Lab students · Original course by Hugging Face</div>
   
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
+    
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+    
   
 </div>
       

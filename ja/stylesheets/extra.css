@@ -1,0 +1,58 @@
+:root { --md-text-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; --md-code-font: "SFMono-Regular", Consolas, monospace; }
+/* Lavender surfaces with deeper purple text and controls for contrast. */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #62418c;
+  --md-primary-fg-color--light: #8060aa;
+  --md-primary-fg-color--dark: #483064;
+  --md-accent-fg-color: #7045a0;
+  --md-accent-fg-color--transparent: #7045a01a;
+  --md-default-bg-color: #fcfaff;
+  --course-surface: #f1eafa;
+  --course-border: #cbb5e3;
+  --course-button: #62418c;
+  --course-button-hover: #483064;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #493166;
+  --md-primary-fg-color--light: #62418c;
+  --md-primary-fg-color--dark: #342248;
+  --md-accent-fg-color: #d3b4ff;
+  --md-accent-fg-color--transparent: #d3b4ff1a;
+  --md-default-bg-color: #211c2b;
+  --md-code-bg-color: #2d263a;
+  --course-surface: #30253f;
+  --course-border: #8060aa;
+  --course-button: #62418c;
+  --course-button-hover: #754fa3;
+}
+.md-grid { max-width: 78rem; }
+.md-header { box-shadow: none; border-bottom: 1px solid #ffffff24; }
+.md-typeset { font-size: .82rem; line-height: 1.75; }
+.md-typeset h1 { font-weight: 750; letter-spacing: -.045em; color: var(--md-default-fg-color); }
+.md-typeset h2 { font-weight: 680; letter-spacing: -.025em; margin-top: 2.1em; }
+.md-typeset h3 { font-weight: 650; }
+.md-typeset pre > code { border-radius: .45rem; border: 1px solid #8060aa30; }
+.md-typeset table:not([class]) { border-radius: .5rem; overflow: hidden; }
+.md-nav__link { line-height: 1.5; }
+.md-nav__item .md-nav__link--active { font-weight: 700; }
+.course-hero { padding: 2rem; margin: 0 0 2rem; border: 1px solid var(--course-border); border-radius: 1rem; background: linear-gradient(120deg, var(--course-surface), var(--md-default-bg-color)); }
+.course-hero .eyebrow { font-size: .65rem; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; color: var(--md-accent-fg-color); margin: 0 0 .65rem; }
+.course-hero h1 { margin: 0 0 .6rem; font-size: 2.15rem; line-height: 1.16; }
+.course-hero p { max-width: 36rem; }
+.md-typeset .md-button { border-radius: .4rem; font-size: .73rem; padding: .55em 1.1em; }
+.course-meta { font-size: .65rem; opacity: .75; margin-top: 1.2rem; }
+.md-typeset .template-download { margin: 0 0 1.8rem; padding: 1.3rem 1.5rem; border: 2px solid var(--course-border); border-left-width: 6px; border-radius: .7rem; background: var(--course-surface); }
+.md-typeset .template-download__label { margin: 0 0 .5rem; font-size: .65rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.md-typeset .template-download > p:nth-child(2) { margin-top: 0; font-size: 1.1rem; line-height: 1.4; }
+.md-typeset .template-download__button { padding: .85em 1.25em; font-size: .85rem; font-weight: 750; text-align: center; background: var(--course-button); border-color: var(--course-button); color: #fff; }
+.md-typeset .template-download__button:hover { background: var(--course-button-hover); border-color: var(--course-button-hover); color: #fff; }
+.md-typeset .template-download__button:focus-visible { outline: 3px solid var(--md-default-fg-color); outline-offset: 4px; }
+@media (max-width: 600px) { .md-typeset .template-download { padding: 1rem; } .md-typeset .template-download__button { display: block; width: 100%; white-space: normal; } }
+@media (max-width: 600px) { .course-hero { padding: 1.2rem; } .course-hero h1 { font-size: 1.65rem; } }
+/* Native language switch; uses the matching lesson in the same tab. */
+.course-translate { display: inline-flex; align-items: center; gap: .3rem; flex-shrink: 0; padding: .25rem .5rem; border: 1px solid #ffffff66; border-radius: .4rem; }
+.course-translate span { font-size: .65rem; font-weight: 650; white-space: nowrap; }
+.course-translate:hover { background: #ffffff18; }
+.course-translate:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+html[lang="ja"] .md-typeset h1, html[lang="ja"] .md-typeset h2 { letter-spacing: normal; }
