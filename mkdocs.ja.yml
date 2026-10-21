@@ -1,0 +1,51 @@
+INHERIT: mkdocs.yml
+site_description: AIエージェントの基礎から、ローカルPython実習、ツールを使うエージェントの完成までを学ぶ2週間の教材。
+docs_dir: docs-ja
+site_dir: site/ja
+theme:
+  language: ja
+  palette:
+  - scheme: default
+    primary: deep purple
+    accent: deep purple
+    toggle:
+      icon: material/weather-night
+      name: ダークモードに切り替え
+  - scheme: slate
+    primary: deep purple
+    accent: deep purple
+    toggle:
+      icon: material/weather-sunny
+      name: ライトモードに切り替え
+plugins:
+- search:
+    lang: ja
+copyright: SI Labの学生向けにAmpereが作成 · 原典：Hugging Face
+nav:
+- はじめに: index.md
+- 第1週 · 基礎とダミーエージェント:
+  - 第1週の学習計画: week-1-learning-plan.md
+  - 始める前に: before-you-start.md
+  - 01 · 基礎と小テスト: unit-1-walkthrough.md
+  - 02 · ローカル環境の準備: prepare-your-computer.md
+  - 03 · ダミーエージェント: dummy-agent-local.md
+- 第2週 · テンプレートとツール:
+  - 第2週の学習計画: week-2-learning-plan.md
+  - 04 · テンプレートを動かす: run-your-first-agent.md
+  - 05 · 仕組みを理解する: understand-the-template.md
+  - 06 · ツールを組み込む: first-agent-practical.md
+  - 07 · 学習の完了確認: quizzes.md
+- 参考:
+  - コース全体の流れ: course-route.md
+markdown_extensions:
+- admonition
+- attr_list
+- md_in_html
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.highlight:
+    anchor_linenums: true
+- toc:
+    permalink: true
+    toc_depth: 2-3
+    permalink_title: この見出しへのリンク

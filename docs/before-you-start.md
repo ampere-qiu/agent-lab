@@ -1,8 +1,8 @@
-# Before you start
+# Before you start { #before-you-start }
 
 This walkthrough explains setup from the beginning. The later practical expects you to recognize a Python function, its arguments, and its return value. For a refresher, read the [Python guide to defining functions](https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions), including arguments and return values. You do not need previous experience building agents.
 
-## What you need
+## What you need { #what-you-need }
 
 - A Windows PC or Mac, a browser, and an internet connection.
 - Permission to install Python and a code editor. On a managed computer, use its approved software portal; if installation is restricted, use a computer where you have installation permission.
@@ -11,7 +11,7 @@ This walkthrough explains setup from the beginning. The later practical expects 
 
 The local app still contacts remote services. Working installations can encounter model availability, permissions, or credit limits. An error at that stage is not necessarily a mistake in your code.
 
-## Know which window to use
+## Know which window to use { #know-which-window-to-use }
 
 | Window | What goes there |
 | --- | --- |
@@ -21,7 +21,7 @@ The local app still contacts remote services. Working installations can encounte
 
 Never paste terminal commands into the agent chat. Never paste your token into the chat or a Python source file.
 
-### Open a command window
+### Open a command window { #open-a-command-window }
 
 **Mac:** press Command + Space, type `Terminal`, and press Return.
 
@@ -31,7 +31,7 @@ Copy only the text inside a command block, or use its copy button. Do not copy t
 
 `(.venv)` is part of a prompt, not a command. `>>>` means you opened the Python interpreter; type `exit()` and press Enter/Return to get back to your normal command window.
 
-## Find your downloaded project
+## Find your downloaded project { #find-your-downloaded-project }
 
 During the dummy exercise, work in `agent-course/dummy-agent` and create `dummy_agent.py` there. Later, after downloading the first-agent starter, use this separate folder:
 
@@ -54,7 +54,7 @@ Other files may also be present. Edit the project files, not files inside `.venv
 
 In your editor, use **File → Open Folder** (if available) to open that folder. Select a file from its file list. Double-clicking a `.py` file in the file manager may run it instead of opening it for editing.
 
-## Edit a file without losing your place
+## Edit a file without losing your place { #edit-a-file-without-losing-your-place }
 
 1. Open the named file in your editor.
 2. Use Find (Command + F on Mac or Control + F on Windows) to locate the exact text in the guide.
@@ -65,10 +65,10 @@ In your editor, use **File → Open Folder** (if available) to open that folder.
 
 Do not use a word processor to edit Python. Indentation is part of Python's structure; keep the spacing shown in code examples.
 
-## If you get stuck
+## If you get stuck { #if-you-get-stuck }
 
 Stop at the first failing step rather than continuing with later commands. Note the step number and the command you ran. Copy the error from the terminal, excluding any credentials, then match the error to [troubleshooting](run-your-first-agent.md#troubleshooting). Check your current folder, active environment, and the exact command before retrying.
 
 For a running app, the terminal stays occupied: this is expected. To run another command there, first stop the app with Control + C. On a Mac, this is the Control key, not Command.
 
-**Next:** [Prepare your computer](prepare-your-computer.md).
+**Next in Week 1:** [Read the agent foundations](unit-1-walkthrough.md), then [prepare your computer](prepare-your-computer.md).

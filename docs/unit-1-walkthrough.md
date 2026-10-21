@@ -1,6 +1,6 @@
-# Agent foundations and quick quizzes
+# Agent foundations and quick quizzes { #agent-foundations-and-quick-quizzes }
 
-Read this lesson after [basic setup](prepare-your-computer.md). Each topic below links directly to its original Hugging Face lesson, where you can follow Alfred’s illustrations and other visual explanations. Our self-contained notes remain below each link. Use this guide for the local Python and Groq practical.
+Start Week 1 with these concepts; [local setup](prepare-your-computer.md) follows the reading. Each topic below links directly to its original Hugging Face lesson, where you can follow Alfred’s illustrations and other visual explanations. Our self-contained notes remain below each link. Use this guide for the local Python and Groq practical.
 
 !!! note "If an original HF activity does not work"
 
@@ -8,7 +8,7 @@ Read this lesson after [basic setup](prepare-your-computer.md). Each topic below
 
     If an original HF activity does not load or run, **skip that activity and continue reading**. You do not need to complete a broken HF playground to proceed with this course. Return to this guide for the local dummy exercises and Groq agent practical; those are the hands-on activities for our adaptation.
 
-## 1. What is an agent?
+## 1. What is an agent? { #1-what-is-an-agent }
 
 **Read on Hugging Face:** [What is an Agent?](https://huggingface.co/learn/agents-course/en/unit1/what-are-agents) — includes Alfred’s illustrated example.
 
@@ -20,11 +20,11 @@ The **goal** is what you want to achieve. A **tool** is an available capability.
 
 Not every program needs an agent. A fixed calculation with known inputs is often simpler as a direct function call. An agent is useful when different requests require different capabilities or several decisions.
 
-## 2. Quick Quiz 1
+## 2. Quick Quiz 1 { #2-quick-quiz-1 }
 
 Complete [Hugging Face Quick Quiz 1](https://huggingface.co/learn/agents-course/en/unit1/quiz1), then return here. We retain the original interactive activity rather than reproduce its questions. If temporarily unavailable, continue reading and retry later.
 
-## 3. The model, provider, and local program
+## 3. The model, provider, and local program { #3-the-model-provider-and-local-program }
 
 **Read on Hugging Face:** [What are LLMs?](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms)
 
@@ -36,7 +36,7 @@ Models process **tokens**, units of encoded text that can represent parts of wor
 
 Adding earlier results to a request provides context but increases usage. The model has a finite context capacity. Sending a message does not train or update its weights.
 
-## 4. Messages and roles
+## 4. Messages and roles { #4-messages-and-roles }
 
 **Read on Hugging Face:** [Messages and Special Tokens](https://huggingface.co/learn/agents-course/en/unit1/messages-and-special-tokens)
 
@@ -53,7 +53,7 @@ A **system** message supplies instructions; a **user** message supplies the task
 
 In the dummy exercise you add an observation yourself. In the full agent, smolagents manages the history.
 
-## 5. Tools and descriptions
+## 5. Tools and descriptions { #5-tools-and-descriptions }
 
 **Read on Hugging Face:** [What are Tools?](https://huggingface.co/learn/agents-course/en/unit1/tools)
 
@@ -68,20 +68,20 @@ The model uses descriptions to select a capability and construct inputs. A descr
 
 Search results need checking. Open a returned page, prefer primary sources, and inspect dates when relevant. A URL generated from model memory is not evidence of a search.
 
-## 6. Quick Quiz 2
+## 6. Quick Quiz 2 { #6-quick-quiz-2 }
 
 Complete [Hugging Face Quick Quiz 2](https://huggingface.co/learn/agents-course/en/unit1/quiz2), covering models, messages, and tools. These two quick quizzes are the quiz activities for this adaptation. The account-gated final quiz and certification flow are outside its scope.
 
-## 7. The action–observation loop
+## 7. The action–observation loop { #7-the-actionobservation-loop }
 
-### Read on Hugging Face
+### Read on Hugging Face { #read-on-hugging-face }
 
 1. [Understanding AI Agents through the Thought–Action–Observation Cycle](https://huggingface.co/learn/agents-course/en/unit1/agent-steps-and-structure)
 2. [Thought: Internal Reasoning and the ReAct Approach](https://huggingface.co/learn/agents-course/en/unit1/thoughts)
 3. [Actions: Enabling the Agent to Engage with Its Environment](https://huggingface.co/learn/agents-course/en/unit1/actions)
 4. [Observe: Integrating Feedback to Reflect and Adapt](https://huggingface.co/learn/agents-course/en/unit1/observations)
 
-### Local summary: how the loop runs
+### Local summary: how the loop runs { #local-summary-how-the-loop-runs }
 
 These are the steps inside one agent loop, summarizing the linked lessons above.
 
@@ -97,12 +97,14 @@ Actions can be structured data naming a function and its inputs, or code. The du
 
 An observation can be an error, such as an invalid timezone or blocked search. Preserve that distinction rather than presenting a guess as a verified result. A step limit bounds the loop but does not guarantee correctness.
 
-## 8. Put the concepts into practice
+## 8. Put the concepts into practice { #8-put-the-concepts-into-practice }
 
 **Original HF walkthroughs:** [Dummy Agent Library](https://huggingface.co/learn/agents-course/en/unit1/dummy-agent-library) and [Let’s Create Our First Agent Using smolagents](https://huggingface.co/learn/agents-course/en/unit1/tutorial). Read these for context; follow our local exercises below for the runnable setup.
 
-[Build the dummy example in three stages](dummy-agent-local.md), then [download the starter](run-your-first-agent.md), [understand its components](understand-the-template.md), and [enable time and web search](first-agent-practical.md).
+In Week 1, [prepare the environment](prepare-your-computer.md) and [build the dummy example in three stages](dummy-agent-local.md). In Week 2, [download the starter](run-your-first-agent.md), [understand its components](understand-the-template.md), and [enable time and web search](first-agent-practical.md).
 
-Finish by showing that both tools ran and explaining their results. A custom tool is optional. Image generation has been removed.
+Finish Week 2 by showing that both tools ran and explaining their results. A custom tool is optional. Image generation has been removed.
 
 Source and optional further reading: [Hugging Face Agents Course Unit 1](https://huggingface.co/learn/agents-course/en/unit1/introduction). These local explanations are written for our Groq-based exercise, not copied verbatim from the source.
+
+**Next in Week 1:** [Prepare your computer](prepare-your-computer.md).

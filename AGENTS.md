@@ -1,9 +1,10 @@
 # Lesson editing workflow
 
-- Maintain the lessons in English. Japanese reading uses Google Translate's website view or the user's browser translation feature; do not create separate Japanese lesson versions.
-- Keep the 日本語 button linked to the matching published lesson in Google Translate, and retain browser-translation instructions at /ja/.
-- Preserve code blocks, commands, identifiers, filenames, and test prompts. Code must be marked `translate="no"` in the generated site.
-- Write and validate lesson changes in English for Ampere's review.
-- Build with `.venv/bin/python -m mkdocs build --strict` from this directory.
-- Keep previous Japanese lesson URLs working through the redirects in `hooks/translation.py`.
-- Do not copy changes to GitHub or publish without a request to do so.
+- Maintain authored English lessons in `docs/` and Japanese counterparts in `docs-ja/`. Do not use browser translation as the Japanese edition.
+- Keep lesson filenames, explicit section IDs, runnable examples, and test prompts aligned across languages. Explain code and literal output in Japanese around the unchanged examples.
+- Keep the EN / 日本語 switch linked to the matching lesson and section.
+- Preserve the two-week sequence: Week 1 concepts, setup, and dummy agent; Week 2 working template and tools.
+- Shared styling, scripts, and downloads originate in `docs/`; `hooks/bilingual.py` copies them for the Japanese build.
+- Run `python -m mkdocs build --strict` and `python -m unittest discover -s tests -v` before publishing.
+- Do not commit generated `site/`, local environments, credentials, or caches.
+- Push or publish only when the user requests it. Pushing `main` triggers the existing publishing workflow.

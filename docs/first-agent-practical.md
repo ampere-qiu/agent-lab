@@ -1,4 +1,4 @@
-# Build the first agent: local walkthrough
+# Build the first agent: local walkthrough { #build-the-first-agent-local-walkthrough }
 
 Continue with the `First_agent_template` you already downloaded, set up, and ran in [Get the agent template](run-your-first-agent.md). You should have received a model response and read [Understand the template](understand-the-template.md).
 
@@ -12,7 +12,7 @@ In the terminal running your app, press **Control + C** to stop it. Leave the te
 
 After each edit, save the file, run `python app.py` in that same terminal, enter your Groq key when prompted, and refresh the chat page. Stop the app before making the next change. If returning in a new terminal, use the [restart commands](run-your-first-agent.md#11-stop-and-restart) to reactivate this project's environment.
 
-## Files used in this practical
+## Files used in this practical { #files-used-in-this-practical }
 
 The small test scripts are **new files you create during this lesson**. They are not in the original starter ZIP. Use the exact name `check_time.py` (with an underscore), not `checktime.py`.
 
@@ -45,7 +45,7 @@ Keep the test scripts here, not inside `tools/` or `.venv/`. Put each test's cod
 
     The completed reference has both tools registered. Keep its existing tools list. Run the direct tests in **3B** and **4B**, then the chat tests in **3D** and **4D**. You can skip the registration edits in **3C** and **4C**. The optional custom tool is still unfinished.
 
-## What you will add
+## What you will add { #what-you-will-add }
 
 | Already in your template | Your work now |
 | --- | --- |
@@ -65,7 +65,7 @@ Keep `final_answer` in this list. You will add the existing timezone function an
 
 For the optional custom tool later, follow [Step 6: create and connect a new tool](#6-optional-create-your-own-tool).
 
-### How does the agent know which tools it can use?
+### How does the agent know which tools it can use? { #how-does-the-agent-know-which-tools-it-can-use }
 
 `tools=[...]` is the connection between your Python tools and the agent. `CodeAgent` includes each registered tool's **name, description, input descriptions, and types** in the instructions sent to the model. The model receives this information together with your chat request and chooses a suitable action.
 
@@ -80,17 +80,17 @@ For example, a request for Tokyo's current time fits the description of `get_cur
 
 The timezone function is already defined in `app.py`; it needs registration, not another implementation file. `check_time.py` only tests it. Search is defined separately in `tools/web_search.py`: its class has a `description` field, and the import in `app.py` makes the class available to your program. Registering `WebSearchTool(max_results=3)` makes an instance available to the agent.
 
-### How does it decide when to call a tool?
+### How does it decide when to call a tool? { #how-does-it-decide-when-to-call-a-tool }
 
 There is no fixed rule such as “if the user says time, call this function.” The model uses the request and tool descriptions to choose. For a first test, ask explicitly: **“Use get_current_time_in_timezone with Asia/Tokyo.”** Then inspect the code and execution output. Registration makes a tool available; it does not guarantee the model chooses it or supplies the correct inputs.
 
 `prompts.yaml` contains general instructions and examples. Some examples mention `search` or `wiki`, but examples do not register tools. A generated `search(...)` call is not a successful search; our registered search tool is named `web_search`. Use the tools list and the actual execution logs to check what happened.
 
-## 3. Enable the time-zone tool
+## 3. Enable the time-zone tool { #3-enable-the-time-zone-tool }
 
 **Goal:** make the agent obtain a time from an actual function call and distinguish that result from a model guess.
 
-### A. Read the function
+### A. Read the function { #a-read-the-function }
 
 Find `get_current_time_in_timezone` in `app.py`. Its input is a timezone identifier such as `Asia/Tokyo`. Its output is a string containing the date and time.
 
@@ -106,7 +106,7 @@ Find `get_current_time_in_timezone` in `app.py`. Its input is a timezone identif
 
 Timezone names identify regions, not fixed offsets. Some regions change offset during daylight saving time. Use `Asia/Tokyo` for your first test. The function cannot correct an inaccurate computer clock.
 
-### B. Test it without the agent
+### B. Test it without the agent { #b-test-it-without-the-agent }
 
 With the app stopped and the template's virtual environment still active:
 
@@ -134,7 +134,7 @@ The first line should report Tokyo's date and time. The second should start with
 
 If Python says it cannot open `check_time.py`, confirm that you saved it beside `app.py` and that the terminal is in that folder. `dir` on Windows or `ls` on Mac should list both files. If an `ImportError` names the time function, check that you kept the function in `app.py` and saved the file.
 
-### C. Register it with the agent
+### C. Register it with the agent { #c-register-it-with-the-agent }
 
 If `get_current_time_in_timezone` is already in your `tools` list, leave it there and go to Step D. Otherwise, in the original starter's `app.py`, find `tools=[final_answer]` inside `CodeAgent(...)` and replace that argument only with:
 
@@ -146,7 +146,7 @@ Keep the leading indentation and trailing comma. There should be only one `tools
 
 Save, run `python app.py`, enter your Groq key, and refresh the local chat page.
 
-### D. Ask for a real tool call
+### D. Ask for a real tool call { #d-ask-for-a-real-tool-call }
 
 Send in the chat:
 
@@ -165,11 +165,11 @@ This is illustrative output to recognize, not another block to paste into `app.p
 
 If the direct test works but the agent reports an undefined function, check the registration, spelling, saved file, and restart. If it ignores the function, repeat the explicit tool request in a freshly restarted app.
 
-## 4. Explore the search tool
+## 4. Explore the search tool { #4-explore-the-search-tool }
 
 **Goal:** let the agent retrieve search results, use them in an answer, and distinguish source evidence from unsupported claims.
 
-### A. Understand what this tool returns
+### A. Understand what this tool returns { #a-understand-what-this-tool-returns }
 
 `WebSearchTool` is a small adapter supplied in our template’s `tools/web_search.py`. It connects smolagents to the maintained `ddgs` Python package, with **DuckDuckGo explicitly selected as the search service**. The agent sees the name **`web_search`**. Its input is one text argument, `query`. Its output contains result titles, links, and short snippets.
 
@@ -177,7 +177,7 @@ The Python tool contacts a search service. Groq generates the agent's actions an
 
 **Search is not full-page reading.** This tool returns search-result snippets; it does not fetch and read the full contents of each linked page. When the agent summarizes results, it may only have seen those snippets. You will open a source yourself to verify it. Automatically reading pages would require another tool and is outside the two-tool core practical.
 
-### B. Test search directly before using the LLM
+### B. Test search directly before using the LLM { #b-test-search-directly-before-using-the-llm }
 
 Stop the app with **Control + C** if it is running; leave the template's `.venv` active.
 
@@ -216,7 +216,7 @@ A short search-result description would appear here.
 
 **Checkpoint:** at least one relevant result is returned and its link opens. If Python cannot open `check_search.py`, check the file's name, saved location, and current terminal folder as in Step 3B. For a search-service error, use the troubleshooting table below before changing the model or API key.
 
-### C. Register the search instance
+### C. Register the search instance { #c-register-the-search-instance }
 
 If your `tools` list already contains `WebSearchTool(max_results=3)`, keep it and go to Step D. Otherwise, the starter already imports `WebSearchTool` from `tools.web_search` near the top of `app.py`. The import alone does not register it. Find your existing `tools=` argument and replace it with:
 
@@ -240,7 +240,7 @@ Do not rename the class to `web_search` in your import. The tool supplies that a
 
 Save and restart with `python app.py`, paste your key, and refresh the local browser page.
 
-### D. Give the agent a specific search task
+### D. Give the agent a specific search task { #d-give-the-agent-a-specific-search-task }
 
 Send:
 
@@ -257,7 +257,7 @@ print(results)
 
 The model can then use those results in another step, or finish in the same step. `python_interpreter` in the trace is expected: CodeAgent runs Python that calls the registered search tool.
 
-### E. Follow the evidence into the final answer
+### E. Follow the evidence into the final answer { #e-follow-the-evidence-into-the-final-answer }
 
 Check these in order:
 
@@ -274,13 +274,13 @@ If the final answer claims details absent from the snippets, verify them on the 
 
 **Checkpoint:** you can point to a search call, one returned result, and a supported statement in the final answer. An error is useful for diagnosis but does not complete this checkpoint.
 
-### F. Improve one query yourself
+### F. Improve one query yourself { #f-improve-one-query-yourself }
 
 Keep the working code and change only the chat request. Choose a topic, then compare a broad query with a more specific query containing the subject and source you want. For example, compare “Python” with “Python documentation defining functions.”
 
 Record which result is useful and why. This small exercise is about judging retrieved evidence, not copying a predetermined answer. Each agent run may use multiple model requests, so run the examples one at a time and respect usage limits.
 
-### G. Diagnose search failures
+### G. Diagnose search failures { #g-diagnose-search-failures }
 
 !!! note "Search availability check"
 
@@ -300,7 +300,7 @@ Record which result is useful and why. This small exercise is about judging retr
 
 If external search remains unavailable, continue reading the trace explanation and return to the live checkpoint later. Label the search test incomplete; do not replace it with invented results.
 
-## 5. Verify the two core tools
+## 5. Verify the two core tools { #5-verify-the-two-core-tools }
 
 Time and search are a useful first pair: time provides an easily checked local result, while search introduces an external service and source evaluation. Neither requires adding another API key in this starter. Search can still be blocked or rate-limited independently of Groq.
 
@@ -314,7 +314,7 @@ Inspect the trace for **both** calls and their successful outputs. Compare the t
 
 Image generation has been removed from this adaptation. There is no image tool to register or image-service setup to complete.
 
-## 6. Optional: create your own tool
+## 6. Optional: create your own tool { #6-optional-create-your-own-tool }
 
 You choose the purpose of your tool. The example below uses a tiny **invented Mordor-style glossary** to show where the code and descriptions go. These demo words are not authentic translations, and this is not a general translator. You can use another topic for your own tool.
 
@@ -376,7 +376,7 @@ Unsupported word. Choose hello, friend, or goodbye.
 
 This is a direct Python test. It does not use Groq or require a key. If you choose a different tool, change the import and inputs to match your function, and write down expected results before running it. Fix direct-test failures before testing through the agent.
 
-### C. Connect the tool to CodeAgent
+### C. Connect the tool to CodeAgent { #c-connect-the-tool-to-codeagent }
 
 Inside `main()`, find `CodeAgent(...)`. Add your function's name to its **existing** tools list, keeping the time, search, and final-answer tools:
 
@@ -393,7 +393,7 @@ Register a decorated function by name: `translate_to_mordor`, without parenthese
 
 You do not need another `.py` file for the tool itself when its definition is in `app.py`. `check_my_tool.py` is only the test script.
 
-### D. Restart and ask for a tool call
+### D. Restart and ask for a tool call { #d-restart-and-ask-for-a-tool-call }
 
 Save `app.py`, run `python app.py`, enter your Groq key when prompted, and refresh the chat page. Send:
 
@@ -409,13 +409,13 @@ final_answer(translated)
 
 This is an example of generated action code to recognize in the trace; do not paste it into your function definition. The local executor runs the call. If another step is needed, CodeAgent supplies the result or error to the model, which can continue toward an answer. You do not write that action loop yourself as you did in the dummy exercise.
 
-### E. Check that the new tool actually ran
+### E. Check that the new tool actually ran { #e-check-that-the-new-tool-actually-ran }
 
 Open **Used tool python_interpreter → Execution Logs**. Find the `translate_to_mordor` call, the returned `mor`, and a final answer consistent with that result. The model saying “I translated it” without an executed call is insufficient.
 
 Then ask for an unsupported word. The answer should report the function's limit instead of inventing a translation. If the function works directly but the agent test fails, check the saved file, registration, exact function name, docstring, generated arguments, and restart. Tool choice is made by the model, so inspect the trace even when you explicitly name the tool.
 
-### If you later put the tool in a separate file
+### If you later put the tool in a separate file { #if-you-later-put-the-tool-in-a-separate-file }
 
 For your first tool, keeping it above `main()` in `app.py` is simplest. If you choose to organize it as `tools/mordor.py`, move the complete decorated function there and add this import at the top of that file:
 
@@ -433,7 +433,7 @@ Keep its registration in `CodeAgent`'s tools list. Remove the duplicate definiti
 
 For the interface details, see the [smolagents 1.13.0 tools guide](https://huggingface.co/docs/smolagents/v1.13.0/en/tutorials/tools). For Python parameters, returns, and docstrings, see [Python's function guide](https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions).
 
-## 7. Inspect instructions and settings
+## 7. Inspect instructions and settings { #7-inspect-instructions-and-settings }
 
 A prompt is text sent as part of a model request. The system instructions in `prompts.yaml` describe available tools and the expected response structure. They guide generation; they do not execute functions or train the model. The template placeholders are filled with information such as tool descriptions when the agent builds its instructions.
 
@@ -441,12 +441,12 @@ Open `prompts.yaml` and locate the instructions. Compare one formatting instruct
 
 In `app.py`, locate the model identifier and `max_steps`. Keep working settings for the first run. `max_steps` limits the action loop, while `max_tokens` limits the output allowance of an individual completion. Neither grants extra API credits or guarantees a correct answer. Experiments with other models remain possible, subject to access and library compatibility.
 
-## 8. Demonstrate the result
+## 8. Demonstrate the result { #8-demonstrate-the-result }
 
 Demonstrate timezone lookup and web search, showing each call, observation, and final answer. If you completed the optional custom tool, demonstrate that too. Use errors to revise your implementation or description and retry.
 
 Demonstrate the local app. Publishing a Space is the environment-specific exception and is not required. A temporary public link, if deliberately enabled, uses the app owner's credentials and is not permanent hosting.
 
-## 9. Complete the local practical
+## 9. Complete the local practical { #9-complete-the-local-practical }
 
 Review the [completion checks](quizzes.md#finish-the-practical). The two quick quizzes appear in the foundations lesson; there is no final-quiz or certificate requirement.

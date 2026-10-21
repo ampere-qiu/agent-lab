@@ -47,11 +47,11 @@ Replace agent-lab if you chose another repository name. Open the address, visit 
 
 ## 6. Make future updates
 
-Edit Markdown under docs/ on main and commit. The workflow republishes the site automatically. If you maintain local copies, keep this publishing copy and the original course source synchronized. Updates in one local folder do not automatically update the other.
+Edit the matching English and Japanese Markdown under docs/ and docs-ja/ on main. Run `python -m mkdocs build --strict` and `python -m unittest discover -s tests -v`, then commit. The workflow republishes the site automatically. If you maintain local copies, keep this publishing copy and the original course source synchronized. Updates in one local folder do not automatically update the other.
 
 ## Official references
 
 - https://squidfunk.github.io/mkdocs-material/publishing-your-site/
 - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-Prepared locally; deployment to a real GitHub repository has not yet been tested.
+The existing repository is https://github.com/ampere-qiu/agent-lab. Its workflow publishes on pushes to main. The bilingual hook builds both language editions during the standard MkDocs build.

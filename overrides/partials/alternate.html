@@ -1,4 +1,5 @@
-<a class="md-header__button md-icon course-translate" href="{{ course_translation_url | default(config.extra.translation_home_url, true) }}" target="_blank" rel="noopener noreferrer" data-course-translate lang="ja" translate="no" title="Open this lesson in Japanese with Google Translate" aria-label="Read this page in Japanese with Google Translate (opens new tab)">
+{% set lang = course_language | default(config.extra.course_language) %}
+<a class="md-header__button md-icon course-translate" href="{{ course_alternate | default(config.extra.course_alternate) }}" data-course-language lang="{{ 'en' if lang == 'ja' else 'ja' }}" hreflang="{{ 'en' if lang == 'ja' else 'ja' }}" title="{{ 'このレッスンを英語で読む' if lang == 'ja' else 'Read this lesson in Japanese' }}" aria-label="{{ '言語を英語に切り替える：このレッスン' if lang == 'ja' else 'Switch language to Japanese for this lesson' }}">
   {% include ".icons/material/translate.svg" %}
-  <span>日本語</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
 </a>

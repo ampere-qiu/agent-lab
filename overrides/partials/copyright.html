@@ -1,0 +1,12 @@
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">{{ config.copyright }}</div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    {% if config.theme.language == 'ja' %}
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a> で作成
+    {% else %}
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+    {% endif %}
+  {% endif %}
+</div>

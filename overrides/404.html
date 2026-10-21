@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block content %}
+{% if config.theme.language == 'ja' %}
+<h1>404 — ページが見つかりません</h1>
+<p>リンク先のページが見つかりません。検索するか、コースの最初のページから目的のレッスンを選んでください。</p>
+<p><a href="{{ base_url }}/">コースの最初に戻る</a></p>
+{% else %}
+<h1>404 — Page not found</h1>
+<p>We could not find this page. Search the course or choose a lesson from the course home.</p>
+<p><a href="{{ base_url }}/">Return to the course home</a></p>
+{% endif %}
+{% endblock %}

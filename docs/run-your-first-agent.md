@@ -1,6 +1,6 @@
-# Download and run the first-agent template
+# Download and run the first-agent template { #download-and-run-the-first-agent-template }
 
-Finish the [three dummy stages](dummy-agent-local.md) first. Then use this page to download the complete template, prepare its own environment, and start the app. CodeAgent will manage the model/action/observation loop that you assembled manually in the dummy exercise.
+Begin Week 2 after finishing the [three dummy stages](dummy-agent-local.md) first. Then use this page to download the complete template, prepare its own environment, and start the app. CodeAgent will manage the model/action/observation loop that you assembled manually in the dummy exercise.
 
 Your earlier [basic setup](prepare-your-computer.md) already provided Python 3.11 and your Groq key. This page continues from that setup. Your computer runs the app and tools; Groq provides the remote model, so you still need an internet connection.
 
@@ -52,11 +52,11 @@ Do not work inside an unopened ZIP. If extraction created two nested folders wit
 
 **Checkpoint:** Run `dir` on Windows or `ls` on Mac. Confirm `app.py` and `requirements.txt` are listed.
 
-## 4. Create a virtual environment
+## 4. Create a virtual environment { #4-create-a-virtual-environment }
 
 Create a new environment inside `First_agent_template` so its libraries stay separate from the dummy exercise. Run these commands once, after entering the folder in Step 3.
 
-### Windows
+### Windows { #windows }
 
 ```bat
 py -3.11 -m venv .venv
@@ -64,7 +64,7 @@ py -3.11 -m venv .venv
 python --version
 ```
 
-### Mac
+### Mac { #mac }
 
 ```bash
 python3.11 -m venv .venv
@@ -74,7 +74,7 @@ python --version
 
 **Checkpoint:** The prompt starts with `(.venv)` and Python reports version 3.11.x. Keep using this terminal window.
 
-## 5. Install the libraries
+## 5. Install the libraries { #5-install-the-libraries }
 
 On either operating system:
 
@@ -99,13 +99,13 @@ api_base="https://api.groq.com/openai/v1",
 
 It also sets `reasoning_effort="none"` for code-agent responses. Leave these settings unchanged for the first run. Keep your API key out of the source code; the app will ask for it at startup.
 
-## 7. Confirm local-only sharing
+## 7. Confirm local-only sharing { #7-confirm-local-only-sharing }
 
 The Groq starter already uses `share=False` in `Gradio_UI.py` and binds the app to `127.0.0.1`. No edit is required.
 
 If checking an older copy, find `demo.launch` in `Gradio_UI.py` and confirm it contains `share=False`. A public link would allow other people to send requests using the running app's Groq credentials.
 
-## 8. Start the agent
+## 8. Start the agent { #8-start-the-agent }
 
 ```bash
 python app.py
@@ -135,7 +135,7 @@ Open the exact address shown in your browser. Keep the terminal running.
 
 The address goes in your browser's address bar, not the agent chat. If the terminal prints a different port, use that port. The command will not return to its normal prompt while the app is running; that is expected.
 
-## 9. Test the connection to the LLM
+## 9. Test the connection to the LLM { #9-test-the-connection-to-the-llm }
 
 Send:
 
@@ -151,13 +151,13 @@ Time and web search are not registered yet; you will enable them in the [tools p
 
 A single chat message can trigger several model requests. Check [Groq's usage limits](https://console.groq.com/docs/rate-limits) and avoid rapid repeated submissions. API keys authenticate requests; input and output tokens measure the text used. See the [template explanation](understand-the-template.md#the-model-connection) for the output budget and request settings.
 
-## 11. Stop and restart
+## 11. Stop and restart { #11-stop-and-restart }
 
 To stop the app, click the terminal and press **Control + C**.
 
 To restart another day, open a new terminal and run:
 
-### Windows
+### Windows { #windows_1 }
 
 ```bat
 cd /d "%USERPROFILE%\agent-course\First_agent_template"
@@ -165,7 +165,7 @@ cd /d "%USERPROFILE%\agent-course\First_agent_template"
 python app.py
 ```
 
-### Mac
+### Mac { #mac_1 }
 
 ```bash
 cd ~/agent-course/First_agent_template
@@ -175,9 +175,9 @@ python app.py
 
 You do not need to reinstall libraries. Paste your Groq key again when prompted, then open the printed local URL.
 
-## Troubleshooting
+## Troubleshooting { #troubleshooting }
 
-### Model connection problems
+### Model connection problems { #model-connection-problems }
 
 | Problem | Next step |
 | --- | --- |
@@ -200,7 +200,7 @@ You do not need to reinstall libraries. Paste your Groq key again when prompted,
 
 For help, share your operating system, command, and final error lines. Exclude credentials.
 
-### Common editing mistakes
+### Common editing mistakes { #common-editing-mistakes }
 
 | Message or symptom | What to check |
 | --- | --- |

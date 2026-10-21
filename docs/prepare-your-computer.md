@@ -1,10 +1,10 @@
-# Prepare your computer
+# Prepare your computer { #prepare-your-computer }
 
-Start here before the lessons and Dummy Agent exercise. You only need Python and a Groq key at this stage. You will download the full agent template **after** the three dummy stages.
+Complete this setup in Week 1 after the concepts and before the Dummy Agent exercise. You only need Python and a Groq key at this stage. You will download the full agent template **after** the three dummy stages.
 
-## 1. Install Python 3.11
+## 1. Install Python 3.11 { #1-install-python-311 }
 
-### Windows
+### Windows { #windows }
 
 Open **Command Prompt**, then run each command separately:
 
@@ -20,7 +20,7 @@ py -3.11 --version
 
 If `winget` is unavailable, open the [Python 3.11.9 release page](https://www.python.org/downloads/release/python-3119/), scroll to **Files**, and download the **Windows installer (64-bit)** for an x64 PC. Run it, enable **Add python.exe to PATH** and the Python launcher, finish installation, then reopen Command Prompt and retry `py -3.11 --version`. Use **Command Prompt**, not PowerShell, for this guide's Windows commands.
 
-### Mac
+### Mac { #mac }
 
 Open **Terminal**. If Homebrew is installed, run:
 
@@ -38,11 +38,11 @@ python3.11 --version
 
 **Checkpoint:** You see Python 3.11.x. On Mac, `python3` may still point to an older version; this is fine. Use `python3.11` below.
 
-## 2. Create a folder for the dummy exercise
+## 2. Create a folder for the dummy exercise { #2-create-a-folder-for-the-dummy-exercise }
 
 Open your terminal and run the commands for your operating system, one at a time.
 
-### Windows — Command Prompt
+### Windows — Command Prompt { #windows-command-prompt }
 
 ```bat
 mkdir "%USERPROFILE%\agent-course\dummy-agent"
@@ -52,7 +52,7 @@ py -3.11 -m venv .venv
 python --version
 ```
 
-### Mac — Terminal
+### Mac — Terminal { #mac-terminal }
 
 ```bash
 mkdir -p ~/agent-course/dummy-agent
@@ -66,7 +66,7 @@ If the folder already exists, enter it instead of creating it again. A virtual e
 
 **Checkpoint:** Your terminal shows `(.venv)` and Python 3.11.x. Keep this window open.
 
-## 3. Install the model client
+## 3. Install the model client { #3-install-the-model-client }
 
 On either system:
 
@@ -76,11 +76,11 @@ python -m pip install "openai>=1.0,<3"
 
 Wait for the normal terminal prompt to return without a final error. The library connects to Groq's compatible API; you do not need an OpenAI account.
 
-## 4. Create your Groq API key
+## 4. Create your Groq API key { #4-create-your-groq-api-key }
 
 Sign up or sign in to Groq Console using your own account. The free plan has usage limits; see [Groq's limits](https://console.groq.com/docs/rate-limits).
 
-### A. Open the key page
+### A. Open the key page { #a-open-the-key-page }
 
 1. In your browser, sign in to [Groq Console](https://console.groq.com).
 2. Open **API Keys** in the console navigation, or use the [direct API Keys link](https://console.groq.com/keys).
@@ -95,11 +95,11 @@ The name `agents-course` is only a label. The generated secret value is the actu
 
 The dummy script will ask you to paste this key into a hidden terminal prompt. The full agent will use the same key later. Do not put it in your Python files.
 
-## 5. Continue to the lessons
+## 5. Continue to the dummy exercise { #5-continue-to-the-dummy-exercise }
 
-Follow the [lessons and quick quizzes](unit-1-walkthrough.md), then the [three dummy stages](dummy-agent-local.md). At this point you do **not** need `app.py`, Gradio, or the full agent ZIP.
+If needed, finish the [lessons and quick quizzes](unit-1-walkthrough.md), then follow the [three dummy stages](dummy-agent-local.md). At this point you do **not** need `app.py`, Gradio, or the full agent ZIP.
 
-## Restart the dummy exercise another day
+## Restart the dummy exercise another day { #restart-the-dummy-exercise-another-day }
 
 On Windows:
 

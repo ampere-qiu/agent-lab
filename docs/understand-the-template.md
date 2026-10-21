@@ -1,8 +1,8 @@
-# Understand smolagents and the template
+# Understand smolagents and the template { #understand-smolagents-and-the-template }
 
 Read this after your first successful response and before adding tools. Keep `app.py` open beside the guide. By the end, you should be able to explain which component generates text, which executes an action, and where to add your own capability.
 
-## 1. What is smolagents?
+## 1. What is smolagents? { #1-what-is-smolagents }
 
 **smolagents is a Python library for building agents, developed by Hugging Face.** A library is reusable code you import into your program. Here, it provides the machinery for asking a model what to do, executing an action, recording the result, and continuing toward an answer. Its `CodeAgent` represents actions as Python code. See the [smolagents introduction for version 1.13.0](https://huggingface.co/docs/smolagents/v1.13.0/en/index), which matches this starter.
 
@@ -10,7 +10,7 @@ In the dummy exercise, you assembled messages, called the LLM, ran a weather fun
 
 We continue using Hugging Face's **library** and course material while using **Groq's API** for model requests. Installing smolagents does not require hosting a Space or buying Hugging Face inference credits for this configuration.
 
-## 2. Which component does what?
+## 2. Which component does what? { #2-which-component-does-what }
 
 An *agent* in this project is the complete arrangement of model, instructions, available actions, and execution loop.
 
@@ -27,7 +27,7 @@ The word “OpenAI” in `OpenAIServerModel` names an API-compatible connection 
 
 The time tool reads your computer's clock and applies a timezone. The search tool sends a request to an external search service. Both are Python capabilities; their sources of information differ.
 
-## 3. From a message to an answer
+## 3. From a message to an answer { #3-from-a-message-to-an-answer }
 
 The arrows below show the two-way flow. The same local agent makes each model request.
 
@@ -56,7 +56,7 @@ The **model generates that code**. The **local executor runs it**. Its output be
 
 This explains why one chat message can consume multiple API requests. It also explains why a model saying “I checked the time” is insufficient evidence: look for the executed call and its result.
 
-### What CodeAgent handles automatically
+### What CodeAgent handles automatically { #what-codeagent-handles-automatically }
 
 Yes: **CodeAgent manages the action–observation loop for you.** The model chooses proposed actions; the framework runs the generated Python locally and records the result.
 
@@ -77,7 +77,7 @@ The dummy exercise asked you to inspect an action and call a hard-coded function
 
 Follow [how tools are connected and selected](first-agent-practical.md#how-does-the-agent-know-which-tools-it-can-use) and [the new-tool example](first-agent-practical.md#6-optional-create-your-own-tool) in the practical to see where each part is edited.
 
-## 4. What does the downloaded template provide?
+## 4. What does the downloaded template provide? { #4-what-does-the-downloaded-template-provide }
 
 The template is a starting program with the connection and interface already assembled. It can answer a simple question immediately. The student version deliberately leaves the two core tools (time and web search) unregistered. The unfinished custom tool is an optional extension. Image generation has been removed.
 
@@ -94,15 +94,15 @@ The template is a starting program with the connection and interface already ass
 
 The template contains neither the model's weights nor your API key. Downloading it does not download an LLM onto your laptop.
 
-## 5. Read app.py in execution order
+## 5. Read app.py in execution order { #5-read-apppy-in-execution-order }
 
-### Imports and function definitions
+### Imports and function definitions { #imports-and-function-definitions }
 
 `from smolagents import ...` makes library components available to this program. Defining `get_current_time_in_timezone` creates a callable tool, but does not fetch the time at startup. Similarly, importing `WebSearchTool` does not perform a web search.
 
 The custom placeholder raises `NotImplementedError` if called. This is intentional: implement it before registering it. The initial app runs because it does not expose that placeholder to the agent.
 
-### main() and the startup guard
+### main() and the startup guard { #main-and-the-startup-guard }
 
 At the bottom of the file:
 
@@ -113,13 +113,13 @@ if __name__ == "__main__":
 
 Running `python app.py` triggers `main()`. Importing `app` from a tool-test script defines its functions without launching the chat. That lets you test your own tool independently.
 
-### The key prompt
+### The key prompt { #the-key-prompt }
 
 `main()` checks the `GROQ_API_KEY` environment variable first. If it is empty, `getpass(...)` asks for a key without displaying it. The key authorizes API requests. It is different from the input and output *tokens* that measure text usage.
 
 The app does not save a key entered at the prompt. You enter it again after restarting unless you configured the environment variable separately.
 
-### The model connection
+### The model connection { #the-model-connection }
 
 These are the working starter's settings, shown for explanation rather than as a replacement block:
 
@@ -147,7 +147,7 @@ model = OpenAIServerModel(
 
 Keep these settings for the initial practical. Changing the model may change supported options and response format. It does not automatically give you a larger usage allowance.
 
-### Instructions and agent construction
+### Instructions and agent construction { #instructions-and-agent-construction }
 
 The program reads `prompts.yaml` next to `app.py`, then constructs `CodeAgent`. The important arguments are:
 
@@ -162,13 +162,13 @@ prompt_templates=prompt_templates,
 
 The starter also supplies several optional settings as `None`, including planning and managed-agent metadata. You do not need to change them to complete the tools exercise. `verbosity_level=1` controls logging detail.
 
-### Launching the interface
+### Launching the interface { #launching-the-interface }
 
 `GradioUI(agent).launch(server_name="127.0.0.1")` starts the local interface. Starting this server does not itself request an answer from the LLM. Sending a chat message triggers `agent.run(...)` in `Gradio_UI.py`.
 
 The URL is local, but model requests still travel over the internet. Stopping the Python process stops the app. Refreshing a browser page does not reload changed Python files; restart the program after code edits.
 
-## 6. How does a function become a tool?
+## 6. How does a function become a tool? { #6-how-does-a-function-become-a-tool }
 
 A useful function must exist, describe its inputs and purpose, and be registered with the agent.
 
@@ -183,7 +183,7 @@ Registering the existing function means adding its name to `tools`. Use the name
 
 For the optional custom-tool extension, you must still write the function body and verify its return value. Accurate documentation cannot repair an incorrect calculation. A sensible test order is **direct function call → registration → agent request → trace inspection**. See [the optional new-tool walkthrough](first-agent-practical.md#6-optional-create-your-own-tool) for a complete example with a description, a test file, registration, and a chat request.
 
-## 7. Why final_answer is already included
+## 7. Why final_answer is already included { #7-why-final_answer-is-already-included }
 
 In the template, `final_answer = FinalAnswerTool()` creates the object registered under that name. Generated Python such as `final_answer(96)` signals completion and supplies the result to display. This function does not make an additional LLM request on its own.
 
@@ -191,7 +191,7 @@ That is why a greeting can show a `python_interpreter` step even when it needs n
 
 The initial agent can use its Python executor for simple calculations even though its explicit tools list contains only the final-answer tool. Registering search or your timezone function adds those specific capabilities.
 
-## 8. Read the trace and understand the limits
+## 8. Read the trace and understand the limits { #8-read-the-trace-and-understand-the-limits }
 
 | What you see | What it tells you |
 | --- | --- |
@@ -206,7 +206,7 @@ The UI preserves the agent's history between messages in the running app. Later 
 
 An error before a model response suggests a connection, access, request-format, or usage-limit issue. An error while executing code suggests a problem with generated arguments, tool code, registration, or execution permissions. Follow the [troubleshooting table](run-your-first-agent.md#troubleshooting) for the corresponding layer.
 
-## 9. Before you start editing
+## 9. Before you start editing { #9-before-you-start-editing }
 
 Use these as reading checks, not an additional graded quiz:
 

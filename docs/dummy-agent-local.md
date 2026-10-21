@@ -1,10 +1,10 @@
-# Dummy agent: build the loop in three stages
+# Dummy agent: build the loop in three stages { #dummy-agent-build-the-loop-in-three-stages }
 
 This local exercise adapts the manual-loop idea from the [HF Dummy Agent lesson](https://huggingface.co/learn/agents-course/en/unit1/dummy-agent-library). All code needed is below. The original page is optional reading; Groq replaces its model connection.
 
 You will send a request, inspect a proposed action, execute a function yourself, and send its result back. This is a teaching example, not a general-purpose autonomous agent. The full template comes later.
 
-## Prepare the file
+## Prepare the file { #prepare-the-file }
 
 Complete [basic setup](prepare-your-computer.md) and activate the environment in `agent-course/dummy-agent`. In your editor, create `dummy_agent.py` in that folder. Add the blocks below in order, saving after each stage. Run:
 
@@ -14,7 +14,7 @@ python dummy_agent.py
 
 Output appears in the terminal, not a browser chat. Each rerun repeats the requests already in your file and uses your Groq allowance. If you reach a limit, follow the provider's retry interval rather than repeatedly rerunning.
 
-## Step 1. Make a simple LLM call
+## Step 1. Make a simple LLM call { #step-1-make-a-simple-llm-call }
 
 Put this in the new file:
 
@@ -44,7 +44,7 @@ Save and run it. Paste your key into the hidden terminal prompt and press Enter/
 
 **Checkpoint:** You receive an answer identifying Paris. This tests the model connection. A traceback is a connection or request problem; use [troubleshooting](run-your-first-agent.md#troubleshooting) before continuing.
 
-## Step 2. Inspect a proposed action
+## Step 2. Inspect a proposed action { #step-2-inspect-a-proposed-action }
 
 Append this block below Step 1:
 
@@ -90,7 +90,7 @@ Save and rerun. You will enter the key again. Compare the two outputs.
 
 **Checkpoint:** Inspect Step 2B for a proposed `get_weather` action with London as the input. It should not contain a claimed function result. If it names a different action or city, fix the prompt before proceeding. A stop marker alone does not guarantee the model follows every instruction.
 
-## Step 3. Execute the function and return its observation
+## Step 3. Execute the function and return its observation { #step-3-execute-the-function-and-return-its-observation }
 
 Append this block below Step 2:
 
@@ -134,7 +134,7 @@ The confirmation is deliberate: this small script does not parse arbitrary model
 
 **Checkpoint:** The terminal prints the function result before the final model answer. The answer should reflect the supplied sunny/18-degree demonstration data and identify it as demo data. If it contradicts the observation, inspect the final request and prompt rather than treating the answer as verified.
 
-## What you have learned
+## What you have learned { #what-you-have-learned }
 
 | Part | Your evidence |
 | --- | --- |
@@ -146,4 +146,6 @@ The confirmation is deliberate: this small script does not parse arbitrary model
 
 This weather function is only a dummy example. The full agent's core tools will be **real timezone lookup and web search**.
 
-**Next:** [Download and run the agent template](run-your-first-agent.md), then [understand how smolagents manages the loop](understand-the-template.md).
+**Finish Week 1:** Review the [Week 1 completion checks](week-1-learning-plan.md#week-1-completion). You can stop here for this week.
+
+**Next week:** Follow the [Week 2 plan](week-2-learning-plan.md), starting with [downloading and running the agent template](run-your-first-agent.md).

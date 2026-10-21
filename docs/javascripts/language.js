@@ -1,14 +1,10 @@
-// Link to the same section on the public lesson when the section exists here.
-function updateTranslationSection() {
-  const fragment = window.location.hash;
-  const heading = fragment ? document.getElementById(decodeURIComponent(fragment.slice(1))) : null;
-  document.querySelectorAll('[data-course-translate]').forEach((link) => {
-    const translationUrl = new URL(link.href);
-    const publicPage = new URL(translationUrl.searchParams.get('u'));
-    publicPage.hash = heading ? fragment : '';
-    translationUrl.searchParams.set('u', publicPage.href);
-    link.href = translationUrl.href;
+// Both authored editions share stable heading IDs, so switching keeps your section.
+function updateLanguageSection() {
+  document.querySelectorAll('[data-course-language]').forEach((link) => {
+    const target = new URL(link.getAttribute('href'), window.location.href);
+    target.hash = window.location.hash;
+    link.href = target.href;
   });
 }
-updateTranslationSection();
-window.addEventListener('hashchange', updateTranslationSection);
+updateLanguageSection();
+window.addEventListener('hashchange', updateLanguageSection);
