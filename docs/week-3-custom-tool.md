@@ -66,6 +66,8 @@ def catering_service_tool(query: str) -> str:
 3. Paste the **whole code block below** into the file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. Use the exact `.py` filename, without `.txt`.
 
+**What this file does — `my_tool_check.py`:** Checks the menu, catering, and theme tools by calling them directly with known inputs, including an unknown theme category. It prints PASS only when every returned value satisfies its assertion; otherwise Python stops at the failed check. It uses no LLM and does not need a Groq key.
+
 ```python title="my_tool_check.py"
 from week03_tools import suggest_menu, catering_service_tool, SuperheroPartyThemeTool
 
@@ -111,6 +113,8 @@ If an assertion fails, check that `week03_tools.py` still contains the supplied 
 2. Choose **File → New Text File**, then **File → Save As**. Save it as **`my_catering.py`** directly beside `app.py` and `week03_common.py`.
 3. Paste the **whole code block below** into the file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. Use the exact `.py` filename, without `.txt`.
+
+**What this file does — `my_catering.py`:** Runs an agent that answers a request for the highest-rated catering service using the supplied catering function. Groq chooses the tool call; Python compares the fixed fictional ratings and returns the winning name. The tool result and final answer appear in the terminal.
 
 ```python title="my_catering.py"
 from smolagents import CodeAgent
@@ -208,6 +212,8 @@ class SuperheroPartyThemeTool(Tool):
 3. Paste the **whole code block below** into the file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. Use the exact `.py` filename, without `.txt`.
 
+**What this file does — `my_theme.py`:** Runs an agent that answers a party-theme request using an instance of SuperheroPartyThemeTool. Groq chooses a category, and the Python tool retrieves its stored description, such as the villain-masquerade idea. The terminal shows the call, returned description, and final answer.
+
 ```python title="my_theme.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -266,10 +272,10 @@ Tools can also get user input, read a webpage, or return a final answer. Each ca
 
 ## Further reading { #integrations }
 
-Tools can be shared or connected to other systems. Those topics are outside this week's practical. Continue with [Week 03 completion checks](week-3-completion.md); the next topics are listed in [Coming in Week 04](week-4-preview.md).
+Tools can be shared or connected to other systems. Those topics are outside this week's practical. Continue with [12 · Building Agentic RAG Systems](week-3-retrieval.md); agent teams and vision/browser work are listed in [Coming in Week 04](week-4-preview.md).
 
 ## Credits { #sources }
 
 Adapted from [Hugging Face Agents Course — Tools](https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools), under the [Apache 2.0 license](licenses/huggingface-agents-course.txt).
 
-**Next:** [Week 03 completion checks](week-3-completion.md).
+**Next:** [12 · Building Agentic RAG Systems](week-3-retrieval.md).

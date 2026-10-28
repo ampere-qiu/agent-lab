@@ -2,7 +2,7 @@
 
 The real minimal ZIP supplies support modules. Tests create the student's files
 and execute real CodeAgent/SDK code with simulated Groq/search responses.
-No UI, retrieval package, live API key, or external service is used.
+No UI, live API key, or external service is used; retrieval runs locally with real BM25.
 """
 import contextlib
 import importlib
@@ -31,7 +31,7 @@ class ExerciseTests(unittest.TestCase):
             archive.extractall(cls.temporary.name)
         cls.folder = Path(cls.temporary.name) / 'week03-exercises'
         cls.student_files = {}
-        for page in ('week-3-code-agent.md', 'week-3-action-formats.md', 'week-3-custom-tool.md'):
+        for page in ('week-3-code-agent.md', 'week-3-action-formats.md', 'week-3-custom-tool.md', 'week-3-retrieval.md'):
             content = (ROOT / 'docs' / page).read_text()
             for name, source in re.findall(r'```python title="(my_[^"]+\.py)"\n(.*?)```', content, re.S):
                 (cls.folder / name).write_text(source)
@@ -40,6 +40,7 @@ class ExerciseTests(unittest.TestCase):
         cls.common = importlib.import_module('week03_common')
         cls.tools = importlib.import_module('week03_tools')
         cls.search = importlib.import_module('week03_search')
+        cls.retriever = importlib.import_module('week03_retriever')
 
     @classmethod
     def tearDownClass(cls):
@@ -99,13 +100,14 @@ class ExerciseTests(unittest.TestCase):
 
     def test_all_named_student_files_are_complete(self):
         self.assertEqual(set(self.student_files), {'my_playlist.py', 'my_menu.py', 'my_timing.py',
-            'my_tool_calling.py', 'my_tool_check.py', 'my_catering.py', 'my_theme.py'})
+            'my_tool_calling.py', 'my_tool_check.py', 'my_catering.py', 'my_theme.py',
+            'my_rag_search.py', 'my_retrieval_check.py', 'my_rag.py'})
         for name, source in self.student_files.items():
             compile(source, name, 'exec')
             self.assertNotIn('gradio', source)
             self.assertNotIn('langchain', source)
         with ZipFile(ROOT / 'docs/downloads/week03-smolagents.zip') as archive:
-            self.assertEqual(len(archive.namelist()), 6)
+            self.assertEqual(len(archive.namelist()), 7)
 
     def test_direct_tool_check_needs_no_llm(self):
         with patch.object(self.common, 'build_model', side_effect=AssertionError('No LLM expected')), \
@@ -178,7 +180,7 @@ class ExerciseTests(unittest.TestCase):
             checker.write_text(original_check)
             importlib.reload(self.tools)
 
-    def test_optional_structured_student_file(self):
+    def test_structured_student_file(self):
         with patch.object(self.search, 'DDGS') as ddgs:
             ddgs.return_value.text.return_value = [{'title': 'Fixture',
                 'href': 'https://example.org/native', 'body': 'Fixture native music'}]
@@ -188,6 +190,92 @@ class ExerciseTests(unittest.TestCase):
             ], [(1, 'Fixture native music')], native=True)
         self.assertIn('https://example.org/native', output)
 
+
+    def test_retrieval_direct_check_needs_no_llm(self):
+        with patch.object(self.common, 'build_model', side_effect=AssertionError('No LLM expected')), \
+                patch.object(self.search, 'DDGS', side_effect=AssertionError('No web expected')), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            runpy.run_path(str(self.folder / 'my_retrieval_check.py'), run_name='__main__')
+        self.assertIn('PASS: retrieval ranks a matching note', output.getvalue())
+        self.assertIn('Source: Party Ideas 1', output.getvalue())
+        self.assertEqual(len(self.retriever.party_ideas), 5)
+        self.assertEqual(len(self.retriever.docs_processed), 5)
+
+    def test_rag_web_student_file(self):
+        with patch.object(self.search, 'DDGS') as ddgs:
+            ddgs.return_value.text.return_value = [{'title': 'Fixture party',
+                'href': 'https://example.org/party', 'body': 'Fixture party decorations'}]
+            output, calls = self.run_student_file('my_rag_search.py', [
+                'print(web_search(query="superhero party decorations"))',
+                'final_answer("Fixture decorations: https://example.org/party")',
+            ], [(1, 'Fixture party decorations')])
+        self.assertIn('https://example.org/party', output)
+        self.assertIn('entertainment, and catering', json.dumps(calls[0]['messages']))
+
+    def test_rag_student_file_returns_sources(self):
+        output, calls = self.run_student_file('my_rag.py', [
+            'print(party_planning_retriever(query="velvet"))',
+            'final_answer("Use velvet curtains. Source: Party Ideas 1.")',
+        ], [(1, 'Source: Party Ideas 1')])
+        self.assertIn('velvet curtains', output)
+        self.assertIn('cite their Source labels', json.dumps(calls[0]['messages']))
+
+    def test_rag_can_retrieve_again_in_one_run(self):
+        output, calls = self.run_student_file('my_rag.py', [
+            'print(party_planning_retriever(query="catering"))',
+            'print(party_planning_retriever(query="velvet"))',
+            'final_answer("Food: Catering Ideas. Velvet decor: Party Ideas 1.")',
+        ], [(1, 'Source: Catering Ideas'), (2, 'Source: Party Ideas 1')])
+        self.assertEqual(len(calls), 3)
+        self.assertIn('Food: Catering Ideas', output)
+
+    def test_rag_unsupported_query_returns_candidates_not_matches(self):
+        results = self.retriever.party_planning_retriever.retriever.invoke('zyxwvu')
+        self.assertEqual(len(results), 5)
+        self.assertTrue(all('zyxwvu' not in doc.page_content for doc in results))
+        path = self.folder / 'my_rag.py'
+        original = path.read_text()
+        try:
+            path.write_text(original.replace(
+                'Find ideas for a luxury superhero-themed party, including entertainment, catering, and decoration options.',
+                'Do these notes contain the word zyxwvu?'))
+            output, calls = self.run_student_file('my_rag.py', [
+                'print(party_planning_retriever(query="zyxwvu"))',
+                'final_answer("The returned notes do not contain zyxwvu.")',
+            ], [(1, 'Source: Party Ideas 1')])
+            self.assertIn('Do these notes contain the word zyxwvu?', json.dumps(calls[0]['messages']))
+            self.assertIn('do not contain zyxwvu', output)
+        finally:
+            path.write_text(original)
+
+    def test_student_added_note_is_retrieved_with_source(self):
+        path = self.folder / 'week03_retriever.py'
+        runner = self.folder / 'my_rag.py'
+        original, original_runner = path.read_text(), runner.read_text()
+        try:
+            path.write_text(original.replace('party_ideas = [',
+                'party_ideas = [\n    {"text": "Create a planetarium ceiling for the party.", "source": "Student Decoration Idea"},'))
+            importlib.reload(self.retriever)
+            self.assertEqual(len(self.retriever.party_ideas), 6)
+            results = self.retriever.party_planning_retriever.retriever.invoke('planetarium')
+            self.assertEqual(len(results), 5)
+            self.assertEqual(results[0].metadata['source'], 'Student Decoration Idea')
+            runner.write_text(original_runner.replace(
+                'Find ideas for a luxury superhero-themed party, including entertainment, catering, and decoration options.',
+                'Find the planetarium decoration idea.'))
+            output, calls = self.run_student_file('my_rag.py', [
+                'print(party_planning_retriever(query="planetarium"))',
+                'final_answer("Planetarium ceiling. Source: Student Decoration Idea.")',
+            ], [(1, 'Source: Student Decoration Idea')])
+            self.assertIn('Find the planetarium decoration idea.', json.dumps(calls[0]['messages']))
+            self.assertIn('Student Decoration Idea', output)
+            with contextlib.redirect_stdout(io.StringIO()) as direct:
+                runpy.run_path(str(self.folder / 'my_retrieval_check.py'), run_name='__main__')
+            self.assertIn('PASS: retrieval', direct.getvalue())
+        finally:
+            path.write_text(original)
+            runner.write_text(original_runner)
+            importlib.reload(self.retriever)
 
 if __name__ == '__main__':
     unittest.main()

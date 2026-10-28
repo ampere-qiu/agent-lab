@@ -5,7 +5,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
     'week03_README.md', 'week03_common.py', 'week03_tools.py',
-    'week03_search.py', 'week03-requirements.txt', 'week03-HF-LICENSE.txt',
+    'week03_search.py', 'week03_retriever.py', 'week03-requirements.txt', 'week03-HF-LICENSE.txt',
 ]
 
 

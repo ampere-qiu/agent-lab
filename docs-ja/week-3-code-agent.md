@@ -55,6 +55,8 @@ CodeAgentは、Pythonの変数、繰り返し、計算、登録されたツー�
 3. 下の**コード全体**をそのファイルに貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`です。`.py.txt`にしないでください。
 
+**このファイルの役割 — `my_playlist.py`:** パーティーの音楽をウェブで探すエージェントを動かし、取得したリンクとおすすめを表示します。Groqが検索語を選び、PC上のPython検索ツールが結果を取得します。検索の手順と最終回答はターミナルで読みます。
+
 ```python title="my_playlist.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -151,6 +153,8 @@ def suggest_menu(occasion: str) -> str:
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`にします。
 
+**このファイルの役割 — `my_menu.py`:** メニューの依頼を読み取り、配布されたメニュー関数を使うエージェントを動かします。フォーマルな依頼では、関数が保存済みの3コースディナーの文を返し、エージェントがその結果を使ってターミナルに回答します。メニューはPythonのデータで、依頼の意味を読み取るのはGroq上のモデルです。
+
 ```python title="my_menu.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -205,6 +209,8 @@ raise SystemExit(run_task(agent, task))
 2. **ファイル → 新しいテキストファイル → 名前を付けて保存**で、**`my_timing.py`**を`app.py`、`week03_common.py`と同じ場所に保存します。
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`にします。
+
+**このファイルの役割 — `my_timing.py`:** 今から1人で4つの準備を順番に行うと何時に終わるかを、エージェントに尋ねます。Groq上のモデルがdatetimeを使うPythonを提案し、PCがそのコードを実行して、現在のローカル時刻に準備時間の合計を足します。開始時刻、終了時刻、回答をターミナルに表示します。
 
 ```python title="my_timing.py"
 from smolagents import CodeAgent

@@ -76,6 +76,8 @@ def catering_service_tool(query: str) -> str:
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`にし、`.txt`を付けないでください。
 
+**このファイルの役割 — `my_tool_check.py`:** メニュー、ケータリング、テーマのツールを決まった入力で直接呼び、結果を確認します。未知のテーマカテゴリも試します。全アサーションに合格したときだけPASSを表示し、失敗すればその確認箇所で止まります。LLMは使わず、Groqキーも不要です。
+
 ```python title="my_tool_check.py"
 from week03_tools import suggest_menu, catering_service_tool, SuperheroPartyThemeTool
 
@@ -121,6 +123,8 @@ PASS: menu, catering, theme, and unknown-category checks.
 2. **ファイル → 新しいテキストファイル → 名前を付けて保存**で、**`my_catering.py`**を`app.py`、`week03_common.py`と同じ場所に保存します。
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`にします。
+
+**このファイルの役割 — `my_catering.py`:** 最高評価のケータリング業者を尋ねる依頼に、配布された関数を使って答えるエージェントを動かします。Groqがツール呼び出しを選び、Pythonが固定の架空の評価を比べて業者名を返します。ツールの結果と最終回答をターミナルに表示します。
 
 ```python title="my_catering.py"
 from smolagents import CodeAgent
@@ -218,6 +222,8 @@ class SuperheroPartyThemeTool(Tool):
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。拡張子は`.py`にします。
 
+**このファイルの役割 — `my_theme.py`:** SuperheroPartyThemeToolのインスタンスを使い、パーティーテーマの依頼に答えるエージェントを動かします。Groqがカテゴリを選び、Pythonツールが悪役の仮面舞踏会などの保存済みの説明を取り出します。呼び出し、返された説明、最終回答をターミナルに表示します。
+
 ```python title="my_theme.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -276,10 +282,10 @@ raise SystemExit(run_task(agent, task))
 
 ## 発展的な内容 { #integrations }
 
-ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。[第03週の完了確認](week-3-completion.md)に進んでください。続きの話題は[第04週の予告](week-4-preview.md)にあります。
+ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。[12 · Agentic RAGシステムを作る](week-3-retrieval.md)に進んでください。エージェントのチームと画像・ブラウザの話題は[第04週の予告](week-4-preview.md)にあります。
 
 ## 出典 { #sources }
 
 [Hugging Face Agents Course — Tools](https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools)を基に構成しています。[Apache 2.0ライセンス](licenses/huggingface-agents-course.txt)に基づき利用しています。
 
-**次へ：**[第03週の完了確認](week-3-completion.md)。
+**次へ：**[12 · Agentic RAGシステムを作る](week-3-retrieval.md)。

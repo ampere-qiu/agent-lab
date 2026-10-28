@@ -91,7 +91,7 @@ class CourseTests(unittest.TestCase):
     def test_all_pages_are_authored_in_both_languages(self):
         self.assertEqual({p.name for p in self.shared_pages},
                          {p.name for p in (ROOT / 'docs-ja').glob('*.md')})
-        self.assertEqual(len(self.shared_pages), 19)
+        self.assertEqual(len(self.shared_pages), 20)
         self.assertEqual({p.name for p in self.pages} - {p.name for p in self.shared_pages}, self.english_only)
         for en in self.shared_pages:
             with self.subTest(page=en.name):
@@ -196,14 +196,17 @@ class CourseTests(unittest.TestCase):
             self.assertIn('class SuperheroPartyThemeTool', source)
             self.assertNotIn('calculate_study_time', source)
             self.assertNotIn('NotImplementedError', source)
-            self.assertEqual(len(archive.namelist()), 6)
+            self.assertEqual(len(archive.namelist()), 7)
             requirements = archive.read('week03-exercises/week03-requirements.txt').decode()
             self.assertIn('smolagents==1.13.0', requirements)
             self.assertIn('openai>=1.0,<3', requirements)
             self.assertIn('ddgs==9.16.0', requirements)
             self.assertNotIn('gradio', requirements.lower())
-            self.assertNotIn('langchain', requirements.lower())
-            self.assertFalse(any('retriev' in name or 'team' in name for name in archive.namelist()))
+            self.assertIn('langchain-community==0.4.2', requirements)
+            self.assertIn('langchain-text-splitters==1.1.3', requirements)
+            self.assertIn('rank-bm25==0.2.2', requirements)
+            self.assertIn('week03_retriever.py', expected)
+            self.assertFalse(any('team' in name or 'gradio' in name.lower() for name in archive.namelist()))
             self.assertEqual(archive.read('week03-exercises/week03-HF-LICENSE.txt'),
                              (ROOT / 'docs/licenses/huggingface-agents-course.txt').read_bytes())
         for name in [p.name for p in self.pages if p.name.startswith(('week-3-', 'week-4-'))]:
@@ -234,8 +237,8 @@ class CourseTests(unittest.TestCase):
             entries = list(config['nav'][3].values())[0] + [config['nav'][4]]
             expected = [(label, (ROOT / 'site' / lang / Path(source).stem / 'index.html').resolve())
                         for entry in entries for label, source in entry.items()]
-            self.assertEqual([label[:2] for label, _ in expected[1:6]],
-                             ['08', '09', '10', '11', '12'])
+            self.assertEqual([label[:2] for label, _ in expected[1:7]],
+                             ['08', '09', '10', '11', '12', '13'])
             destinations = {target for _, target in expected}
             for label, file in expected:
                 self.assertIn(label, re.sub('<[^>]+>', '', file.read_text()))
@@ -250,7 +253,7 @@ class CourseTests(unittest.TestCase):
                     if target in destinations:
                         links.append((text, target))
                 self.assertEqual(links, expected, file)
-        for removed in ('week-3-retrieval', 'week-3-multi-agent', 'week-3-vision-browser'):
+        for removed in ('week-3-multi-agent', 'week-3-vision-browser'):
             self.assertFalse((ROOT / 'site' / removed).exists())
 
     def test_downloads_search_and_error_pages(self):

@@ -1,6 +1,6 @@
-# 12 · 完了確認 { #week-3-completion }
+# 13 · 完了確認 { #week-3-completion }
 
-今週は関数型・クラス型のツールまでを扱います。保存したファイルと、実際のターミナル出力を示してください。このサイトは進捗を保存せず、修了証も発行しません。
+今週は関数型・クラス型のツールとAgentic RAGを扱います。保存したファイルと、実際のターミナル出力を示してください。このサイトは進捗を保存せず、修了証も発行しません。
 
 ## ファイルと実行の根拠 { #required-evidence }
 
@@ -15,6 +15,9 @@
 | `my_tool_check.py` | モデルに問い合わせずに表示された`PASS: menu, catering, theme, and unknown-category checks.`。 |
 | `my_catering.py` | ケータリングツールの呼び出し、返された業者名、最終回答。 |
 | `my_theme.py` | テーマツールの呼び出し、保存済みの説明文、最終回答。 |
+| `my_rag_search.py` | ウェブからの取得呼び出しと、実際に返された抜粋・URLに基づく提案。 |
+| `my_retrieval_check.py` | LLMを使わない直接テストの合格と、該当語がなくても文書が返る制約。 |
+| `my_rag.py`と`week03_retriever.py`の変更 | 出典に基づく回答、根拠のない質問の結果、自分で追加したノートの実際の取得。 |
 | `week03_tools.py`への自分の変更 | 業者やカテゴリの変更が、直接テストとエージェントの結果に反映されていること。 |
 
 直接テストは、アサーションを書き換えるまで配布時のケータリング業者名を期待します。新しく追加した業者が最高評価になったら、期待する名前も変更してください。再実行前には編集を保存します。
@@ -32,12 +35,15 @@
 - デコレーター付きの関数と、`forward(...)`を持つ`Tool`クラスは、どう違いますか？
 - パーティーの例のうち、架空のPythonデータはどれで、ウェブ検索から来る結果はどれですか？
 - ツールが本当に動いたことを、どう確認しますか？
+- ローカルの検索・取得と、決まった文を返すツールはどう違いますか？
+- なぜBM25は、ノートにない語でも文書を返すことがありますか？
+- RAGの回答と、返された本文・出典をどう照合しますか？
 
-検索・取得、知識ベース、エージェントのチーム、画像・ブラウザの話題は[第04週のページ](week-4-preview.md)に続きます。
+エージェントのチームと画像・ブラウザの話題は[第04週のページ](week-4-preview.md)に続きます。
 
 ## 小テストと出典 { #optional-hf }
 
-[HF Quick Quiz 1](https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz1)は任意です。それ以降の小テストには、今週扱わない内容も含まれます。
+[HF Quick Quiz 1](https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz1)は任意です。検索・取得の後には[HF Quick Quiz 2](https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz2)にも任意で取り組めます。最終テストには後の話題も含まれます。
 
 考え方と例は、[Hugging Face Agents Course Unit 2.1](https://huggingface.co/learn/agents-course/en/unit2/smolagents/introduction)を基にしています。
 

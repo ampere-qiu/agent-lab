@@ -41,7 +41,8 @@ nav:
   - 09 · CodeAgentを動かす: week-3-code-agent.md
   - 10 · Pythonコードと構造化ツール呼び出し: week-3-action-formats.md
   - 11 · 関数とクラスで作るツール: week-3-custom-tool.md
-  - 12 · 完了確認: week-3-completion.md
+  - 12 · Agentic RAGシステムを作る: week-3-retrieval.md
+  - 13 · 完了確認: week-3-completion.md
 - 第04週 · 次回の内容: week-4-preview.md
 - 参考:
   - コース全体の流れ: course-route.md

@@ -164,6 +164,8 @@ Complete [Week 03 setup](week-3-learning-plan.md#exercise-files) first. Use the 
 3. Paste the **whole code block below** into the file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. Use the exact `.py` filename, without `.txt`.
 
+**What this file does — `my_tool_calling.py`:** Runs the same party-music search as my_playlist.py using ToolCallingAgent. The Groq model requests the search through a tool name and arguments; Python executes the search and the program prints the results and answer. Use its terminal record to compare structured calls with CodeAgent's Python actions.
+
 ```python title="my_tool_calling.py"
 from smolagents import ToolCallingAgent
 from week03_common import build_model, agent_options, run_task

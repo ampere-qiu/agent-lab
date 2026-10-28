@@ -15,7 +15,7 @@ A local course adapted from Hugging Face’s Agents Course and starter template.
 
 </div>
 
-**Week 03:** [Week 03 — smolagents](week-3-learning-plan.md) covers terminal-based agents and function/class tools, using Alfred's party examples and credited figures. The lessons are available in English and Japanese.
+**Week 03:** [Week 03 — smolagents](week-3-learning-plan.md) covers terminal-based agents, function/class tools, and Agentic RAG, using Alfred's party examples and credited figures. The lessons are available in English and Japanese.
 
 ## About this adaptation { #about-this-adaptation }
 
@@ -33,9 +33,9 @@ New to terminals or editing Python? Read [Before you start](before-you-start.md)
 
 1. **Week 1 — understand and trace the loop:** read [agent foundations](unit-1-walkthrough.md), complete the two quick quizzes, [prepare your local environment](prepare-your-computer.md), and [build the three-stage dummy agent](dummy-agent-local.md).
 2. **Week 2 — run and extend a working agent:** [run the template](run-your-first-agent.md), [understand its components](understand-the-template.md), [enable and verify tools](first-agent-practical.md), and complete the [practical checks](quizzes.md#finish-the-practical).
-3. **Week 03 — create terminal-based agents:** follow [the setup and file-creation steps](week-3-learning-plan.md), run your programs, and modify [function/class tools](week-3-custom-tool.md). [Retrieval and later topics continue in Week 04](week-4-preview.md).
+3. **Week 03 — create terminal-based agents:** follow [the setup and file-creation steps](week-3-learning-plan.md), run your programs, modify [function/class tools](week-3-custom-tool.md), and build [Agentic RAG](week-3-retrieval.md). [Agent teams and vision/browser topics continue in Week 04](week-4-preview.md).
 
-See the [course route](course-route.md) for learning objectives, suggested durations, and the evidence to bring to each week's review.
+See the [course route](course-route.md) for learning objectives and the evidence to bring to each week's review.
 
 **The full template comes after the dummy exercise.** Students first see how a model call, a function, and an observation fit together; then CodeAgent automates that loop.
 

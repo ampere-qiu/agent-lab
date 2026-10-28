@@ -1,6 +1,6 @@
 # 第2週 — テンプレートを動かし、ツールを使う { #week-2-working-template-and-tools }
 
-[第1週の完了確認](week-1-learning-plan.md#week-1-completion)を終えてから始めます。目安は**3〜4時間**、独自ツールの発展課題は追加で30〜60分です。ダミースクリプト、インストール済みのPython、Groqキーを引き続き使います。
+[第1週の完了確認](week-1-learning-plan.md#week-1-completion)を終えてから始めます。ダミースクリプト、インストール済みのPython、Groqキーを引き続き使います。
 
 ## 学習目標 { #learning-objectives }
 
@@ -24,10 +24,10 @@
 
 ## 学習の順序 { #learning-sequence }
 
-1. [テンプレートをダウンロードして起動](run-your-first-agent.md)します。専用のフォルダーと仮想環境を使います（約45〜60分）。`12 * 8`の答えを確認します。画面が開くだけでは、モデルへの接続確認にはなりません。
-2. `app.py`を横に開き、[テンプレートの仕組み](understand-the-template.md)を読みます（約30〜45分）。第1週の手動ループと、自動化されたループを比較します。
-3. [用意済みのツールを登録し、テスト](first-agent-practical.md)します（約90〜120分）。時刻関数を直接テストしてから登録し、エージェントの呼び出しを確認します。検索でも同じ手順を行い、返された情報源を確かめます。
-4. 両方のツールを実演し、[完了確認](quizzes.md#finish-the-practical)を行います（約15分）。
+1. [テンプレートをダウンロードして起動](run-your-first-agent.md)します。専用のフォルダーと仮想環境を使います。`12 * 8`の答えを確認します。画面が開くだけでは、モデルへの接続確認にはなりません。
+2. `app.py`を横に開き、[テンプレートの仕組み](understand-the-template.md)を読みます。第1週の手動ループと、自動化されたループを比較します。
+3. [用意済みのツールを登録し、テスト](first-agent-practical.md)します。時刻関数を直接テストしてから登録し、エージェントの呼び出しを確認します。検索でも同じ手順を行い、返された情報源を確かめます。
+4. 両方のツールを実演し、[完了確認](quizzes.md#finish-the-practical)を行います。
 5. 任意で、[独自ツールの作成例](first-agent-practical.md#6-optional-create-your-own-tool)を参考に、実装・説明・テスト・登録まで行います。
 
 ## 第2週の完了確認 { #week-2-completion }

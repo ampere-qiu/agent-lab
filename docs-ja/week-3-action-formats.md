@@ -174,6 +174,8 @@ ToolCallingAgentは、構造化データでツールを依頼します。JSONは
 3. 下の**コード全体**を貼り付けます。
 4. Windowsは**Ctrl + S**、Macは**Command + S**で保存します。指定どおりの`.py`ファイル名を使い、`.txt`を付けないでください。
 
+**このファイルの役割 — `my_tool_calling.py`:** my_playlist.pyと同じ音楽検索を、ToolCallingAgentで動かします。Groq上のモデルがツール名と引数で検索を依頼し、Pythonが検索を実行して結果と回答を表示します。ターミナルの記録を使い、構造化呼び出しとCodeAgentのPythonアクションを比べます。
+
 ```python title="my_tool_calling.py"
 from smolagents import ToolCallingAgent
 from week03_common import build_model, agent_options, run_task

@@ -1,11 +1,9 @@
 # Week 04 · Coming next { #week-4-preview }
 
-**To be continued in Week 04.** Finish [Week 03](week-3-learning-plan.md) through function/class tools first.
+**To be continued in Week 04.** Finish [Week 03](week-3-learning-plan.md) through Agentic RAG first.
 
 ## Planned topics { #planned-topics }
 
-- **Retrieval agents:** search for information and use retrieved evidence to answer a question.
-- **A custom knowledge base:** retrieve relevant text from local documents.
 - **Agent teams:** understand how a manager can delegate work to a specialist.
 - **Vision and browser agents:** explore images, screenshots, and browser actions.
 

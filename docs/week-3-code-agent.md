@@ -37,6 +37,8 @@ CodeAgent can use Python variables, loops, calculations, and registered tools. I
 3. Paste the **complete code below** into that file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. The filename must end in `.py`, not `.py.txt`.
 
+**What this file does — `my_playlist.py`:** Runs an agent that searches the web for music for the party and prints a recommendation with retrieved links. Groq chooses the search query; the Python search tool on your PC fetches the results. Read the search steps and final answer in the terminal.
+
 ```python title="my_playlist.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -130,6 +132,8 @@ Create the separate program that uses this function:
 3. Paste the **complete code below** into that file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. The filename must end in `.py`, not `.py.txt`.
 
+**What this file does — `my_menu.py`:** Runs an agent that interprets a menu request and uses the supplied menu function. For a formal occasion, the function returns the stored three-course dinner text; the agent uses that result to answer in the terminal. The menu comes from Python data, and the request is interpreted by the model on Groq.
+
 ```python title="my_menu.py"
 from smolagents import CodeAgent
 from week03_common import build_model, agent_options, run_task
@@ -185,6 +189,8 @@ Read the output in the terminal.
 2. Choose **File → New Text File**, then **File → Save As**. Save it as **`my_timing.py`** directly beside `app.py` and `week03_common.py`.
 3. Paste the **complete code below** into that file.
 4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. The filename must end in `.py`, not `.py.txt`.
+
+**What this file does — `my_timing.py`:** Asks an agent when party preparation will finish if one person starts now and completes the four tasks in order. The model on Groq proposes Python using datetime; your PC executes it to add the total preparation duration to its current local time. The start time, finish time, and answer appear in the terminal.
 
 ```python title="my_timing.py"
 from smolagents import CodeAgent

@@ -1,6 +1,6 @@
 # Week 2 — working template and tools { #week-2-working-template-and-tools }
 
-Start after the [Week 1 completion checks](week-1-learning-plan.md#week-1-completion). Suggested time: **3–4 hours**, plus an optional custom-tool extension of 30–60 minutes. Keep your dummy script, Python installation, and Groq key.
+Start after the [Week 1 completion checks](week-1-learning-plan.md#week-1-completion). Keep your dummy script, Python installation, and Groq key.
 
 ## Learning objectives { #learning-objectives }
 
@@ -24,10 +24,10 @@ The untouched template can respond to a simple question and calculate `12 * 8`. 
 
 ## Learning sequence { #learning-sequence }
 
-1. [Download and run the template](run-your-first-agent.md) in its own folder and virtual environment (about 45–60 minutes). Verify the answer to `12 * 8`; opening the page alone does not verify the model connection.
-2. [Understand the template](understand-the-template.md) with `app.py` open beside the lesson (about 30–45 minutes). Compare its automated loop with your Week 1 dummy script.
-3. [Enable and test the supplied tools](first-agent-practical.md) (about 90–120 minutes): test timezone lookup directly, register it, and inspect an agent call; then repeat for web search and verify a returned source.
-4. Demonstrate both tools and review [completion checks](quizzes.md#finish-the-practical) (about 15 minutes).
+1. [Download and run the template](run-your-first-agent.md) in its own folder and virtual environment. Verify the answer to `12 * 8`; opening the page alone does not verify the model connection.
+2. [Understand the template](understand-the-template.md) with `app.py` open beside the lesson. Compare its automated loop with your Week 1 dummy script.
+3. [Enable and test the supplied tools](first-agent-practical.md): test timezone lookup directly, register it, and inspect an agent call; then repeat for web search and verify a returned source.
+4. Demonstrate both tools and review [completion checks](quizzes.md#finish-the-practical).
 5. Optional: implement, describe, test, and register a custom tool using the [worked example](first-agent-practical.md#6-optional-create-your-own-tool).
 
 ## Week 2 completion { #week-2-completion }
