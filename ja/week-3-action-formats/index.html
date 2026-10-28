@@ -1042,6 +1042,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1049,7 +1077,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1515,6 +1543,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。指定どおりの<code translate="no">.py</code>ファイル名を使い、<code translate="no">.txt</code>を付けないでください。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_tool_calling.py</code>:</strong> my_playlist.pyと同じ音楽検索を、ToolCallingAgentで動かします。Groq上のモデルがツール名と引数で検索を依頼し、Pythonが検索を実行して結果と回答を表示します。ターミナルの記録を使い、構造化呼び出しとCodeAgentのPythonアクションを比べます。</p>
 <div class="highlight"><span class="filename">my_tool_calling.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolCallingAgent</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>

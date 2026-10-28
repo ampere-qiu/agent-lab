@@ -970,6 +970,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -977,7 +1005,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1263,6 +1291,7 @@
 <li>下の<strong>コード全体</strong>をそのファイルに貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>です。<code translate="no">.py.txt</code>にしないでください。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_playlist.py</code>:</strong> パーティーの音楽をウェブで探すエージェントを動かし、取得したリンクとおすすめを表示します。Groqが検索語を選び、PC上のPython検索ツールが結果を取得します。検索の手順と最終回答はターミナルで読みます。</p>
 <div class="highlight"><span class="filename">my_playlist.py</span><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
@@ -1378,6 +1407,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>にします。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_menu.py</code>:</strong> メニューの依頼を読み取り、配布されたメニュー関数を使うエージェントを動かします。フォーマルな依頼では、関数が保存済みの3コースディナーの文を返し、エージェントがその結果を使ってターミナルに回答します。メニューはPythonのデータで、依頼の意味を読み取るのはGroq上のモデルです。</p>
 <div class="highlight"><span class="filename">my_menu.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">suggest_menu</span>
@@ -1461,6 +1491,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>にします。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_timing.py</code>:</strong> 今から1人で4つの準備を順番に行うと何時に終わるかを、エージェントに尋ねます。Groq上のモデルがdatetimeを使うPythonを提案し、PCがそのコードを実行して、現在のローカル時刻に準備時間の合計を足します。開始時刻、終了時刻、回答をターミナルに表示します。</p>
 <div class="highlight"><span class="filename">my_timing.py</span><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>

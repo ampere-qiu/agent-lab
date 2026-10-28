@@ -1,0 +1,1905 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn AI agents locally with Groq: foundations, a working template, and Week 03 smolagents exercises.">
+      
+      
+      
+      
+        <link rel="prev" href="../week-3-custom-tool/">
+      
+      
+        <link rel="next" href="../week-3-completion/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>12 · Building Agentic RAG Systems - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#retrieval-concept" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              12 · Building Agentic RAG Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+
+<a class="md-header__button md-icon course-translate" href="../ja/week-3-retrieval/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Concepts & dummy agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Concepts & dummy agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before you start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Agent foundations & quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Local setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Dummy agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 · Working template & tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 2 · Working template & tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Run the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Understand the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Enable & test tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 03 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · Plan and download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Introduction to smolagents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Run a CodeAgent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-action-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Python or structured tool calls?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · Tools: functions and classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is new after the tools lesson?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare the retrieval files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Retrieve information from the web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-retrieval-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Read the local knowledge-base tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Test retrieval without an LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Let CodeAgent use the notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Ask a focused question and an unsupported question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Add your own knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a larger system could improve retrieval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits and next step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04 · Coming next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is new after the tools lesson?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare the retrieval files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Retrieve information from the web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-retrieval-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Read the local knowledge-base tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Test retrieval without an LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Let CodeAgent use the notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Ask a focused question and an unsupported question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Add your own knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a larger system could improve retrieval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits and next step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-3-retrieval">12 · Building Agentic RAG Systems<a class="headerlink" href="#week-3-retrieval" title="Permanent link">&para;</a></h1>
+<p><strong>Objective:</strong> give an agent a searchable collection of notes, follow what it retrieves, and check that its answer is supported by those notes. <strong>Activities:</strong> read, run a web-search agent, test a local retriever without an LLM, run a local RAG agent, and add your own note.</p>
+<p>Finish <a href="../week-3-custom-tool/">11 · Tools: functions and classes</a> first. All new files go directly in <strong><code translate="no">First_agent_template</code></strong>, beside <code translate="no">app.py</code>. Use the same activated environment and Groq key. Run the saved files in the terminal.</p>
+<h2 id="retrieval-concept">What is new after the tools lesson?<a class="headerlink" href="#retrieval-concept" title="Permanent link">&para;</a></h2>
+<p>Your menu and theme tools select a fixed response from Python data. Now you will give the agent a <strong>retrieval tool</strong>: a tool that searches a collection of text and returns useful passages.</p>
+<p><strong>RAG</strong> means <strong>Retrieval-Augmented Generation</strong>: find relevant material, give it to the model, and use it to answer. <strong>Agentic RAG</strong> lets the model choose a search query, read the results, and request another search when needed.</p>
+<p><strong>Question → model chooses a search → Python retrieves text → observation → model answers or searches again.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Job</th>
+<th>Runs where?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>Choose the query and write an answer using returned text.</td>
+<td>Groq</td>
+</tr>
+<tr>
+<td>Retrieval tool</td>
+<td>Search the supplied notes and return their text and source labels.</td>
+<td>Your PC</td>
+</tr>
+<tr>
+<td>CodeAgent</td>
+<td>Execute the requested action and coordinate the loop.</td>
+<td>Your PC</td>
+</tr>
+</tbody>
+</table>
+<p>The notes stay in a local Python file, but retrieved passages are sent to Groq as observations during an agent run. The direct test below does not contact Groq. Retrieval does not train the model or automatically save a permanent memory.</p>
+<h2 id="setup">Prepare the retrieval files<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>The current <a href="../week-3-learning-plan/#exercise-files">Week 03 download</a> contains <strong>seven support files</strong>, including <strong><code translate="no">week03_retriever.py</code></strong>. If you downloaded an earlier six-file ZIP, download the current one and copy <strong><code translate="no">week03_retriever.py</code></strong> and <strong><code translate="no">week03-requirements.txt</code></strong> beside <code translate="no">app.py</code>. Keep your edited <code translate="no">week03_tools.py</code> and your <code translate="no">my_...py</code> programs.</p>
+<p>In your existing activated terminal, run this once if you have not installed the updated requirements:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>week03-requirements.txt
+</code></pre></div>
+<p>This adds <code translate="no">langchain-community</code>, <code translate="no">langchain-text-splitters</code>, and <code translate="no">rank-bm25</code> for the retrieval tool. It keeps <code translate="no">smolagents==1.13.0</code> and your Groq connection. You do not need another API key, an embedding model, or a vector database. If a retrieval import is missing, check that you installed this updated list in the same <code translate="no">.venv</code> used to run the files. An import deprecation warning is different from a failed test: check the actual result.</p>
+<h2 id="web-retrieval">A. Retrieve information from the web<a class="headerlink" href="#web-retrieval" title="Permanent link">&para;</a></h2>
+<p>First, use the search tool you already know. The task asks for <strong>decorations, entertainment, and catering</strong> for a luxury superhero party. The model can search for these topics and combine the results into a plan.</p>
+<p>Create <strong><code translate="no">my_rag_search.py</code></strong> in your code editor, paste the complete code, and save it beside <code translate="no">app.py</code>.</p>
+<p><strong>What this file does — <code translate="no">my_rag_search.py</code>:</strong> Runs a web-search agent to gather ideas for decorations, entertainment, and catering, then turn retrieved information into a party plan. Groq chooses the searches and writes the plan; the Python tool retrieves snippets and URLs. Inspect the terminal output to see which sources support the suggestions.</p>
+<div class="highlight"><span class="filename">my_rag_search.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">search_tool</span> <span class="o">=</span> <span class="n">WebSearchTool</span><span class="p">()</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">search_tool</span><span class="p">],</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(),</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">task</span> <span class="o">=</span> <span class="s2">"Search for luxury superhero-themed party ideas, including decorations, entertainment, and catering."</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">task</span> <span class="o">+=</span> <span class="s2">" Use web_search and print its results. Cite only URLs returned by the tool."</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">task</span><span class="p">))</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain my_rag_search.py</summary>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The imports</td>
+<td>Load CodeAgent, the supplied Groq helpers, and the search-tool class.</td>
+</tr>
+<tr>
+<td><code translate="no">model = build_model()</code></td>
+<td>Prepare the Groq connection; ask for your key if needed.</td>
+</tr>
+<tr>
+<td><code translate="no">search_tool = WebSearchTool()</code></td>
+<td>Create a search-tool instance. This does not search yet.</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[search_tool]</code></td>
+<td>Make that instance available to CodeAgent.</td>
+</tr>
+<tr>
+<td><code translate="no">model=model</code> and <code translate="no">**agent_options()</code></td>
+<td>Use your Groq connection and the classroom Python-action settings.</td>
+</tr>
+<tr>
+<td><code translate="no">task = ...</code></td>
+<td>Ask for party ideas across three topics.</td>
+</tr>
+<tr>
+<td><code translate="no">task += ...</code></td>
+<td>Append instructions to show retrieved results and use their URLs. <code translate="no">+=</code> adds text to the existing string.</td>
+</tr>
+<tr>
+<td><code translate="no">raise SystemExit(run_task(agent, task))</code></td>
+<td>Run the task, print the result, and exit with its success/error status.</td>
+</tr>
+</tbody>
+</table>
+<p>The model chooses the queries. Python on your PC calls the search service. Returned snippets become observations for the model. This is the familiar web-search pattern, now used to gather material for a broader answer.</p>
+</details>
+<p><strong>Run:</strong> <code translate="no">python my_rag_search.py</code>.</p>
+<p><strong>Activity:</strong> find a search call, a returned snippet and URL, and a part of the final plan supported by that result. Did the actual run search once or more than once?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p>Find model-generated Python calling <code translate="no">web_search(...)</code>, then the actual returned data. Choose one URL from that output and check whether the answer uses information from its snippet. A URL appearing only in model-written text is not evidence of retrieval.</p>
+<p><strong>A guided answer:</strong> “The model chose the search terms. The search tool returned a snippet and URL. The agent used that information to suggest part of the plan.” Add your actual query, source, and supported suggestion.</p>
+<p>Count the real calls in your trace. The task allows multiple searches, but one run may use only one; do not report extra searches that did not happen. If the service failed, record the error rather than a successful source. Suggested party ideas are not proof that a real vendor offers that service.</p>
+</details>
+<h2 id="hf-retrieval-code">B. Read the local knowledge-base tool<a class="headerlink" href="#hf-retrieval-code" title="Permanent link">&para;</a></h2>
+<p>Open the supplied <strong><code translate="no">week03_retriever.py</code></strong>. This is the complete code already in that file; <strong>read it there rather than creating another copy</strong>. Its five short notes are fictional party-planning material, with source labels.</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sd">"""HF PartyPlanningRetrieverTool and five example documents (Apache-2.0).</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="sd">Source: https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd">Changes: accurate BM25 description and returned source metadata.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">"""</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.docstore.document</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_text_splitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.retrievers</span><span class="w"> </span><span class="kn">import</span> <span class="n">BM25Retriever</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tool</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">PartyPlanningRetrieverTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"party_planning_retriever"</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">description</span> <span class="o">=</span> <span class="s2">"Uses BM25 keyword search to retrieve relevant party planning ideas for Alfred’s superhero-themed party at Wayne Manor."</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="s2">"query"</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"The query to perform. This should be a query related to party planning or superhero themes."</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="n">output_type</span> <span class="o">=</span> <span class="s2">"string"</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">retriever</span> <span class="o">=</span> <span class="n">BM25Retriever</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>            <span class="n">docs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span>  <span class="c1"># Retrieve the top 5 documents</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">"Your search query must be a string"</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="n">docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>            <span class="n">query</span><span class="p">,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>        <span class="p">)</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Retrieved ideas:</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>            <span class="p">[</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>                <span class="sa">f</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">===== Idea </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s2"> =====</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">page_content</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>                <span class="o">+</span> <span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Source: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'source'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>            <span class="p">]</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="p">)</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="c1"># Simulate a knowledge base about party planning</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="n">party_ideas</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>    <span class="p">{</span><span class="s2">"text"</span><span class="p">:</span> <span class="s2">"A superhero-themed masquerade ball with luxury decor, including gold accents and velvet curtains."</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Party Ideas 1"</span><span class="p">},</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>    <span class="p">{</span><span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Hire a professional DJ who can play themed music for superheroes like Batman and Wonder Woman."</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Entertainment Ideas"</span><span class="p">},</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>    <span class="p">{</span><span class="s2">"text"</span><span class="p">:</span> <span class="s2">"For catering, serve dishes named after superheroes, like 'The Hulk's Green Smoothie' and 'Iron Man's Power Steak.'"</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Catering Ideas"</span><span class="p">},</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>    <span class="p">{</span><span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Decorate with iconic superhero logos and projections of Gotham and other superhero cities around the venue."</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Decoration Ideas"</span><span class="p">},</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>    <span class="p">{</span><span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Interactive experiences with VR where guests can engage in superhero simulations or compete in themed games."</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Entertainment Ideas"</span><span class="p">}</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="p">]</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="n">source_docs</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>    <span class="n">Document</span><span class="p">(</span><span class="n">page_content</span><span class="o">=</span><span class="n">doc</span><span class="p">[</span><span class="s2">"text"</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"source"</span><span class="p">:</span> <span class="n">doc</span><span class="p">[</span><span class="s2">"source"</span><span class="p">]})</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">party_ideas</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="p">]</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="c1"># Split the documents into smaller chunks for more efficient search</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>    <span class="n">add_start_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>    <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>    <span class="n">separators</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">,</span> <span class="s2">" "</span><span class="p">,</span> <span class="s2">""</span><span class="p">],</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="p">)</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="n">docs_processed</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">source_docs</span><span class="p">)</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="c1"># Create the retriever tool</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="n">party_planning_retriever</span> <span class="o">=</span> <span class="n">PartyPlanningRetrieverTool</span><span class="p">(</span><span class="n">docs_processed</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain week03_retriever.py</summary>
+<p>Read the file in this order:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">party_ideas</code></td>
+<td>Five notes: luxury decor, a DJ, superhero food, projected logos, and VR activities. Each has <code translate="no">text</code> and a <code translate="no">source</code> label.</td>
+</tr>
+<tr>
+<td><code translate="no">Document(...)</code></td>
+<td>Wrap each note's text and retain its source in <code translate="no">metadata</code>.</td>
+</tr>
+<tr>
+<td><code translate="no">RecursiveCharacterTextSplitter(...)</code></td>
+<td>Prepare chunks with a maximum target of 500 characters and 50 characters of overlap when splitting is needed. These short notes remain five chunks. <code translate="no">add_start_index</code> records each chunk's starting position.</td>
+</tr>
+<tr>
+<td><code translate="no">PartyPlanningRetrieverTool(Tool)</code></td>
+<td>Define a tool class, as in step 11. Its name, description, <code translate="no">inputs</code>, and <code translate="no">output_type</code> describe the interface to the model.</td>
+</tr>
+<tr>
+<td><code translate="no">__init__(self, docs, **kwargs)</code></td>
+<td>Set up an instance using the supplied documents. <code translate="no">super().__init__(**kwargs)</code> initializes the base Tool.</td>
+</tr>
+<tr>
+<td><code translate="no">BM25Retriever.from_documents(docs, k=5)</code></td>
+<td>Build a local word-based index and request up to five ranked results per query.</td>
+</tr>
+<tr>
+<td><code translate="no">forward(self, query)</code></td>
+<td>Check that the query is a string, call the retriever, and return its results as text. The tool itself does not call an LLM.</td>
+</tr>
+<tr>
+<td><code translate="no">enumerate(docs)</code></td>
+<td>Number the results in their current order, starting at zero. <code translate="no">Idea 0</code> is a result position, not a permanent document ID.</td>
+</tr>
+<tr>
+<td><code translate="no">Source: ...</code></td>
+<td>Include the saved source label alongside each returned passage so the answer can be checked.</td>
+</tr>
+<tr>
+<td><code translate="no">party_planning_retriever = ...</code></td>
+<td>Create the tool instance from the processed documents. Importing this module prepares it locally.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>BM25 uses matching words to rank text.</strong> It is not an embedding model. Spelling, capitalization, punctuation, and synonyms can affect matching with this simple default tokenizer.</p>
+<p><strong>Important limitation:</strong> <code translate="no">k=5</code> asks for five results, and there are five original notes. All five can therefore be returned, including weak or irrelevant matches. This tool has no score threshold or automatic “nothing found” response. The first result is ranked highest; that does not make every returned passage relevant.</p>
+</details>
+<p>The <code translate="no">Source:</code> values are labels for these supplied notes, not web addresses. Two entertainment notes share the same label; use the label <strong>and the passage text</strong> to identify which one supports a claim.</p>
+<h2 id="direct-tests">C. Test retrieval without an LLM<a class="headerlink" href="#direct-tests" title="Permanent link">&para;</a></h2>
+<p>Create <strong><code translate="no">my_retrieval_check.py</code></strong> beside <code translate="no">app.py</code>, paste the complete code, and save it.</p>
+<p><strong>What this file does — <code translate="no">my_retrieval_check.py</code>:</strong> Tests the local knowledge-base tool without creating an agent. It checks that the velvet query ranks the expected note first, that source labels are preserved, and that an absent query word can still return documents. It prints retrieved notes and PASS when the checks succeed; no LLM or Groq key is used.</p>
+<div class="highlight"><span class="filename">my_retrieval_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_retriever</span><span class="w"> </span><span class="kn">import</span> <span class="n">party_ideas</span><span class="p">,</span> <span class="n">docs_processed</span><span class="p">,</span> <span class="n">party_planning_retriever</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">matches</span> <span class="o">=</span> <span class="n">party_planning_retriever</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">"velvet"</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">assert</span> <span class="s2">"velvet curtains"</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">page_content</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">assert</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"source"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Party Ideas 1"</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs_processed</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">party_ideas</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">result</span> <span class="o">=</span> <span class="n">party_planning_retriever</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"velvet"</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">assert</span> <span class="s2">"Source: Party Ideas 1"</span> <span class="ow">in</span> <span class="n">result</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">unrelated</span> <span class="o">=</span> <span class="n">party_planning_retriever</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">"zyxwvu"</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">unrelated</span><span class="p">)</span> <span class="o">==</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs_processed</span><span class="p">))</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="s2">"zyxwvu"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">unrelated</span><span class="p">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"PASS: retrieval ranks a matching note, preserves sources, and exposes the no-match limitation."</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain my_retrieval_check.py</summary>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The import</td>
+<td>Load the notes, processed chunks, and prepared tool instance.</td>
+</tr>
+<tr>
+<td><code translate="no">.retriever.invoke("velvet")</code></td>
+<td>Search directly and return Document objects so you can inspect their text and metadata.</td>
+</tr>
+<tr>
+<td>The first two <code translate="no">assert</code> lines</td>
+<td>Check that the first match contains <code translate="no">velvet curtains</code> and has the expected source.</td>
+</tr>
+<tr>
+<td><code translate="no">len(docs_processed) == len(party_ideas)</code></td>
+<td>Check that these short notes each remain one chunk.</td>
+</tr>
+<tr>
+<td><code translate="no">party_planning_retriever(query="velvet")</code></td>
+<td>Call the tool interface used by the agent; its result is formatted text with source labels.</td>
+</tr>
+<tr>
+<td>The <code translate="no">zyxwvu</code> checks</td>
+<td>Demonstrate that the retriever returns ranked items even though none contains the query word. <code translate="no">min(5, ...)</code> allows the check to work after you add a sixth short note.</td>
+</tr>
+<tr>
+<td><code translate="no">all(...)</code></td>
+<td>Require every returned document to satisfy the condition.</td>
+</tr>
+<tr>
+<td>The final <code translate="no">print</code></td>
+<td>Report success only if all assertions passed.</td>
+</tr>
+</tbody>
+</table>
+<p>No agent or Groq model is created here. This checks local Python retrieval without an API key or a network request. If an assertion fails, fix the local data or retrieval setup before asking the model to use it.</p>
+</details>
+<p><strong>Run:</strong> <code translate="no">python my_retrieval_check.py</code>.</p>
+<p>Read the returned notes. The first result should contain <code translate="no">velvet curtains</code> and <code translate="no">Source: Party Ideas 1</code>, followed eventually by:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PASS: retrieval ranks a matching note, preserves sources, and exposes the no-match limitation.
+</code></pre></div>
+<p><strong>Activity:</strong> why does the test pass even though <code translate="no">zyxwvu</code> appears in none of the notes? Does “five documents returned” mean “five useful documents”?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p>The <code translate="no">velvet</code> query checks that a matching note ranks first and its source survives. The <code translate="no">zyxwvu</code> query checks a different behavior: BM25 still returns up to five ranked documents when the query has no matching words. This tool does not filter out zero-score results.</p>
+<p><strong>A guided answer:</strong> “Returned documents are candidates, not proof of relevance. The local test exposes the limitation; the agent must still check whether their text supports the requested answer.” The test passes because it expects this behavior, not because the unknown word was found.</p>
+</details>
+<h2 id="agent-retrieval">D. Let CodeAgent use the notes<a class="headerlink" href="#agent-retrieval" title="Permanent link">&para;</a></h2>
+<p>Create <strong><code translate="no">my_rag.py</code></strong> beside <code translate="no">app.py</code>, paste the complete code, and save it.</p>
+<p><strong>What this file does — <code translate="no">my_rag.py</code>:</strong> Runs an agent that answers party-planning questions from the local notes in week03_retriever.py. Python retrieves passages and source labels, then the model on Groq uses that text to answer. The terminal shows the retrieval and final answer so you can check the evidence, try an unsupported question, and verify a note you add.</p>
+<div class="highlight"><span class="filename">my_rag.py</span><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_retriever</span><span class="w"> </span><span class="kn">import</span> <span class="n">party_planning_retriever</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">party_planning_retriever</span><span class="p">],</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(),</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">task</span> <span class="o">=</span> <span class="s2">"Find ideas for a luxury superhero-themed party, including entertainment, catering, and decoration options."</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">task</span> <span class="o">+=</span> <span class="s2">" Use party_planning_retriever and print its results."</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">task</span> <span class="o">+=</span> <span class="s2">" Answer briefly from the returned notes and cite their Source labels."</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">task</span> <span class="o">+=</span> <span class="s2">" If the notes do not support an answer, say so."</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">task</span><span class="p">))</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain my_rag.py</summary>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">from week03_retriever import party_planning_retriever</code></td>
+<td>Load the tool instance and its local index. This is the retriever you just tested.</td>
+</tr>
+<tr>
+<td><code translate="no">build_model()</code></td>
+<td>Prepare the same Groq connection used earlier.</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[party_planning_retriever]</code></td>
+<td>Register the existing instance; do not add parentheses to call it during setup.</td>
+</tr>
+<tr>
+<td><code translate="no">CodeAgent(...)</code></td>
+<td>Coordinate Python actions, tool results, and model requests.</td>
+</tr>
+<tr>
+<td><code translate="no">task = ...</code></td>
+<td>Ask for entertainment, catering, and decoration ideas.</td>
+</tr>
+<tr>
+<td>The three <code translate="no">task += ...</code> lines</td>
+<td>Ask the agent to retrieve and print notes, use returned sources, and admit missing evidence. These are instructions; inspect the trace to verify them.</td>
+</tr>
+<tr>
+<td><code translate="no">run_task(...)</code></td>
+<td>Start the model/action/observation loop and print the final result.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Follow one run:</strong> the model proposes <code translate="no">party_planning_retriever(query=...)</code>; local Python retrieves passages; their text and labels become the observation; the model uses that observation to write an answer. Unlike the direct test, this agent run needs Groq and internet access.</p>
+</details>
+<p><strong>Run:</strong> <code translate="no">python my_rag.py</code>.</p>
+<p><strong>Activity:</strong> choose one suggestion in the answer. Find the actual retrieval call, the passage that supports it, and its returned <code translate="no">Source:</code> label. Write down all three.</p>
+<details class="success">
+<summary>Show answer</summary>
+<p>A source-supported example would be a DJ suggestion based on the returned passage beginning <code translate="no">Hire a professional DJ</code>, with <code translate="no">Source: Entertainment Ideas</code>. A luxury-decor suggestion could be supported by the gold accents and velvet-curtains passage with <code translate="no">Source: Party Ideas 1</code>.</p>
+<p><strong>A guided answer:</strong> “The agent called the retriever with [my actual query]. It returned [the passage I observed], labelled [its Source]. The final answer used that passage to suggest [the supported idea].” Fill this in from your own run; these examples do not prove your agent called the tool.</p>
+<p>Check the passage as well as its label. A source name alone cannot support extra details absent from the text, such as a price, a confirmed booking, or a real vendor's availability.</p>
+</details>
+<h2 id="query-experiments">E. Ask a focused question and an unsupported question<a class="headerlink" href="#query-experiments" title="Permanent link">&para;</a></h2>
+<p>In <strong><code translate="no">my_rag.py</code></strong>, replace only the first <code translate="no">task = ...</code> sentence with <code translate="no">task = "Find the idea mentioning velvet curtains."</code>. Keep the three appended instructions. Save and run <strong><code translate="no">python my_rag.py</code></strong> again.</p>
+<p>Then replace that sentence with <code translate="no">task = "Do these notes contain the word zyxwvu?"</code>, save, and run the same file again. Keep the execution records from both runs.</p>
+<p><strong>Activity:</strong> what evidence supports the first answer? What should the second answer say even if the retriever returns notes?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Focused query:</strong> look for the actual returned passage containing <code translate="no">velvet curtains</code>, labelled <code translate="no">Party Ideas 1</code>. That text supports the first answer.</p>
+<p><strong>Unsupported query:</strong> none of the supplied notes contains <code translate="no">zyxwvu</code>. The retriever can still return five items; the answer should state that the word was not found in the returned notes. Returning text does not mean it answers the question.</p>
+<p>The model chooses its own search wording, so inspect the real query. If the final answer invents a matching passage, it fails this check even though the Python tool ran successfully.</p>
+</details>
+<h2 id="challenge">F. Add your own knowledge<a class="headerlink" href="#challenge" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Open <strong><code translate="no">week03_retriever.py</code></strong> and find <code translate="no">party_ideas</code>.</li>
+<li>Add a sixth dictionary entry before the closing <code translate="no">]</code>, keeping the same <code translate="no">"text"</code> and <code translate="no">"source"</code> fields. For example, use <code translate="no">"text": "Create a planetarium ceiling for the party."</code> and <code translate="no">"source": "Student Decoration Idea"</code>. Keep a comma between entries.</li>
+<li>Save. In <strong><code translate="no">my_rag.py</code></strong>, set the first task sentence to <code translate="no">task = "Find the planetarium decoration idea."</code>. Keep the appended instructions, save, and run <strong><code translate="no">python my_rag.py</code></strong>.</li>
+<li>Find the new passage and its source in the tool output and answer. Run <strong><code translate="no">python my_retrieval_check.py</code></strong> again; the original velvet note should still rank first for its query.</li>
+</ol>
+<p><strong>Activity:</strong> did you train the model? Why might one of six notes be absent from a retrieval result?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p>You changed the <strong>knowledge base</strong>, not the model's weights. Restarting the program loads your edited notes and rebuilds the local index. Searching for <code translate="no">planetarium</code> should now bring the new note near the top; verify the actual output and source.</p>
+<p>With six short notes and <code translate="no">k=5</code>, each retrieval returns at most five, so at least one note is left out. The direct check still uses the original <code translate="no">velvet</code> query; it does not replace checking your new note and the agent's answer.</p>
+</details>
+<h2 id="limitations-and-next-steps">How a larger system could improve retrieval<a class="headerlink" href="#limitations-and-next-steps" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>In simple words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query reformulation</td>
+<td>Rewrite a question into better search terms.</td>
+</tr>
+<tr>
+<td>Query decomposition</td>
+<td>Split a multi-part question into smaller searches.</td>
+</tr>
+<tr>
+<td>Query expansion</td>
+<td>Search several alternative wordings.</td>
+</tr>
+<tr>
+<td>Reranking</td>
+<td>Score the first results again with another method, such as a cross-encoder.</td>
+</tr>
+<tr>
+<td>Multi-step retrieval</td>
+<td>Let the first results inform the next search.</td>
+</tr>
+<tr>
+<td>Source integration</td>
+<td>Combine material from different sources, such as notes and the web.</td>
+</tr>
+<tr>
+<td>Result validation</td>
+<td>Check whether the returned text is relevant and supports the answer.</td>
+</tr>
+</tbody>
+</table>
+<p>These are design options, not features automatically added by BM25. The two programs above register one retrieval tool each; they do not demonstrate automatic choice between web search and local notes in a single agent. Execution history can help within a run, but persistent memory requires additional design.</p>
+<p><strong>Activity:</strong> the question asks about catering and entertainment. What could the agent do if one broad query gives poor results?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p>It could split the question into two searches, such as <code translate="no">catering</code> and <code translate="no">entertainment</code>, inspect both observations, and combine supported passages. That is query decomposition and potentially multi-step retrieval. Using alternative words is query reformulation or expansion. Check the trace before claiming your small example actually did any of these.</p>
+</details>
+<p><strong>Checkpoint:</strong> show the passing direct test, an actual retrieval call, a source-supported answer, the unsupported-query result, and your added note. Explain what the model chooses and what local Python executes.</p>
+<h2 id="sources">Credits and next step<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<p>Adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents">Hugging Face Agents Course — Building Agentic RAG Systems</a>, under the <a href="../licenses/huggingface-agents-course.txt">Apache 2.0 license</a>. The party notes, retriever class, and splitter settings come from that lesson. The returned text includes the notes' source labels.</p>
+<p>The <a href="https://huggingface.co/agents-course/notebooks/blob/main/unit2/smolagents/retrieval_agents.ipynb">original notebook</a> and <a href="https://huggingface.co/learn/cookbook/agent_rag">larger agentic RAG recipe</a> are further references. <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz2">HF Quick Quiz 2</a> is optional.</p>
+<p><strong>Next:</strong> <a href="../week-3-completion/">13 · Completion checks</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../week-3-custom-tool/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11 · Tools: functions and classes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                11 · Tools: functions and classes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week-3-completion/" class="md-footer__link md-footer__link--next" aria-label="Next: 13 · Completion checks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                13 · Completion checks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Created by Ampere for SI Lab students · Original course by Hugging Face</div>
+  
+  
+    
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

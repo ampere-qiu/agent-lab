@@ -948,6 +948,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -955,7 +983,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1178,7 +1206,7 @@
 
 
 <h1 id="week-2-working-template-and-tools">第2週 — テンプレートを動かし、ツールを使う<a class="headerlink" href="#week-2-working-template-and-tools" title="この見出しへのリンク">&para;</a></h1>
-<p><a href="../week-1-learning-plan/#week-1-completion">第1週の完了確認</a>を終えてから始めます。目安は<strong>3〜4時間</strong>、独自ツールの発展課題は追加で30〜60分です。ダミースクリプト、インストール済みのPython、Groqキーを引き続き使います。</p>
+<p><a href="../week-1-learning-plan/#week-1-completion">第1週の完了確認</a>を終えてから始めます。ダミースクリプト、インストール済みのPython、Groqキーを引き続き使います。</p>
 <h2 id="learning-objectives">学習目標<a class="headerlink" href="#learning-objectives" title="この見出しへのリンク">&para;</a></h2>
 <p>第2週を終えたら、チャットテンプレートを入力から応答まで動かし、CodeAgentがループを管理する仕組みを説明できるようになります。ツールを登録・テストし、実行記録と検索で返された情報源に照らして回答を確かめます。</p>
 <h2 id="what-is-supplied">用意されているものと、自分がすること<a class="headerlink" href="#what-is-supplied" title="この見出しへのリンク">&para;</a></h2>
@@ -1229,10 +1257,10 @@
 <p>変更前のテンプレートでも簡単な質問に応答し、<code translate="no">12 * 8</code>を計算できます。ただし、配布済みの検索ツールは登録するまで使えません。もっともらしいURLや「検索しました」という発言だけでは、検索が実行された証拠にはなりません。</p>
 <h2 id="learning-sequence">学習の順序<a class="headerlink" href="#learning-sequence" title="この見出しへのリンク">&para;</a></h2>
 <ol>
-<li><a href="../run-your-first-agent/">テンプレートをダウンロードして起動</a>します。専用のフォルダーと仮想環境を使います（約45〜60分）。<code translate="no">12 * 8</code>の答えを確認します。画面が開くだけでは、モデルへの接続確認にはなりません。</li>
-<li><code translate="no">app.py</code>を横に開き、<a href="../understand-the-template/">テンプレートの仕組み</a>を読みます（約30〜45分）。第1週の手動ループと、自動化されたループを比較します。</li>
-<li><a href="../first-agent-practical/">用意済みのツールを登録し、テスト</a>します（約90〜120分）。時刻関数を直接テストしてから登録し、エージェントの呼び出しを確認します。検索でも同じ手順を行い、返された情報源を確かめます。</li>
-<li>両方のツールを実演し、<a href="../quizzes/#finish-the-practical">完了確認</a>を行います（約15分）。</li>
+<li><a href="../run-your-first-agent/">テンプレートをダウンロードして起動</a>します。専用のフォルダーと仮想環境を使います。<code translate="no">12 * 8</code>の答えを確認します。画面が開くだけでは、モデルへの接続確認にはなりません。</li>
+<li><code translate="no">app.py</code>を横に開き、<a href="../understand-the-template/">テンプレートの仕組み</a>を読みます。第1週の手動ループと、自動化されたループを比較します。</li>
+<li><a href="../first-agent-practical/">用意済みのツールを登録し、テスト</a>します。時刻関数を直接テストしてから登録し、エージェントの呼び出しを確認します。検索でも同じ手順を行い、返された情報源を確かめます。</li>
+<li>両方のツールを実演し、<a href="../quizzes/#finish-the-practical">完了確認</a>を行います。</li>
 <li>任意で、<a href="../first-agent-practical/#6-optional-create-your-own-tool">独自ツールの作成例</a>を参考に、実装・説明・テスト・登録まで行います。</li>
 </ol>
 <h2 id="week-2-completion">第2週の完了確認<a class="headerlink" href="#week-2-completion" title="この見出しへのリンク">&para;</a></h2>

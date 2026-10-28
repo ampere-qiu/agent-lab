@@ -14,7 +14,7 @@
         <link rel="prev" href="../week-3-action-formats/">
       
       
-        <link rel="next" href="../week-3-completion/">
+        <link rel="next" href="../week-3-retrieval/">
       
       
       
@@ -1014,6 +1014,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1021,7 +1049,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -1387,6 +1415,7 @@
 <li>Paste the <strong>whole code block below</strong> into the file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. Use the exact <code translate="no">.py</code> filename, without <code translate="no">.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_tool_check.py</code>:</strong> Checks the menu, catering, and theme tools by calling them directly with known inputs, including an unknown theme category. It prints PASS only when every returned value satisfies its assertion; otherwise Python stops at the failed check. It uses no LLM and does not need a Groq key.</p>
 <div class="highlight"><span class="filename">my_tool_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">suggest_menu</span><span class="p">,</span> <span class="n">catering_service_tool</span><span class="p">,</span> <span class="n">SuperheroPartyThemeTool</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">assert</span> <span class="n">suggest_menu</span><span class="p">(</span><span class="n">occasion</span><span class="o">=</span><span class="s2">"formal"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"3-course dinner with wine and dessert."</span>
@@ -1453,6 +1482,7 @@
 <li>Paste the <strong>whole code block below</strong> into the file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. Use the exact <code translate="no">.py</code> filename, without <code translate="no">.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_catering.py</code>:</strong> Runs an agent that answers a request for the highest-rated catering service using the supplied catering function. Groq chooses the tool call; Python compares the fixed fictional ratings and returns the winning name. The tool result and final answer appear in the terminal.</p>
 <div class="highlight"><span class="filename">my_catering.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">catering_service_tool</span>
@@ -1609,6 +1639,7 @@
 <li>Paste the <strong>whole code block below</strong> into the file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. Use the exact <code translate="no">.py</code> filename, without <code translate="no">.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_theme.py</code>:</strong> Runs an agent that answers a party-theme request using an instance of SuperheroPartyThemeTool. Groq chooses a category, and the Python tool retrieves its stored description, such as the villain-masquerade idea. The terminal shows the call, returned description, and final answer.</p>
 <div class="highlight"><span class="filename">my_theme.py</span><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">SuperheroPartyThemeTool</span>
@@ -1697,10 +1728,10 @@
 <h2 id="default-toolbox">Other tool capabilities<a class="headerlink" href="#default-toolbox" title="Permanent link">&para;</a></h2>
 <p>Tools can also get user input, read a webpage, or return a final answer. Each capability must be made available to the agent. A web-search tool returns snippets; that is different from controlling a browser.</p>
 <h2 id="integrations">Further reading<a class="headerlink" href="#integrations" title="Permanent link">&para;</a></h2>
-<p>Tools can be shared or connected to other systems. Those topics are outside this week's practical. Continue with <a href="../week-3-completion/">Week 03 completion checks</a>; the next topics are listed in <a href="../week-4-preview/">Coming in Week 04</a>.</p>
+<p>Tools can be shared or connected to other systems. Those topics are outside this week's practical. Continue with <a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a>; agent teams and vision/browser work are listed in <a href="../week-4-preview/">Coming in Week 04</a>.</p>
 <h2 id="sources">Credits<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
 <p>Adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools">Hugging Face Agents Course — Tools</a>, under the <a href="../licenses/huggingface-agents-course.txt">Apache 2.0 license</a>.</p>
-<p><strong>Next:</strong> <a href="../week-3-completion/">Week 03 completion checks</a>.</p>
+<p><strong>Next:</strong> <a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a>.</p>
 
 
 
@@ -1753,13 +1784,13 @@
         
         
           
-          <a href="../week-3-completion/" class="md-footer__link md-footer__link--next" aria-label="Next: 12 · Completion checks">
+          <a href="../week-3-retrieval/" class="md-footer__link md-footer__link--next" aria-label="Next: 12 · Building Agentic RAG Systems">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                12 · Completion checks
+                12 · Building Agentic RAG Systems
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -937,6 +937,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -944,7 +972,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1156,15 +1184,15 @@
 
 
 <h1 id="week-1-concepts-setup-and-a-dummy-agent">第1週 — 基礎・環境準備・ダミーエージェント<a class="headerlink" href="#week-1-concepts-setup-and-a-dummy-agent" title="この見出しへのリンク">&para;</a></h1>
-<p>今週は、エージェント用フレームワークを使う前に、動作の仕組みをつかみます。読解・環境準備・実習を合わせた目安は<strong>3〜4時間</strong>です。インストールやAPIの利用状況によっては、さらに時間がかかります。</p>
+<p>今週は、エージェント用フレームワークを使う前に、動作の仕組みをつかみます。</p>
 <h2 id="learning-objectives">学習目標<a class="headerlink" href="#learning-objectives" title="この見出しへのリンク">&para;</a></h2>
 <p>第1週を終えたら、モデル・提供サービス・プログラム・ツールの違いを説明し、ローカルのPython環境を準備して、リクエスト → 行動の提案 → 関数の実行 → 観測結果 → 最終応答という流れをたどれるようになります。</p>
 <h2 id="learning-sequence">学習の順序<a class="headerlink" href="#learning-sequence" title="この見出しへのリンク">&para;</a></h2>
 <ol>
 <li>ターミナルやPythonの編集に慣れていない場合は、<a href="../before-you-start/">始める前に</a>を読みます。</li>
-<li><a href="../unit-1-walkthrough/">エージェントの基礎</a>を読み、HFの小テスト2つに取り組みます（約60〜90分）。HFの原典は補足資料です。原典の実験画面が動かなくても、ローカル実習には進めます。</li>
-<li><a href="../prepare-your-computer/">環境を準備</a>します。Python 3.11、ダミー演習用フォルダーと仮想環境、モデル用クライアント、自分のGroqキーを用意します（約45〜60分）。</li>
-<li><a href="../dummy-agent-local/">3段階のダミーエージェント</a>を作って実行します。モデルへの問い合わせ、提案された行動の確認、Python関数の結果を返す処理を順に試します（約60〜90分）。</li>
+<li><a href="../unit-1-walkthrough/">エージェントの基礎</a>を読み、HFの小テスト2つに取り組みます。HFの原典は補足資料です。原典の実験画面が動かなくても、ローカル実習には進めます。</li>
+<li><a href="../prepare-your-computer/">環境を準備</a>します。Python 3.11、ダミー演習用フォルダーと仮想環境、モデル用クライアント、自分のGroqキーを用意します。</li>
+<li><a href="../dummy-agent-local/">3段階のダミーエージェント</a>を作って実行します。モデルへの問い合わせ、提案された行動の確認、Python関数の結果を返す処理を順に試します。</li>
 </ol>
 <p>今週はチャット用の完全なテンプレートをダウンロード・設定する必要はありません。ダミー演習の天気は固定のデモデータです。実際の時刻取得と検索は第2週で扱います。</p>
 <h2 id="week-1-completion">第1週の完了確認<a class="headerlink" href="#week-1-completion" title="この見出しへのリンク">&para;</a></h2>

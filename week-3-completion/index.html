@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../week-3-custom-tool/">
+        <link rel="prev" href="../week-3-retrieval/">
       
       
         <link rel="next" href="../week-4-preview/">
@@ -23,7 +23,7 @@
     
     
       
-        <title>12 · Completion checks - Agent Lab</title>
+        <title>13 · Completion checks - Agent Lab</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12 · Completion checks
+              13 · Completion checks
             
           </span>
         </div>
@@ -858,6 +858,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -875,7 +903,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -893,7 +921,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -1155,8 +1183,8 @@
 
 
 
-<h1 id="week-3-completion">12 · Completion checks<a class="headerlink" href="#week-3-completion" title="Permanent link">&para;</a></h1>
-<p>This week ends after function/class tools. Show your saved files and the actual terminal output. This site does not store progress or issue certificates.</p>
+<h1 id="week-3-completion">13 · Completion checks<a class="headerlink" href="#week-3-completion" title="Permanent link">&para;</a></h1>
+<p>This week includes function/class tools and Agentic RAG. Show your saved files and the actual terminal output. This site does not store progress or issue certificates.</p>
 <h2 id="required-evidence">Files and practical evidence<a class="headerlink" href="#required-evidence" title="Permanent link">&para;</a></h2>
 <p>All your new files should be inside <code translate="no">First_agent_template</code>, beside <code translate="no">app.py</code> and the supplied <code translate="no">week03_common.py</code>.</p>
 <table>
@@ -1196,6 +1224,18 @@
 <td>A party-theme-tool call, its stored description, and the final answer.</td>
 </tr>
 <tr>
+<td><code translate="no">my_rag_search.py</code></td>
+<td>A web retrieval call and a suggestion supported by an actually returned snippet and URL.</td>
+</tr>
+<tr>
+<td><code translate="no">my_retrieval_check.py</code></td>
+<td>Passing local retrieval checks without an LLM, including the no-match limitation.</td>
+</tr>
+<tr>
+<td><code translate="no">my_rag.py</code> and your change in <code translate="no">week03_retriever.py</code></td>
+<td>A source-supported answer, the unsupported-query result, and your added note in actual tool output.</td>
+</tr>
+<tr>
 <td>Your change in <code translate="no">week03_tools.py</code></td>
 <td>A changed service/category reflected in direct-test and agent results.</td>
 </tr>
@@ -1213,10 +1253,13 @@
 <li>How does a decorated function differ from a <code translate="no">Tool</code> class with <code translate="no">forward(...)</code>?</li>
 <li>Which party values are fictional Python data, and which results come from web search?</li>
 <li>How do you verify that a tool really ran?</li>
+<li>How does local retrieval differ from a fixed-response tool?</li>
+<li>Why can BM25 return documents for a word absent from the notes?</li>
+<li>How do you check a RAG answer against its returned passage and source?</li>
 </ul>
-<p>Retrieval, knowledge bases, agent teams, and vision/browser work continue on the <a href="../week-4-preview/">Week 04 page</a>.</p>
+<p>Agent teams and vision/browser work continue on the <a href="../week-4-preview/">Week 04 page</a>.</p>
 <h2 id="optional-hf">Quiz and credits<a class="headerlink" href="#optional-hf" title="Permanent link">&para;</a></h2>
-<p><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz1">HF Quick Quiz 1</a> is optional. The later quizzes include topics beyond this week's class.</p>
+<p><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz1">HF Quick Quiz 1</a> is optional. <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz2">HF Quick Quiz 2</a> is also optional after retrieval. The final quiz includes later topics.</p>
 <p>Lesson concepts and examples are adapted from the <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/introduction">Hugging Face Agents Course, Unit 2.1</a>.</p>
 <p><strong>Review:</strong> <a href="../week-3-learning-plan/">Week 03 plan</a> · <strong>Next:</strong> <a href="../week-4-preview/">Week 04 · Coming next</a>.</p>
 
@@ -1254,7 +1297,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../week-3-custom-tool/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11 · Tools: functions and classes">
+          <a href="../week-3-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12 · Building Agentic RAG Systems">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1264,7 +1307,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                11 · Tools: functions and classes
+                12 · Building Agentic RAG Systems
               </div>
             </div>
           </a>

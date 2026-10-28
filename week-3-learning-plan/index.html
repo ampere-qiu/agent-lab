@@ -1014,6 +1014,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1021,7 +1049,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -1310,10 +1338,10 @@
 
 
 <h1 id="week-3-learning-plan">Week 03 · Plan and download<a class="headerlink" href="#week-3-learning-plan" title="Permanent link">&para;</a></h1>
-<p>This week you will use <strong>smolagents and your Groq key</strong> to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, and use catering/theme tools.</p>
-<p><strong>Suggested time: 3–4 hours.</strong> The class covers introduction, CodeAgent, action formats, and tools. <a href="../week-4-preview/">Retrieval agents and the later topics continue in Week 04</a>.</p>
+<p>This week you will use <strong>smolagents and your Groq key</strong> to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, use catering/theme tools, and retrieve information from a local knowledge base.</p>
+<p>The class covers introduction, CodeAgent, action formats, tools, and Agentic RAG. <a href="../week-4-preview/">Agent teams and vision/browser topics continue in Week 04</a>.</p>
 <h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
-<p>By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, and change the data used by a Python tool.</p>
+<p>By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, change the data used by a Python tool, and check a RAG answer against retrieved passages and their sources.</p>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h2>
 <p>Use your existing <strong><code translate="no">First_agent_template</code></strong> folder, <strong>Python 3.11 <code translate="no">.venv</code></strong>, code editor, and <strong>Groq API key</strong> from Week 2. You need internet for Groq calls and web searches.</p>
 <p><strong>The agent programs run only in the terminal.</strong> They print their results there. There is no Gradio interface or browser chat to start for Week 03. The course website is where you read the instructions.</p>
@@ -1323,40 +1351,37 @@
 <tr>
 <th>Lesson</th>
 <th>Activity</th>
-<th>Approximate time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="../week-3-framework/">08 · Introduction to smolagents</a></td>
 <td>Read how the model, framework, and tools work together.</td>
-<td>20–25 min</td>
 </tr>
 <tr>
 <td><a href="../week-3-code-agent/">09 · Run a CodeAgent</a></td>
 <td>Create and run playlist, menu, and preparation-time programs.</td>
-<td>50–60 min</td>
 </tr>
 <tr>
 <td><a href="../week-3-action-formats/">10 · Python or structured tool calls?</a></td>
 <td>Compare two action formats, then run ToolCallingAgent and inspect its trace.</td>
-<td>30–40 min</td>
 </tr>
 <tr>
 <td><a href="../week-3-custom-tool/">11 · Tools: functions and classes</a></td>
 <td>Create a direct test and two agent programs; change a tool's data.</td>
-<td>50–60 min</td>
 </tr>
 <tr>
-<td><a href="../week-3-completion/">12 · Completion checks</a></td>
+<td><a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a></td>
+<td>Search the web and local notes; verify sources and add a note.</td>
+</tr>
+<tr>
+<td><a href="../week-3-completion/">13 · Completion checks</a></td>
 <td>Show your files and execution results.</td>
-<td>15 min</td>
 </tr>
 </tbody>
 </table>
-<p>Allow additional time for the setup below and for questions or service limits.</p>
 <h2 id="exercise-files">1. Download and place the support files<a class="headerlink" href="#exercise-files" title="Permanent link">&para;</a></h2>
-<p><strong>What is provided?</strong> A small ZIP with <strong>six support files</strong>: the Groq connection, ready-made Python tools, a package list, instructions, and the source license. You will write the small agent programs yourself by copying the code from the lessons.</p>
+<p><strong>What is provided?</strong> A small ZIP with <strong>seven support files</strong>: the Groq connection, ready-made Python tools, a local knowledge-base retriever, a package list, instructions, and the source license. You will write the small agent programs yourself by copying the code from the lessons.</p>
 <p><a class="md-button md-button--primary" download="week03-smolagents.zip" href="../downloads/week03-smolagents.zip">Download Week 03 support files (.zip)</a></p>
 <table>
 <thead>
@@ -1379,6 +1404,10 @@
 <td>The web-search tool.</td>
 </tr>
 <tr>
+<td><code translate="no">week03_retriever.py</code></td>
+<td>Five party notes and the local BM25 retrieval tool.</td>
+</tr>
+<tr>
 <td><code translate="no">week03-requirements.txt</code></td>
 <td>The Python packages needed this week.</td>
 </tr>
@@ -1396,7 +1425,7 @@
 <li>If the Week 2 chat app is running, stop it with <strong>Control + C</strong> in its terminal.</li>
 <li>Click the download button. The ZIP is usually saved in <strong>Downloads</strong>.</li>
 <li><strong>Windows:</strong> right-click the ZIP → <strong>Extract All</strong> → <strong>Extract</strong>. <strong>Mac:</strong> double-click the ZIP in Finder.</li>
-<li>Open the extracted <strong><code translate="no">week03-exercises</code></strong> folder. Copy its <strong>six files</strong>.</li>
+<li>Open the extracted <strong><code translate="no">week03-exercises</code></strong> folder. Copy its <strong>seven files</strong>.</li>
 <li>Paste those files directly into the <strong>existing <code translate="no">First_agent_template</code> folder</strong>, beside <code translate="no">app.py</code>. Copy the files themselves, not the enclosing <code translate="no">week03-exercises</code> folder. If you already edited older <code translate="no">week03...</code> files, keep a backup of those edits before replacing same-name files.</li>
 </ol>
 <p>Open the correct destination in your file manager:</p>
@@ -1405,7 +1434,7 @@
 <li><strong>Mac — Finder:</strong> choose <strong>Go → Go to Folder</strong>, enter <code translate="no">~/agent-course/First_agent_template</code>, and press Return.</li>
 </ul>
 <p>These paths use the default Week 2 location. If you saved the project elsewhere, use that existing folder; do not create an empty replacement folder.</p>
-<p>After copying, the six files should be beside your existing <code translate="no">app.py</code> and <code translate="no">.venv</code> folder. The ZIP provides the helpers and tools; the lessons show you how to create the <code translate="no">my_...py</code> programs that use them.</p>
+<p>After copying, the seven files should be beside your existing <code translate="no">app.py</code> and <code translate="no">.venv</code> folder. The ZIP provides the helpers and tools; the lessons show you how to create the <code translate="no">my_...py</code> programs that use them.</p>
 <h2 id="open-project">2. Open the project in your editor<a class="headerlink" href="#open-project" title="Permanent link">&para;</a></h2>
 <p>Open your code editor. In VS Code, choose <strong>File → Open Folder</strong> and select <strong><code translate="no">First_agent_template</code></strong>. The file list should show <code translate="no">app.py</code>, <code translate="no">week03_common.py</code>, <code translate="no">week03_tools.py</code>, and <code translate="no">week03_search.py</code> together.</p>
 <p>When a lesson says <strong>create a file</strong>, choose <strong>File → New Text File</strong>, paste the given complete Python code, then use <strong>File → Save As</strong> to save the exact filename in this folder. Save beside <code translate="no">app.py</code>, not inside <code translate="no">.venv</code> or <code translate="no">tools</code>.</p>
@@ -1429,7 +1458,7 @@
 <p>In the same activated terminal, on <strong>either Windows or Mac</strong>, run:</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>week03-requirements.txt
 </code></pre></div>
-<p>This list contains only <code translate="no">smolagents==1.13.0</code>, <code translate="no">openai&gt;=1.0,&lt;3</code>, and <code translate="no">ddgs==9.16.0</code>. It does not request Gradio, LangChain, BM25, a GPU, or browser-automation packages. These terminal libraries are normally already installed in your Week 2 environment; <code translate="no">Requirement already satisfied</code> is expected in that case.</p>
+<p>This list keeps <code translate="no">smolagents==1.13.0</code>, <code translate="no">openai&gt;=1.0,&lt;3</code>, and <code translate="no">ddgs==9.16.0</code>, and adds <code translate="no">langchain-community==0.4.2</code>, <code translate="no">langchain-text-splitters==1.1.3</code>, and <code translate="no">rank-bm25==0.2.2</code> for step 12. It does not request a Gradio UI, a GPU, an embedding model, or browser automation. Existing packages may show <code translate="no">Requirement already satisfied</code>; the retrieval packages and their dependencies may need downloading.</p>
 <p>Then check the supplied menu tool without contacting Groq:</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from week03_tools import suggest_menu; print(suggest_menu(occasion='formal'))"</span>
 </code></pre></div>
@@ -1441,22 +1470,61 @@
 <table>
 <thead>
 <tr>
-<th>Lesson</th>
-<th>New file(s), all inside First_agent_template</th>
+<th>Step</th>
+<th>File to create in First_agent_template</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>09</td>
-<td><code translate="no">my_playlist.py</code>, <code translate="no">my_menu.py</code>, <code translate="no">my_timing.py</code></td>
+<td><code translate="no">my_playlist.py</code></td>
+<td>Search for party music with CodeAgent.</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code translate="no">my_menu.py</code></td>
+<td>Choose a stored menu through an agent.</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code translate="no">my_timing.py</code></td>
+<td>Calculate a preparation finish time with Python.</td>
 </tr>
 <tr>
 <td>10</td>
 <td><code translate="no">my_tool_calling.py</code></td>
+<td>Run the music search using structured tool calls.</td>
 </tr>
 <tr>
 <td>11</td>
-<td><code translate="no">my_tool_check.py</code>, <code translate="no">my_catering.py</code>, <code translate="no">my_theme.py</code></td>
+<td><code translate="no">my_tool_check.py</code></td>
+<td>Test menu, catering, and theme tools without an LLM.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code translate="no">my_catering.py</code></td>
+<td>Use an agent to select the highest-rated fictional service.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code translate="no">my_theme.py</code></td>
+<td>Use a class-based tool to retrieve a party theme.</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_rag_search.py</code></td>
+<td>Build a party plan using web-search results.</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_retrieval_check.py</code></td>
+<td>Test local retrieval and its limits without an LLM.</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_rag.py</code></td>
+<td>Answer from local notes with returned source labels.</td>
 </tr>
 </tbody>
 </table>
@@ -1489,6 +1557,10 @@
 <tr>
 <td><code translate="no">No module named smolagents</code>, <code translate="no">openai</code>, or <code translate="no">ddgs</code></td>
 <td>Activate <code translate="no">.venv</code> and run the requirements command above.</td>
+</tr>
+<tr>
+<td>A retrieval module such as <code translate="no">langchain_community</code> or <code translate="no">rank_bm25</code> is missing</td>
+<td>Use the updated requirements file and run its install command in the same <code translate="no">.venv</code>.</td>
 </tr>
 <tr>
 <td>Groq key prompt looks empty while typing</td>

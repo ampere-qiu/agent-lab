@@ -14,7 +14,7 @@
         <link rel="prev" href="../week-3-action-formats/">
       
       
-        <link rel="next" href="../week-3-completion/">
+        <link rel="next" href="../week-3-retrieval/">
       
       
       
@@ -1014,6 +1014,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1021,7 +1049,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1396,6 +1424,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>にし、<code translate="no">.txt</code>を付けないでください。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_tool_check.py</code>:</strong> メニュー、ケータリング、テーマのツールを決まった入力で直接呼び、結果を確認します。未知のテーマカテゴリも試します。全アサーションに合格したときだけPASSを表示し、失敗すればその確認箇所で止まります。LLMは使わず、Groqキーも不要です。</p>
 <div class="highlight"><span class="filename">my_tool_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">suggest_menu</span><span class="p">,</span> <span class="n">catering_service_tool</span><span class="p">,</span> <span class="n">SuperheroPartyThemeTool</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">assert</span> <span class="n">suggest_menu</span><span class="p">(</span><span class="n">occasion</span><span class="o">=</span><span class="s2">"formal"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"3-course dinner with wine and dessert."</span>
@@ -1462,6 +1491,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>にします。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_catering.py</code>:</strong> 最高評価のケータリング業者を尋ねる依頼に、配布された関数を使って答えるエージェントを動かします。Groqがツール呼び出しを選び、Pythonが固定の架空の評価を比べて業者名を返します。ツールの結果と最終回答をターミナルに表示します。</p>
 <div class="highlight"><span class="filename">my_catering.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">catering_service_tool</span>
@@ -1618,6 +1648,7 @@
 <li>下の<strong>コード全体</strong>を貼り付けます。</li>
 <li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。拡張子は<code translate="no">.py</code>にします。</li>
 </ol>
+<p><strong>このファイルの役割 — <code translate="no">my_theme.py</code>:</strong> SuperheroPartyThemeToolのインスタンスを使い、パーティーテーマの依頼に答えるエージェントを動かします。Groqがカテゴリを選び、Pythonツールが悪役の仮面舞踏会などの保存済みの説明を取り出します。呼び出し、返された説明、最終回答をターミナルに表示します。</p>
 <div class="highlight"><span class="filename">my_theme.py</span><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">SuperheroPartyThemeTool</span>
@@ -1706,10 +1737,10 @@
 <h2 id="default-toolbox">ツールでできるほかのこと<a class="headerlink" href="#default-toolbox" title="この見出しへのリンク">&para;</a></h2>
 <p>ツールは利用者への入力要求、ウェブページの読み取り、最終回答の返却にも使えます。それぞれの機能をエージェントが使えるようにする必要があります。ウェブ検索ツールが返す短い抜粋と、ブラウザそのものの操作は別の機能です。</p>
 <h2 id="integrations">発展的な内容<a class="headerlink" href="#integrations" title="この見出しへのリンク">&para;</a></h2>
-<p>ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。<a href="../week-3-completion/">第03週の完了確認</a>に進んでください。続きの話題は<a href="../week-4-preview/">第04週の予告</a>にあります。</p>
+<p>ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。<a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る</a>に進んでください。エージェントのチームと画像・ブラウザの話題は<a href="../week-4-preview/">第04週の予告</a>にあります。</p>
 <h2 id="sources">出典<a class="headerlink" href="#sources" title="この見出しへのリンク">&para;</a></h2>
 <p><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools">Hugging Face Agents Course — Tools</a>を基に構成しています。<a href="../licenses/huggingface-agents-course.txt">Apache 2.0ライセンス</a>に基づき利用しています。</p>
-<p><strong>次へ：</strong><a href="../week-3-completion/">第03週の完了確認</a>。</p>
+<p><strong>次へ：</strong><a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る</a>。</p>
 
 
 
@@ -1762,13 +1793,13 @@
         
         
           
-          <a href="../week-3-completion/" class="md-footer__link md-footer__link--next" aria-label="次: 12 · 完了確認">
+          <a href="../week-3-retrieval/" class="md-footer__link md-footer__link--next" aria-label="次: 12 · Agentic RAGシステムを作る">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 次
               </span>
               <div class="md-ellipsis">
-                12 · 完了確認
+                12 · Agentic RAGシステムを作る
               </div>
             </div>
             <div class="md-footer__button md-icon">

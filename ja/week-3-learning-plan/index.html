@@ -1014,6 +1014,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1021,7 +1049,7 @@
   <span class="md-ellipsis">
     
   
-    12 · 完了確認
+    13 · 完了確認
   
 
     
@@ -1310,10 +1338,10 @@
 
 
 <h1 id="week-3-learning-plan">第03週 · 学習計画とダウンロード<a class="headerlink" href="#week-3-learning-plan" title="この見出しへのリンク">&para;</a></h1>
-<p>今週は、<strong>smolagentsと自分のGroqキー</strong>を使い、小さなPythonエージェントをターミナルで動かします。題材は、アルフレッドのパーティー準備です。音楽の検索、メニューの選択、準備時間の計算、ケータリングやテーマを選ぶツールに取り組みます。</p>
-<p><strong>時間の目安：3〜4時間。</strong> smolagentsの概要、CodeAgent、アクションの表し方、ツールを扱います。<a href="../week-4-preview/">検索・取得を行うエージェントと、その先の内容は第04週に続きます</a>。</p>
+<p>今週は、<strong>smolagentsと自分のGroqキー</strong>を使い、小さなPythonエージェントをターミナルで動かします。題材は、アルフレッドのパーティー準備です。音楽の検索、メニューの選択、準備時間の計算、ケータリングやテーマを選ぶツール、ローカルの知識ベースからの検索・取得に取り組みます。</p>
+<p>smolagentsの概要、CodeAgent、アクションの形式、ツール、Agentic RAGを扱います。<a href="../week-4-preview/">エージェントのチームと画像・ブラウザの話題は第04週に続きます</a>。</p>
 <h2 id="learning-objectives">学習目標<a class="headerlink" href="#learning-objectives" title="この見出しへのリンク">&para;</a></h2>
-<p>小さなエージェントプログラムを作成・実行し、アクションと観測結果を見分けられるようになります。Pythonコードと構造化されたツール呼び出しの違いを説明し、Pythonツールが使うデータを変更できることを目指します。</p>
+<p>小さなエージェントプログラムを作成・実行し、アクションと観測結果を見分けられるようになります。Pythonコードと構造化されたツール呼び出しの違いを説明し、Pythonツールのデータを変更し、取得した文章と出典を基にRAGの回答を確かめられることを目指します。</p>
 <h2 id="what-you-need">用意するもの<a class="headerlink" href="#what-you-need" title="この見出しへのリンク">&para;</a></h2>
 <p>第2週で使った<strong><code translate="no">First_agent_template</code>フォルダー</strong>、<strong>Python 3.11の<code translate="no">.venv</code></strong>、コードエディター、<strong>Groq APIキー</strong>を使います。Groqへの問い合わせとウェブ検索にはインターネット接続が必要です。</p>
 <p><strong>今週のプログラムはターミナルだけで動かし、結果もそこに表示します。</strong> 第03週のためにGradioやブラウザのチャット画面を起動する必要はありません。この教材サイトでは手順を読みます。</p>
@@ -1323,40 +1351,37 @@
 <tr>
 <th>レッスン</th>
 <th>取り組むこと</th>
-<th>時間の目安</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="../week-3-framework/">08 · smolagents入門</a></td>
 <td>モデル、フレームワーク、ツールの役割を読む。</td>
-<td>20〜25分</td>
 </tr>
 <tr>
 <td><a href="../week-3-code-agent/">09 · CodeAgentを動かす</a></td>
 <td>音楽検索、メニュー選択、準備時間のプログラムを作って動かす。</td>
-<td>50〜60分</td>
 </tr>
 <tr>
 <td><a href="../week-3-action-formats/">10 · Pythonコードと構造化ツール呼び出し</a></td>
 <td>2種類のアクションを比べ、ToolCallingAgentを動かして実行記録を読む。</td>
-<td>30〜40分</td>
 </tr>
 <tr>
 <td><a href="../week-3-custom-tool/">11 · 関数とクラスで作るツール</a></td>
 <td>直接テストと2つのエージェントを作り、ツールのデータを変える。</td>
-<td>50〜60分</td>
 </tr>
 <tr>
-<td><a href="../week-3-completion/">12 · 完了確認</a></td>
+<td><a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る</a></td>
+<td>ウェブとノートを検索し、出典を確認してノートを追加する。</td>
+</tr>
+<tr>
+<td><a href="../week-3-completion/">13 · 完了確認</a></td>
 <td>保存したファイルと実行結果を示す。</td>
-<td>15分</td>
 </tr>
 </tbody>
 </table>
-<p>以下の準備、質問、サービスの利用制限への対応には、別途時間を見込んでください。</p>
 <h2 id="exercise-files">1. 補助ファイルをダウンロードして配置する<a class="headerlink" href="#exercise-files" title="この見出しへのリンク">&para;</a></h2>
-<p><strong>何が入っていますか？</strong> ZIPには<strong>6つの補助ファイル</strong>が入っています。Groqへの接続、用意済みのPythonツール、パッケージ一覧、手順書、原典のライセンスです。小さなエージェント本体は、レッスンのコードを使って自分で作ります。</p>
+<p><strong>何が入っていますか？</strong> ZIPには<strong>7つの補助ファイル</strong>が入っています。Groqへの接続、用意済みのPythonツール、ローカル知識ベースの検索ツール、パッケージ一覧、手順書、原典のライセンスです。小さなエージェント本体は、レッスンのコードを使って自分で作ります。</p>
 <p><a class="md-button md-button--primary" download="week03-smolagents.zip" href="../downloads/week03-smolagents.zip">第03週の補助ファイルをダウンロード（.zip）</a></p>
 <table>
 <thead>
@@ -1379,6 +1404,10 @@
 <td>ウェブ検索ツール。</td>
 </tr>
 <tr>
+<td><code translate="no">week03_retriever.py</code></td>
+<td>5つのパーティーノートと、ローカルのBM25検索ツール。</td>
+</tr>
+<tr>
 <td><code translate="no">week03-requirements.txt</code></td>
 <td>今週必要なPythonパッケージの一覧。</td>
 </tr>
@@ -1396,7 +1425,7 @@
 <li>第2週のチャットアプリが動いていれば、そのターミナルで<strong>Control + C</strong>を押して停止します。</li>
 <li>ダウンロードボタンを押します。通常、ZIPは<strong>ダウンロード</strong>フォルダーに保存されます。</li>
 <li><strong>Windows：</strong>ZIPを右クリック → <strong>すべて展開</strong> → <strong>展開</strong>。<strong>Mac：</strong>FinderでZIPをダブルクリックします。</li>
-<li>展開された<strong><code translate="no">week03-exercises</code></strong>フォルダーを開き、中の<strong>6ファイル</strong>をコピーします。</li>
+<li>展開された<strong><code translate="no">week03-exercises</code></strong>フォルダーを開き、中の<strong>7ファイル</strong>をコピーします。</li>
 <li><strong>既存の<code translate="no">First_agent_template</code>フォルダー</strong>内、<code translate="no">app.py</code>と同じ場所に貼り付けます。<code translate="no">week03-exercises</code>フォルダーごとではなく、中のファイルだけをコピーしてください。以前の<code translate="no">week03...</code>ファイルを編集している場合は、同名ファイルを置き換える前に編集内容をバックアップします。</li>
 </ol>
 <p>ファイル管理画面で、コピー先を開きます。</p>
@@ -1405,7 +1434,7 @@
 <li><strong>Mac — Finder：</strong><strong>移動 → フォルダへ移動</strong>を選び、<code translate="no">~/agent-course/First_agent_template</code>を入力してReturnを押します。</li>
 </ul>
 <p>これは第2週の標準の保存場所です。別の場所に保存した場合は、その既存フォルダーを使ってください。空の代替フォルダーを新しく作る必要はありません。</p>
-<p>コピー後は、6ファイルが既存の<code translate="no">app.py</code>や<code translate="no">.venv</code>フォルダーと並びます。ZIPには補助処理とツールが入り、それらを使う<code translate="no">my_...py</code>プログラムの作り方はレッスンにあります。</p>
+<p>コピー後は、7ファイルが既存の<code translate="no">app.py</code>や<code translate="no">.venv</code>フォルダーと並びます。ZIPには補助処理とツールが入り、それらを使う<code translate="no">my_...py</code>プログラムの作り方はレッスンにあります。</p>
 <h2 id="open-project">2. エディターでプロジェクトを開く<a class="headerlink" href="#open-project" title="この見出しへのリンク">&para;</a></h2>
 <p>コードエディターを開きます。VS Codeでは<strong>ファイル → フォルダーを開く</strong>から<strong><code translate="no">First_agent_template</code></strong>を選びます。ファイル一覧に<code translate="no">app.py</code>、<code translate="no">week03_common.py</code>、<code translate="no">week03_tools.py</code>、<code translate="no">week03_search.py</code>が並んでいることを確認してください。</p>
 <p>レッスンで<strong>ファイルを作成する</strong>とあったら、<strong>ファイル → 新しいテキストファイル</strong>を選び、示されたPythonコード全体を貼り付けます。<strong>ファイル → 名前を付けて保存</strong>で、指定された名前でこのフォルダーに保存します。保存先は<code translate="no">app.py</code>と同じ場所です。<code translate="no">.venv</code>や<code translate="no">tools</code>の中には保存しません。</p>
@@ -1429,7 +1458,7 @@
 <p><strong>Windows・Mac共通で</strong>、環境を有効にした同じターミナルで実行します。</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>week03-requirements.txt
 </code></pre></div>
-<p>一覧にあるのは<code translate="no">smolagents==1.13.0</code>、<code translate="no">openai&gt;=1.0,&lt;3</code>、<code translate="no">ddgs==9.16.0</code>だけです。Gradio、LangChain、BM25、GPU、ブラウザ自動操作用のパッケージは追加しません。第2週の環境にインストール済みなら、<code translate="no">Requirement already satisfied</code>と表示されます。</p>
+<p><code translate="no">smolagents==1.13.0</code>、<code translate="no">openai&gt;=1.0,&lt;3</code>、<code translate="no">ddgs==9.16.0</code>を引き続き使い、ステップ12用に<code translate="no">langchain-community==0.4.2</code>、<code translate="no">langchain-text-splitters==1.1.3</code>、<code translate="no">rank-bm25==0.2.2</code>を追加します。Gradioの画面、GPU、埋め込みモデル、ブラウザ自動操作は導入しません。既存のパッケージは<code translate="no">Requirement already satisfied</code>と表示されることがあります。検索用パッケージとその依存先はダウンロードが必要になる場合があります。</p>
 <p>続いて、Groqを使わずに、配布されたメニューツールを確認します。</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from week03_tools import suggest_menu; print(suggest_menu(occasion='formal'))"</span>
 </code></pre></div>
@@ -1441,22 +1470,61 @@
 <table>
 <thead>
 <tr>
-<th>レッスン</th>
-<th>新しく作るファイル（すべてFirst_agent_template内）</th>
+<th>ステップ</th>
+<th>First_agent_template内に作るファイル</th>
+<th>役割</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>09</td>
-<td><code translate="no">my_playlist.py</code>、<code translate="no">my_menu.py</code>、<code translate="no">my_timing.py</code></td>
+<td><code translate="no">my_playlist.py</code></td>
+<td>CodeAgentでパーティーの音楽を検索する。</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code translate="no">my_menu.py</code></td>
+<td>エージェントで保存済みのメニューを選ぶ。</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code translate="no">my_timing.py</code></td>
+<td>Pythonで準備の終了時刻を計算する。</td>
 </tr>
 <tr>
 <td>10</td>
 <td><code translate="no">my_tool_calling.py</code></td>
+<td>構造化ツール呼び出しで音楽検索を動かす。</td>
 </tr>
 <tr>
 <td>11</td>
-<td><code translate="no">my_tool_check.py</code>、<code translate="no">my_catering.py</code>、<code translate="no">my_theme.py</code></td>
+<td><code translate="no">my_tool_check.py</code></td>
+<td>LLMなしでメニュー・ケータリング・テーマを直接テストする。</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code translate="no">my_catering.py</code></td>
+<td>エージェントで架空の最高評価の業者を選ぶ。</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code translate="no">my_theme.py</code></td>
+<td>クラス型ツールからパーティーテーマを取り出す。</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_rag_search.py</code></td>
+<td>ウェブ検索の結果からパーティーの計画を作る。</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_retrieval_check.py</code></td>
+<td>LLMなしでローカル検索とその制約をテストする。</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code translate="no">my_rag.py</code></td>
+<td>取得した出典ラベルとローカルノートを使って答える。</td>
 </tr>
 </tbody>
 </table>
@@ -1489,6 +1557,10 @@
 <tr>
 <td><code translate="no">No module named smolagents</code>、<code translate="no">openai</code>、<code translate="no">ddgs</code></td>
 <td><code translate="no">.venv</code>を有効にし、上のパッケージ導入コマンドを実行します。</td>
+</tr>
+<tr>
+<td><code translate="no">langchain_community</code>や<code translate="no">rank_bm25</code>など、検索用モジュールが見つからない</td>
+<td>更新版の一覧を使い、実行と同じ<code translate="no">.venv</code>でパッケージを導入します。</td>
 </tr>
 <tr>
 <td>Groqキーを入力しても何も見えない</td>

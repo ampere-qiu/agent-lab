@@ -970,6 +970,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -977,7 +1005,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -1248,6 +1276,7 @@
 <li>Paste the <strong>complete code below</strong> into that file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. The filename must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_playlist.py</code>:</strong> Runs an agent that searches the web for music for the party and prints a recommendation with retrieved links. Groq chooses the search query; the Python search tool on your PC fetches the results. Read the search steps and final answer in the terminal.</p>
 <div class="highlight"><span class="filename">my_playlist.py</span><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
@@ -1359,6 +1388,7 @@
 <li>Paste the <strong>complete code below</strong> into that file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. The filename must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_menu.py</code>:</strong> Runs an agent that interprets a menu request and uses the supplied menu function. For a formal occasion, the function returns the stored three-course dinner text; the agent uses that result to answer in the terminal. The menu comes from Python data, and the request is interpreted by the model on Groq.</p>
 <div class="highlight"><span class="filename">my_menu.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">suggest_menu</span>
@@ -1442,6 +1472,7 @@
 <li>Paste the <strong>complete code below</strong> into that file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. The filename must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_timing.py</code>:</strong> Asks an agent when party preparation will finish if one person starts now and completes the four tasks in order. The model on Groq proposes Python using datetime; your PC executes it to add the total preparation duration to its current local time. The start time, finish time, and answer appear in the terminal.</p>
 <div class="highlight"><span class="filename">my_timing.py</span><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>

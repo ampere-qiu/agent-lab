@@ -1042,6 +1042,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../week-3-completion/" class="md-nav__link">
         
   
@@ -1049,7 +1077,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Completion checks
+    13 · Completion checks
   
 
     
@@ -1508,6 +1536,7 @@
 <li>Paste the <strong>whole code block below</strong> into the file.</li>
 <li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. Use the exact <code translate="no">.py</code> filename, without <code translate="no">.txt</code>.</li>
 </ol>
+<p><strong>What this file does — <code translate="no">my_tool_calling.py</code>:</strong> Runs the same party-music search as my_playlist.py using ToolCallingAgent. The Groq model requests the search through a tool name and arguments; Python executes the search and the program prints the results and answer. Use its terminal record to compare structured calls with CodeAgent's Python actions.</p>
 <div class="highlight"><span class="filename">my_tool_calling.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolCallingAgent</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
