@@ -1,12 +1,12 @@
 # Week 03 · Plan and download { #week-3-learning-plan }
 
-This week you will use **smolagents and your Groq key** to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, use catering/theme tools, and retrieve information from a local knowledge base.
+This week you will use **smolagents and your Groq key** to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, and use catering/theme tools. The optional RAG lesson also explores retrieval from a local knowledge base.
 
-The class covers introduction, CodeAgent, action formats, tools, and Agentic RAG. [Agent teams and vision/browser topics continue in Week 04](week-4-preview.md).
+The required work covers introduction, CodeAgent, action formats, and tools. **Step 12, Agentic RAG, is optional this week and will be revisited next week.** It stays in Week 3 for preview or practice. [Agent teams and vision/browser topics continue in Week 04](week-4-preview.md).
 
 ## Learning objectives { #learning-objectives }
 
-By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, change the data used by a Python tool, and check a RAG answer against retrieved passages and their sources.
+By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, and change the data used by a Python tool. Optional step 12 adds checking a RAG answer against retrieved passages and their sources.
 
 ## What you need { #what-you-need }
 
@@ -22,7 +22,7 @@ Use your existing **`First_agent_template`** folder, **Python 3.11 `.venv`**, co
 | [09 · Run a CodeAgent](week-3-code-agent.md) | Create and run playlist, menu, and preparation-time programs. |
 | [10 · Python or structured tool calls?](week-3-action-formats.md) | Compare two action formats, then run ToolCallingAgent and inspect its trace. |
 | [11 · Tools: functions and classes](week-3-custom-tool.md) | Create a direct test and two agent programs; change a tool's data. |
-| [12 · Building Agentic RAG Systems](week-3-retrieval.md) | Search the web and local notes; verify sources and add a note. |
+| [12 · Building Agentic RAG Systems (optional)](week-3-retrieval.md) | Optional preview: search the web and local notes. We will revisit this next week. |
 | [13 · Completion checks](week-3-completion.md) | Show your files and execution results. |
 
 ## 1. Download and place the support files { #exercise-files }
@@ -93,10 +93,10 @@ Repeat the `cd` and activation commands whenever you open a new terminal. Keep t
 In the same activated terminal, on **either Windows or Mac**, run:
 
 ```bash
-python -m pip install -r week03-requirements.txt
+python -m pip install "smolagents==1.13.0" "openai>=1.0,<3" "ddgs==9.16.0"
 ```
 
-This list keeps `smolagents==1.13.0`, `openai>=1.0,<3`, and `ddgs==9.16.0`, and adds `langchain-community==0.4.2`, `langchain-text-splitters==1.1.3`, and `rank-bm25==0.2.2` for step 12. It does not request a Gradio UI, a GPU, an embedding model, or browser automation. Existing packages may show `Requirement already satisfied`; the retrieval packages and their dependencies may need downloading.
+These are the packages for the required work. Existing packages may show `Requirement already satisfied`. The supplied `week03-requirements.txt` also includes the extra retrieval packages for **optional step 12**; install that full list only if you choose to try RAG, following its setup section. No Gradio UI, GPU, embedding model, or browser automation is needed.
 
 Then check the supplied menu tool without contacting Groq:
 
@@ -123,9 +123,9 @@ This confirms that the folder, imports, and supplied Python tool work. It does n
 | 11 | `my_tool_check.py` | Test menu, catering, and theme tools without an LLM. |
 | 11 | `my_catering.py` | Use an agent to select the highest-rated fictional service. |
 | 11 | `my_theme.py` | Use a class-based tool to retrieve a party theme. |
-| 12 | `my_rag_search.py` | Build a party plan using web-search results. |
-| 12 | `my_retrieval_check.py` | Test local retrieval and its limits without an LLM. |
-| 12 | `my_rag.py` | Answer from local notes with returned source labels. |
+| 12 (optional) | `my_rag_search.py` | Build a party plan using web-search results. |
+| 12 (optional) | `my_retrieval_check.py` | Test local retrieval and its limits without an LLM. |
+| 12 (optional) | `my_rag.py` | Answer from local notes with returned source labels. |
 
 Every practical gives the complete code, the filename, a short run command, and what to look for in the terminal. The environment setup above applies to all of them. The short blocks marked **read only** show supplied functions or generated output; they are not extra programs to create.
 

@@ -10,7 +10,7 @@
 | --- | --- |
 | **Week 1** | Learn the agent idea, set up your PC, and follow a simple dummy agent step by step. |
 | **Week 2** | Get an existing browser-chat template working, register its supplied time and search tools, and check their results. CodeAgent already manages the loop. |
-| **Week 03** | Create small Python agent programs from the lesson code, run them in the terminal, and follow each action and observation. Compare Python actions with structured tool calls, understand function and class tools, change a tool's data, and retrieve source-labelled notes for an answer. |
+| **Week 03** | Create small Python agent programs from the lesson code, run them in the terminal, and follow each action and observation. Compare Python actions with structured tool calls, understand function and class tools, and change a tool's data. Optional RAG practice retrieves source-labelled notes for an answer. |
 
 **What is different?** You already registered supplied tools in Week 2, and may have tried the optional custom-tool challenge. Week 03 builds on that experience: you study the tool descriptions and Python implementation, compare a decorated function with a tool class, test them directly, and trace how the model uses their results. In Week 2, you worked inside a ready-made chat app. Now you put the model, tools, and task together in short files where each part is easier to see. The model still proposes actions, Python still executes them, and CodeAgent still coordinates the loop.
 
@@ -22,7 +22,7 @@
 
 Alfred is a fictional assistant organizing a superhero-themed party at Wayne Manor. He needs to find music, choose a menu, and arrange catering and a party theme. We will use those tasks to understand agents.
 
-This week continues from tools to [Agentic RAG](week-3-retrieval.md): an agent retrieves passages from notes and uses them to answer. [Week 04](week-4-preview.md) continues with agent teams and vision/browser topics.
+After tools, [Agentic RAG](week-3-retrieval.md) is optional this week. We will revisit it next week; the lesson stays here for preview or practice. [Week 04](week-4-preview.md) continues with agent teams and vision/browser topics.
 
 ## What the framework does { #what-the-framework-does }
 

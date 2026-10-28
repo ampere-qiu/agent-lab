@@ -282,10 +282,10 @@ raise SystemExit(run_task(agent, task))
 
 ## 発展的な内容 { #integrations }
 
-ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。[12 · Agentic RAGシステムを作る](week-3-retrieval.md)に進んでください。エージェントのチームと画像・ブラウザの話題は[第04週の予告](week-4-preview.md)にあります。
+ツールを共有したり、別のシステムにつないだりすることもできます。今週の実習では扱いません。[12 · Agentic RAGシステムを作る（任意）](week-3-retrieval.md)を予習するか、[13 · 完了確認](week-3-completion.md)へ直接進めます。RAGは来週あらためて扱います。[第04週の予告](week-4-preview.md)も参照してください。
 
 ## 出典 { #sources }
 
 [Hugging Face Agents Course — Tools](https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools)を基に構成しています。[Apache 2.0ライセンス](licenses/huggingface-agents-course.txt)に基づき利用しています。
 
-**次へ：**[12 · Agentic RAGシステムを作る](week-3-retrieval.md)。
+**次へ：**[13 · 完了確認](week-3-completion.md)。または[12 · Agentic RAGシステムを作る（任意）](week-3-retrieval.md)を試せます。

@@ -15,7 +15,7 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 
 </div>
 
-**第03週：**[smolagentsの学習](week-3-learning-plan.md)では、アルフレッドのパーティーを題材に、ターミナル用エージェント、関数型・クラス型のツール、Agentic RAGを扱います。原典の図には出典を記載しています。レッスンは英語と日本語で読めます。
+**第03週：**[smolagentsの学習](week-3-learning-plan.md)では、アルフレッドのパーティーを題材に、ターミナル用エージェント、関数型・クラス型のツール、任意のAgentic RAG練習を扱います。原典の図には出典を記載しています。レッスンは英語と日本語で読めます。
 
 ## この教材で変更した点 { #about-this-adaptation }
 
@@ -34,7 +34,7 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 1. **第1週 — ループを理解してたどる：**[エージェントの基礎](unit-1-walkthrough.md)と小テスト2つに取り組み、[ローカル環境を準備](prepare-your-computer.md)して、[3段階のダミーエージェント](dummy-agent-local.md)を作ります。
 2. **第2週 — 動くエージェントを拡張する：**[テンプレートを起動](run-your-first-agent.md)し、[各部の役割](understand-the-template.md)を理解してから、[ツールを有効にして検証](first-agent-practical.md)し、[実習の完了確認](quizzes.md#finish-the-practical)を行います。
 
-3. **第03週 — ターミナル用エージェントを作る：**[環境準備とファイル作成の手順](week-3-learning-plan.md)に沿ってプログラムを動かし、[関数型・クラス型のツール](week-3-custom-tool.md)を変更し、[Agentic RAG](week-3-retrieval.md)を作ります。[エージェントのチームと画像・ブラウザの話題は第04週に続きます](week-4-preview.md)。
+3. **第03週 — ターミナル用エージェントを作る：**[環境準備とファイル作成の手順](week-3-learning-plan.md)に沿ってプログラムを動かし、[関数型・クラス型のツール](week-3-custom-tool.md)を変更し、任意で[Agentic RAG](week-3-retrieval.md)を予習できます。RAGは来週あらためて扱います。[エージェントのチームと画像・ブラウザの話題は第04週に続きます](week-4-preview.md)。
 
 学習目標と、各週の振り返りで示す内容は、[コース全体の流れ](course-route.md)を参照してください。
 

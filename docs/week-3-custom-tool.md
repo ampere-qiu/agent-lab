@@ -272,10 +272,10 @@ Tools can also get user input, read a webpage, or return a final answer. Each ca
 
 ## Further reading { #integrations }
 
-Tools can be shared or connected to other systems. Those topics are outside this week's practical. Continue with [12 · Building Agentic RAG Systems](week-3-retrieval.md); agent teams and vision/browser work are listed in [Coming in Week 04](week-4-preview.md).
+Tools can be shared or connected to other systems. Those topics are outside this week's practical. You can preview [12 · Building Agentic RAG Systems (optional)](week-3-retrieval.md), or go straight to [13 · Completion checks](week-3-completion.md). RAG will be revisited next week; see [Coming in Week 04](week-4-preview.md).
 
 ## Credits { #sources }
 
 Adapted from [Hugging Face Agents Course — Tools](https://huggingface.co/learn/agents-course/en/unit2/smolagents/tools), under the [Apache 2.0 license](licenses/huggingface-agents-course.txt).
 
-**Next:** [12 · Building Agentic RAG Systems](week-3-retrieval.md).
+**Next:** [13 · Completion checks](week-3-completion.md), or try [12 · Building Agentic RAG Systems (optional)](week-3-retrieval.md).

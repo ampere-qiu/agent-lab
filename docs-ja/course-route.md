@@ -6,8 +6,8 @@
 | --- | --- | --- |
 | [1](week-1-learning-plan.md) | 基礎、ローカル環境の準備、3段階のダミー演習 | ループを説明し、`dummy_agent.py`で実際の関数の観測結果を示す |
 | [2](week-2-learning-plan.md) | チャットテンプレート、CodeAgent、時刻・検索ツール | モデルの応答、ツールの直接テスト、エージェントによる呼び出し、根拠を確認した情報源を示す |
-| [3](week-3-learning-plan.md) | ターミナル用エージェント、アクション形式、ツール、Agentic RAG | 保存したファイル、直接テスト、ツールの変更、出典に基づく検索・取得の回答を示す |
-| [4 — 次回](week-4-preview.md) | エージェントのチームと画像・ブラウザの話題 | 第03週の後に進む |
+| [3](week-3-learning-plan.md) | ターミナル用エージェント、アクション形式、ツール、任意のAgentic RAG | 保存したファイル、直接テスト、ツールの変更を示す。RAGの実行は今週は任意 |
+| [4 — 次回](week-4-preview.md) | Agentic RAGを再度扱い、エージェントのチームと画像・ブラウザへ進む | 第03週の後に進む |
 
 [独自ツールの課題](first-agent-practical.md#6-optional-create-your-own-tool)は第2週の任意の発展課題です。
 

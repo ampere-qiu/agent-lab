@@ -1,4 +1,8 @@
-# 12 · Building Agentic RAG Systems { #week-3-retrieval }
+# 12 · Building Agentic RAG Systems (optional) { #week-3-retrieval }
+
+!!! note "Optional in Week 3"
+
+    This lesson is optional this week and will be revisited next week. You can skip it now and go to [13 · Completion checks](week-3-completion.md) after the tools lesson. It remains in Week 3 for preview or practice.
 
 **Objective:** give an agent a searchable collection of notes, follow what it retrieves, and check that its answer is supported by those notes. **Activities:** read, run a web-search agent, test a local retriever without an LLM, run a local RAG agent, and add your own note.
 

@@ -1,6 +1,6 @@
 # 13 · Completion checks { #week-3-completion }
 
-This week includes function/class tools and Agentic RAG. Show your saved files and the actual terminal output. This site does not store progress or issue certificates.
+The required work ends with function/class tools. **Agentic RAG is optional this week and will be revisited next week.** Show the saved files and terminal output for the required work. This site does not store progress or issue certificates.
 
 ## Files and practical evidence { #required-evidence }
 
@@ -15,9 +15,6 @@ All your new files should be inside `First_agent_template`, beside `app.py` and 
 | `my_tool_check.py` | `PASS: menu, catering, theme, and unknown-category checks.` without a model call. |
 | `my_catering.py` | A catering-tool call, its returned service name, and the final answer. |
 | `my_theme.py` | A party-theme-tool call, its stored description, and the final answer. |
-| `my_rag_search.py` | A web retrieval call and a suggestion supported by an actually returned snippet and URL. |
-| `my_retrieval_check.py` | Passing local retrieval checks without an LLM, including the no-match limitation. |
-| `my_rag.py` and your change in `week03_retriever.py` | A source-supported answer, the unsupported-query result, and your added note in actual tool output. |
 | Your change in `week03_tools.py` | A changed service/category reflected in direct-test and agent results. |
 
 The direct test expects the supplied catering winner until you change its assertion to match your new service. Save edits before rerunning a program.
@@ -35,11 +32,22 @@ Explain each point in one or two sentences:
 - How does a decorated function differ from a `Tool` class with `forward(...)`?
 - Which party values are fictional Python data, and which results come from web search?
 - How do you verify that a tool really ran?
+
+Agent teams and vision/browser work continue on the [Week 04 page](week-4-preview.md).
+
+## Optional RAG practice { #optional-rag }
+
+[Step 12 remains in Week 3](week-3-retrieval.md), but the following evidence and questions are **not required for this week's completion**. We will revisit them next week.
+
+| File | What to show if you try it |
+| --- | --- |
+| `my_rag_search.py` | A web retrieval call and a suggestion supported by an actually returned snippet and URL. |
+| `my_retrieval_check.py` | Passing local retrieval checks without an LLM, including the no-match limitation. |
+| `my_rag.py` and your change in `week03_retriever.py` | A source-supported answer, the unsupported-query result, and your added note in actual tool output. |
+
 - How does local retrieval differ from a fixed-response tool?
 - Why can BM25 return documents for a word absent from the notes?
 - How do you check a RAG answer against its returned passage and source?
-
-Agent teams and vision/browser work continue on the [Week 04 page](week-4-preview.md).
 
 ## Quiz and credits { #optional-hf }
 

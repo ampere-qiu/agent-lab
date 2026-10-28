@@ -1,9 +1,10 @@
 # Week 04 · Coming next { #week-4-preview }
 
-**To be continued in Week 04.** Finish [Week 03](week-3-learning-plan.md) through Agentic RAG first.
+**To be continued in Week 04.** Finish the required [Week 03](week-3-learning-plan.md) work through tools. Agentic RAG is optional in Week 3 and will be revisited next week.
 
 ## Planned topics { #planned-topics }
 
+- **Revisit Agentic RAG:** continue the [optional Week 3 lesson](week-3-retrieval.md) on web retrieval and local notes.
 - **Agent teams:** understand how a manager can delegate work to a specialist.
 - **Vision and browser agents:** explore images, screenshots, and browser actions.
 

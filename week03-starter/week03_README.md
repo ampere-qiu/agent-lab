@@ -14,19 +14,20 @@ WINDOWS: open Command Prompt and run each line:
     cd /d "%USERPROFILE%\agent-course\First_agent_template"
     .venv\Scripts\activate.bat
     python --version
-    python -m pip install -r week03-requirements.txt
+    python -m pip install "smolagents==1.13.0" "openai>=1.0,<3" "ddgs==9.16.0"
 
 MAC: open Terminal and run each line:
 
     cd ~/agent-course/First_agent_template
     source .venv/bin/activate
     python --version
-    python -m pip install -r week03-requirements.txt
+    python -m pip install "smolagents==1.13.0" "openai>=1.0,<3" "ddgs==9.16.0"
 
 Use the existing Week 2 Python 3.11 environment. If your project is saved in a
 different place, use its actual folder path. Repeat cd and activation each time
-you open a new terminal. The package list keeps smolagents, openai, and ddgs and adds langchain-community,
-langchain-text-splitters, and rank-bm25 for step 12.
+you open a new terminal. The commands above install the required packages. The full week03-requirements.txt
+also includes retrieval packages; install it only if trying optional step 12:
+    python -m pip install -r week03-requirements.txt
 
 Supplied files:
 - week03_common.py: Groq connection, classroom settings, and result/error printing.
@@ -41,7 +42,7 @@ Follow the lesson pages to CREATE your own small programs:
 - Step 09: my_playlist.py, my_menu.py, my_timing.py.
 - Step 10: my_tool_calling.py.
 - Step 11: my_tool_check.py, my_catering.py, my_theme.py.
-- Step 12: my_rag_search.py, my_retrieval_check.py, my_rag.py.
+- Step 12 (optional this week; revisited next week): my_rag_search.py, my_retrieval_check.py, my_rag.py.
 
 For each file: File > New Text File, paste the complete code from the lesson,
 File > Save As, save the exact .py filename beside app.py and week03_common.py.
@@ -63,7 +64,7 @@ If a module cannot be found, check the folder and active environment, then run
 the requirements command again. If a file cannot be opened, check its exact
 name, saved location, and .py extension. Show model/search errors to the teacher.
 
-Step 12 includes web and local Agentic RAG. Inspect the retrieved text and
+Step 12 is optional in Week 3 and will be revisited next week. It includes web and local Agentic RAG. Inspect the retrieved text and
 Source labels before accepting an answer. BM25 can return five notes even
 for an absent query word; returned documents are not proof of relevance.
 Add a sixth short note in week03_retriever.py and verify it in the actual output.
@@ -84,10 +85,11 @@ See week03-HF-LICENSE.txt for the Apache 2.0 license.
 2. 中の7ファイルを、既存のFirst_agent_template内のapp.pyと同じ場所にコピーします。
 3. コードエディターでFirst_agent_templateを開きます。
 4. 第03週の学習計画ページにあるWindows・Macの手順で、既存のPython 3.11環境を有効にします。
-5. python -m pip install -r week03-requirements.txt を実行します。
+5. python -m pip install "smolagents==1.13.0" "openai>=1.0,<3" "ddgs==9.16.0" を実行します。
 
 新しいターミナルを開いた場合は、プロジェクトフォルダーへの移動と環境の有効化をやり直します。
-smolagents、openai、ddgsを使い、ステップ12用にlangchain-community、langchain-text-splitters、rank-bm25を追加します。
+必須の実習ではsmolagents、openai、ddgsを使います。任意のステップ12を試す場合だけ、
+python -m pip install -r week03-requirements.txt で検索用パッケージも導入します。
 
 配布される7ファイル：
 - week03_common.py：Groq接続、授業用の設定、結果・エラーの表示。
@@ -102,7 +104,7 @@ smolagents、openai、ddgsを使い、ステップ12用にlangchain-community、
 - ステップ09：my_playlist.py、my_menu.py、my_timing.py。
 - ステップ10：my_tool_calling.py。
 - ステップ11：my_tool_check.py、my_catering.py、my_theme.py。
-- ステップ12：my_rag_search.py、my_retrieval_check.py、my_rag.py。
+- ステップ12（今週は任意・来週再度扱います）：my_rag_search.py、my_retrieval_check.py、my_rag.py。
 
 エディターで新規ファイルを作り、コードを貼り付け、指定の.py名でapp.pyと同じ場所に保存します。
 WindowsはCtrl+S、MacはCommand+Sで保存します。.txtを付けないでください。
@@ -118,7 +120,7 @@ my_tool_check.pyとmy_retrieval_check.pyはGroqに接続しないので、キー
 ファイルが開けなければ、名前、保存場所、.py拡張子を確認します。
 モデルや検索のエラーは、実際の表示を教員に見せてください。
 
-ステップ12ではウェブとローカルのAgentic RAGを扱います。取得した本文とSourceを確認します。
+ステップ12は今週は任意で、来週あらためて扱います。ウェブとローカルのAgentic RAGの練習です。取得した本文とSourceを確認します。
 BM25は検索語がなくても5件のノートを返すことがあり、件数だけでは関連性を判断できません。
 week03_retriever.pyに6つ目の短いノートを追加し、実際の出力で確認します。
 エージェントのチームと画像・ブラウザは第04週です。UIは含みません。

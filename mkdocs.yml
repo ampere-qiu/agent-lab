@@ -68,7 +68,7 @@ nav:
   - 09 · Run a CodeAgent: week-3-code-agent.md
   - 10 · Python or structured tool calls?: week-3-action-formats.md
   - '11 · Tools: functions and classes': week-3-custom-tool.md
-  - 12 · Building Agentic RAG Systems: week-3-retrieval.md
+  - 12 · Building Agentic RAG Systems (optional): week-3-retrieval.md
   - 13 · Completion checks: week-3-completion.md
 - Week 04 · Coming next: week-4-preview.md
 - Reference:
