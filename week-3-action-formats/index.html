@@ -1,0 +1,1730 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn AI agents locally with Groq: foundations, a working template, and Week 03 smolagents exercises.">
+      
+      
+      
+      
+        <link rel="prev" href="../week-3-code-agent/">
+      
+      
+        <link rel="next" href="../week-3-custom-tool/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>10 · Python or structured tool calls? - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#two-representations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10 · Python or structured tool calls?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+
+<a class="md-header__button md-icon course-translate" href="../ja/week-3-action-formats/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Concepts & dummy agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Concepts & dummy agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before you start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Agent foundations & quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Local setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Dummy agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 · Working template & tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 2 · Working template & tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Run the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Understand the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Enable & test tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 03 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · Plan and download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Introduction to smolagents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Run a CodeAgent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Python or structured tool calls?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Python or structured tool calls?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same task, two formats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The same task, two formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Python actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Structured tool calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity: compare the two search examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code and JSON actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-calling-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-agent-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A structured-call program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groq-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create my_tool_calling.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to look for in the output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which file are you working on?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · Tools: functions and classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04 · Coming next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same task, two formats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The same task, two formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Python actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Structured tool calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity: compare the two search examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code and JSON actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-calling-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-agent-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A structured-call program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groq-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create my_tool_calling.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to look for in the output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which file are you working on?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-3-action-formats">10 · Python or structured tool calls?<a class="headerlink" href="#week-3-action-formats" title="Permanent link">&para;</a></h1>
+<p><strong>Objective:</strong> understand two ways a model can request a tool. <strong>Activity:</strong> read and compare the two search examples, answer the questions, then create and run <code translate="no">my_tool_calling.py</code>. Compare its structured-call trace with the Python-action trace from <code translate="no">my_playlist.py</code> in Step 09.</p>
+<h2 id="two-representations">The same task, two formats<a class="headerlink" href="#two-representations" title="Permanent link">&para;</a></h2>
+<p><strong>The question for this lesson is: how does the model tell your program which tool to run?</strong> In Step 09, you used CodeAgent: the model wrote Python. Now you will also use ToolCallingAgent: the model supplies a tool name and its inputs as structured data.</p>
+<p>Alfred needs to search for catering services and party ideas. In both reading examples, the tool is called <code translate="no">web_search</code>. Both need a real search function. The difference is how the model writes its requested action.</p>
+<p>Follow this order: <strong>read the two examples → answer the questions and reveal the guided answers → read the HF figure → run the program → compare your two execution records</strong>. The first examples describe two searches; the program later uses the party-music task from Step 09.</p>
+<h3 id="python-example">1. Python actions<a class="headerlink" href="#python-example" title="Permanent link">&para;</a></h3>
+<p>A CodeAgent can receive a Python action like this. <strong>This is generated-action code to read, not a complete program to create or run.</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="p">[</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">"Best catering services in Gotham City"</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">"Party theme ideas for superheroes"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">]:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">web_search</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Search for: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>The list holds two search questions.</li>
+<li>The <code translate="no">for</code> loop takes one question at a time.</li>
+<li><code translate="no">web_search(...)</code> runs the search tool.</li>
+<li><code translate="no">print(...)</code> records the returned results for the agent to read.</li>
+</ul>
+<p>Read the code in execution order:</p>
+<ol>
+<li>On the first pass, <code translate="no">query</code> contains <code translate="no">Best catering services in Gotham City</code>.</li>
+<li><code translate="no">f"Search for: {query}"</code> inserts that value into a string, giving <code translate="no">Search for: Best catering services in Gotham City</code>. The <code translate="no">f</code> marks a formatted string; <code translate="no">{query}</code> is replaced with the variable's value.</li>
+<li>Python calls <code translate="no">web_search(...)</code> with that text. When the tool returns, <code translate="no">print(...)</code> displays the result. The inner call happens before the outer <code translate="no">print</code>.</li>
+<li>The loop repeats with <code translate="no">Party theme ideas for superheroes</code>. This is a second search.</li>
+</ol>
+<p><strong>One Python action can therefore contain two tool calls.</strong> That does not mean the search runs without a tool or without internet. The model proposes the Python code; CodeAgent's execution engine runs it on your PC, and the search function contacts the search service. The printed results become part of the observation returned to the model.</p>
+<h3 id="structured-example">2. Structured tool calls<a class="headerlink" href="#structured-example" title="Permanent link">&para;</a></h3>
+<p>A ToolCallingAgent requests a tool through structured data. JSON organizes values using labels. Here is an illustration of the same two searches. <strong>Read it; do not create a JSON file or paste it into your Python program.</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_search"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best catering services in Gotham City"</span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_search"</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Party theme ideas for superheroes"</span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">]</span>
+</code></pre></div>
+<p>Read the first item as <strong>“Call <code translate="no">web_search</code> with the query ‘Best catering services in Gotham City’.”</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Read it as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">name</code></td>
+<td>Which tool should run? Here, <code translate="no">web_search</code>.</td>
+</tr>
+<tr>
+<td><code translate="no">arguments</code></td>
+<td>What values should be passed to that tool?</td>
+</tr>
+<tr>
+<td><code translate="no">query</code></td>
+<td>The input name expected by this search tool.</td>
+</tr>
+<tr>
+<td><code translate="no">"Best catering services in Gotham City"</code></td>
+<td>The value to pass as the search input.</td>
+</tr>
+<tr>
+<td>The second item</td>
+<td>Another request to the same tool, with a different query.</td>
+</tr>
+</tbody>
+</table>
+<p>There is no <code translate="no">for</code> loop in this JSON. It lists the two requests explicitly. ToolCallingAgent matches each tool name to a registered Python tool and passes in the arguments. The Python tool does the search; JSON itself cannot contact a search service.</p>
+<p>This list is a <strong>simplified illustration of the tool names and arguments</strong>, not the full API response format. In your program, the model and SDK handle the structured messages. You do not write this JSON by hand.</p>
+<p><strong>Neither Python code nor JSON is a search result.</strong> The result appears only after software executes the tool.</p>
+<h2 id="comparison">Activity: compare the two search examples<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<p>Compare <strong>the Python <code translate="no">for</code> loop in Example 1</strong> with <strong>the JSON list in Example 2</strong> above. Use the catering and party-theme examples for these questions. Try each question, then click <strong>Show answer</strong> to follow the reasoning.</p>
+<p><strong>1. What tool do both examples use, and what are its two inputs?</strong> Find the function name in Python and the <code translate="no">name</code> field in JSON.</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Find the tool:</strong> Python calls <code translate="no">web_search(...)</code>; JSON names <code translate="no">"web_search"</code>. They refer to the same search capability.</p>
+<p><strong>Find the inputs:</strong> the first search is about catering services in Gotham City; the second is about superhero party themes. Python takes them from the two strings in the list. JSON puts each one under <code translate="no">arguments</code> → <code translate="no">query</code>.</p>
+<p><strong>Notice the small wording difference:</strong> Python adds <code translate="no">Search for:</code> using the formatted string. JSON passes the search topic directly. They intend to search for the same two topics.</p>
+<p><strong>You could write:</strong> “Both use <code translate="no">web_search</code>. The inputs ask for catering services in Gotham City and party themes for superheroes.”</p>
+</details>
+<p><strong>2. Where does each example say to perform two searches?</strong> Count the loop inputs in Python and the request items in JSON.</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Python:</strong> there are two strings in the list. The <code translate="no">for</code> loop runs its indented body once for each, so the <code translate="no">web_search(...)</code> line executes twice.</p>
+<p><strong>JSON:</strong> there are two request items. Each specifies a name and arguments. ToolCallingAgent handles those requests; the JSON data does not execute a loop.</p>
+<p><strong>You could write:</strong> “Python repeats one instruction using a loop. JSON lists two separate tool requests. Both examples ask for two searches.” This is about these examples, not a rule that either agent always makes a fixed number of calls.</p>
+</details>
+<p><strong>3. Who chooses the action, and who executes it?</strong> Separate the model on Groq from the program on your PC.</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Choose:</strong> the model on Groq reads the task and available tool descriptions, then proposes a tool and inputs. With CodeAgent, it expresses that choice in Python; with ToolCallingAgent, it uses a structured call.</p>
+<p><strong>Execute:</strong> CodeAgent's local engine executes the Python, or ToolCallingAgent's local dispatcher calls the named tool with its arguments. The Python search tool contacts the search service.</p>
+<p><strong>Return:</strong> the framework records the tool result as an observation and sends it back to the model when the loop continues.</p>
+<p><strong>You could write:</strong> “The model proposes what to do. Python on my PC runs the tool. The framework connects the action and its returned observation.”</p>
+</details>
+<p><strong>4. Are these blocks search results? What is still missing?</strong> Look for returned webpages or snippets, rather than instructions to search.</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Neither block contains search results.</strong> Both describe actions to execute. A query about catering is an input, not evidence that a catering service has been found.</p>
+<p><strong>What must happen next:</strong> the registered Python tool must run and return results or an error. Those returned values are the observation. The model can use a successful result to answer or choose a further action.</p>
+<p><strong>You could write:</strong> “These are requests, not results. I need to inspect the actual returned titles, URLs, and snippets before saying the search succeeded.”</p>
+</details>
+<h2 id="comparison-figure">Code and JSON actions<a class="headerlink" href="#comparison-figure" title="Permanent link">&para;</a></h2>
+<p><a href="../images/huggingface/code_vs_json_actions.png"><img alt="Comparison of Python actions and JSON tool calls" src="../images/huggingface/code_vs_json_actions.png" /></a></p>
+<p><em>Image credit: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tool_calling_agents">Hugging Face Agents Course</a>. Select it to enlarge.</em></p>
+<p>The task in this figure is different from the party searches: <strong>find the cheapest country in which to buy the same phone</strong>, including currency conversion, tax, and shipping. Read the top instruction first, then compare the two sides.</p>
+<ul>
+<li><strong>Left — Text/JSON:</strong> request an operation such as looking up an exchange rate, receive its result, then request the next operation. The figure leaves some repeated steps out.</li>
+<li><strong>Right — Code:</strong> use a <code translate="no">for</code> loop to repeat the price calculation for each country, store the totals in <code translate="no">final_prices</code>, then use <code translate="no">min(..., key=final_prices.get)</code> to select the country with the lowest total.</li>
+<li><strong>Both:</strong> still depend on tools that return the needed data. Code can group several operations into one action; this does not guarantee fewer model requests for every task. The illustrated prices are examples, not current prices.</li>
+</ul>
+<p><strong>Try it:</strong> point to the part that repeats work and the part that selects the cheapest country. Why can the right side express this as one block?</p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Find the repetition:</strong> <code translate="no">for country in countries</code> repeats the same calculation for the USA, Japan, Germany, and India.</p>
+<p><strong>Follow one country:</strong> get the exchange and tax rates, get the phone price, convert the price and include tax, get shipping, and calculate the final total. The code stores that total under the country's name in <code translate="no">final_prices</code>.</p>
+<p><strong>Find the comparison:</strong> <code translate="no">min(final_prices, key=final_prices.get)</code> compares the stored totals and returns the country name with the smallest one. The following lookup gets its total price.</p>
+<p><strong>A guided answer:</strong> “The code action uses a loop to repeat the tool calls and variables to keep their results. It can then compare those results in the same Python block. The left side expresses the operations as individual requests. Both still need their tools to run.”</p>
+</details>
+<h2 id="tool-calling-loop">The loop<a class="headerlink" href="#tool-calling-loop" title="Permanent link">&para;</a></h2>
+<p><strong>Changing the action format does not remove the loop.</strong> In either program:</p>
+<ol>
+<li>You give the agent a task.</li>
+<li>The model requests an action.</li>
+<li>The program executes it.</li>
+<li>The result or error becomes the observation.</li>
+<li>The model uses that observation to choose another action or finish.</li>
+</ol>
+<h2 id="hf-agent-example">A structured-call program<a class="headerlink" href="#hf-agent-example" title="Permanent link">&para;</a></h2>
+<p>You will now run the structured-call version of your Step 09 playlist program. It uses the <strong>same task, Groq connection, and search tool</strong>, so you can focus on the change in action format. The program below creates a ToolCallingAgent with a web-search tool. <code translate="no">build_model()</code> connects to Groq, <code translate="no">tools=[...]</code> registers the search tool, and <code translate="no">agent_options(action_format="tool")</code> supplies the structured-call settings.</p>
+<h2 id="groq-example">Create my_tool_calling.py<a class="headerlink" href="#groq-example" title="Permanent link">&para;</a></h2>
+<p>Complete <a href="../week-3-learning-plan/#exercise-files">Week 03 setup</a> first. Use the same project folder, existing environment, and Groq key.</p>
+<ol>
+<li>Open <strong><code translate="no">First_agent_template</code></strong> in your code editor.</li>
+<li>Choose <strong>File → New Text File</strong>, then <strong>File → Save As</strong>. Save it as <strong><code translate="no">my_tool_calling.py</code></strong> directly beside <code translate="no">app.py</code> and <code translate="no">week03_common.py</code>.</li>
+<li>Paste the <strong>whole code block below</strong> into the file.</li>
+<li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. Use the exact <code translate="no">.py</code> filename, without <code translate="no">.txt</code>.</li>
+</ol>
+<div class="highlight"><span class="filename">my_tool_calling.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolCallingAgent</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">WebSearchTool</span><span class="p">()],</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">action_format</span><span class="o">=</span><span class="s2">"tool"</span><span class="p">),</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">task</span> <span class="o">=</span> <span class="s2">"Search for the best music recommendations for a party at the Wayne's mansion."</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">task</span><span class="p">))</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain my_tool_calling.py</summary>
+<p>This program uses the same Groq connection, search tool, and party-music task as <code translate="no">my_playlist.py</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">from smolagents import ToolCallingAgent</code></td>
+<td>Load the agent that uses structured tool requests.</td>
+</tr>
+<tr>
+<td><code translate="no">build_model()</code> and <code translate="no">WebSearchTool()</code></td>
+<td>Prepare the same model connection and search-tool instance used in Step 09.</td>
+</tr>
+<tr>
+<td><code translate="no">agent = ToolCallingAgent(...)</code></td>
+<td>Create an agent that reads tool names and arguments from structured model requests.</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[WebSearchTool()]</code> and <code translate="no">model=model</code></td>
+<td>Give it the search tool and the prepared Groq connection.</td>
+</tr>
+<tr>
+<td><code translate="no">**agent_options(action_format="tool")</code></td>
+<td>Supply settings for structured calls instead of Python-action instructions.</td>
+</tr>
+<tr>
+<td><code translate="no">task = "Search ..."</code></td>
+<td>Ask for music recommendations for the same party.</td>
+</tr>
+<tr>
+<td><code translate="no">raise SystemExit(run_task(agent, task))</code></td>
+<td>Run the loop, print the result, and exit with its success/error status.</td>
+</tr>
+</tbody>
+</table>
+<p>The model still chooses the action, the Python search tool still runs on your PC, and the result still returns as an observation. The change is <strong>how the model requests the action</strong>.</p>
+</details>
+<p><strong>Run:</strong> <code translate="no">python my_tool_calling.py</code>.</p>
+<p>Enter your Groq key at the hidden prompt if asked, then press Enter. Read the output in the same terminal. This script does not open a browser interface.</p>
+<h2 id="execution-log">What to look for in the output<a class="headerlink" href="#execution-log" title="Permanent link">&para;</a></h2>
+<p>A structured-call trace can show something like this:</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Calling tool: 'web_search' with arguments:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>{'query': "best music recommendations for a party at Wayne's mansion"}
+</code></pre></div>
+<p>Find the tool name, input, returned search results, and final answer. Check that cited URLs occur in the returned results. A tool-call label alone does not prove that the search succeeded. If the run fails, record the actual error and follow <a href="../run-your-first-agent/#troubleshooting">the troubleshooting guide</a> before retrying. Do not treat a failed search as a successful result.</p>
+<h2 id="local-setup">Which file are you working on?<a class="headerlink" href="#local-setup" title="Permanent link">&para;</a></h2>
+<p><code translate="no">my_playlist.py</code> from Step 09 uses CodeAgent and Python actions. <code translate="no">my_tool_calling.py</code> uses ToolCallingAgent and structured calls. They are separate terminal programs in <code translate="no">First_agent_template</code>; you do not need to edit the Week 2 <code translate="no">app.py</code>.</p>
+<p><strong>Activity: compare your two runs.</strong> Keep the terminal record from <code translate="no">my_tool_calling.py</code>. Put it beside the record from <code translate="no">my_playlist.py</code> in Step 09; rerun <code translate="no">python my_playlist.py</code> if you did not keep that record.</p>
+<p>For <strong>each</strong> run, copy a short part of your actual output for these four items:</p>
+<table>
+<thead>
+<tr>
+<th>Find</th>
+<th>What to copy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action</td>
+<td>Generated Python, or the structured tool name and arguments.</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>The search text passed to <code translate="no">query</code>.</td>
+</tr>
+<tr>
+<td>Observation</td>
+<td>A returned title, URL, or snippet; or the actual error if it failed.</td>
+</tr>
+<tr>
+<td>Final answer</td>
+<td>A sentence that uses the result. If no successful result was returned, record that limitation.</td>
+</tr>
+</tbody>
+</table>
+<p>Then answer: <strong>what changed between the programs, and what stayed the same?</strong></p>
+<details class="success">
+<summary>Show answer</summary>
+<p><strong>Start with the first program:</strong> in <code translate="no">my_playlist.py</code>, find model-generated Python such as a <code translate="no">web_search(...)</code> call. CodeAgent executes that Python. Your generated variable names and search text may differ from the reading example.</p>
+<p><strong>Now find the second program's action:</strong> in <code translate="no">my_tool_calling.py</code>, look for <code translate="no">Calling tool: 'web_search'</code> and the <code translate="no">query</code> arguments. This reports a structured tool request. ToolCallingAgent calls the same Python search implementation.</p>
+<p><strong>Check what actually happened:</strong> in each record, find the data returned after the call. Compare a URL in the final answer with a URL actually returned by the search tool. The two-line trace above only shows the request: it supplies no returned results or final answer, so you cannot use it alone to claim a successful search.</p>
+<p><strong>A guided comparison:</strong> “In my playlist program, the model requested a search by writing Python. In my tool-calling program, it supplied a tool name and arguments. Both used Groq to choose the action and the same Python search tool on my PC to execute it. The result became an observation used for the answer.”</p>
+<p>Complete that comparison with <strong>your own actual query and returned source</strong>. If a run failed, write the error and say which evidence is missing. Do not invent a successful result. Search results and wording may differ between runs; the important comparison is the action format and execution flow.</p>
+</details>
+<h2 id="activity">Checkpoint<a class="headerlink" href="#activity" title="Permanent link">&para;</a></h2>
+<p>In your own words, answer: <strong>does ToolCallingAgent replace the Python tool, and why do we still need the framework?</strong></p>
+<details class="success">
+<summary>Show answer</summary>
+<p>“ToolCallingAgent changes how the model requests an action. It still needs a registered Python tool to do the work. The model chooses a tool and inputs; the framework calls it, records its result or error, and uses that observation in the continuing loop. CodeAgent coordinates the same kind of loop but accepts Python actions.”</p>
+<p>You have reached the checkpoint when you can point to <strong>a request, its execution result, and the answer that uses it</strong> in your own record, and explain which part runs on Groq and which part runs on your PC.</p>
+</details>
+<h2 id="sources">Credits<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<p>Adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tool_calling_agents">Hugging Face Agents Course — Writing actions as code snippets or JSON blobs</a>, under the <a href="../licenses/huggingface-agents-course.txt">Apache 2.0 license</a>.</p>
+<p><strong>Next:</strong> <a href="../week-3-custom-tool/">11 · Tools: functions and classes</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../week-3-code-agent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 09 · Run a CodeAgent">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                09 · Run a CodeAgent
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week-3-custom-tool/" class="md-footer__link md-footer__link--next" aria-label="Next: 11 · Tools: functions and classes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11 · Tools: functions and classes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Created by Ampere for SI Lab students · Original course by Hugging Face</div>
+  
+  
+    
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

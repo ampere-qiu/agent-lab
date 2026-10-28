@@ -1,0 +1,1737 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="GroqとローカルPythonで学ぶAIエージェント教材。第1〜2週の基礎・テンプレートから、第03週のsmolagentsとツール実習へ進みます。">
+      
+      
+      
+      
+        <link rel="prev" href="../week-3-code-agent/">
+      
+      
+        <link rel="next" href="../week-3-custom-tool/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>10 · Pythonコードと構造化ツール呼び出し - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#two-representations" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10 · Pythonコードと構造化ツール呼び出し
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+
+<a class="md-header__button md-icon course-translate" href="../../week-3-action-formats/" data-course-language lang="en" hreflang="en" title="このレッスンを英語で読む" aria-label="言語を英語に切り替える：このレッスン">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    始める前に
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基礎と小テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · ローカル環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · ダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週 · テンプレートとツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第2週 · テンプレートとツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · テンプレートを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 仕組みを理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · ツールの登録とテスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 学習の完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03週 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第03週 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03週 · 学習計画とダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · smolagents入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · CodeAgentを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Pythonコードと構造化ツール呼び出し
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Pythonコードと構造化ツール呼び出し
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同じ仕事を2つの形式で表す
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同じ仕事を2つの形式で表す">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Pythonアクション
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 構造化されたツール呼び出し
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        活動：2つの検索例を比べる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コードとJSONのアクションを図で見る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-calling-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループの流れ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-agent-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        構造化ツール呼び出しのプログラム
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groq-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        my_tool_calling.pyを作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出力で確認すること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        どのファイルを使うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        確認ポイント
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出典
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · 関数とクラスで作るツール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · 完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04週 · 次回の内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース全体の流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同じ仕事を2つの形式で表す
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同じ仕事を2つの形式で表す">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Pythonアクション
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 構造化されたツール呼び出し
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        活動：2つの検索例を比べる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コードとJSONのアクションを図で見る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-calling-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループの流れ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hf-agent-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        構造化ツール呼び出しのプログラム
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groq-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        my_tool_calling.pyを作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出力で確認すること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        どのファイルを使うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        確認ポイント
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        出典
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-3-action-formats">10 · Pythonコードと構造化ツール呼び出し<a class="headerlink" href="#week-3-action-formats" title="この見出しへのリンク">&para;</a></h1>
+<p><strong>目標：</strong>モデルがツールを依頼する2つの方法を理解します。<strong>活動：</strong>2つの検索例を読んで比較し、質問に答えます。その後、<code translate="no">my_tool_calling.py</code>を作って実行します。構造化呼び出しの記録を、ステップ09の<code translate="no">my_playlist.py</code>のPythonアクションと比べます。</p>
+<h2 id="two-representations">同じ仕事を2つの形式で表す<a class="headerlink" href="#two-representations" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>このレッスンの問いは「モデルは、どのツールを動かすかをプログラムにどう伝えるのか」です。</strong> ステップ09のCodeAgentでは、モデルがPythonを書きました。今回はToolCallingAgentも使い、ツール名と入力を構造化データで渡す方法を見ます。</p>
+<p>読解の例では、アルフレッドがケータリング業者とパーティーのアイデアを検索します。どちらもツール名は<code translate="no">web_search</code>で、実際の検索関数が必要です。違うのは、モデルが依頼するアクションの書き方です。</p>
+<p><strong>2つの例を読む → 質問に答えて解説付きの解答を開く → HFの図を読む → プログラムを動かす → 2つの実行記録を比べる</strong>、という順番で進めます。最初の例は2件の検索を表し、後半のプログラムはステップ09と同じ音楽検索を使います。</p>
+<h3 id="python-example">1. Pythonアクション<a class="headerlink" href="#python-example" title="この見出しへのリンク">&para;</a></h3>
+<p>CodeAgentは、次のようなPythonアクションを受け取れます。<strong>生成されるアクションを読むための例で、そのまま保存・実行する完成プログラムではありません。</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="p">[</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">"Best catering services in Gotham City"</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">"Party theme ideas for superheroes"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">]:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">web_search</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Search for: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>リストには2つの検索内容が入っています。「ゴッサム・シティのおすすめケータリング業者」と「スーパーヒーロー向けのパーティーテーマ」です。</li>
+<li><code translate="no">for</code>ループが、検索内容を1つずつ取り出します。</li>
+<li><code translate="no">web_search(...)</code>が検索ツールを呼び出します。</li>
+<li><code translate="no">print(...)</code>が返された結果を表示し、エージェントが読める記録に残します。</li>
+</ul>
+<p>実行される順番に読んでみましょう。</p>
+<ol>
+<li>最初の繰り返しでは、<code translate="no">query</code>に<code translate="no">Best catering services in Gotham City</code>が入ります。</li>
+<li><code translate="no">f"Search for: {query}"</code>が、その値を文字列に埋め込み、<code translate="no">Search for: Best catering services in Gotham City</code>を作ります。先頭の<code translate="no">f</code>は書式付き文字列を示し、<code translate="no">{query}</code>が変数の値に置き換わります。</li>
+<li>Pythonがその文字列で<code translate="no">web_search(...)</code>を呼びます。結果が返ると、<code translate="no">print(...)</code>が表示します。内側の関数呼び出しが先で、外側の<code translate="no">print</code>が後です。</li>
+<li>次に<code translate="no">Party theme ideas for superheroes</code>で同じ処理を繰り返します。これが2件目の検索です。</li>
+</ol>
+<p>つまり、<strong>1つのPythonアクションに、2回のツール呼び出しを含められます。</strong> 検索ツールやインターネット接続が不要になるわけではありません。モデルがPythonを提案し、PC上のCodeAgentの実行エンジンが動かし、検索関数が検索サービスに接続します。表示された結果は、モデルに返す観測結果の一部になります。</p>
+<h3 id="structured-example">2. 構造化されたツール呼び出し<a class="headerlink" href="#structured-example" title="この見出しへのリンク">&para;</a></h3>
+<p>ToolCallingAgentは、構造化データでツールを依頼します。JSONは、項目名を付けて値を整理する形式です。同じ2件の検索を、次のように表せます。<strong>読むだけにしてください。JSONファイルを作ったり、Pythonプログラムに貼り付けたりする必要はありません。</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_search"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best catering services in Gotham City"</span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_search"</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Party theme ideas for superheroes"</span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">]</span>
+</code></pre></div>
+<p>最初の項目は、<strong>「<code translate="no">web_search</code>に『ゴッサム・シティのおすすめケータリング業者』という検索語を渡して呼んで」</strong>という意味です。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>読み方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">name</code></td>
+<td>どのツールを動かすか。この例では<code translate="no">web_search</code>。</td>
+</tr>
+<tr>
+<td><code translate="no">arguments</code></td>
+<td>ツールにどんな値を渡すか。</td>
+</tr>
+<tr>
+<td><code translate="no">query</code></td>
+<td>この検索ツールが受け取る入力の名前。</td>
+</tr>
+<tr>
+<td><code translate="no">"Best catering services in Gotham City"</code></td>
+<td>検索語として渡す値。</td>
+</tr>
+<tr>
+<td>2つ目の項目</td>
+<td>同じツールへの、別の検索語による依頼。</td>
+</tr>
+</tbody>
+</table>
+<p>このJSONに<code translate="no">for</code>ループはありません。2つの依頼を明示的に並べています。ToolCallingAgentが名前に対応する登録済みのPythonツールを探し、引数を渡します。検索するのはPythonツールで、JSONそのものが検索サービスに接続することはできません。</p>
+<p>このリストは、<strong>ツール名と引数を簡略化して示した例</strong>です。APIの応答全体の形式ではありません。実際のプログラムではモデルとSDKが構造化メッセージを扱うので、このJSONを自分で書く必要はありません。</p>
+<p><strong>PythonコードもJSONも、検索結果そのものではありません。</strong> ツールを実行して初めて結果が返ります。</p>
+<h2 id="comparison">活動：2つの検索例を比べる<a class="headerlink" href="#comparison" title="この見出しへのリンク">&para;</a></h2>
+<p>上の<strong>例1のPythonの<code translate="no">for</code>ループ</strong>と、<strong>例2のJSONのリスト</strong>を比べます。この質問では、ケータリングとパーティーテーマの検索例を使います。まず考えてから、<strong>解答を表示</strong>を押して理由をたどってください。</p>
+<p><strong>1. 両方が使うツールと、2つの入力は何ですか？</strong> Pythonの関数名と、JSONの<code translate="no">name</code>を探しましょう。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>ツールを探す：</strong>Pythonは<code translate="no">web_search(...)</code>を呼び、JSONは<code translate="no">"web_search"</code>と指定しています。同じ検索機能を指します。</p>
+<p><strong>入力を探す：</strong>1つ目はゴッサム・シティのケータリング業者、2つ目はスーパーヒーロー向けのパーティーテーマです。Pythonではリストの2つの文字列から取り出します。JSONでは、それぞれ<code translate="no">arguments</code>の中の<code translate="no">query</code>に入っています。</p>
+<p><strong>少し違う点：</strong>Pythonは書式付き文字列で先頭に<code translate="no">Search for:</code>を付けます。JSONは検索内容を直接渡しています。探したい2つの内容は同じです。</p>
+<p><strong>解答例：</strong>「どちらも<code translate="no">web_search</code>を使います。入力は、ゴッサム・シティのケータリング業者と、スーパーヒーロー向けのパーティーテーマを探す検索語です。」</p>
+</details>
+<p><strong>2. それぞれ、どこで2回の検索を表していますか？</strong> Pythonではループに渡す値を、JSONでは依頼の項目を数えてみましょう。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>Python：</strong>リストには2つの文字列があります。<code translate="no">for</code>はそれぞれの値について字下げされた処理を行うので、<code translate="no">web_search(...)</code>の行が2回実行されます。</p>
+<p><strong>JSON：</strong>名前と引数を持つ依頼が2件並んでいます。ToolCallingAgentがその依頼を処理します。JSONデータ自身がループを動かすわけではありません。</p>
+<p><strong>解答例：</strong>「Pythonは1つの命令をループで繰り返し、JSONは2件のツールの依頼を並べています。どちらの例も2回の検索を求めています。」これはこの例の回数で、各エージェントの呼び出し回数がいつも固定という意味ではありません。</p>
+</details>
+<p><strong>3. アクションを選ぶのは誰で、実行するのは誰ですか？</strong> Groq上のモデルと、PC上のプログラムを分けて考えましょう。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>選ぶ：</strong>Groq上のモデルがタスクと使えるツールの説明を読み、ツールと入力を提案します。CodeAgentではPythonで、ToolCallingAgentでは構造化された呼び出しで表します。</p>
+<p><strong>実行する：</strong>PC上のCodeAgentの実行エンジンがPythonを動かすか、ToolCallingAgentが指定されたツールに引数を渡して呼び出します。Pythonの検索ツールが検索サービスに接続します。</p>
+<p><strong>返す：</strong>フレームワークがツールの結果を観測結果として記録し、ループを続けるときにモデルへ返します。</p>
+<p><strong>解答例：</strong>「モデルが何をするかを提案します。自分のPC上のPythonがツールを動かします。フレームワークがアクションと返された観測結果をつなぎます。」</p>
+</details>
+<p><strong>4. このコードは検索結果ですか？ まだ何が必要ですか？</strong> 検索する指示と、実際に返されたページや抜粋を区別しましょう。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>どちらにも検索結果は含まれていません。</strong> これから行う操作が書かれています。ケータリングを探す検索語は入力であり、業者が見つかった証拠ではありません。</p>
+<p><strong>次に必要なこと：</strong>登録されたPythonツールが実行され、結果かエラーを返すことです。その戻り値が観測結果になります。モデルは成功した結果を回答に使ったり、次の操作を選んだりできます。</p>
+<p><strong>解答例：</strong>「これは結果ではなく依頼です。検索が成功したと言うには、実際に返されたタイトル、URL、抜粋を確認する必要があります。」</p>
+</details>
+<h2 id="comparison-figure">コードとJSONのアクションを図で見る<a class="headerlink" href="#comparison-figure" title="この見出しへのリンク">&para;</a></h2>
+<p><a href="../images/huggingface/code_vs_json_actions.png"><img alt="PythonアクションとJSONツール呼び出しの比較" src="../images/huggingface/code_vs_json_actions.png" /></a></p>
+<details class="info">
+<summary>この図の説明を読む</summary>
+<p><strong>課題は、同じスマートフォンを最も安く買える国を探すことです。</strong> 対象は米国、日本、ドイツ、インド。図の上部には、為替・税率、商品価格、送料、最終価格を調べたり計算したりするAPIが示されています。</p>
+<p><strong>左側はText/JSONによるアクションです。</strong> たとえばドイツの為替・税率を調べ、返された値を受け取ってから、商品価格の取得や換算を依頼します。<code translate="no">Action</code>が依頼、<code translate="no">Environment</code>が実行側の返す値、<code translate="no">Response</code>が最後の回答です。他の国についても同じ処理を行います。</p>
+<p><strong>右側はコードによるアクションです。</strong> <code translate="no">countries</code>に対象国を入れ、<code translate="no">for country in countries</code>で各国の処理を繰り返します。結果を<code translate="no">final_prices</code>に保存し、<code translate="no">min(..., key=final_prices.get)</code>で最も安い国を選びます。変数、繰り返し、Pythonの関数で複数の操作をまとめられます。</p>
+<p>図のメッセージは<strong>「コードなら、一連の操作を1つのアクションにまとめられる場合がある」</strong>ということです。ツール自体の実行が不要になるわけではありません。JSONを使うエージェントにも複数段階のループはあります。図の価格や結論は説明用で、現在の価格情報ではありません。</p>
+</details>
+<p><em>図の出典：<a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tool_calling_agents">Hugging Face Agents Course</a>。画像を選ぶと拡大できます。</em></p>
+<p>この図の課題はパーティー検索とは別で、<strong>為替、税、送料を含めて、同じスマートフォンを最も安く買える国を探すこと</strong>です。上部の依頼を読んでから、左右を比べましょう。</p>
+<ul>
+<li><strong>左 — Text/JSON：</strong>為替を調べるなどの操作を依頼し、その結果を受け取ってから次の操作を依頼します。繰り返す手順の一部は省略されています。</li>
+<li><strong>右 — Code：</strong><code translate="no">for</code>で各国の計算を繰り返し、合計を<code translate="no">final_prices</code>に保存します。<code translate="no">min(..., key=final_prices.get)</code>で合計が最小の国を選びます。</li>
+<li><strong>共通点：</strong>必要なデータを返すツールが要ります。コードなら複数の操作を1つのアクションにまとめられますが、どんな仕事でもモデルへの問い合わせが少なくなるとは限りません。図の価格は説明用で、現在の価格ではありません。</li>
+</ul>
+<p><strong>やってみよう：</strong>繰り返す部分と、最も安い国を選ぶ部分を指してください。右側では、なぜ1つのコードブロックで表せるのでしょうか？</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>繰り返しを探す：</strong><code translate="no">for country in countries</code>が、米国、日本、ドイツ、インドについて同じ計算を繰り返します。</p>
+<p><strong>1か国分を追う：</strong>為替と税率を調べ、商品の価格を取得し、通貨換算と税の計算をします。送料を取得して最終価格を求め、その国の名前をキーにして<code translate="no">final_prices</code>に保存します。</p>
+<p><strong>比較を探す：</strong><code translate="no">min(final_prices, key=final_prices.get)</code>が保存された合計を比べ、最小の国名を返します。続く辞書の参照で、その国の金額を取り出します。</p>
+<p><strong>解答例：</strong>「コードのアクションでは、ループでツール呼び出しを繰り返し、変数に結果を残せます。同じPythonブロック内で結果の比較までできます。左側は個々の操作を別々の依頼として表しています。どちらも実際にツールを動かす必要があります。」</p>
+</details>
+<h2 id="tool-calling-loop">ループの流れ<a class="headerlink" href="#tool-calling-loop" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>アクションの形式を変えても、ループは必要です。</strong> どちらのプログラムも次の流れで動きます。</p>
+<ol>
+<li>利用者がエージェントにタスクを渡す。</li>
+<li>モデルがアクションを依頼する。</li>
+<li>プログラムが実行する。</li>
+<li>結果またはエラーが観測結果になる。</li>
+<li>モデルが観測結果を使い、次のアクションを選ぶか、回答して終了する。</li>
+</ol>
+<h2 id="hf-agent-example">構造化ツール呼び出しのプログラム<a class="headerlink" href="#hf-agent-example" title="この見出しへのリンク">&para;</a></h2>
+<p>ここからは、ステップ09の音楽検索を構造化呼び出しで動かします。<strong>タスク、Groq接続、検索ツールは同じ</strong>なので、アクションの形式の違いに注目できます。次のプログラムは、検索ツールを持つToolCallingAgentを作ります。<code translate="no">build_model()</code>がGroq接続を準備し、<code translate="no">tools=[...]</code>が検索ツールを登録し、<code translate="no">agent_options(action_format="tool")</code>が構造化呼び出し用の設定を渡します。</p>
+<h2 id="groq-example">my_tool_calling.pyを作る<a class="headerlink" href="#groq-example" title="この見出しへのリンク">&para;</a></h2>
+<p>先に<a href="../week-3-learning-plan/#exercise-files">第03週の準備</a>を終えてください。同じプロジェクトフォルダー、既存の環境、Groqキーを使います。</p>
+<ol>
+<li>コードエディターで<strong><code translate="no">First_agent_template</code></strong>を開きます。</li>
+<li><strong>ファイル → 新しいテキストファイル → 名前を付けて保存</strong>で、<strong><code translate="no">my_tool_calling.py</code></strong>を<code translate="no">app.py</code>、<code translate="no">week03_common.py</code>と同じ場所に保存します。</li>
+<li>下の<strong>コード全体</strong>を貼り付けます。</li>
+<li>Windowsは<strong>Ctrl + S</strong>、Macは<strong>Command + S</strong>で保存します。指定どおりの<code translate="no">.py</code>ファイル名を使い、<code translate="no">.txt</code>を付けないでください。</li>
+</ol>
+<div class="highlight"><span class="filename">my_tool_calling.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolCallingAgent</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week03_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">WebSearchTool</span><span class="p">()],</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">action_format</span><span class="o">=</span><span class="s2">"tool"</span><span class="p">),</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">task</span> <span class="o">=</span> <span class="s2">"Search for the best music recommendations for a party at the Wayne's mansion."</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">task</span><span class="p">))</span>
+</code></pre></div>
+<details class="info">
+<summary>my_tool_calling.pyのコード解説を読む</summary>
+<p><code translate="no">my_playlist.py</code>と同じGroq接続、検索ツール、パーティーの音楽を探す依頼を使います。</p>
+<table>
+<thead>
+<tr>
+<th>コード</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">from smolagents import ToolCallingAgent</code></td>
+<td>構造化されたツールの依頼を扱うエージェントを読み込みます。</td>
+</tr>
+<tr>
+<td><code translate="no">build_model()</code>と<code translate="no">WebSearchTool()</code></td>
+<td>ステップ09と同じモデル接続と検索ツールのインスタンスを準備します。</td>
+</tr>
+<tr>
+<td><code translate="no">agent = ToolCallingAgent(...)</code></td>
+<td>モデルの構造化された依頼から、ツール名と引数を読み取るエージェントを作ります。</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[WebSearchTool()]</code>と<code translate="no">model=model</code></td>
+<td>検索ツールと、準備したGroq接続を渡します。</td>
+</tr>
+<tr>
+<td><code translate="no">**agent_options(action_format="tool")</code></td>
+<td>Pythonアクション用の指示ではなく、構造化呼び出し用の設定を渡します。</td>
+</tr>
+<tr>
+<td><code translate="no">task = "Search ..."</code></td>
+<td>同じパーティーに合う音楽のおすすめを依頼します。</td>
+</tr>
+<tr>
+<td><code translate="no">raise SystemExit(run_task(agent, task))</code></td>
+<td>ループを実行し、結果を表示して、成功・エラーの状態で終了します。</td>
+</tr>
+</tbody>
+</table>
+<p>アクションを選ぶのは引き続きモデルで、検索するPythonツールはPC上で動き、結果は観測結果として戻ります。変わるのは<strong>モデルがアクションを依頼する形式</strong>です。</p>
+</details>
+<p><strong>実行：</strong><code translate="no">python my_tool_calling.py</code>。</p>
+<p>Groqキーを求められたら入力してEnterを押します。入力は非表示です。出力は同じターミナルで読みます。ブラウザの画面は開きません。<code translate="no">task</code>は、ウェイン邸のパーティーに合う音楽を検索する依頼です。</p>
+<h2 id="execution-log">出力で確認すること<a class="headerlink" href="#execution-log" title="この見出しへのリンク">&para;</a></h2>
+<p>構造化呼び出しの実行記録には、たとえば次のように表示されます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Calling tool: 'web_search' with arguments:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>{'query': "best music recommendations for a party at Wayne's mansion"}
+</code></pre></div>
+<p>これは、<code translate="no">web_search</code>というツールに、表示された<code translate="no">query</code>を渡すことを示します。ツール名、入力、返された検索結果、最終回答を探してください。引用されたURLが、検索結果にもあるかを確認します。呼び出しを示す表示だけでは、検索が成功した証拠にはなりません。実行が失敗したら、実際のエラーを記録し、<a href="../run-your-first-agent/#troubleshooting">トラブル対処</a>に沿って確認してから再試行します。検索の失敗を成功した結果として扱わないでください。</p>
+<h2 id="local-setup">どのファイルを使うのか<a class="headerlink" href="#local-setup" title="この見出しへのリンク">&para;</a></h2>
+<p>ステップ09の<code translate="no">my_playlist.py</code>はCodeAgentとPythonアクションを使います。<code translate="no">my_tool_calling.py</code>はToolCallingAgentと構造化呼び出しを使います。どちらも<code translate="no">First_agent_template</code>に保存する別々のターミナル用プログラムです。第2週の<code translate="no">app.py</code>を編集する必要はありません。</p>
+<p><strong>活動：2つの実行を比べる。</strong> <code translate="no">my_tool_calling.py</code>のターミナル出力を残し、ステップ09の<code translate="no">my_playlist.py</code>の記録と並べます。前の記録がなければ、<code translate="no">python my_playlist.py</code>を再実行します。</p>
+<p><strong>それぞれの実行</strong>について、次の4点に当たる実際の出力を短く抜き出してください。</p>
+<table>
+<thead>
+<tr>
+<th>探すもの</th>
+<th>抜き出す内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アクション</td>
+<td>生成されたPython、または構造化されたツール名と引数。</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><code translate="no">query</code>に渡された検索語。</td>
+</tr>
+<tr>
+<td>観測結果</td>
+<td>返されたタイトル、URL、抜粋。失敗した場合は実際のエラー。</td>
+</tr>
+<tr>
+<td>最終回答</td>
+<td>結果を使った1文。成功した結果がなければ、その制約を記録する。</td>
+</tr>
+</tbody>
+</table>
+<p>そのうえで、<strong>プログラム間で何が変わり、何が同じか</strong>を答えてください。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p><strong>まず最初のプログラム：</strong><code translate="no">my_playlist.py</code>で、<code translate="no">web_search(...)</code>を呼ぶなどの、モデルが生成したPythonを探します。CodeAgentがそのPythonを実行します。変数名や検索語は読解の例と違うことがあります。</p>
+<p><strong>次のプログラムのアクション：</strong><code translate="no">my_tool_calling.py</code>では、<code translate="no">Calling tool: 'web_search'</code>と<code translate="no">query</code>の引数を探します。これは構造化されたツールの依頼を示します。ToolCallingAgentが同じPythonの検索実装を呼びます。</p>
+<p><strong>実際に起きたことを確認：</strong>どちらの記録でも、呼び出し後に返されたデータを探します。最終回答のURLと、検索ツールが実際に返したURLを照合します。上に示した2行の出力例は依頼だけです。返された検索結果や最終回答はないので、それだけでは検索の成功を判断できません。</p>
+<p><strong>比較の解答例：</strong>「音楽検索のCodeAgentでは、モデルがPythonを書いて検索を依頼しました。ToolCallingAgentでは、ツール名と引数を渡しました。どちらもGroqのモデルがアクションを選び、PC上の同じPython検索ツールが実行しました。結果が観測結果になり、回答に使われます。」</p>
+<p>この比較に、<strong>自分の実行で使われた検索語と、実際に返された情報源</strong>を加えます。失敗した実行はエラーと不足している証拠を記録し、成功した結果を作り上げないでください。検索結果や表現は実行ごとに変わります。比べる中心は、アクションの形式と実行の流れです。</p>
+</details>
+<h2 id="activity">確認ポイント<a class="headerlink" href="#activity" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>ToolCallingAgentはPythonツールの代わりになりますか？ なぜフレームワークが必要なのでしょうか？</strong> 自分の言葉で答えてください。</p>
+<details class="success">
+<summary>解答を表示</summary>
+<p>「ToolCallingAgentは、モデルがアクションを依頼する形式を変えます。実際の仕事には、登録されたPythonツールが引き続き必要です。モデルがツールと入力を選び、フレームワークが呼び出して結果やエラーを記録し、観測結果を次の処理に使います。CodeAgentも同じようなループを管理しますが、Pythonアクションを受け取ります。」</p>
+<p>自分の記録で<strong>依頼、実行結果、それを使った回答</strong>を指し示し、Groq上とPC上の役割を説明できれば、この確認ポイントを達成しています。</p>
+</details>
+<h2 id="sources">出典<a class="headerlink" href="#sources" title="この見出しへのリンク">&para;</a></h2>
+<p><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/tool_calling_agents">Hugging Face Agents Course — Writing actions as code snippets or JSON blobs</a>を基に構成しています。<a href="../licenses/huggingface-agents-course.txt">Apache 2.0ライセンス</a>に基づき利用しています。</p>
+<p><strong>次へ：</strong><a href="../week-3-custom-tool/">11 · 関数とクラスで作るツール</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../week-3-code-agent/" class="md-footer__link md-footer__link--prev" aria-label="前: 09 · CodeAgentを動かす">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                09 · CodeAgentを動かす
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week-3-custom-tool/" class="md-footer__link md-footer__link--next" aria-label="次: 11 · 関数とクラスで作るツール">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                11 · 関数とクラスで作るツール
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">SI Labの学生向けにAmpereが作成 · 原典：Hugging Face</div>
+  
+  
+    
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a> で作成
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

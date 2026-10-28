@@ -6,12 +6,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A two-week introduction to AI agents: concepts, local Python practice, and a working tool-using agent.">
+        <meta name="description" content="Learn AI agents locally with Groq: foundations, a working template, and Week 03 smolagents exercises.">
       
       
       
       
-        <link rel="prev" href="../quizzes/">
+        <link rel="prev" href="../week-4-preview/">
       
       
       
@@ -142,10 +142,12 @@
     
     
       
+
 <a class="md-header__button md-icon course-translate" href="../ja/course-route/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
   <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
 </a>
+
     
     
       
@@ -660,6 +662,262 @@
       
   
   
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 03 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · Plan and download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Introduction to smolagents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Run a CodeAgent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-action-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Python or structured tool calls?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · Tools: functions and classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04 · Coming next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -678,10 +936,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -699,8 +957,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -851,8 +1109,8 @@
 
 
 
-<h1 id="two-week-course-route">Two-week course route<a class="headerlink" href="#two-week-course-route" title="Permanent link">&para;</a></h1>
-<p>This local course adapts Hugging Face Agents Course Unit 1 and its starter for Groq and local execution. The existing material is split into two weeks; this source contains no later weekly units. External HF lesson pages are optional references. The two original quick quizzes remain external activities.</p>
+<h1 id="two-week-course-route">Course route<a class="headerlink" href="#two-week-course-route" title="Permanent link">&para;</a></h1>
+<p>This local course adapts Hugging Face Agents Course Unit 1, its starter, and Unit 2.1 for Groq and local execution. Weeks 1–2 cover Unit 1; Week 03 deepens the smolagents and tool work from Week 2 through Unit 2.1. Lessons are available in English and Japanese. External HF lesson pages are optional references. Original HF quizzes remain external activities.</p>
 <table>
 <thead>
 <tr>
@@ -875,12 +1133,24 @@
 <td>3–4 hours</td>
 <td>A model response, direct tool tests, executed agent calls, and a verified source</td>
 </tr>
+<tr>
+<td><a href="../week-3-learning-plan/">3</a></td>
+<td>Introduction, terminal CodeAgent programs, action formats, and function/class tools</td>
+<td>3–4 hours</td>
+<td>Saved Python files, direct tool checks, executed agent calls, and a tool modification</td>
+</tr>
+<tr>
+<td><a href="../week-4-preview/">4 — coming next</a></td>
+<td>Retrieval agents and later topics</td>
+<td>To be added</td>
+<td>Continue after Week 03</td>
+</tr>
 </tbody>
 </table>
 <p>The <a href="../first-agent-practical/#6-optional-create-your-own-tool">custom-tool challenge</a> is an optional 30–60 minute extension in Week 2. Durations are planning estimates, not timers; setup and service limits may extend them.</p>
 <h2 id="how-to-review-your-progress">How to review your progress<a class="headerlink" href="#how-to-review-your-progress" title="Permanent link">&para;</a></h2>
-<p>Use the <a href="../week-1-learning-plan/#week-1-completion">Week 1 checks</a>, then the <a href="../quizzes/#finish-the-practical">Week 2 practical checks</a>. This documentation site does not store progress, quiz scores, or completion status. Keep your scripts and execution evidence for review. Changing language opens the same lesson and does not change your work.</p>
-<p>Image generation and the account-gated final quiz are removed. A custom tool, publishing a Space, and Hugging Face certification are optional or outside this adaptation; they are not completion requirements.</p>
+<p>Use the <a href="../week-1-learning-plan/#week-1-completion">Week 1 checks</a>, the <a href="../quizzes/#finish-the-practical">Week 2 practical checks</a>, and the <a href="../week-3-completion/">Week 03 checks</a>. This documentation site does not store progress, quiz scores, or completion status. Keep your scripts and execution evidence for review. Changing language opens the same lesson and does not change your work.</p>
+<p>Image generation and the account-gated final quiz are removed. The Week 2 custom tool is optional; Week 03 has its own required guided custom-tool exercise. Publishing a Space and obtaining HF certification are not completion requirements.</p>
 
 
 
@@ -916,7 +1186,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../quizzes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 07 · Completion checks">
+          <a href="../week-4-preview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Week 04 · Coming next">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -926,7 +1196,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                07 · Completion checks
+                Week 04 · Coming next
               </div>
             </div>
           </a>

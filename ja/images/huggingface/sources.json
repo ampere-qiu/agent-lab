@@ -1,0 +1,52 @@
+[
+  {
+    "file": "Agent_ManimCE.gif",
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif",
+    "sha256": "445679be1266aa1df3cb0ee708d0737348828e871f3d840685e0ce4ed3feee3a"
+  },
+  {
+    "file": "alfred-catering.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/alfred-catering.jpg",
+    "sha256": "13d0602ec4f358acc592a8a4a5ec8eb2752a9a45ea6751cd265dac95a490207f"
+  },
+  {
+    "file": "code_vs_json_actions.png",
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/code_vs_json_actions.png",
+    "sha256": "2d3c40c6213af765c3caff5a18210cd75f5722ce6a012f99a5eb4cb6536965fc"
+  },
+  {
+    "file": "codeagent_docs.png",
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/smolagents/codeagent_docs.png",
+    "sha256": "6fd077476c038d7434c9450f1c8fd460b15d886eb083e13492547d7558d8be89"
+  },
+  {
+    "file": "alfred-party.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/alfred-party.jpg",
+    "sha256": "d338ccfe4563d0cef2f091a2094abfd80d09f337d06484f4fb4d780836a64dee"
+  },
+  {
+    "file": "alfred-playlist.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/alfred-playlist.jpg",
+    "sha256": "b14f8e8b1541c29813cb806decfe319eb29b7700ab960b0ff2c6a7479ae9f527"
+  },
+  {
+    "file": "alfred-menu.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/alfred-menu.jpg",
+    "sha256": "b62588c01adc9955e9e63de3eac25b40e053d038f5bc60b0c88a116d86362c08"
+  },
+  {
+    "file": "thumbnail.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/thumbnail.jpg",
+    "sha256": "5b07e907f17637e2918d9689b473e035cdef1d5828524aec0373fc34ace374ee"
+  },
+  {
+    "file": "this-is-alfred.jpg",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/this-is-alfred.jpg",
+    "sha256": "5dda6ceb5ddeb8dd5e0d29072f88271cd3346e8349936370b023f221da3ca9ac"
+  },
+  {
+    "file": "license_to_call.png",
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/smolagents/license_to_call.png",
+    "sha256": "e217693d87b52b4d6affa6ffd72d62e6860149c4b84c127f84cd2eb60cbf3d5f"
+  }
+]
