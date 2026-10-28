@@ -1021,7 +1021,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Building Agentic RAG Systems
+    12 · Building Agentic RAG Systems (optional)
   
 
     
@@ -1338,10 +1338,10 @@
 
 
 <h1 id="week-3-learning-plan">Week 03 · Plan and download<a class="headerlink" href="#week-3-learning-plan" title="Permanent link">&para;</a></h1>
-<p>This week you will use <strong>smolagents and your Groq key</strong> to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, use catering/theme tools, and retrieve information from a local knowledge base.</p>
-<p>The class covers introduction, CodeAgent, action formats, tools, and Agentic RAG. <a href="../week-4-preview/">Agent teams and vision/browser topics continue in Week 04</a>.</p>
+<p>This week you will use <strong>smolagents and your Groq key</strong> to run small Python agents from the terminal. Alfred is planning a party: your programs will search for music, choose a menu, calculate preparation time, and use catering/theme tools. The optional RAG lesson also explores retrieval from a local knowledge base.</p>
+<p>The required work covers introduction, CodeAgent, action formats, and tools. <strong>Step 12, Agentic RAG, is optional this week and will be revisited next week.</strong> It stays in Week 3 for preview or practice. <a href="../week-4-preview/">Agent teams and vision/browser topics continue in Week 04</a>.</p>
 <h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
-<p>By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, change the data used by a Python tool, and check a RAG answer against retrieved passages and their sources.</p>
+<p>By the end, you can create and run a small agent program, identify its action and observation, explain Python versus structured tool calls, and change the data used by a Python tool. Optional step 12 adds checking a RAG answer against retrieved passages and their sources.</p>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h2>
 <p>Use your existing <strong><code translate="no">First_agent_template</code></strong> folder, <strong>Python 3.11 <code translate="no">.venv</code></strong>, code editor, and <strong>Groq API key</strong> from Week 2. You need internet for Groq calls and web searches.</p>
 <p><strong>The agent programs run only in the terminal.</strong> They print their results there. There is no Gradio interface or browser chat to start for Week 03. The course website is where you read the instructions.</p>
@@ -1371,8 +1371,8 @@
 <td>Create a direct test and two agent programs; change a tool's data.</td>
 </tr>
 <tr>
-<td><a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a></td>
-<td>Search the web and local notes; verify sources and add a note.</td>
+<td><a href="../week-3-retrieval/">12 · Building Agentic RAG Systems (optional)</a></td>
+<td>Optional preview: search the web and local notes. We will revisit this next week.</td>
 </tr>
 <tr>
 <td><a href="../week-3-completion/">13 · Completion checks</a></td>
@@ -1456,9 +1456,9 @@
 <p>Repeat the <code translate="no">cd</code> and activation commands whenever you open a new terminal. Keep this terminal open for the practicals. Later lessons simply say <strong>Run: <code translate="no">python filename.py</code></strong>; use this activated terminal in <code translate="no">First_agent_template</code> on either system.</p>
 <h2 id="packages">4. Check the terminal packages<a class="headerlink" href="#packages" title="Permanent link">&para;</a></h2>
 <p>In the same activated terminal, on <strong>either Windows or Mac</strong>, run:</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>week03-requirements.txt
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"smolagents==1.13.0"</span><span class="w"> </span><span class="s2">"openai&gt;=1.0,&lt;3"</span><span class="w"> </span><span class="s2">"ddgs==9.16.0"</span>
 </code></pre></div>
-<p>This list keeps <code translate="no">smolagents==1.13.0</code>, <code translate="no">openai&gt;=1.0,&lt;3</code>, and <code translate="no">ddgs==9.16.0</code>, and adds <code translate="no">langchain-community==0.4.2</code>, <code translate="no">langchain-text-splitters==1.1.3</code>, and <code translate="no">rank-bm25==0.2.2</code> for step 12. It does not request a Gradio UI, a GPU, an embedding model, or browser automation. Existing packages may show <code translate="no">Requirement already satisfied</code>; the retrieval packages and their dependencies may need downloading.</p>
+<p>These are the packages for the required work. Existing packages may show <code translate="no">Requirement already satisfied</code>. The supplied <code translate="no">week03-requirements.txt</code> also includes the extra retrieval packages for <strong>optional step 12</strong>; install that full list only if you choose to try RAG, following its setup section. No Gradio UI, GPU, embedding model, or browser automation is needed.</p>
 <p>Then check the supplied menu tool without contacting Groq:</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from week03_tools import suggest_menu; print(suggest_menu(occasion='formal'))"</span>
 </code></pre></div>
@@ -1512,17 +1512,17 @@
 <td>Use a class-based tool to retrieve a party theme.</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12 (optional)</td>
 <td><code translate="no">my_rag_search.py</code></td>
 <td>Build a party plan using web-search results.</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12 (optional)</td>
 <td><code translate="no">my_retrieval_check.py</code></td>
 <td>Test local retrieval and its limits without an LLM.</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12 (optional)</td>
 <td><code translate="no">my_rag.py</code></td>
 <td>Answer from local notes with returned source labels.</td>
 </tr>

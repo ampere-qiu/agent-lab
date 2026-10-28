@@ -1021,7 +1021,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Agentic RAGシステムを作る
+    12 · Agentic RAGシステムを作る（任意）
   
 
     
@@ -1338,10 +1338,10 @@
 
 
 <h1 id="week-3-learning-plan">第03週 · 学習計画とダウンロード<a class="headerlink" href="#week-3-learning-plan" title="この見出しへのリンク">&para;</a></h1>
-<p>今週は、<strong>smolagentsと自分のGroqキー</strong>を使い、小さなPythonエージェントをターミナルで動かします。題材は、アルフレッドのパーティー準備です。音楽の検索、メニューの選択、準備時間の計算、ケータリングやテーマを選ぶツール、ローカルの知識ベースからの検索・取得に取り組みます。</p>
-<p>smolagentsの概要、CodeAgent、アクションの形式、ツール、Agentic RAGを扱います。<a href="../week-4-preview/">エージェントのチームと画像・ブラウザの話題は第04週に続きます</a>。</p>
+<p>今週は、<strong>smolagentsと自分のGroqキー</strong>を使い、小さなPythonエージェントをターミナルで動かします。題材は、アルフレッドのパーティー準備です。音楽の検索、メニューの選択、準備時間の計算、ケータリングやテーマを選ぶツールに取り組みます。任意のRAGレッスンでは、ローカルの知識ベースからの検索・取得も試せます。</p>
+<p>必須の内容は、smolagentsの概要、CodeAgent、アクションの形式、ツールです。<strong>ステップ12のAgentic RAGは今週は任意で、来週あらためて扱います。</strong> 予習や練習ができるよう、第3週に残しています。<a href="../week-4-preview/">エージェントのチームと画像・ブラウザの話題は第04週に続きます</a>。</p>
 <h2 id="learning-objectives">学習目標<a class="headerlink" href="#learning-objectives" title="この見出しへのリンク">&para;</a></h2>
-<p>小さなエージェントプログラムを作成・実行し、アクションと観測結果を見分けられるようになります。Pythonコードと構造化されたツール呼び出しの違いを説明し、Pythonツールのデータを変更し、取得した文章と出典を基にRAGの回答を確かめられることを目指します。</p>
+<p>小さなエージェントプログラムを作成・実行し、アクションと観測結果を見分けられるようになります。Pythonコードと構造化されたツール呼び出しの違いを説明し、Pythonツールのデータを変更できることを目指します。任意のステップ12では、取得した文章と出典に照らしてRAGの回答を確認します。</p>
 <h2 id="what-you-need">用意するもの<a class="headerlink" href="#what-you-need" title="この見出しへのリンク">&para;</a></h2>
 <p>第2週で使った<strong><code translate="no">First_agent_template</code>フォルダー</strong>、<strong>Python 3.11の<code translate="no">.venv</code></strong>、コードエディター、<strong>Groq APIキー</strong>を使います。Groqへの問い合わせとウェブ検索にはインターネット接続が必要です。</p>
 <p><strong>今週のプログラムはターミナルだけで動かし、結果もそこに表示します。</strong> 第03週のためにGradioやブラウザのチャット画面を起動する必要はありません。この教材サイトでは手順を読みます。</p>
@@ -1371,8 +1371,8 @@
 <td>直接テストと2つのエージェントを作り、ツールのデータを変える。</td>
 </tr>
 <tr>
-<td><a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る</a></td>
-<td>ウェブとノートを検索し、出典を確認してノートを追加する。</td>
+<td><a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る（任意）</a></td>
+<td>任意の予習・練習。ウェブとノートの検索を試し、来週あらためて扱う。</td>
 </tr>
 <tr>
 <td><a href="../week-3-completion/">13 · 完了確認</a></td>
@@ -1456,9 +1456,9 @@
 <p>新しいターミナルを開いたら、<code translate="no">cd</code>と環境の有効化をやり直します。実習中はこのターミナルを開いたままにしましょう。この後のレッスンでは<strong>実行：<code translate="no">python filename.py</code></strong>とだけ示します。WindowsでもMacでも、この環境を有効にした<code translate="no">First_agent_template</code>のターミナルで実行します。</p>
 <h2 id="packages">4. 必要なパッケージを確認する<a class="headerlink" href="#packages" title="この見出しへのリンク">&para;</a></h2>
 <p><strong>Windows・Mac共通で</strong>、環境を有効にした同じターミナルで実行します。</p>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>week03-requirements.txt
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"smolagents==1.13.0"</span><span class="w"> </span><span class="s2">"openai&gt;=1.0,&lt;3"</span><span class="w"> </span><span class="s2">"ddgs==9.16.0"</span>
 </code></pre></div>
-<p><code translate="no">smolagents==1.13.0</code>、<code translate="no">openai&gt;=1.0,&lt;3</code>、<code translate="no">ddgs==9.16.0</code>を引き続き使い、ステップ12用に<code translate="no">langchain-community==0.4.2</code>、<code translate="no">langchain-text-splitters==1.1.3</code>、<code translate="no">rank-bm25==0.2.2</code>を追加します。Gradioの画面、GPU、埋め込みモデル、ブラウザ自動操作は導入しません。既存のパッケージは<code translate="no">Requirement already satisfied</code>と表示されることがあります。検索用パッケージとその依存先はダウンロードが必要になる場合があります。</p>
+<p>上は必須の実習で使うパッケージです。導入済みなら<code translate="no">Requirement already satisfied</code>と表示されます。配布の<code translate="no">week03-requirements.txt</code>には、<strong>任意のステップ12</strong>で使う検索用パッケージも含まれます。RAGを試す場合だけ、そのレッスンの準備手順で一覧全体を導入してください。Gradioの画面、GPU、埋め込みモデル、ブラウザ自動操作は不要です。</p>
 <p>続いて、Groqを使わずに、配布されたメニューツールを確認します。</p>
 <div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from week03_tools import suggest_menu; print(suggest_menu(occasion='formal'))"</span>
 </code></pre></div>
@@ -1512,17 +1512,17 @@
 <td>クラス型ツールからパーティーテーマを取り出す。</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12（任意）</td>
 <td><code translate="no">my_rag_search.py</code></td>
 <td>ウェブ検索の結果からパーティーの計画を作る。</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12（任意）</td>
 <td><code translate="no">my_retrieval_check.py</code></td>
 <td>LLMなしでローカル検索とその制約をテストする。</td>
 </tr>
 <tr>
-<td>12</td>
+<td>12（任意）</td>
 <td><code translate="no">my_rag.py</code></td>
 <td>取得した出典ラベルとローカルノートを使って答える。</td>
 </tr>

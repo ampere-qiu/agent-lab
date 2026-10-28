@@ -868,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    12 · Agentic RAGシステムを作る
+    12 · Agentic RAGシステムを作る（任意）
   
 
     
@@ -960,6 +960,17 @@
     <span class="md-ellipsis">
       
         考え方を説明する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任意のRAG練習
       
     </span>
   </a>
@@ -1156,6 +1167,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#optional-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任意のRAG練習
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-hf" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1184,7 +1206,7 @@
 
 
 <h1 id="week-3-completion">13 · 完了確認<a class="headerlink" href="#week-3-completion" title="この見出しへのリンク">&para;</a></h1>
-<p>今週は関数型・クラス型のツールとAgentic RAGを扱います。保存したファイルと、実際のターミナル出力を示してください。このサイトは進捗を保存せず、修了証も発行しません。</p>
+<p>必須の範囲は関数型・クラス型のツールまでです。<strong>Agentic RAGは今週は任意で、来週あらためて扱います。</strong> 必須範囲のファイルと実際のターミナル出力を示してください。このサイトは進捗を保存せず、修了証も発行しません。</p>
 <h2 id="required-evidence">ファイルと実行の根拠<a class="headerlink" href="#required-evidence" title="この見出しへのリンク">&para;</a></h2>
 <p>新しく作ったファイルはすべて<code translate="no">First_agent_template</code>内の、<code translate="no">app.py</code>と配布された<code translate="no">week03_common.py</code>と同じ場所に保存します。</p>
 <table>
@@ -1224,18 +1246,6 @@
 <td>テーマツールの呼び出し、保存済みの説明文、最終回答。</td>
 </tr>
 <tr>
-<td><code translate="no">my_rag_search.py</code></td>
-<td>ウェブからの取得呼び出しと、実際に返された抜粋・URLに基づく提案。</td>
-</tr>
-<tr>
-<td><code translate="no">my_retrieval_check.py</code></td>
-<td>LLMを使わない直接テストの合格と、該当語がなくても文書が返る制約。</td>
-</tr>
-<tr>
-<td><code translate="no">my_rag.py</code>と<code translate="no">week03_retriever.py</code>の変更</td>
-<td>出典に基づく回答、根拠のない質問の結果、自分で追加したノートの実際の取得。</td>
-</tr>
-<tr>
 <td><code translate="no">week03_tools.py</code>への自分の変更</td>
 <td>業者やカテゴリの変更が、直接テストとエージェントの結果に反映されていること。</td>
 </tr>
@@ -1253,11 +1263,37 @@
 <li>デコレーター付きの関数と、<code translate="no">forward(...)</code>を持つ<code translate="no">Tool</code>クラスは、どう違いますか？</li>
 <li>パーティーの例のうち、架空のPythonデータはどれで、ウェブ検索から来る結果はどれですか？</li>
 <li>ツールが本当に動いたことを、どう確認しますか？</li>
+</ul>
+<p>エージェントのチームと画像・ブラウザの話題は<a href="../week-4-preview/">第04週のページ</a>に続きます。</p>
+<h2 id="optional-rag">任意のRAG練習<a class="headerlink" href="#optional-rag" title="この見出しへのリンク">&para;</a></h2>
+<p><a href="../week-3-retrieval/">ステップ12は第3週に残しています</a>が、以下の実行や質問は<strong>今週の完了条件には含みません</strong>。来週あらためて扱います。</p>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>試した場合に確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">my_rag_search.py</code></td>
+<td>ウェブからの取得呼び出しと、実際に返された抜粋・URLに基づく提案。</td>
+</tr>
+<tr>
+<td><code translate="no">my_retrieval_check.py</code></td>
+<td>LLMを使わない直接テストの合格と、該当語がなくても文書が返る制約。</td>
+</tr>
+<tr>
+<td><code translate="no">my_rag.py</code>と<code translate="no">week03_retriever.py</code>の変更</td>
+<td>出典に基づく回答、根拠のない質問の結果、自分で追加したノートの実際の取得。</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>ローカルの検索・取得と、決まった文を返すツールはどう違いますか？</li>
 <li>なぜBM25は、ノートにない語でも文書を返すことがありますか？</li>
 <li>RAGの回答と、返された本文・出典をどう照合しますか？</li>
 </ul>
-<p>エージェントのチームと画像・ブラウザの話題は<a href="../week-4-preview/">第04週のページ</a>に続きます。</p>
 <h2 id="optional-hf">小テストと出典<a class="headerlink" href="#optional-hf" title="この見出しへのリンク">&para;</a></h2>
 <p><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz1">HF Quick Quiz 1</a>は任意です。検索・取得の後には<a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/quiz2">HF Quick Quiz 2</a>にも任意で取り組めます。最終テストには後の話題も含まれます。</p>
 <p>考え方と例は、<a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/introduction">Hugging Face Agents Course Unit 2.1</a>を基にしています。</p>
@@ -1297,7 +1333,7 @@
       <nav class="md-footer__inner md-grid" aria-label="フッター" >
         
           
-          <a href="../week-3-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="前: 12 · Agentic RAGシステムを作る">
+          <a href="../week-3-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="前: 12 · Agentic RAGシステムを作る（任意）">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1307,7 +1343,7 @@
                 前
               </span>
               <div class="md-ellipsis">
-                12 · Agentic RAGシステムを作る
+                12 · Agentic RAGシステムを作る（任意）
               </div>
             </div>
           </a>
