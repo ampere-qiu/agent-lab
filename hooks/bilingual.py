@@ -14,7 +14,7 @@ def on_pre_build(config):
     config.extra['course_language'] = 'ja' if japanese else 'en'
     config.extra['course_alternate'] = '../' if japanese else 'ja/'
     if japanese:
-        for folder in ('downloads', 'stylesheets', 'javascripts'):
+        for folder in ('downloads', 'stylesheets', 'javascripts', 'images', 'licenses'):
             shutil.copytree(root / 'docs' / folder, Path(config.docs_dir) / folder,
                             dirs_exist_ok=True)
 
@@ -24,6 +24,9 @@ def on_page_context(context, page, config, nav):
     prefix = 'ja/' if japanese else ''
     current_dir = posixpath.dirname(prefix + page.file.dest_uri)
     target = ('' if japanese else 'ja/') + page.url
+    root = Path(config.config_file_path).parent
+    counterpart = root / ('docs' if japanese else 'docs-ja') / page.file.src_uri
+    context['course_translation_available'] = counterpart.is_file()
     context['course_alternate'] = posixpath.relpath(target or '.', current_dir or '.') + '/'
     context['course_language'] = 'ja' if japanese else 'en'
     return context

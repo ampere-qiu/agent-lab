@@ -37,3 +37,5 @@ Show a successful chat response, direct tests and agent traces for time and sear
 Search and Groq limits are independent. If a live checkpoint is unavailable, mark it incomplete and retry later; a link recalled by the model does not substitute for search execution. Image generation, hosting a Space, the account-gated final quiz, and certification are not required.
 
 **Review:** [Course route](course-route.md) · [Completion checks](quizzes.md#finish-the-practical).
+
+**Next:** [Week 03 — smolagents](week-3-learning-plan.md).

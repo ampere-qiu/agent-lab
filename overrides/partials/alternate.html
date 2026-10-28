@@ -1,5 +1,12 @@
 {% set lang = course_language | default(config.extra.course_language) %}
+{% if course_translation_available | default(true) %}
 <a class="md-header__button md-icon course-translate" href="{{ course_alternate | default(config.extra.course_alternate) }}" data-course-language lang="{{ 'en' if lang == 'ja' else 'ja' }}" hreflang="{{ 'en' if lang == 'ja' else 'ja' }}" title="{{ 'このレッスンを英語で読む' if lang == 'ja' else 'Read this lesson in Japanese' }}" aria-label="{{ '言語を英語に切り替える：このレッスン' if lang == 'ja' else 'Switch language to Japanese for this lesson' }}">
   {% include ".icons/material/translate.svg" %}
   <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
 </a>
+{% else %}
+<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition will follow after English review">
+  {% include ".icons/material/translate.svg" %}
+  <span>EN · Japanese pending</span>
+</span>
+{% endif %}

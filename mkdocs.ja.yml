@@ -1,5 +1,5 @@
 INHERIT: mkdocs.yml
-site_description: AIエージェントの基礎から、ローカルPython実習、ツールを使うエージェントの完成までを学ぶ2週間の教材。
+site_description: GroqとローカルPythonで学ぶAIエージェント教材。第1〜2週の基礎・テンプレートから、第03週のsmolagentsとツール実習へ進みます。
 docs_dir: docs-ja
 site_dir: site/ja
 theme:
@@ -35,6 +35,14 @@ nav:
   - 05 · 仕組みを理解する: understand-the-template.md
   - 06 · ツールの登録とテスト: first-agent-practical.md
   - 07 · 学習の完了確認: quizzes.md
+- 第03週 · smolagents:
+  - 第03週 · 学習計画とダウンロード: week-3-learning-plan.md
+  - 08 · smolagents入門: week-3-framework.md
+  - 09 · CodeAgentを動かす: week-3-code-agent.md
+  - 10 · Pythonコードと構造化ツール呼び出し: week-3-action-formats.md
+  - 11 · 関数とクラスで作るツール: week-3-custom-tool.md
+  - 12 · 完了確認: week-3-completion.md
+- 第04週 · 次回の内容: week-4-preview.md
 - 参考:
   - コース全体の流れ: course-route.md
 markdown_extensions:

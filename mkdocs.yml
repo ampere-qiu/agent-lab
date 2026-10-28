@@ -1,6 +1,6 @@
 site_name: Agent Lab
-site_description: 'A two-week introduction to AI agents: concepts, local Python practice,
-  and a working tool-using agent.'
+site_description: 'Learn AI agents locally with Groq: foundations, a working template,
+  and Week 03 smolagents exercises.'
 docs_dir: docs
 site_dir: site
 theme:
@@ -62,6 +62,14 @@ nav:
   - 05 · Understand the template: understand-the-template.md
   - 06 · Enable & test tools: first-agent-practical.md
   - 07 · Completion checks: quizzes.md
+- Week 03 · smolagents:
+  - Week 03 · Plan and download: week-3-learning-plan.md
+  - 08 · Introduction to smolagents: week-3-framework.md
+  - 09 · Run a CodeAgent: week-3-code-agent.md
+  - 10 · Python or structured tool calls?: week-3-action-formats.md
+  - '11 · Tools: functions and classes': week-3-custom-tool.md
+  - 12 · Completion checks: week-3-completion.md
+- Week 04 · Coming next: week-4-preview.md
 - Reference:
   - Course route: course-route.md
 hooks:
@@ -70,3 +78,4 @@ extra_javascript:
 - javascripts/language.js
 extra:
   alternate: true
+  english_only_pages: []

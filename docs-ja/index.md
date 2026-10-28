@@ -1,6 +1,6 @@
 <div class="course-hero" markdown>
 
-<p class="eyebrow">Agent Lab / 第1〜2週</p>
+<p class="eyebrow">Agent Lab / 第01〜03週</p>
 
 # はじめてのAIエージェントを作ろう { #build-your-first-ai-agent }
 
@@ -11,17 +11,19 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 [第1週を始める](week-1-learning-plan.md){ .md-button .md-button--primary }
 [第2週の内容を見る](week-2-learning-plan.md){ .md-button }
 
-<p class="course-meta">Windows・Mac対応 · アプリはローカル、LLMはリモート · 2週間 · 小テスト2つ</p>
+<p class="course-meta">Windows・Mac対応 · アプリはローカル、LLMはリモート · 第1〜3週 · ローカル実習</p>
 
 </div>
+
+**第03週：**[smolagentsの学習](week-3-learning-plan.md)では、アルフレッドのパーティーを題材に、ターミナル用エージェントと関数型・クラス型のツールを扱います。原典の図には出典を記載しています。レッスンは英語と日本語で読めます。
 
 ## この教材で変更した点 { #about-this-adaptation }
 
 [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/introduction)のスターターテンプレートを取り入れ、実習向けに調整しています。APIへのアクセス、モデルの提供状況、ホスティング条件に対応するため、アプリをローカルで動かし、モデルへの問い合わせに**Groq**を使います。Pythonライブラリは引き続きHugging Faceの**smolagents**を使います。
 
-**画像生成は扱いません。** 必須の実習では、**タイムゾーン別の時刻取得**と**ウェブ検索**の2つを使います。独自ツールの作成は発展課題です。
+**画像生成は扱いません。** 第2週の必須の実習では、**タイムゾーン別の時刻取得**と**ウェブ検索**の2つを使います。独自ツールの作成は第2週では任意の発展課題で、第03週には手順に沿って取り組む必須の課題になります。
 
-学習内容と実行手順はこのサイト内に用意しています。外部のHFレッスンは補足資料です。小テスト2つのみを残し、アカウントが必要な最終テストと認定取得はこの教材に含めていません。
+学習内容と実行手順はこのサイト内に用意しています。外部のHFレッスンは補足資料です。第1〜2週では小テスト2つを残し、アカウントが必要な最終テストと認定取得はこの教材に含めていません。
 
 当初の環境準備では無料でSpaceを複製できず、その後HF推論APIでもクレジット不足のエラーが発生しました。画面をローカルで動かしても、リモート推論が無制限になるわけではありません。自分のGroqキーを使い、[利用制限](https://console.groq.com/docs/rate-limits)を確認してください。
 
@@ -31,6 +33,8 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 
 1. **第1週 — ループを理解してたどる：**[エージェントの基礎](unit-1-walkthrough.md)と小テスト2つに取り組み、[ローカル環境を準備](prepare-your-computer.md)して、[3段階のダミーエージェント](dummy-agent-local.md)を作ります。
 2. **第2週 — 動くエージェントを拡張する：**[テンプレートを起動](run-your-first-agent.md)し、[各部の役割](understand-the-template.md)を理解してから、[ツールを有効にして検証](first-agent-practical.md)し、[実習の完了確認](quizzes.md#finish-the-practical)を行います。
+
+3. **第03週 — ターミナル用エージェントを作る：**[環境準備とファイル作成の手順](week-3-learning-plan.md)に沿ってプログラムを動かし、[関数型・クラス型のツール](week-3-custom-tool.md)を変更します。[検索・取得と、その先の内容は第04週に続きます](week-4-preview.md)。
 
 学習目標、時間の目安、各週の振り返りで示す内容は、[コース全体の流れ](course-route.md)を参照してください。
 

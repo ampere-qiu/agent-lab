@@ -10,3 +10,9 @@ __pycache__/
 *-key.text
 test-runs/
 backups/
+
+docs-ja/downloads/
+docs-ja/javascripts/
+docs-ja/stylesheets/
+docs-ja/images/
+docs-ja/licenses/

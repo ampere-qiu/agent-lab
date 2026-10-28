@@ -1,0 +1,4 @@
+# Terminal-only Week 03 exercises. No UI or retrieval extras.
+smolagents==1.13.0
+openai>=1.0,<3
+ddgs==9.16.0
