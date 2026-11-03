@@ -56,3 +56,11 @@
 .course-translate:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
 html[lang="ja"] .md-typeset h1, html[lang="ja"] .md-typeset h2 { letter-spacing: normal; }
+
+/* Preserve HF originals while keeping transparent diagrams readable in both themes. */
+.md-typeset img[src*="huggingface-week04/"] {
+  background: #fff;
+  padding: .5rem;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}

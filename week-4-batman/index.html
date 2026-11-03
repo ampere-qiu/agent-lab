@@ -1,0 +1,2041 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bilingual AI Agent Lab: foundations, tools, smolagents, multi-agent research and vision/browser exercises.">
+      
+      
+      
+      
+        <link rel="prev" href="../week-4-retrieval/">
+      
+      
+        <link rel="next" href="../week-4-vision-browser/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>15 · Batman multi-agent exercise - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#why-teams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              15 · Batman multi-agent exercise
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+
+<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition — To be released">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span>日本語 · To be released</span>
+</span>
+
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 · Concepts & dummy agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 1 · Concepts & dummy agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 1 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before you start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Agent foundations & quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Local setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Dummy agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 · Working template & tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 2 · Working template & tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 2 plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Run the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Understand the template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Enable & test tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 03 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03 · Plan and download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Introduction to smolagents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Run a CodeAgent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-action-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Python or structured tool calls?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · Tools: functions and classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Building Agentic RAG Systems (optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04 · smolagents Part 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Week 04 · smolagents Part 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04 · Plan and download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 · Agentic RAG continuation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 · Batman multi-agent exercise
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 · Batman multi-agent exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Understand what a team changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Read the supplied roles and return contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check tools and explain the estimate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create the complete two-agent program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#small-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Run the supplied one-location handoff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Run the supplied full task and inspect the report
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Check and explain the supplied program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-verifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Optional challenge: design and add a new verifier agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code-reading recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-vision-browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 · Vision & Browser Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 · Completion checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Understand what a team changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Read the supplied roles and return contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check tools and explain the estimate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create the complete two-agent program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#small-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Run the supplied one-location handoff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Run the supplied full task and inspect the report
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Check and explain the supplied program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-verifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Optional challenge: design and add a new verifier agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code-reading recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-4-batman">15 · Batman: build and investigate an agent team<a class="headerlink" href="#week-4-batman" title="Permanent link">&para;</a></h1>
+<p><strong>Required guided practical: copy the complete code, run it, and explain the manager/web-specialist loop. Optional independent challenge: add a third verifier agent.</strong></p>
+<p>Alfred needs a shortlist of places where a replacement Batmobile might be found. Your team must research <strong>three Batman filming locations and one supercar factory</strong>, preserve the evidence for their roles and coordinates, calculate a classroom cargo-flight estimate to fictional Gotham, and produce a sourced table and colored coordinate map.</p>
+<p>The learning goal is to <strong>understand the supplied code and trace the information crossing the agent boundary</strong>. As in Week 3, the required programs below are complete: paste them into the named files, read the collapsed code explanations, run the given steps, and answer the checks. You do not invent role descriptions, tool wiring, task text or a required code improvement. The only independent coding challenge is the optional third agent at the end.</p>
+<p><strong>Before starting:</strong> complete <a href="../week-4-preview/#exercise-files">Week 4 setup</a> and <a href="../week-4-preview/#evidence-file">create <code translate="no">evidence.md</code> and <code translate="no">evidence-files</code></a>. If you have not done that setup, stop here and create them now. Throughout this lesson, reopen that <strong>existing</strong> note under Topic 15; do not look for a supplied <code translate="no">evidence.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Where it comes from / what you do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">week04_common.py</code>, <code translate="no">week04_search.py</code>, <code translate="no">week04_tools.py</code></td>
+<td>Supplied in the ZIP. Open the existing files when asked; do not recreate them.</td>
+</tr>
+<tr>
+<td><code translate="no">my_batman_tools.py</code>, <code translate="no">my_batman.py</code></td>
+<td>Not supplied as files. Create each below by copying the complete given code directly into <code translate="no">week04-exercises</code>.</td>
+</tr>
+<tr>
+<td><code translate="no">my_batman_verified.py</code></td>
+<td>Not supplied. Create a copy of your working team only for the optional extension.</td>
+</tr>
+<tr>
+<td><code translate="no">evidence.md</code></td>
+<td>Created by you in setup; save your answers and terminal excerpts here.</td>
+</tr>
+<tr>
+<td><code translate="no">outputs/batman-report.html</code></td>
+<td>Generated when the report tool succeeds. Do not create an empty HTML file.</td>
+</tr>
+</tbody>
+</table>
+<p>Use the same activated <code translate="no">week04-exercises</code> terminal throughout. The research and model traces appear there; only the generated report is opened in a browser.</p>
+<h2 id="why-teams">1. Understand what a team changes<a class="headerlink" href="#why-teams" title="Permanent link">&para;</a></h2>
+<p>A single CodeAgent can search, read pages, calculate, and write a report. That makes it a useful baseline: there is only one execution history to inspect. However, a long research task puts search snippets, page text, calculation output, and reporting decisions into that same history. An agent may spend attention on details irrelevant to its current job, repeat searches, or lose the sources needed for a later step.</p>
+<p>A manager/specialist design gives research its own model–action–observation loop. The manager sends a goal; the specialist decides which queries and pages to use; the specialist returns a compact report. The manager continues using that report. This is different from a function tool, which runs the specified Python operation and returns its result without making its own sequence of model decisions.</p>
+<p>Both agents can share one model connection and key while maintaining different histories and available tools. Two agents do not automatically mean parallel execution: in this exercise the manager waits for the specialist's return. The handoff can reduce irrelevant detail in the manager's context, but it can also discard important evidence. Extra model calls and coordination can make a team slower or more expensive. You must evaluate the trace rather than assume that a team is better.</p>
+<p><img alt="HF original manager, code tool, and web-agent architecture" src="../images/huggingface-week04/multi-agent-architecture.png" /></p>
+<p><a href="../images/huggingface-week04/multi-agent-architecture.png">Open the full-size original</a></p>
+<p><em>Original figure, unchanged: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">Hugging Face Multi-Agent Systems</a>. Follow the arrows: a request goes down and evidence must come back up.</em></p>
+<p><strong>Think before coding:</strong> suppose the specialist returns only “Wollaton Hall is a good candidate.” What can the manager verify? What is missing for a map or a source audit?</p>
+<details class="success">
+<summary>Reasoning check</summary>
+<p>The statement lacks a supporting page, coordinates and their source, the filming/factory category, and uncertainty. A persuasive summary is not a usable research record. The manager cannot reconstruct missing evidence reliably from the specialist's confidence.</p>
+</details>
+<h2 id="plan">2. Read the supplied roles and return contract<a class="headerlink" href="#plan" title="Permanent link">&para;</a></h2>
+<p>The code below already assigns the responsibilities. <strong>Read this table; you do not need to design or fill in a configuration.</strong> In the existing <code translate="no">evidence.md</code>, explain each role in your own words under Topic 15.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What the provided program gives it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web specialist</td>
+<td><code translate="no">WebSearchTool()</code> and <code translate="no">VisitWebpageTool()</code>; a supplied name and description requiring source-backed research and uncertainty.</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td><code translate="no">cargo_time</code> and <code translate="no">save_report</code>; access to the specialist through <code translate="no">managed_agents=[specialist]</code>.</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>A supported location/role, coordinates when established, a claim source URL, a coordinate source URL and evidence/uncertainty.</td>
+</tr>
+<tr>
+<td>Small test</td>
+<td>The complete <code translate="no">ONE_LOCATION_TASK</code> checks one building and asks for a sourced return, without saving a report.</td>
+</tr>
+<tr>
+<td>Full task</td>
+<td>The complete <code translate="no">TASK</code> asks for three distinct filming sites and one supercar factory, calculations and a saved table/map.</td>
+</tr>
+</tbody>
+</table>
+<p>The fields for a supported report row are <code translate="no">location</code>, <code translate="no">kind</code> (<code translate="no">filming</code> or <code translate="no">factory</code>), <code translate="no">latitude</code>, <code translate="no">longitude</code>, <code translate="no">source_url</code>, <code translate="no">coordinate_source_url</code> and <code translate="no">evidence</code>. A filming source may not establish the coordinate. Missing evidence should be reported, not invented; unsupported coordinates must not become fabricated calculator inputs.</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Given task → manager → web_specialist(task="a research goal")
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                           ↓ web_search → visit_webpage
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                     sourced report → manager
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                           ↓ cargo_time → save_report (full task only)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                     outputs/batman-report.html
+</code></pre></div>
+<p><strong>1. Why does the specialist have search/page tools while the manager has the calculator/report tools?</strong></p>
+<details class="success">
+<summary>Answer 1 — supplied responsibilities</summary>
+<p>The specialist gathers evidence in its own loop. The manager requests that research, uses the returned coordinates for calculations and saves the report. This separation makes delegation visible; the manager has no direct search tool to bypass it.</p>
+</details>
+<p><strong>2. Why must source URLs and uncertainty survive the handoff?</strong></p>
+<details class="success">
+<summary>Answer 2 — usable evidence</summary>
+<p>The manager and student need to check what supports each claim and coordinate. A conclusion without its evidence cannot reliably support the calculation or audit. Missing fields should remain explicitly missing until resolved.</p>
+</details>
+<h2 id="tool-check">3. Check tools and explain the estimate<a class="headerlink" href="#tool-check" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> test the supplied tools without an LLM before asking a team to use them.</p>
+<ol>
+<li>In your editor, open <strong><code translate="no">week04-exercises</code></strong>, where <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> are visible.</li>
+<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_batman_tools.py</code></strong> directly beside those files. <strong>It is not supplied in the ZIP; create it now.</strong></li>
+<li>Paste the complete code below, then save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac).</li>
+<li>Check the name ends in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>. Keep this file out of <code translate="no">.venv</code>, <code translate="no">lessons</code> and <code translate="no">assets</code>.</li>
+</ol>
+<p>Use the supplied query and URL for this required check. Read what each call returns; you are not asked to write another query or tool. If the site is unavailable, record the actual failure and ask the instructor for an alternate source before continuing.</p>
+<p><strong>What this file does — <code translate="no">my_batman_tools.py</code>:</strong> Searches public web data, fetches one page, and checks a fixed coordinate through the supplied calculator. It uses no LLM. Inspect the terminal output and source page.</p>
+<div class="highlight"><span class="filename">my_batman_tools.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">VisitWebpageTool</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargo_time</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Same-coordinate classroom estimate:"</span><span class="p">,</span> <span class="n">cargo_time</span><span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">))</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">WebSearchTool</span><span class="p">()(</span><span class="s2">"Batman Wollaton Hall filming official"</span><span class="p">))</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">VisitWebpageTool</span><span class="p">()(</span><span class="s2">"https://wollatonhall.org.uk/hall-and-museum/history/"</span><span class="p">)[:</span><span class="mi">2000</span><span class="p">])</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain the code</summary>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">from ... import ...</code></td>
+<td>Load the supplied search class, smolagents page-reader class and supplied calculator.</td>
+</tr>
+<tr>
+<td><code translate="no">cargo_time(40.7128, -74.0060)</code></td>
+<td>Call the calculator directly with Gotham's own coordinate. No model is involved.</td>
+</tr>
+<tr>
+<td><code translate="no">WebSearchTool()("...")</code></td>
+<td>Create a tool instance, then call it with the query. It contacts the search service and returns snippets/URLs.</td>
+</tr>
+<tr>
+<td><code translate="no">VisitWebpageTool()("...")</code></td>
+<td>Fetch text from the specified page; it does not control Chrome.</td>
+</tr>
+<tr>
+<td><code translate="no">[:2000]</code></td>
+<td>Print only the first 2,000 characters of the fetched text. Missing text may simply be farther down the page.</td>
+</tr>
+</tbody>
+</table>
+<p>Search discovers candidate sources; a fetched passage supports a specific claim. For this exercise open the returned URL yourself as well. If the relevant passage is beyond the printed slice, read it on the page or increase the slice and rerun. Do not interpret a truncated printout as the whole source.</p>
+</details>
+<p><strong>Run:</strong> <code translate="no">python my_batman_tools.py</code>. <strong>What to check:</strong> the same-coordinate estimate is <code translate="no">1.0</code>; search returns actual URLs; the page call returns text or an explicit failure. In the existing <code translate="no">evidence.md</code>, save one snippet URL and the page passage that supports or fails to support the claim. A blocked page is a failed observation; try another credible source and record the failure.</p>
+<p>Open the <strong>supplied, existing</strong> <code translate="no">week04_tools.py</code> beside your new runner and find <code translate="no">cargo_time</code>. Read this function in place; you do not create or paste another calculator. The formula is <code translate="no">round(distance_km * 1.1 / 750 + 1, 2)</code>: great-circle distance from fictional Gotham <code translate="no">(40.7128, -74.0060)</code>, a 10% distance allowance, 750 km/h, and a fixed hour. It is a <strong>cargo-plane classroom estimate</strong>, not a shipping schedule. The function accepts destination latitude and longitude and returns hours; it does not search for coordinates or check that a location appeared in a film.</p>
+<p><strong>Your calculation checkpoint:</strong> why does the same coordinate return <code translate="no">1.0</code>, not zero? If the assumed speed falls, does the travel estimate rise or fall? Explain which parts are assumptions and which must come from sources.</p>
+<details class="success">
+<summary>Check the estimate</summary>
+<p>The fixed hour remains even when distance is zero. Lower speed increases the distance/speed term. Source-backed coordinates are research inputs; speed, route allowance and fixed overhead are teaching assumptions. Correct arithmetic does not validate a location claim.</p>
+</details>
+<h2 id="build-team">4. Create the complete two-agent program<a class="headerlink" href="#build-team" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> understand how the supplied program creates and connects two agents. All required values and connections are already written.</p>
+<ol>
+<li>In your editor, open <strong><code translate="no">week04-exercises</code></strong>, where <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> are visible.</li>
+<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_batman.py</code></strong> directly beside those files. <strong>The file is not in the ZIP; you create it by copying the code below.</strong></li>
+<li>Paste the <strong>entire code block</strong>, from the imports through the final <code translate="no">run_task</code> line. There are no blanks to fill.</li>
+<li>Save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac). The filename must be <code translate="no">my_batman.py</code>, not <code translate="no">.py.txt</code>; keep it out of <code translate="no">.venv</code>, <code translate="no">lessons</code> and <code translate="no">assets</code>.</li>
+<li>If you already made the earlier scaffold, first save any results you want in <code translate="no">evidence.md</code>, then <strong>replace its contents</strong> with this complete version. Do not append a second program below it.</li>
+</ol>
+<p><strong>What this file does — <code translate="no">my_batman.py</code>:</strong> uses Groq and live web tools to run a manager and a web specialist. The first run uses the provided one-location task and prints a sourced handoff in the terminal. The same file also contains the provided full task; a later exact one-line edit runs it and can generate <code translate="no">outputs/batman-report.html</code>.</p>
+<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span><span class="p">,</span> <span class="n">VisitWebpageTool</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargo_time</span><span class="p">,</span> <span class="n">save_report</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">TASK</span> <span class="o">=</span> <span class="s2">"""Alfred needs a Batmobile replacement research shortlist.</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s2">First delegate research to web_specialist. Find three Batman filming locations</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s2">and one supercar factory. Visit sources to support each filming/factory claim</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s2">and coordinates. Return location, kind (filming or factory), latitude, longitude,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s2">source_url, coordinate_source_url, evidence and uncertainty. Never invent sources</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s2">or coordinates. Mark unavailable evidence and stop short of a complete report</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s2">if four verified entries cannot be obtained.</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s2">Then use cargo_time for each verified entry and save_report with a JSON list</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s2">of these rows. Final answer: report path, source URLs, assumptions and gaps.</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s2">"""</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="n">ONE_LOCATION_TASK</span> <span class="o">=</span> <span class="s2">"""Delegate to web_specialist: check whether Wollaton Hall</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s2">was used as Wayne Manor in a Batman film. Search and visit an appropriate source.</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s2">Return the supported claim and source URL. State whether a coordinate source was</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s2">found; mark it missing if not established. Preserve the source and uncertainty in</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s2">your final answer. Do not calculate a transfer time or save a report in this test.</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s2">"""</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_team</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="n">specialist</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">WebSearchTool</span><span class="p">(),</span> <span class="n">VisitWebpageTool</span><span class="p">()],</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">"web_specialist"</span><span class="p">,</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="n">description</span><span class="o">=</span><span class="s2">"Researches filming locations and factories; visits sources and returns evidence, coordinates, source URLs and uncertainties."</span><span class="p">,</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="p">)</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="n">manager</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">cargo_time</span><span class="p">,</span> <span class="n">save_report</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="n">managed_agents</span><span class="o">=</span><span class="p">[</span><span class="n">specialist</span><span class="p">],</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="p">)</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="k">return</span> <span class="n">manager</span><span class="p">,</span> <span class="n">specialist</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>    <span class="n">manager</span><span class="p">,</span> <span class="n">specialist</span> <span class="o">=</span> <span class="n">build_team</span><span class="p">(</span><span class="n">build_model</span><span class="p">())</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="n">manager</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">ONE_LOCATION_TASK</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain my_batman.py</summary>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">from smolagents import ...</code></td>
+<td>Load the agent class and ready-made page-reader class.</td>
+</tr>
+<tr>
+<td><code translate="no">from week04_... import ...</code></td>
+<td>Load the supplied helpers and tools from existing files in the same folder. You do not rewrite those modules.</td>
+</tr>
+<tr>
+<td><code translate="no">TASK = """..."""</code></td>
+<td>Store the full research request. Triple quotes keep several lines together as one string. Defining it does not run the task.</td>
+</tr>
+<tr>
+<td><code translate="no">ONE_LOCATION_TASK = """..."""</code></td>
+<td>Store the smaller supplied request for inspecting one handoff first.</td>
+</tr>
+<tr>
+<td><code translate="no">build_team(model)</code></td>
+<td>Build the two agents using the same model connection and return both objects.</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[WebSearchTool(), VisitWebpageTool()]</code></td>
+<td>Create the two class-tool instances for the specialist. The parentheses create objects; the web requests occur when those tools are called.</td>
+</tr>
+<tr>
+<td><code translate="no">name="web_specialist"</code> and <code translate="no">description=...</code></td>
+<td>Give the specialist a callable name and explain its role to the manager. These values are already supplied.</td>
+</tr>
+<tr>
+<td><code translate="no">tools=[cargo_time, save_report]</code></td>
+<td>Register the supplied function tools on the manager without calling them during setup.</td>
+</tr>
+<tr>
+<td><code translate="no">managed_agents=[specialist]</code></td>
+<td>Register a separate agent the manager may delegate to. This is the connection, not proof the manager used it.</td>
+</tr>
+<tr>
+<td><code translate="no">**agent_options(max_steps=...)</code></td>
+<td>Insert the supplied Python-action instructions, logging and limit for each agent's loop. A step limit is a boundary, not a promise of completion.</td>
+</tr>
+<tr>
+<td><code translate="no">return manager, specialist</code></td>
+<td>Return both objects so the main program can use or inspect them.</td>
+</tr>
+<tr>
+<td><code translate="no">if __name__ == "__main__":</code></td>
+<td>Run the main block when you execute this saved file.</td>
+</tr>
+<tr>
+<td><code translate="no">build_team(build_model())</code></td>
+<td>Prepare the Groq connection, ask for the key if needed, then create the agents.</td>
+</tr>
+<tr>
+<td><code translate="no">manager.visualize()</code></td>
+<td>Print the configured agent/tool tree. This does not itself call the model or research a location.</td>
+</tr>
+<tr>
+<td><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code></td>
+<td>Run the first, smaller supplied task and print the actual trace/result.</td>
+</tr>
+</tbody>
+</table>
+<p>Each agent has its own model/action/observation history. The manager waits for the specialist's returned report, then continues. Sharing a model/key does not merge those histories or make this example parallel.</p>
+</details>
+<p><strong>Code-reading check:</strong> which tools should appear under each agent in the printed tree? What does <code translate="no">managed_agents=[specialist]</code> add?</p>
+<details class="success">
+<summary>Answer — configuration before execution</summary>
+<p>Expect <code translate="no">web_search</code> and <code translate="no">visit_webpage</code> under the specialist, and <code translate="no">cargo_time</code> and <code translate="no">save_report</code> under the manager. The framework may also show its built-in <code translate="no">final_answer</code>. The managed-agent registration lets the manager call the specialist, which can run its own loop. The tree checks configuration; the next step checks execution.</p>
+</details>
+<h2 id="small-handoff">5. Run the supplied one-location handoff<a class="headerlink" href="#small-handoff" title="Permanent link">&para;</a></h2>
+<p>Leave the last line exactly as supplied: <strong><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code></strong>. You do not write a test prompt.</p>
+<p><strong>Run:</strong> <code translate="no">python my_batman.py</code>. Enter your Groq key if prompted. The code first prints the tree, then the manager should delegate the supplied Wollaton Hall task to the specialist.</p>
+<p><strong>What to check:</strong> copy a short actual trace excerpt into <strong>Topic 15 → One-location handoff</strong> in your existing <code translate="no">evidence.md</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Find this in your own run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manager action</td>
+<td>An executed <code translate="no">web_specialist(task=...)</code> request.</td>
+</tr>
+<tr>
+<td>Specialist action</td>
+<td>Its actual search and page-reading call.</td>
+</tr>
+<tr>
+<td>Observation</td>
+<td>A returned page passage or an explicit retrieval failure.</td>
+</tr>
+<tr>
+<td>Specialist return</td>
+<td>The claim, source URL and any missing coordinate evidence.</td>
+</tr>
+<tr>
+<td>Manager response</td>
+<td>Whether it preserves the source and limitation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. Is this the same as the manager calling <code translate="no">web_search</code> directly?</strong></p>
+<details class="success">
+<summary>Answer 1 — two loops</summary>
+<p>No. The manager calls <code translate="no">web_specialist</code>, which has its own loop and may make several tool calls before returning. <code translate="no">web_search</code> is a function-like tool action inside that specialist's loop.</p>
+</details>
+<p><strong>2. Should this small test create <code translate="no">outputs/batman-report.html</code>?</strong></p>
+<details class="success">
+<summary>Answer 2 — small-test output</summary>
+<p>No. The supplied one-location task explicitly requests no calculation or report. Its result is in the terminal. The report is generated only in the full-task step below; do not create an empty HTML file yourself.</p>
+</details>
+<p><strong>3. What if the manager never delegates, a page fails, or the run reaches its limit?</strong></p>
+<details class="success">
+<summary>Answer 3 — an incomplete run</summary>
+<p>Record the actual failure and mark this run incomplete. A final answer alone is insufficient. Check that you copied the complete given file and that the direct tools worked, then ask the instructor before repeating a failing model/network run. You are not required to invent new agent instructions to fix it.</p>
+</details>
+<h2 id="full-run">6. Run the supplied full task and inspect the report<a class="headerlink" href="#full-run" title="Permanent link">&para;</a></h2>
+<p>The complete four-entry request is already stored in <code translate="no">TASK</code>. Make this <strong>one exact guided edit</strong> in the existing <code translate="no">my_batman.py</code>:</p>
+<ul>
+<li>Find the last line: <code translate="no">run_task(manager, ONE_LOCATION_TASK)</code>.</li>
+<li>Replace it with: <strong><code translate="no">run_task(manager, TASK)</code></strong>.</li>
+<li>Save the same file. Do not change the role description, tool lists or task strings. No new Python file is needed.</li>
+</ul>
+<p>The given full task requests research → source/coordinate handoff → calculation → saved report. The specialist gathers evidence; the manager calculates and saves. You can follow this sequence in the trace rather than designing a plan yourself.</p>
+<p><strong>Run:</strong> <code translate="no">python my_batman.py</code>. Check the terminal trace. If <code translate="no">save_report</code> succeeded, it creates <strong><code translate="no">outputs/batman-report.html</code></strong> beside your runner's folder. In File Explorer/Finder, open <code translate="no">week04-exercises</code> → <code translate="no">outputs</code> and double-click <code translate="no">batman-report.html</code> to view it in your browser. <strong>Do not create this HTML file manually.</strong> If it is absent, find the missing/failed report call in the trace rather than making an empty stand-in.</p>
+<p>Copy the generated HTML in your file manager into the <strong>existing <code translate="no">evidence-files</code> folder</strong>, keeping its name <strong><code translate="no">batman-report.html</code></strong>. This is a copy of an output, not a new program. Paste the actual sources/trace into <code translate="no">evidence.md</code>. You are not required to make a revised agent or produce a second report. The report writer recalculates hours and writes a table and coordinate plot. It checks basic input shape/URLs, not whether a webpage supports the claim. Its output file can exist even when research is weak; file existence is not the completion criterion.</p>
+<p><img alt="HF original Batman research example output map" src="../images/huggingface-week04/batman-output-map.png" /></p>
+<p><a href="../images/huggingface-week04/batman-output-map.png">Open the full-size original</a></p>
+<p><em>Original example output, unchanged: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">Hugging Face Multi-Agent Systems</a>. Use it to discuss marker position, color, labels and evidence; it is not an answer key for your research.</em></p>
+<p><strong>How final checks differ from another agent:</strong> smolagents can run Python <code translate="no">final_answer_checks</code> before accepting an answer. A check can reject missing output or inconsistent data, but that callback is not automatically a third agent. Our required exercise uses a manual source/map audit; the optional extension adds a separately instructed agent with its own research loop. Explain what evidence either form of checking actually examines.</p>
+<p>Your classroom output uses a lightweight longitude/latitude coordinate plot without a geographic basemap. Check the printed legend: purple means under five estimated hours; red means five or more. A neat visual can still hide wrong coordinates, overlapping locations or unsupported film associations.</p>
+<p><strong>Your map audit:</strong> choose one marker, locate the corresponding row, check both source URLs, and recompute its time. Would a longitude-sign error move it to the other side of the map? Does the color agree with the estimate? Note one limitation of this simplified map and one limitation of the flight assumption.</p>
+<details class="success">
+<summary>Map answer 1 — location and longitude sign</summary>
+<p>Check the marker's name against the row and both source pages. Changing the sign of longitude reflects its horizontal position across the zero-longitude line; for a western location it can place the marker far to the east. A plausible-looking marker does not verify the source coordinate.</p>
+</details>
+<details class="success">
+<summary>Map answer 2 — time and color</summary>
+<p>Recompute <code translate="no">round(distance_km * 1.1 / 750 + 1, 2)</code> with a source-backed destination. Under the printed legend, values below five hours are purple and values of five or more are red. An unrelated color or unsupported coordinate needs correction.</p>
+</details>
+<details class="success">
+<summary>Map answer 3 — limits and final checks</summary>
+<p>The coordinate plot has no geographic basemap and can overlap markers; the flight estimate ignores real routing, schedules and handling constraints. A Python final-answer check can test a file or data rule. A verifier agent has its own model/tool loop and must show which sources it checked. Neither proves that a claim is correct without suitable evidence.</p>
+</details>
+<h2 id="audit">7. Check and explain the supplied program<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h2>
+<p><strong>Required understanding checks:</strong> use the actual output in your existing <code translate="no">evidence.md</code>. You do not have to replace a candidate, invent a task or improve the code independently.</p>
+<p><strong>1. Does every row have a supported role and coordinate?</strong> Open both source links for each of the three filming sites and one factory. Write one supported example and any gap you find.</p>
+<details class="success">
+<summary>Answer 1 — evidence audit</summary>
+<p>A claim source must support the film/factory role; a coordinate source must establish the location used in the calculation. A working URL or plausible number alone is not enough. Record gaps honestly; do not label an unsupported four-row report complete.</p>
+</details>
+<p><strong>2. Where do the model decisions end and the supplied Python tool's work begin?</strong></p>
+<details class="success">
+<summary>Answer 2 — model and tool responsibilities</summary>
+<p>Groq produces the actions and report reasoning. Local Python runs search/page requests and the supplied calculator/report writer. <code translate="no">cargo_time</code> calculates from input coordinates; it does not discover or verify them. <code translate="no">save_report</code> renders the given rows; it does not prove that a cited page supports a claim.</p>
+</details>
+<p><strong>3. Would one agent always be worse than this team?</strong></p>
+<details class="success">
+<summary>Answer 3 — team trade-off</summary>
+<p>No. One agent may be simpler for a small task. A team separates responsibilities and histories, but adds calls, coordination and possible handoff losses. Judge actual supported results, not the number of agents.</p>
+</details>
+<p><strong>Checkpoint:</strong> keep the two required Python files, the one-location trace, the full-run trace, checked source links, one recalculated estimate and your understanding answers in the existing evidence note. Keep the generated report and its archive copy if the full task succeeded. Failures should be marked incomplete and discussed with the instructor; independent redesign is not required.</p>
+<h2 id="optional-verifier">8. Optional challenge: design and add a new verifier agent<a class="headerlink" href="#optional-verifier" title="Permanent link">&para;</a></h2>
+<p><strong>Yes: in this extension you add a new agent yourself.</strong> First complete the manager/web-specialist exercise. Then create the optional file as follows:</p>
+<ol>
+<li>Open your working, saved <strong><code translate="no">my_batman.py</code></strong> in the editor.</li>
+<li>Choose <strong>File → Save As</strong> and save a copy as <strong><code translate="no">my_batman_verified.py</code></strong> directly in <code translate="no">week04-exercises</code>. Keep <code translate="no">my_batman.py</code> as the two-agent version.</li>
+<li>Confirm that both filenames appear in the editor's file list, and that you are now editing <strong><code translate="no">my_batman_verified.py</code></strong>. This file is not supplied in the ZIP.</li>
+<li>In the copied <code translate="no">build_team</code> function, <strong>you</strong> create the verifier <strong>after</strong> <code translate="no">specialist</code> and <strong>before</strong> <code translate="no">manager</code>. Register both with the manager. Keep <code translate="no">return manager, specialist</code> and the existing main block; you do not need another runner file.</li>
+<li>Update the copied file's <code translate="no">TASK</code> to request checking before saving, confirm its last call uses <code translate="no">TASK</code>, then save the changes. This is the only independent coding challenge in Week 4; the required two-agent work above is already complete.</li>
+</ol>
+<p><strong>What this file does — <code translate="no">my_batman_verified.py</code>:</strong> your copied and edited Groq program adds an independent checking loop to the same research task. It uses live research tools and prints both handoffs/verdicts in the terminal. The manager alone calls <code translate="no">save_report</code>; preserve its generated output in <code translate="no">evidence-files</code> if you want to compare it.</p>
+<p>Write a verifier design before coding:</p>
+<ol>
+<li>Give it a distinct name, a description and a narrow checking responsibility. Decide which tools it needs and why it must read the cited pages independently.</li>
+<li>Define a verdict format with <code translate="no">pass</code>, <code translate="no">fail</code> or <code translate="no">uncertain</code> for each row, plus the checked URL, supported/disputed claim, and correction or missing evidence. State what makes a verdict credible.</li>
+<li>Decide when the manager should call the verifier and what the manager should do with each verdict. Who can author the report? Who can block an unsupported row?</li>
+<li>Add a new <code translate="no">CodeAgent</code> object. Register it <strong>alongside</strong> the web specialist in the manager's <code translate="no">managed_agents</code> list. Update the manager task so the sourced rows reach the verifier before saving.</li>
+<li>Inspect the tree: it should have a manager and two different specialists. Then inspect execution: both specialist calls must actually occur.</li>
+</ol>
+<p><strong>Challenge test:</strong> in this same optional file, first copy your normal final call into <code translate="no">evidence.md</code>. Temporarily replace its final call with <code translate="no">run_task(manager, "YOUR FALSE-CLAIM TEST REQUEST")</code>—no new test file is needed. In your request, supply one deliberately wrong label, such as “Wollaton Hall is a supercar factory,” and the <a href="https://wollatonhall.org.uk/hall-and-museum/history/">official hall history source</a>. Ask for a verdict without saving a report. Predict the result, then inspect whether the verifier reads the page and rejects or marks the claim uncertain. Label the claim as an intentional test error in your evidence; do not submit it as a research result.</p>
+<p><strong>Optional run:</strong> save and run <code translate="no">python my_batman_verified.py</code> for the false-claim test, then restore <code translate="no">run_task(manager, TASK)</code>, save and rerun for the full verified task. Keep both results under <strong>Topic 15 → Optional verifier</strong> in your existing <code translate="no">evidence.md</code>. Compare with the two-agent run: did the new agent catch the injected error? Did it supply a checked source or merely repeat the researcher's wording? Record added model calls and one case where the verdict remained uncertain.</p>
+<details class="tip">
+<summary>Hint 1 — create a different agent</summary>
+<p>Give the verifier its own <code translate="no">name</code>, <code translate="no">description</code> and <code translate="no">CodeAgent</code> object. Assigning the existing specialist to a second variable does not create a new loop.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — connect the new agent</summary>
+<p>Use <code translate="no">managed_agents=[specialist, verifier]</code> on the copied manager. Give the verifier the search/page tools it needs, not the report-writing tool.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — request verification</summary>
+<p>Registration is not execution. Update the manager task to hand over sourced rows before saving and specify what happens after <code translate="no">fail</code> or <code translate="no">uncertain</code>.</p>
+</details>
+<details class="success">
+<summary>Verifier answer 1 — name, scope and tools</summary>
+<p>A suitable role is an independent claim/coordinate checker, with its own name and page-reading/search tools. It should inspect the cited source rather than trust the researcher's confidence.</p>
+</details>
+<details class="success">
+<summary>Verifier answer 2 — a useful verdict</summary>
+<p>Return pass/fail/uncertain for each claim, checked URL, the evidence, and a correction or missing field. A verdict without an inspected source is only another assertion.</p>
+</details>
+<details class="success">
+<summary>Verifier answer 3 — when to save</summary>
+<p>Call the verifier after research and before reporting. The manager can request repairs for failed claims, retain honest uncertainty, and withhold unsupported rows from a complete report. The verifier reports; the manager writes the file.</p>
+</details>
+<details class="success">
+<summary>Verifier answer 4 — expected configuration and execution</summary>
+<p>The tree contains the manager plus two distinct specialists. The trace must then show the manager calling both specialists; the tree alone does not prove either call happened.</p>
+</details>
+<details class="success">
+<summary>Verifier answer 5 — false-claim test</summary>
+<p>A hall's filming/history page does not establish that it is a supercar factory. After reading the source, a verifier should reject that factory claim or mark it unsupported/uncertain. Record the actual result if it misses the error. Then restore the normal task and compare the full run; an extra agent does not guarantee a useful correction.</p>
+</details>
+<details class="success">
+<summary>What counts as the extension?</summary>
+<p>A third object in a diagram is insufficient. Show the new design, the actual second delegation, a page observation, and a verdict linked to evidence. An independent checker may still be wrong; your manual audit remains necessary.</p>
+</details>
+<h2 id="reference">Code-reading recap<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>The required <code translate="no">my_batman.py</code> is the complete visible program in step 4; there is no separate hidden required solution to assemble. You create that file by pasting the whole block and use the exact final-call change in step 6. The optional third-agent file is made only if you choose the independent extension.</p>
+<p><strong>Credit:</strong> scenario, hierarchy, estimate and unchanged figures adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">HF Multi-Agent Systems</a>, Apache-2.0. This class uses one Groq setup, complete required programs, code explanations and guided observation checks. The local output uses a simplified coordinate plot.</p>
+<p><strong>Next:</strong> <a href="../week-4-vision-browser/">16 · Vision &amp; Browser Agents</a>. Bring the supplied-code explanations, actual handoffs and source/map audit to <a href="../week-4-completion/">completion review</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../week-4-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14 · Agentic RAG continuation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                14 · Agentic RAG continuation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week-4-vision-browser/" class="md-footer__link md-footer__link--next" aria-label="Next: 16 · Vision &amp; Browser Agents">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                16 · Vision & Browser Agents
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Created by Ampere for SI Lab students · Original course by Hugging Face</div>
+  
+  
+    
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+    
+  </body>
+</html>

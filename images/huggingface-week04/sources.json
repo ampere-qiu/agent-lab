@@ -1,0 +1,26 @@
+[
+  {
+    "file": "multi-agent-architecture.png",
+    "source": "https://mermaid.ink/img/pako:eNp1kc1qhTAQRl9FUiQb8wIpdNO76eKubrmFks1oRg3VSYgjpYjv3lFL_2hnMWQOJwn5sqgmelRWleUSKLAtFs09jqhtoWuYUFfFAa6QA9QDTnpzamheuhxn8pt40-6l13UtS0ddhtQXj6dbR4XUGQg6zEYasTF393KjeSDGnDJKNxzj8I_7hLW5IOSmP9CH9hv_NL-d94d4DVNg84p1EnK4qlIj5hGClySWbadT-6OdsrL02MI8sFOOVkciw8zx8kaNspxnrJQE0fXKtjBMMs3JA-MpgOQwftIE9Bzj14w-cMznI_39E9Z3p0uFoA?type=png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems",
+    "role": "Architecture",
+    "sha256": "585c1a8b59a9cb149b0cbb71deb80fe730175d0068d53bcb4776517199d76792",
+    "unchanged": true
+  },
+  {
+    "file": "batman-output-map.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit2/smolagents/output_map.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems",
+    "role": "Example output map",
+    "sha256": "8856d3827276f1cfdb5fd758e6115a133555ca2a4285e58b27078b6fefa71b60",
+    "unchanged": true
+  },
+  {
+    "file": "vision-memory.png",
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/smolagents-can-see/diagram_adding_vlms_smolagents.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents",
+    "role": "Dynamic image retrieval",
+    "sha256": "0084c593c9fd1cbfe65fa4ace538b78e02a5c8d137f10bfb0d54db19047e8d44",
+    "unchanged": true
+  }
+]
