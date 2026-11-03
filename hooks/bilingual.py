@@ -26,10 +26,28 @@ def on_page_context(context, page, config, nav):
     target = ('' if japanese else 'ja/') + page.url
     root = Path(config.config_file_path).parent
     counterpart = root / ('docs' if japanese else 'docs-ja') / page.file.src_uri
-    context['course_translation_available'] = counterpart.is_file()
+    context['course_translation_available'] = counterpart.is_file() and (japanese or page.file.src_uri not in config.extra.get('unreleased_translations', []))
     context['course_alternate'] = posixpath.relpath(target or '.', current_dir or '.') + '/'
     context['course_language'] = 'ja' if japanese else 'en'
     return context
+
+
+def pending_translation_markdown(source_path):
+    """Public placeholder; never expose the unpublished Japanese lesson body."""
+    anchor = Path(source_path).stem
+    return (
+        f"# Japanese edition — To be released {{ #{anchor} }}\n\n"
+        "**Week 04 Japanese edition: To be released.**\n\n"
+        "第04週の日本語版は準備中です。現在は英語版のみ公開しています。\n\n"
+        "Use the **EN** language switch above to read the released English lesson.\n"
+    )
+
+
+def on_page_markdown(markdown, page, config, files):
+    if (config.theme['language'] == 'ja'
+            and page.file.src_uri in config.extra.get('unreleased_translations', [])):
+        return pending_translation_markdown(page.file.src_uri)
+    return markdown
 
 
 def on_post_page(output, page, config):

@@ -86,12 +86,14 @@ class CourseTests(unittest.TestCase):
         self.pages = sorted((ROOT / 'docs').glob('*.md'))
         config = yaml.safe_load((ROOT / 'mkdocs.yml').read_text())
         self.english_only = set(config['extra'].get('english_only_pages', []))
+        self.translation_review_pending = set(config['extra'].get('translation_review_pending', []))
+        self.unreleased_translations = set(config['extra'].get('unreleased_translations', []))
         self.shared_pages = [p for p in self.pages if p.name not in self.english_only]
 
     def test_all_pages_are_authored_in_both_languages(self):
         self.assertEqual({p.name for p in self.shared_pages},
                          {p.name for p in (ROOT / 'docs-ja').glob('*.md')})
-        self.assertEqual(len(self.shared_pages), 20)
+        self.assertEqual(len(self.shared_pages), 24)
         self.assertEqual({p.name for p in self.pages} - {p.name for p in self.shared_pages}, self.english_only)
         for en in self.shared_pages:
             with self.subTest(page=en.name):
@@ -99,15 +101,32 @@ class CourseTests(unittest.TestCase):
                 b = (ROOT / 'docs-ja' / en.name).read_text()
                 self.assertTrue(re.search('[ぁ-んァ-ヶ一-龯]', b))
                 self.assertNotIn('{{CODE:', b)
-                self.assertEqual(headings(a), headings(b))
+                self.assertFalse(re.search(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', a + b))
+                if en.name in self.unreleased_translations:
+                    self.assertTrue(headings(b))
+                elif en.name in self.translation_review_pending:
+                    # Explicit English-first review: retain existing Japanese anchors
+                    # and validate each edition's code; new English prose/code/links
+                    # can wait for the user's translation review.
+                    self.assertTrue(set(headings(b)).issubset(headings(a)))
+                else:
+                    self.assertEqual(headings(a), headings(b))
                 self.assertTrue(headings(a))
-                self.assertEqual(CODE.findall(a), CODE.findall(b))
+                if en.name not in self.translation_review_pending:
+                    self.assertEqual(CODE.findall(a), CODE.findall(b))
+                else:
+                    for source in (a, b):
+                        for kind, body in CODE.findall(source):
+                            if kind.split()[0] == 'python':
+                                ast.parse(body)
                 # Preserve all links and exercises, including literal test prompts.
                 links = lambda s: Counter(link for link in re.findall(r'\]\(([^)]+)\)', s)
                                           if link.split('#')[0] not in self.english_only)
-                self.assertEqual(links(a), links(b))
+                if en.name not in self.translation_review_pending:
+                    self.assertEqual(links(a), links(b))
                 prompts = lambda s: re.findall(r'^> .+$', s, re.M)
-                self.assertEqual(prompts(a), prompts(b))
+                if en.name not in self.unreleased_translations:
+                    self.assertEqual(prompts(a), prompts(b))
 
     def test_two_week_sequence_and_language_navigation_parity(self):
         en = yaml.safe_load((ROOT / 'mkdocs.yml').read_text())
@@ -165,6 +184,12 @@ class CourseTests(unittest.TestCase):
                         self.assertIn('data-course-language-pending', file.read_text())
                         self.assertIn('aria-disabled="true"', file.read_text())
                         self.assertFalse((site / 'ja' / suffix / 'index.html').exists())
+                        self.assertTrue(set(headings((ROOT / ('docs-ja' if lang == 'ja' else 'docs') / en.name).read_text())).issubset(page.ids))
+                        continue
+                    if en.name in self.unreleased_translations and lang == '':
+                        self.assertEqual(page.language_links, [])
+                        self.assertIn('data-course-language-pending', file.read_text())
+                        self.assertIn('To be released', file.read_text())
                         self.assertTrue(set(headings(en.read_text())).issubset(page.ids))
                         continue
                     self.assertEqual(len(page.language_links), 1)
@@ -177,7 +202,11 @@ class CourseTests(unittest.TestCase):
                     self.assertTrue(all(a.get('translate') == 'no' for a in page.code_attributes))
                     self.assertNotIn('translate.google.com', file.read_text())
                     self.assertNotIn('http-equiv="refresh"', file.read_text())
-                    self.assertTrue(set(headings(en.read_text())).issubset(page.ids))
+                    if lang == 'ja' and en.name in self.unreleased_translations:
+                        self.assertIn('To be released', file.read_text())
+                        self.assertEqual(page.code_attributes, [])
+                    else:
+                        self.assertTrue(set(headings((ROOT / ('docs-ja' if lang == 'ja' else 'docs') / en.name).read_text())).issubset(page.ids))
 
     def test_week03_bilingual_content_and_curated_download(self):
         self.assertEqual(self.english_only, set())
@@ -234,7 +263,7 @@ class CourseTests(unittest.TestCase):
     def test_week03_menu_labels_and_destinations_are_consistent(self):
         for lang, config_name in [('', 'mkdocs.yml'), ('ja', 'mkdocs.ja.yml')]:
             config = yaml.safe_load((ROOT / config_name).read_text())
-            entries = list(config['nav'][3].values())[0] + [config['nav'][4]]
+            entries = list(config['nav'][3].values())[0]
             expected = [(label, (ROOT / 'site' / lang / Path(source).stem / 'index.html').resolve())
                         for entry in entries for label, source in entry.items()]
             self.assertEqual([label[:2] for label, _ in expected[1:7]],
@@ -255,6 +284,44 @@ class CourseTests(unittest.TestCase):
                 self.assertEqual(links, expected, file)
         for removed in ('week-3-multi-agent', 'week-3-vision-browser'):
             self.assertFalse((ROOT / 'site' / removed).exists())
+
+    def test_week04_original_figures_and_guided_code(self):
+        import hashlib
+        folder = ROOT / 'docs/images/huggingface-week04'
+        records = json.loads((folder / 'sources.json').read_text())
+        self.assertEqual({r['file'] for r in records}, {'multi-agent-architecture.png', 'batman-output-map.png', 'vision-memory.png'})
+        for record in records:
+            original = (folder / record['file']).read_bytes()
+            self.assertEqual(hashlib.sha256(original).hexdigest(), record['sha256'])
+            self.assertTrue(record['unchanged'])
+            for lang in ['', 'ja']:
+                self.assertEqual(original, (ROOT / 'site' / lang / 'images/huggingface-week04' / record['file']).read_bytes())
+        content = (ROOT / 'site/week-4-batman/index.html').read_text()
+        self.assertNotIn('my_batman.py — student scaffold', content)
+        self.assertNotIn('Reference solution', content)
+        self.assertIn('ONE_LOCATION_TASK', content)
+        self.assertIn('managed_agents', content)
+        self.assertNotIn('SPECIALIST_TOOLS', content)
+        self.assertNotIn('<details open', content)
+        self.assertIn('multi-agent-architecture.png', content)
+        self.assertIn('batman-output-map.png', content)
+        self.assertIn('vision-memory.png', (ROOT/'site/week-4-vision-browser/index.html').read_text())
+
+    def test_week04_japanese_release_placeholders_and_search(self):
+        expected = {p.name for p in (ROOT/'docs').glob('week-4-*.md')}
+        self.assertEqual(self.unreleased_translations, expected)
+        for filename in expected:
+            content = (ROOT/'site/ja'/Path(filename).stem/'index.html').read_text()
+            self.assertIn('To be released', content)
+            self.assertNotIn('<pre', content)
+            self.assertNotIn('web_specialist(task', content)
+            self.assertNotIn('my_batman_verified.py', content)
+            self.assertNotIn('days_until', content)
+        search = json.loads((ROOT/'site/ja/search/search_index.json').read_text())
+        pending = [item for item in search['docs'] if item['location'].startswith('week-4-')]
+        self.assertTrue(pending)
+        self.assertTrue(all('To be released' in item['text'] for item in pending))
+        self.assertNotIn('my_batman_verified.py', ' '.join(item['text'] for item in pending))
 
     def test_downloads_search_and_error_pages(self):
         for path in (ROOT / 'docs/downloads').iterdir():

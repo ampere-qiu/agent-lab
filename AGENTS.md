@@ -12,3 +12,8 @@
 - Push or publish only when the user requests it. Pushing `main` triggers the existing publishing workflow.
 
 - Do not include estimated study durations for weeks, lessons, or activities. Preserve time values that are actual exercise data or code behavior. For every student-created Python file from Week 03 onward, show a visible plain-language purpose before the code: what it does, its inputs/data, and where to see the result; clarify whether it uses an LLM. Keep the detailed code explanation collapsed below the code. Apply these changes in both languages.
+
+## Week 04 English release
+
+- Week 04 is released in English only. Its Japanese routes and header labels say “To be released”; Weeks 1–3 remain bilingual. Keep `extra.unreleased_translations` in the MkDocs config until Japanese review is approved. Do not push the local Japanese Week 04 authoring drafts; publishing sources use placeholder Markdown only, and Week 04 ZIPs include `lessons/en` only.
+- Required Week 04 programs are complete lesson code with explicit create/save steps, visible purpose, collapsed explanations and understanding Q&A. Only adding a third agent is an optional independent coding challenge; do not restore a required fill-in scaffold or role/task design assignment.

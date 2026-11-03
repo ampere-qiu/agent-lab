@@ -7,7 +7,7 @@ This local course adapts Hugging Face Agents Course Unit 1, its starter, and Uni
 | [1](week-1-learning-plan.md) | Concepts, local setup, three-stage dummy agent | Explain the loop and run `dummy_agent.py` with a real function observation |
 | [2](week-2-learning-plan.md) | Working chat template, CodeAgent, time and search tools | A model response, direct tool tests, executed agent calls, and a verified source |
 | [3](week-3-learning-plan.md) | Terminal agents, action formats, tools, and optional Agentic RAG | Saved files, direct checks, and tool modifications; RAG evidence is optional this week |
-| [4 — coming next](week-4-preview.md) | Revisit Agentic RAG; agent teams and vision/browser topics | Continue after Week 03 |
+| [4](week-4-preview.md) | smolagents Part 2: RAG, Batman team, Vision & Browser Agents | Required two-agent delegation, sourced table/map, image input and screenshot evidence |
 
 The [custom-tool challenge](first-agent-practical.md#6-optional-create-your-own-tool) is an optional extension in Week 2.
 
@@ -16,3 +16,5 @@ The [custom-tool challenge](first-agent-practical.md#6-optional-create-your-own-
 Use the [Week 1 checks](week-1-learning-plan.md#week-1-completion), the [Week 2 practical checks](quizzes.md#finish-the-practical), and the [Week 03 checks](week-3-completion.md). This documentation site does not store progress, quiz scores, or completion status. Keep your scripts and execution evidence for review. Changing language opens the same lesson and does not change your work.
 
 Image generation and the account-gated final quiz are removed. The Week 2 custom tool is optional; Week 03 has its own required guided custom-tool exercise. Publishing a Space and obtaining HF certification are not completion requirements.
+
+Review the [Week 04 completion checks](week-4-completion.md). The third verifier is optional; the two-agent and vision/browser exercises are required.

@@ -55,3 +55,7 @@ Edit the matching English and Japanese Markdown under docs/ and docs-ja/ on main
 - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 The existing repository is https://github.com/ampere-qiu/agent-lab. Its workflow publishes on pushes to main. The bilingual hook builds both language editions during the standard MkDocs build.
+
+## Current Week 04 publication boundary
+
+Week 04 is English-only. Its five Japanese Markdown files are release notices, not authoring drafts. `extra.unreleased_translations` also replaces Japanese content during build and marks the header switch “To be released”. Week 04 ZIPs contain `lessons/en` only; never copy unpublished Japanese drafts into the repository or downloads. Weeks 1–3 retain their released Japanese editions. Remove the release boundary only after the Japanese Week 04 lessons have been reviewed and approved.
