@@ -141,23 +141,63 @@ Given task → manager → web_specialist(task="a research goal")
 
 **このファイルの役割 — `my_batman_tools.py`：**ウェブ検索、1ページの読み込み、固定座標による計算ツールの確認を行います。LLMは使いません。ターミナルの出力と出典ページを調べます。
 
-```python title="my_batman_tools.py"
-from week04_search import WebSearchTool, PageExcerptTool
-from week04_tools import cargo_time
+**現在の検索ラッパーを使います。**古い例の`DuckDuckGoSearchTool`のインポートと作成箇所を、ここで定義する`WebSearchTool`に置き換えます。現在の配布補助ファイルもDDGSを使いますが、検索先はDuckDuckGoだけです。このラッパーは`backend="auto"`で検索先を選べるようにします。配布ファイルは変更せず、そこから`ResearchBudget`、`PageExcerptTool`、`clip`を読み込みます。
 
-print("Same-coordinate classroom estimate:", cargo_time(40.7128, -74.0060))
-print(WebSearchTool()("Batman Wollaton Hall filming official"))
-print(PageExcerptTool()("https://wollatonhall.org.uk/hall-and-museum/history/", focus="Wayne Manor Batman"))
+`if __name__ == "__main__"`により、直接実行したときだけ3つの確認を行います。4Aでクラスを読み込んでも検索は実行しません。検索1回、結果最大2件、出力最大1,400文字を守り、失敗も回数に含めます。DDGSはGroqではなく検索サービスへ接続するため、**Groqキーは不要で、Groqのトークンも使いません。**ネット接続は必要で、拒否や結果なしの場合もあります。検索の抜粋だけで事実を確認したことにはなりません。
+
+```python title="my_batman_tools.py"
+from ddgs import DDGS
+from week04_search import ResearchBudget, PageExcerptTool, clip
+from week04_tools import cargo_time
+from smolagents import Tool
+
+
+class WebSearchTool(Tool):
+    name = "web_search"
+    description = "Find candidate sources, not verified facts. Returns at most two short snippets and URLs."
+    inputs = {"query": {"type": "string", "description": "One focused search query."}}
+    output_type = "string"
+
+    def __init__(self, budget=None):
+        super().__init__()
+        self.budget = budget or ResearchBudget()
+
+    def forward(self, query: str) -> str:
+        refusal = self.budget.allow("search", query.strip().casefold())
+        if refusal:
+            return refusal
+        try:
+            results = list(DDGS(timeout=12).text(
+                query[:240], max_results=2, backend="auto"
+            ))[:2]
+            entries = []
+            for item in results:
+                url = str(item.get("href", ""))
+                if not url.startswith(("https://", "http://")) or len(url) > 350:
+                    continue
+                entries.append(f"[{str(item.get('title', 'Source'))[:90]}]({url})\n"
+                               + str(item.get("body", ""))[:220])
+            return clip("\n\n".join(entries), 1400) if entries else "No usable results. Mark evidence missing."
+        except Exception:
+            return "Search failed; attempt counted. Record missing evidence. Do not invent sources."
+
+
+if __name__ == "__main__":
+    print("Same-coordinate classroom estimate:", cargo_time(40.7128, -74.0060))
+    print(WebSearchTool()("Batman Wollaton Hall filming official"))
+    print(PageExcerptTool()("https://wollatonhall.org.uk/hall-and-museum/history/", focus="Wayne Manor Batman"))
 ```
 
 ??? info "コードの説明を読む"
 
     | コード | 意味 |
     | --- | --- |
-    | `from ... import ...` | 配布された上限付きの検索・ページ閲覧クラスと計算ツールを読み込みます。 |
+    | `from ... import ...` | DDGS、ツールの基底クラス、配布された調査回数・ページ閲覧・計算の補助を読み込みます。 |
     | `cargo_time(40.7128, -74.0060)` | ゴッサムと同じ座標を直接計算します。モデルは使いません。 |
     | `WebSearchTool()("...")` | ツールを作って検索語を渡し、検索サービスから抜粋とURLを取得します。 |
     | `PageExcerptTool()("...", focus="...")` | 最大1,600文字の関連するページ抜粋を取得します。Chromeを操作する処理ではありません。 |
+
+    `forward`が回数を数えて検索し、短い結果に整えます。ツールの定義によりエージェントから呼べます。メインガードにより、インポートだけでは直接確認を行いません。
 
     検索結果は出典を探す手掛かりです。ブラウザで出典を開き、抜粋が主張を裏付けるか確認してください。出力上限は維持します。抜粋はページの一部なので、確認できない点はメモに残します。
 
@@ -187,18 +227,87 @@ print(PageExcerptTool()("https://wollatonhall.org.uk/hall-and-museum/history/", 
 
 最初に次のブロックを貼り付けます。インポートだけではエージェントは作られません。
 
+**このブロックの役割：**ローカル設定を読み、管理役と調査役が共有するGroq接続を1つ作ります。エージェントが応答を要求するまではGroqを呼びません。入力は`.env`やターミナルの設定と、その後のメッセージです。待機の表示と結果はターミナルに出ます。自分のファイルの古い`build_model`の読み込みと呼び出しを置き換えます。配布された`week04_common.py`は変更しません。
+
 ```python title="my_batman.py"
-from smolagents import CodeAgent
-from week04_common import build_model, agent_options, run_task
-from week04_search import WebSearchTool, PageExcerptTool, ResearchBudget
+import math
+import os
+import time
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
+from getpass import getpass
+from pathlib import Path
+from threading import Lock
+
+from dotenv import load_dotenv
+from openai import RateLimitError
+from smolagents import CodeAgent, OpenAIServerModel
+from week04_common import agent_options, run_task
+from week04_search import PageExcerptTool, ResearchBudget
+from my_batman_tools import WebSearchTool
 from week04_tools import cargo_time, save_report
 
-model = build_model(max_tokens=800)
+load_dotenv(Path(__file__).with_name(".env"), override=False)
+key = os.environ.get("GROQ_API_KEY", "").strip() or getpass("Groq API key (hidden): ").strip()
+model_id = os.environ.get("GROQ_MODEL", "").strip()
+if not key or not model_id:
+    raise SystemExit("Set GROQ_API_KEY and GROQ_MODEL locally. / キーとモデルをローカルで設定してください。")
+
+
+class SpacedGroqModel(OpenAIServerModel):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.next_request = 0.0
+        self.retries_left = 2
+        self.lock = Lock()
+
+    def __call__(self, *args, **kwargs):
+        # One shared object serializes all manager/specialist requests.
+        with self.lock:
+            for attempt in range(3):
+                time.sleep(max(0.0, self.next_request - time.monotonic()))
+                self.next_request = time.monotonic() + 10.0
+                try:
+                    return super().__call__(*args, **kwargs)
+                except RateLimitError as error:
+                    # Inspect privately; never print the key, headers or raw error.
+                    details = str(error.body).lower()
+                    if any(word in details for word in (
+                        "insufficient_quota", "quota_exceeded", "billing", "credit", "spend_limit"
+                    )) or self.retries_left == 0:
+                        raise SystemExit("Groq refused the request. Stop and check account limits. / Groqの利用枠を確認してください。") from None
+                    retry_after = error.response.headers.get("retry-after", "")
+                    try:
+                        delay = float(retry_after)
+                    except ValueError:
+                        try:
+                            delay = (parsedate_to_datetime(retry_after) - datetime.now(timezone.utc)).total_seconds()
+                        except (ValueError, TypeError, OverflowError):
+                            delay = 15.0 * (2 ** attempt)
+                    if not math.isfinite(delay) or delay > 60:
+                        raise SystemExit("Retry interval too long. Stop and check Groq limits. / 待機が長いため停止します。") from None
+                    self.retries_left -= 1
+                    self.next_request = max(self.next_request, time.monotonic() + max(0.0, delay))
+                    print("429: bounded wait, then retry. / 上限付きで待機して再試行します。")
+
+
+model = SpacedGroqModel(
+    model_id=model_id, api_base="https://api.groq.com/openai/v1", api_key=key,
+    client_kwargs={"timeout": 45, "max_retries": 0},
+    max_tokens=800, temperature=0.2, reasoning_effort="none",
+    flatten_messages_as_text=False,
+)
 ```
 
-??? info "4Aの説明 — 接続を共有する"
+??? info "4Aの説明 — 共有する時計と再試行回数"
 
-    `CodeAgent`はこの後2回使うクラスです。ほかのインポートは接続・検索・計算・レポート用の補助機能を読み込みます。`build_model(max_tokens=800)`は出力の上限を小さくしたGroq接続を準備し、ファイル実行時に必要ならキーを求めます。ここでは検索もエージェントの作成もしません。接続を共有しても履歴は別です。
+    `load_dotenv`はスクリプトと同じ場所の設定を読みます。ターミナルの値を優先し、キーがなければ非表示入力を使います。モデル名も設定してください。`OpenAIServerModel`はGroqのOpenAI互換接続を使い、配布されたPythonアクション用の指示を維持します。依存関係の`smolagents[litellm]`は任意のLiteLLM連携も導入しますが、この例の接続方式は従来と同じです。
+
+    2体に同じ`model`を渡します。ロックで同時呼び出しを防ぎ、単調増加する時計で各リクエスト開始の間を最低10秒空けます。再試行やステップ上限後の最終応答も対象です。SDKの自動再試行は`max_retries=0`で無効にします。429の追加試行は**実行全体で最大2回**で、2体が共有します。1つの応答要求では初回を含め最大3回です。他のHTTPエラーをこのラッパーは再試行しません。
+
+    429では`Retry-After`の秒数または日時を守ります。有効な値がなければ15秒、連続失敗なら30秒待ちます。60秒を超える待機、再試行回数の消費、明確なクレジット・請求・利用枠エラーでは`SystemExit`で停止し、エージェントの再試行を防ぎます。同じメッセージを再送し、チーム全体を最初から動かしません。委任前にはロックが解除されています。
+
+    **待機で有料クレジットが増えることはなく、成功も保証されません。**短い時間枠の制限は解除される場合がありますが、日単位の上限、組織で共有する利用量、混雑、残高不足は解消しない場合があります。10秒は練習用の値で、トークン制限を保証するものではありません。入力履歴もトークンを使い、`max_tokens=800`は出力だけの上限です。調査回数とステップ上限を維持し、再起動を繰り返さずアカウントの利用枠を確認してください。
 
 **確認A：**この時点でエージェントを何体作りましたか？
 
@@ -208,7 +317,7 @@ model = build_model(max_tokens=800)
 
 #### 4B. Web調査役を作る { #4b-create-the-web-specialist }
 
-`model = build_model(max_tokens=800)`の下に追加します。これが**最初のエージェント**です。次へ進む前に、名前、役割の説明、モデル、ツールを自分のファイルで示してください。
+完成した`model = SpacedGroqModel(...)`ブロックの下に追加します。これが**最初のエージェント**です。次へ進む前に、名前、役割の説明、モデル、ツールを自分のファイルで示してください。
 
 ```python title="my_batman.py"
 
@@ -437,7 +546,7 @@ run_task(manager, ONE_LOCATION_TASK)
 - **ページの403：**サイトが取得を拒否しています。試行回数に数えるため、許された別の出典を使うか、取得不可と記します。同じURLを再試行しません。
 - **Research limit reached：**調査回数の上限です。得られた根拠と不足項目を返します。上限に達したことは、主張が誤りだという証明ではありません。
 - **Groqの413／request too large：**実行を止めます。補助ファイルが最新のZIPと一致し、`ONE_LOCATION_TASK`を使っているか確認してから、新しい小さな実行を始めます。待つだけでは、大きくなった履歴は小さくなりません。
-- **Groqの429：**実行を止め、サービスが示す待機時間を守ってから新しい実行を始めます。トークンとリクエストの上限はアカウントで共有されます。今回の制限は使用量を減らすもので、利用枠を保証するものではありません。
+- **Groqの429：**4Aの共有モデルが間隔を空け、実行全体で最大2回だけ追加試行します。停止したら利用枠と再試行間隔を確認し、すぐに再起動しないでください。待機でクレジットは増えず、成功も保証されません。日単位・トークンの上限や請求の問題では、時間枠の更新やアカウント側の対応が必要な場合があります。
 
 [Groqのレート制限の説明](https://console.groq.com/docs/rate-limits)も確認できます。文字数の上限とトークン数は同じではありません。拒否を避けようとして、ページ全体をタスクに貼り付けたりステップ上限を増やしたりしないでください。
 
