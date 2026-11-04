@@ -1,0 +1,7 @@
+# Week 4 setup: run from the repository root. / 第04週の準備：リポジトリ直下で実行。
+# Keep the supplied ZIP unchanged. / 配布ZIPは変更しません。
+-r week04-starter/requirements.txt
+smolagents[litellm]==1.13.0
+python-dotenv>=1.0,<2
+# Explicit DDGS dependency for the lesson wrapper. / 教材の検索ラッパーで使用。
+ddgs==9.16.0
