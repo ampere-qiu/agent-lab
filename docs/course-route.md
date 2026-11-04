@@ -7,7 +7,7 @@ This local course adapts Hugging Face Agents Course Unit 1, its starter, and Uni
 | [1](week-1-learning-plan.md) | Concepts, local setup, three-stage dummy agent | Explain the loop and run `dummy_agent.py` with a real function observation |
 | [2](week-2-learning-plan.md) | Working chat template, CodeAgent, time and search tools | A model response, direct tool tests, executed agent calls, and a verified source |
 | [3](week-3-learning-plan.md) | Terminal agents, action formats, tools, and optional Agentic RAG | Saved files, direct checks, and tool modifications; RAG evidence is optional this week |
-| [4](week-4-preview.md) | smolagents Part 2: RAG, Batman team, Vision & Browser Agents | Required two-agent delegation, sourced table/map, image input and screenshot evidence |
+| [4](week-4-preview.md) | Week 3 RAG quiz; build Batman, Vision & Browser Agents | Required two-agent delegation, sourced table/map, image input and screenshot evidence |
 
 The [custom-tool challenge](first-agent-practical.md#6-optional-create-your-own-tool) is an optional extension in Week 2.
 

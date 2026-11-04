@@ -306,22 +306,36 @@ class CourseTests(unittest.TestCase):
         self.assertIn('multi-agent-architecture.png', content)
         self.assertIn('batman-output-map.png', content)
         self.assertIn('vision-memory.png', (ROOT/'site/week-4-vision-browser/index.html').read_text())
+        for name in ['multi-agent-concept.svg', 'batman-agent-roles.svg']:
+            source = ROOT/'docs/images/week04'/name
+            self.assertIn(name, content)
+            for lang in ['', 'ja']:
+                self.assertEqual(source.read_bytes(), (ROOT/'site'/lang/'images/week04'/name).read_bytes())
 
-    def test_week04_japanese_release_placeholders_and_search(self):
+    def test_week04_japanese_lessons_figures_and_search(self):
         expected = {p.name for p in (ROOT/'docs').glob('week-4-*.md')}
-        self.assertEqual(self.unreleased_translations, expected)
+        self.assertFalse(self.unreleased_translations)
+        self.assertFalse(self.translation_review_pending)
         for filename in expected:
             content = (ROOT/'site/ja'/Path(filename).stem/'index.html').read_text()
-            self.assertIn('To be released', content)
-            self.assertNotIn('<pre', content)
-            self.assertNotIn('web_specialist(task', content)
-            self.assertNotIn('my_batman_verified.py', content)
-            self.assertNotIn('days_until', content)
+            self.assertNotIn('To be released', content)
+            self.assertIn('figure-viewer.js', content)
+            self.assertIn('目標', content)
+        for filename, count in [('week-4-batman.md', 4), ('week-4-vision-browser.md', 1)]:
+            en = (ROOT/'docs'/filename).read_text()
+            ja = (ROOT/'docs-ja'/filename).read_text()
+            self.assertEqual(re.findall(r'!\[[^]]*\]\(([^)]+)\)', en),
+                             re.findall(r'!\[[^]]*\]\(([^)]+)\)', ja))
+            self.assertEqual(ja.count('.course-figure-link'), count)
+            self.assertEqual(ja.count('この図の説明を読む'), count)
+            self.assertEqual(len(re.findall(r'course-figure-link }\n\n\?\?\? info', ja)), count)
         search = json.loads((ROOT/'site/ja/search/search_index.json').read_text())
-        pending = [item for item in search['docs'] if item['location'].startswith('week-4-')]
-        self.assertTrue(pending)
-        self.assertTrue(all('To be released' in item['text'] for item in pending))
-        self.assertNotIn('my_batman_verified.py', ' '.join(item['text'] for item in pending))
+        lessons = [item for item in search['docs'] if item['location'].startswith('week-4-')]
+        self.assertTrue(lessons)
+        text = ' '.join(item['text'] for item in lessons)
+        self.assertNotIn('To be released', text)
+        self.assertIn('my_batman_verified.py', text)
+        self.assertIn('スクリーンショット', text)
 
     def test_downloads_search_and_error_pages(self):
         for path in (ROOT / 'docs/downloads').iterdir():

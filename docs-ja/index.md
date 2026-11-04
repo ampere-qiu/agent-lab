@@ -15,9 +15,7 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 
 </div>
 
-**第04週の日本語版：To be released。現在は英語版のみ公開しています。**
-
-**第04週：** [smolagents Part 2](week-4-preview.md)では、Agentic RAGを振り返り、必須のBatman調査チームと画像・ブラウザ演習に取り組みます。
+**第04週：** [smolagents Part 2](week-4-preview.md)では、第03週のRAGを小テストで振り返り、Batman調査チームと画像・ブラウザ演習に取り組みます。
 
 **第03週：**[smolagentsの学習](week-3-learning-plan.md)では、アルフレッドのパーティーを題材に、ターミナル用エージェント、関数型・クラス型のツール、任意のAgentic RAG練習を扱います。原典の図には出典を記載しています。レッスンは英語と日本語で読めます。
 
@@ -39,7 +37,7 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 2. **第2週 — 動くエージェントを拡張する：**[テンプレートを起動](run-your-first-agent.md)し、[各部の役割](understand-the-template.md)を理解してから、[ツールを有効にして検証](first-agent-practical.md)し、[実習の完了確認](quizzes.md#finish-the-practical)を行います。
 
 3. **第03週 — ターミナル用エージェントを作る：**[環境準備とファイル作成の手順](week-3-learning-plan.md)に沿ってプログラムを動かし、[関数型・クラス型のツール](week-3-custom-tool.md)を変更し、任意で[Agentic RAG](week-3-retrieval.md)を予習できます。RAGは第04週であらためて扱います。
-4. **第04週 — smolagents Part 2：** 必須の[Batmanチーム](week-4-batman.md)と[画像・ブラウザ演習](week-4-vision-browser.md)に取り組み、[完了確認](week-4-completion.md)を行います。[学習計画とダウンロード](week-4-preview.md)から始めます。
+4. **第04週 — smolagents Part 2：** [Batmanチーム](week-4-batman.md)と[画像・ブラウザ演習](week-4-vision-browser.md)に取り組み、[完了確認](week-4-completion.md)を行います。[学習計画とダウンロード](week-4-preview.md)から始めます。
 
 学習目標と、各週の振り返りで示す内容は、[コース全体の流れ](course-route.md)を参照してください。
 

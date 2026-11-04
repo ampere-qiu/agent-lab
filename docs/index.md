@@ -15,7 +15,7 @@ A local course adapted from Hugging Face’s Agents Course and starter template.
 
 </div>
 
-**Week 04:** [smolagents Part 2](week-4-preview.md) adds Agentic RAG continuation, a required Batman manager/web specialist team, and guided Vision & Browser Agents.
+**Week 04:** [smolagents Part 2](week-4-preview.md) reviews Week 3 RAG with a quiz, then guides you to create the Batman manager/web specialist team and Vision & Browser Agents in stages.
 
 **Week 03:** [Week 03 — smolagents](week-3-learning-plan.md) covers terminal-based agents, function/class tools, and optional Agentic RAG practice, using Alfred's party examples and credited figures. The lessons are available in English and Japanese.
 

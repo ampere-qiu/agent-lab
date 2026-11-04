@@ -7,7 +7,7 @@
 | [1](week-1-learning-plan.md) | 基礎、ローカル環境の準備、3段階のダミー演習 | ループを説明し、`dummy_agent.py`で実際の関数の観測結果を示す |
 | [2](week-2-learning-plan.md) | チャットテンプレート、CodeAgent、時刻・検索ツール | モデルの応答、ツールの直接テスト、エージェントによる呼び出し、根拠を確認した情報源を示す |
 | [3](week-3-learning-plan.md) | ターミナル用エージェント、アクション形式、ツール、任意のAgentic RAG | 保存したファイル、直接テスト、ツールの変更を示す。RAGの実行は今週は任意 |
-| [4](week-4-preview.md) | smolagents Part 2：RAG、Batmanチーム、画像・ブラウザ | 必須の2体による委任、出典付き表・地図、画像入力とスクリーンショットの根拠 |
+| [4](week-4-preview.md) | smolagents Part 2：RAGの理解度チェック、Batmanチーム、画像・ブラウザ | 必須の2体による委任、出典付き表・地図、画像入力とスクリーンショットの根拠 |
 
 [独自ツールの課題](first-agent-practical.md#6-optional-create-your-own-tool)は第2週の任意の発展課題です。
 
@@ -19,4 +19,3 @@
 
 [第04週の完了確認](week-4-completion.md)も使います。3体目の検証役は任意ですが、2体のチームと画像・ブラウザ演習は必須です。
 
-**第04週の日本語版：To be released。第1〜3週の日本語教材は引き続き利用できます。**

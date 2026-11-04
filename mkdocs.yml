@@ -72,8 +72,8 @@ nav:
   - 13 · Completion checks: week-3-completion.md
 - Week 04 · smolagents Part 2:
   - Week 04 · Plan and download: week-4-preview.md
-  - 14 · Agentic RAG continuation: week-4-retrieval.md
-  - 15 · Batman multi-agent exercise: week-4-batman.md
+  - 14 · Week 3 RAG understanding check: week-4-retrieval.md
+  - 15 · Multi-agent systems: week-4-batman.md
   - 16 · Vision & Browser Agents: week-4-vision-browser.md
   - 17 · Completion checks: week-4-completion.md
 - Reference:
@@ -82,18 +82,9 @@ hooks:
 - hooks/bilingual.py
 extra_javascript:
 - javascripts/language.js
+- javascripts/figure-viewer.js
 extra:
   alternate: true
   english_only_pages: []
-  translation_review_pending:
-  - week-4-batman.md
-  - week-4-completion.md
-  - week-4-preview.md
-  - week-4-retrieval.md
-  - week-4-vision-browser.md
-  unreleased_translations:
-  - week-4-batman.md
-  - week-4-completion.md
-  - week-4-preview.md
-  - week-4-retrieval.md
-  - week-4-vision-browser.md
+  translation_review_pending: []
+  unreleased_translations: []

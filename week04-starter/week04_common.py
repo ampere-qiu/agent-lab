@@ -28,19 +28,19 @@ Allowed imports: {{ authorized_imports }}.
 """
 
 
-def build_model():
+def build_model(max_tokens=800):
     key = os.environ.get("GROQ_API_KEY", "").strip() or getpass("Groq API key (hidden): ").strip()
     if not key:
         raise SystemExit("No key entered. Run again with your Groq key.")
     return OpenAIServerModel(
         model_id=MODEL_ID, api_base="https://api.groq.com/openai/v1", api_key=key,
         client_kwargs={"timeout": 45, "max_retries": 1},
-        max_tokens=1200, temperature=0.2, reasoning_effort="none",
+        max_tokens=max_tokens, temperature=0.2, reasoning_effort="none",
         flatten_messages_as_text=False,
     )
 
 
-def agent_options(max_steps=8):
+def agent_options(max_steps=8, compact=False):
     prompts = deepcopy(EMPTY_PROMPT_TEMPLATES)
     prompts["system_prompt"] = SYSTEM
     prompts["final_answer"] = {
@@ -51,7 +51,10 @@ def agent_options(max_steps=8):
         "task": "You are the specialist {{ name }}. Complete this request: {{ task }}",
         "report": "Report from {{ name }} (preserve evidence and uncertainty): {{ final_answer }}",
     }
-    return {"prompt_templates": prompts, "max_steps": max_steps, "verbosity_level": 1}
+    options = {"prompt_templates": prompts, "max_steps": max_steps, "verbosity_level": 1}
+    if compact:
+        options["max_print_outputs_length"] = 1800
+    return options
 
 
 def run_task(agent, task, **kwargs):

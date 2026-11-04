@@ -43,12 +43,12 @@ nav:
   - 11 · 関数とクラスで作るツール: week-3-custom-tool.md
   - 12 · Agentic RAGシステムを作る（任意）: week-3-retrieval.md
   - 13 · 完了確認: week-3-completion.md
-- 第04週 · 日本語版は準備中 (To be released):
-  - 第04週 · 日本語版 To be released: week-4-preview.md
-  - 14 · Agentic RAG（日本語版は準備中）: week-4-retrieval.md
-  - 15 · Batman（日本語版は準備中）: week-4-batman.md
-  - 16 · Vision & Browser（日本語版は準備中）: week-4-vision-browser.md
-  - 17 · 完了確認（日本語版は準備中）: week-4-completion.md
+- 第04週 · smolagents Part 2:
+  - 第04週 · 学習計画とダウンロード: week-4-preview.md
+  - 14 · 第03週のRAG理解度チェック: week-4-retrieval.md
+  - 15 · マルチエージェントシステム: week-4-batman.md
+  - 16 · 画像・ブラウザエージェント: week-4-vision-browser.md
+  - 17 · 完了確認: week-4-completion.md
 - 参考:
   - コース全体の流れ: course-route.md
 markdown_extensions:

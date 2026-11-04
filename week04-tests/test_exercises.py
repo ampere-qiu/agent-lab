@@ -21,7 +21,7 @@ from zipfile import ZipFile
 import httpx
 from openai import OpenAI
 from PIL import Image
-from smolagents.memory import ActionStep
+from smolagents.memory import ActionStep, TaskStep
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -52,10 +52,14 @@ class Week04Tests(unittest.TestCase):
             z.extractall(cls.tmp.name)
         cls.folder = Path(cls.tmp.name) / 'week04-exercises'
         cls.runners = {}
+        cls.stages = {}
         for page in (cls.folder / 'lessons/en').glob('*.md'):
             for name, code in re.findall(r'```python title="(my_[^"]+\.py)"\n(.*?)```', page.read_text(), re.S):
-                cls.runners[name] = code
-                (cls.folder / name).write_text(code)
+                cls.stages.setdefault(name, []).append(code)
+        for name, parts in cls.stages.items():
+            # Follow the student's append/save instructions in document order.
+            cls.runners[name] = '\n'.join(parts)
+            (cls.folder / name).write_text(cls.runners[name])
         sys.path.insert(0, str(cls.folder))
         cls.common = importlib.import_module('week04_common')
         cls.tools = importlib.import_module('week04_tools')
@@ -78,7 +82,7 @@ class Week04Tests(unittest.TestCase):
             calls.append(data)
             self.assertEqual(data['model'], 'qwen/qwen3.8-27b')
             self.assertEqual(data['reasoning_effort'], 'none')
-            self.assertEqual(data['max_tokens'], 1200)
+            self.assertEqual(data['max_tokens'], 800)
             self.assertNotIn('tools', data)
             n = len(calls)-1
             self.assertLess(n, len(actions), 'Unexpected model call: possible tool/parse failure')
@@ -115,15 +119,15 @@ class Week04Tests(unittest.TestCase):
                 f'final_answer({rows!r})']
 
     def test_downloads_runners_and_offline_links(self):
-        self.assertEqual(set(self.runners), {'my_rag_continuation.py','my_batman_tools.py','my_batman.py',
+        self.assertEqual(set(self.runners), {'my_batman_tools.py','my_batman.py',
             'my_vision.py','my_browser_check.py','my_browser.py'})
         expected = {p.name for p in (ROOT / 'week04-starter').iterdir() if p.is_file()}
         for package in ['week04-smolagents-part2.zip','week4_batman_guided_student.zip','week4_vision_browser_student.zip']:
             with ZipFile(ROOT / 'docs/downloads' / package) as z:
                 self.assertIsNone(z.testzip())
-                self.assertFalse(any('/lessons/ja/' in name for name in z.namelist()))
-                self.assertIn('English release', z.read('week04-exercises/README.md').decode())
-                for lang in ['en']:
+                self.assertEqual(sum('/lessons/ja/week-4-' in name for name in z.namelist()), 5)
+                self.assertIn('English and Japanese lessons', z.read('week04-exercises/README.md').decode())
+                for lang in ['en', 'ja']:
                     for record in json.loads((ROOT/'docs/images/huggingface-week04/sources.json').read_text()):
                         name = f"week04-exercises/lessons/{lang}/images/huggingface-week04/{record['file']}"
                         self.assertEqual(z.read(name), (ROOT/'docs/images/huggingface-week04'/record['file']).read_bytes())
@@ -137,7 +141,9 @@ class Week04Tests(unittest.TestCase):
         for file in self.folder.rglob('*.md'):
             for href in re.findall(r'\]\(([^)]+)\)',file.read_text()):
                 if '://' in href: continue
-                self.assertTrue((file.parent/href.split('#')[0]).resolve().is_file(), (file,href))
+                local_path = href.split('#')[0]
+                target = (file.parent/local_path).resolve() if local_path else file
+                self.assertTrue(target.is_file(), (file,href))
         for name, code in self.runners.items(): ast.parse(code,filename=name)
 
     def test_setup_template_and_generated_file_origins(self):
@@ -162,88 +168,187 @@ class Week04Tests(unittest.TestCase):
             self.assertIn('The east exit is closed for maintenance.', page)
             self.assertIn('Show access details', page)
 
-    def test_policy_experiment_from_student_edit_instructions(self):
-        path = self.folder/'my_rag_continuation.py'
-        original = path.read_text()
-        old_task = "Use party_planning_retriever for superhero catering. Suggest one dish and cite its source label. Then say whether these notes establish the caterer's allergy policy. Do not invent a policy."
-        new_task = 'Use party_planning_retriever to search for caterer allergy policy. State whether the returned notes establish a policy. Cite any supporting source; if none does, say the policy is not provided.'
-        revised = original.replace(old_task, new_task).replace('party_planning_retriever("superhero catering")', 'party_planning_retriever("caterer allergy policy")')
-        self.assertNotEqual(revised, original)
+    def test_rag_review_has_no_new_implementation(self):
         lesson = (self.folder/'lessons/en/week-4-retrieval.md').read_text()
-        given_version = re.search(r'```python title="my_rag_continuation.py — policy-query version"\n(.*?)```', lesson, re.S)[1]
-        self.assertEqual(revised.strip(), given_version.strip())
+        self.assertIn('https://ampere-qiu.github.io/agent-lab/week-3-retrieval/', lesson)
+        self.assertNotIn('```python', lesson)
+        self.assertNotIn('my_rag_continuation.py', lesson)
+        self.assertEqual(len(re.findall(r'\?\?\? success "Answer [1-5] ', lesson)), 5)
+        self.assertIn('provided example', lesson)
+        self.assertFalse((self.folder/'week04_retriever.py').exists())
+        requirements = (self.folder/'requirements.txt').read_text()
+        self.assertNotIn('langchain', requirements)
+        self.assertNotIn('rank-bm25', requirements)
+
+    def test_agent_construction_stages_before_any_task_call(self):
+        for name, expected_stages in [('my_batman.py', 4), ('my_vision.py', 3), ('my_browser.py', 3)]:
+            with self.subTest(file=name):
+                parts = self.stages[name]
+                self.assertEqual(len(parts), expected_stages)
+                prefix = ''
+                for part in parts:
+                    prefix += '\n' + part
+                    ast.parse(prefix, filename=name)
+        model, calls = self.model([])
+        scope = {'__file__':str(self.folder/'my_batman.py')}
+        with patch.object(self.common, 'build_model', return_value=model), contextlib.redirect_stdout(io.StringIO()):
+            for index, part in enumerate(self.stages['my_batman.py'][:-1]):
+                exec(part, scope)
+                if index == 0:
+                    self.assertNotIn('specialist', scope)
+                    self.assertNotIn('manager', scope)
+                elif index == 1:
+                    self.assertIn('web_search', scope['specialist'].tools)
+                    self.assertIn('visit_webpage', scope['specialist'].tools)
+                    self.assertNotIn('manager', scope)
+                else:
+                    self.assertIs(scope['manager'].managed_agents['web_specialist'], scope['specialist'])
+                    self.assertIsNot(scope['manager'].memory, scope['specialist'].memory)
+                    self.assertIn('save_report', scope['manager'].tools)
+                    self.assertNotIn('web_search', scope['manager'].tools)
+                self.assertEqual(calls, [], 'Construction must not execute a model task')
+
+    def test_four_fresh_specialist_handoffs_and_report(self):
+        rows = self.fixtures()
+        actions = []
+        for index, row in enumerate(rows):
+            actions.extend([
+                f'print(web_specialist(task="Research only Fixture {index}; return one sourced record"))',
+                f'print(web_search(query="Fixture {index} claim and coordinates"))',
+                f'print(visit_webpage(url="https://example.org/claim/{index}", focus="filming")); print(visit_webpage(url="https://example.org/coords/{index}", focus="coordinates"))',
+                f'final_answer({json.dumps(row)!r})',
+            ])
+        actions.extend([
+            f'print(cargo_time(latitude=40.0, longitude=-70.0)); print(save_report(rows_json={json.dumps(rows)!r}))',
+            'final_answer("Report saved; all rows are simulated fixtures.")',
+        ])
+        path = self.folder/'my_batman.py'
+        original = path.read_text()
+        full = original.replace('max_pages=2', 'max_pages=3')
+        full = full.replace('max_steps=4, compact=True', 'max_steps=5, compact=True')
+        full = full.replace('max_steps=3, compact=True', 'max_steps=6, compact=True')
+        full = full.replace('run_task(manager, ONE_LOCATION_TASK)', 'run_task(manager, TASK)')
+        path.write_text(full)
         try:
-            path.write_text(revised)
-            calls, out = self.run_file('my_rag_continuation.py',[
-                'print(party_planning_retriever(query="caterer allergy policy"))',
-                'final_answer("The supplied notes do not provide the caterer allergy policy.")'])
-            self.assertIn(new_task, json.dumps(calls[0]['messages']))
-            self.assertIn('Catering Ideas', json.dumps(calls[1]['messages']))
-            self.assertIn('do not provide', out)
+            with patch.object(self.search, 'DDGS') as ddgs, patch.object(self.search.requests, 'get', side_effect=lambda url, **kwargs: self.response('<article><p>SIMULATED filming coordinates evidence '+url+'</p></article>')) as fetch:
+                ddgs.return_value.text.return_value = [dict(title='Fixture', href='https://example.org/claim', body='SIMULATED SEARCH')]
+                calls, out = self.run_file('my_batman.py', actions)
+                self.assertEqual(ddgs.return_value.text.call_count, 4)
+                self.assertEqual(fetch.call_count, 8)
         finally:
             path.write_text(original)
-
-    def test_rag_actual_retrieval_reaches_model(self):
-        calls, out = self.run_file('my_rag_continuation.py',[
-            'print(party_planning_retriever(query="superhero catering"))',
-            'final_answer("Hulk smoothie [Catering Ideas]. Allergy policy is not in these notes.")'])
-        self.assertIn('DIRECT RETRIEVAL',out)
-        self.assertIn('Catering Ideas',json.dumps(calls[1]['messages']))
-        self.assertIn('Allergy policy is not',out)
-
-    def test_two_agent_handoff_and_report(self):
-        rows=json.dumps(self.fixtures())
-        actions=self.research_actions()+['print(cargo_time(latitude=40.0, longitude=-70.0))',
-            f'print(save_report(rows_json={rows!r}))','final_answer("Report saved; all rows are simulated fixtures.")']
-        with patch.object(self.search,'DDGS') as ddgs, patch('smolagents.default_tools.VisitWebpageTool.forward',new=lambda self, url: 'SIMULATED PAGE EVIDENCE'):
-            ddgs.return_value.text.return_value=[dict(title='Fixture',href='https://example.org/claim/0',body='SIMULATED SEARCH')]
-            path = self.folder/'my_batman.py'
-            original = path.read_text()
-            path.write_text(original.replace('run_task(manager, ONE_LOCATION_TASK)', 'run_task(manager, TASK)'))
-            try:
-                calls,out=self.run_file('my_batman.py',actions)
-            finally:
-                path.write_text(original)
-        self.assertIn('web_specialist',json.dumps(calls[0]['messages']))
-        self.assertIn('SIMULATED PAGE EVIDENCE',json.dumps(calls[3]['messages']))
-        self.assertIn('https://example.org/coords/3',json.dumps(calls[4]['messages']))
-        report=(self.folder/'outputs/batman-report.html').read_text()
-        self.assertIn('Fixture 3',report)
-        self.assertEqual(report.count('<circle '),4)
+        for index in range(4):
+            specialist_first = json.dumps(calls[index*4+1]['messages'])
+            self.assertIn(f'Research only Fixture {index}', specialist_first)
+            if index:
+                self.assertNotIn(f'https://example.org/coords/{index-1}', specialist_first)
+        self.assertIn('https://example.org/coords/3', json.dumps(calls[16]['messages']))
+        # A regression bound on the actual serialized history, not a token estimate.
+        self.assertLess(max(len(json.dumps(call['messages'])) for call in calls), 18000)
+        report = (self.folder/'outputs/batman-report.html').read_text()
+        self.assertIn('Fixture 3', report)
+        self.assertEqual(report.count('<circle '), 4)
 
     def test_optional_third_agent_is_called(self):
         code = self.runners['my_batman.py']
-        code = code.replace('    manager = CodeAgent(', """    verifier = CodeAgent(
-        tools=[WebSearchTool(), VisitWebpageTool()], model=model,
-        name="verifier", description="Independently checks sourced claims and coordinates with evidence and uncertainty.",
-        **agent_options(max_steps=12),
-    )
-    manager = CodeAgent(""", 1)
+        code = code.replace('manager = CodeAgent(', """verifier_budget = ResearchBudget(max_searches=1, max_pages=2)
+verifier = CodeAgent(
+    tools=[WebSearchTool(budget=verifier_budget), PageExcerptTool(budget=verifier_budget)], model=model,
+    name="verifier", description="Independently checks sourced claims and coordinates with evidence and uncertainty.",
+    **agent_options(max_steps=4, compact=True),
+)
+verifier_budget.bind(verifier)
+manager = CodeAgent(""", 1)
         code = code.replace('managed_agents=[specialist]', 'managed_agents=[specialist, verifier]')
-        code = code.replace('def build_team(model):', 'TASK += " Ask verifier to independently check the sourced rows before saving."\n\ndef build_team(model):')
+        code = code.replace('max_steps=3, compact=True', 'max_steps=4, compact=True')
+        code = code.replace('run_task(manager, ONE_LOCATION_TASK)', 'TASK = "Research one candidate row, then ask verifier to independently check it. Return a sourced verdict without saving a report."\nrun_task(manager, ONE_LOCATION_TASK)')
         code = code.replace('run_task(manager, ONE_LOCATION_TASK)', 'run_task(manager, TASK)')
         (self.folder/'my_batman_verified.py').write_text(code)
         rows=json.dumps(self.fixtures())
         actions=self.research_actions()+['print(verifier(task="Independently check https://example.org/claim/0"))',
             'print(visit_webpage(url="https://example.org/claim/0"))',
             'final_answer("Independent simulated verdict: uncertain")','final_answer("Unverified report withheld")']
-        with patch.object(self.search,'DDGS') as ddgs, patch('smolagents.default_tools.VisitWebpageTool.forward',new=lambda self, url: 'SIMULATED PAGE EVIDENCE'):
+        with patch.object(self.search,'DDGS') as ddgs, patch.object(self.search.PageExcerptTool, 'forward', new=lambda self, url, focus='': 'SIMULATED PAGE EVIDENCE'):
             ddgs.return_value.text.return_value=[dict(title='Fixture',href='https://example.org/claim/0',body='SIMULATED SEARCH')]
             calls,out=self.run_file('my_batman_verified.py',actions)
         self.assertIn('Independent simulated verdict: uncertain',json.dumps(calls[-1]['messages']))
         self.assertIn('Unverified report withheld',out)
 
-    def test_complete_given_program_executes_small_handoff(self):
+    def test_assembled_team_executes_small_handoff(self):
         code = self.runners['my_batman.py']
         self.assertNotIn('SPECIALIST_TOOLS = []', code)
-        self.assertNotIn('YOUR ', code)
-        calls, out = self.run_file('my_batman.py', [
-            'print(web_specialist(task="Check one location"))',
-            'final_answer("SIMULATED supported claim https://example.org/claim; coordinate source missing")',
-            'final_answer("Source https://example.org/claim retained; coordinates not established")'])
+        self.assertIn('Do NOT research coordinates', code)
+        with patch.object(self.search.PageExcerptTool, 'forward', new=lambda self, url, focus='': 'SIMULATED filming claim from source'):
+            calls, out = self.run_file('my_batman.py', [
+                'print(web_specialist(task="Check only the Wollaton Hall filming claim"))',
+                'print(visit_webpage(url="https://example.org/claim", focus="Wayne Manor Batman"))',
+                'final_answer("SIMULATED supported filming claim https://example.org/claim; quote retained")',
+                'final_answer("Source https://example.org/claim and quote retained; no coordinate research requested")'])
         self.assertIn('Wollaton Hall', json.dumps(calls[0]['messages']))
-        self.assertIn('coordinate source missing', json.dumps(calls[2]['messages']))
-        self.assertIn('coordinates not established', out)
+        self.assertIn('quote retained', json.dumps(calls[3]['messages']))
+        self.assertIn('no coordinate research requested', out)
+
+    def response(self, html, status=200):
+        import requests
+        result = requests.Response()
+        result.status_code = status
+        result._content = html.encode()
+        result.encoding = 'utf-8'
+        result.url = 'https://example.org/page'
+        return result
+
+    def test_deep_page_evidence_is_focused_and_bounded(self):
+        html = '<html><body><nav>' + 'MENU ' * 10000 + '</nav><article>'
+        html += '<p>Unrelated visitor information.</p>' * 500
+        html += '<p>Wollaton Hall was Wayne Manor in The Dark Knight Rises.</p>'
+        html += '<p>Other information.</p>' * 500 + '</article></body></html>'
+        tool = self.search.PageExcerptTool()
+        with patch.object(self.search.requests, 'get', return_value=self.response(html)) as fetch:
+            excerpt = tool('https://example.org/page', focus='Wayne Manor Batman')
+        self.assertLessEqual(len(excerpt), 1600)
+        self.assertIn('Source: https://example.org/page', excerpt)
+        self.assertIn('Wayne Manor in The Dark Knight Rises', excerpt)
+        self.assertNotIn('MENU', excerpt)
+        self.assertEqual(fetch.call_count, 1)
+        long_html = '<article><p>Wayne Manor ' + 'supporting text ' * 5000 + '</p></article>'
+        with patch.object(self.search.requests, 'get', return_value=self.response(long_html)):
+            clipped = self.search.PageExcerptTool()('https://example.org/long', focus='Wayne Manor')
+        self.assertLessEqual(len(clipped), 1600)
+        self.assertIn('Excerpt clipped', clipped)
+
+    def test_failed_attempts_count_and_fresh_delegation_resets_budget(self):
+        from types import SimpleNamespace
+        agent = SimpleNamespace(memory=SimpleNamespace(steps=[TaskStep(task='first place')]))
+        budget = self.search.ResearchBudget(max_searches=1, max_pages=2)
+        budget.bind(agent)
+        page = self.search.PageExcerptTool(budget=budget)
+        with patch.object(self.search.requests, 'get', side_effect=[self.response('',403), self.response('<p>Second source.</p>'), self.response('<p>Fresh task source.</p>')]) as fetch:
+            self.assertIn('403', page('https://example.org/blocked'))
+            self.assertIn('Already attempted', page('https://example.org/blocked'))
+            self.assertIn('Second source', page('https://example.org/alternate'))
+            self.assertIn('limit reached', page('https://example.org/third'))
+            self.assertEqual(fetch.call_count, 2)
+            agent.memory.steps = [TaskStep(task='next place')]
+            self.assertIn('Fresh task source', page('https://example.org/blocked'))
+            self.assertEqual(fetch.call_count, 3)
+        search = self.search.WebSearchTool(budget=budget)
+        with patch.object(self.search, 'DDGS') as ddgs:
+            ddgs.return_value.text.return_value = [dict(title='Title'*100, href='https://example.org/source', body='SNIPPET '*1000)] * 5
+            result = search('focused query')
+            self.assertLessEqual(len(result), 1400)
+            self.assertEqual(result.count('https://example.org/source'), 2)
+            self.assertIn('limit reached', search('another query'))
+            self.assertEqual(ddgs.return_value.text.call_count, 1)
+
+    def test_large_printed_observation_is_bounded_before_next_model_call(self):
+        calls, out = self.run_file('my_batman.py', [
+            'print("NOISE" * 5000)',
+            'final_answer("Incomplete simulated run; no research was performed.")',
+        ])
+        observation = [part['text'] for message in calls[1]['messages'] for part in message['content']
+                       if part.get('type') == 'text' and 'Observation:' in part.get('text', '')]
+        self.assertTrue(observation)
+        self.assertTrue(all(len(text) < 2000 for text in observation))
 
     def test_initial_image_is_serialized_to_model(self):
         calls,_=self.run_file('my_vision.py',['final_answer("Visible room labels; exit availability unknown.")'])
@@ -274,7 +379,7 @@ class Week04Tests(unittest.TestCase):
                 runpy.run_path(str(self.folder/'my_browser_check.py'), run_name='__main__')
             self.assertNotEqual((self.folder/'before.png').read_bytes(), (self.folder/'after.png').read_bytes())
             self.assertTrue(driver.closed)
-            with patch.object(self.search, 'DDGS') as ddgs, patch('smolagents.default_tools.VisitWebpageTool.forward', new=lambda self, url: 'SIMULATED PAGE'), contextlib.redirect_stdout(io.StringIO()) as out:
+            with patch.object(self.search, 'DDGS') as ddgs, patch.object(self.search.PageExcerptTool, 'forward', new=lambda self, url, focus='': 'SIMULATED PAGE'), contextlib.redirect_stdout(io.StringIO()) as out:
                 ddgs.return_value.text.return_value = [dict(title='Fixture', href='https://example.org/', body='SIMULATED SEARCH')]
                 runpy.run_path(str(self.folder/'my_batman_tools.py'), run_name='__main__')
             self.assertIn('1.0', out.getvalue())

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+<title id="title">Two agents, two separate decision loops</title><desc id="desc">A manager and specialist each have their own model-action-observation loop. A request goes to the specialist and evidence returns to the manager. Tools execute operations; they are not additional agents.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#475569"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#172033}.title{font-size:27px;font-weight:700}.label{font-size:21px;font-weight:700}.body{font-size:17px}.small{font-size:15px}.muted{fill:#475569}.line{fill:none;stroke:#475569;stroke-width:2.5;marker-end:url(#arrow)}.optional{stroke-dasharray:8 6}</style>
+<rect width="100%" height="100%" fill="#fff" rx="20"/>
+<text x="30" y="45" class="title" text-anchor="start">The concept: 2 agents, 2 separate loops</text>
+<text x="30" y="77" class="body" text-anchor="start">A shared model connection does not combine their histories.</text>
+<rect x="30" y="130" width="350" height="165" rx="14" fill="#f0eaff" stroke="#7957b5" stroke-width="2"/><text x="50" y="167" class="label" text-anchor="start">1 · MANAGER</text>
+<text x="50" y="203" class="body" text-anchor="start">Coordinates the overall task</text>
+<text x="50" y="238" class="body" text-anchor="start">Model → action → observation</text>
+<text x="50" y="271" class="small" text-anchor="start">Own tools + own execution history</text>
+<rect x="520" y="130" width="350" height="165" rx="14" fill="#eaf4ff" stroke="#3c7cad" stroke-width="2"/><text x="540" y="167" class="label" text-anchor="start">2 · SPECIALIST</text>
+<text x="540" y="203" class="body" text-anchor="start">Handles a delegated subtask</text>
+<text x="540" y="238" class="body" text-anchor="start">Model → action → observation</text>
+<text x="540" y="271" class="small" text-anchor="start">Own tools + own execution history</text>
+<path d="M380 180 H510" class="line"/>
+<text x="450" y="165" class="small" text-anchor="middle">Request</text>
+<path d="M520 255 H390" class="line"/>
+<text x="450" y="240" class="small" text-anchor="middle">Evidence</text>
+<rect x="520" y="355" width="350" height="70" rx="14" fill="#f3f5f8" stroke="#a0aabd" stroke-width="2"/><text x="695" y="385" class="label" text-anchor="middle">TOOLS · not agents</text>
+<text x="695" y="410" class="small" text-anchor="middle">Search, page reading, calculation…</text>
+<path d="M630 295 V345" class="line"/>
+<path d="M760 355 V305" class="line"/>
+<text x="30" y="380" class="body" text-anchor="start">The manager waits for the return.</text>
+<text x="30" y="410" class="body" text-anchor="start">A tool has no separate decision loop.</text>
+<text x="30" y="472" class="small" text-anchor="start">Course diagram · Follow the task request and the returned evidence.</text>
+</svg>

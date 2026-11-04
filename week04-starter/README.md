@@ -1,45 +1,61 @@
-# Week 04 — smolagents Part 2 (English release)
+# Week 04 — smolagents Part 2
 
-The Japanese Week 4 edition is **To be released** and is not included in this download. Published Japanese Weeks 1–3 remain available on the course website.
+This download contains English and Japanese lessons with identical code and figures.
+
+日本語で始める場合は、[第04週の学習計画](lessons/ja/week-4-preview.md)を開いてください。環境準備から各ファイルの作成・実行まで、順に説明しています。図をクリックすると元の画像を開けます。図の下の説明パネルは開閉できます。
 
 ## Start here
 
-Open `lessons/en/week-4-preview.md` and follow the setup in order. Continue with `week-4-retrieval.md`, `week-4-batman.md`, `week-4-vision-browser.md`, and `week-4-completion.md` in the same folder.
+Open [the English Week 4 plan](lessons/en/week-4-preview.md) for setup. Then continue with Topics 14–17 in the same folder: the RAG review, multi-agent systems and Batman exercise, vision/browser agents, and completion checks.
 
-## Supplied, student-created and generated files
+## Your files
 
-The ZIP supplies the package list, Groq/retrieval/search/report/browser helpers, asset generator, English lessons, unchanged credited HF figures and license. Do not recreate the helper files.
+The download includes connection and tool helpers, `requirements.txt`, `prepare_visuals.py`, the lessons, diagrams and source credits. Leave those helper files in place.
 
-Create `evidence.md` and the `evidence-files` folder using the setup lesson's template and steps. Create each required `my_*.py` directly in the extracted `week04-exercises` root beside `requirements.txt`, using the complete code shown in its lesson. Do not save them inside `.venv` or `lessons`.
+Create `evidence.md` and an `evidence-files` folder using the setup instructions. As you reach each exercise, create these five Python files directly inside `week04-exercises`, beside `requirements.txt`:
 
-The supplied `prepare_visuals.py` generates `assets/venue.png` and `assets/venue.html` without an LLM. Later programs generate screenshots and reports; do not create empty stand-ins. The setup page lists every file's origin and save location.
+- `my_batman_tools.py` — check the research and calculation tools.
+- `my_batman.py` — create the web specialist and manager, then test their handoff.
+- `my_vision.py` — ask an agent to inspect the venue plan.
+- `my_browser_check.py` — check that Chrome can open the page, click and save screenshots.
+- `my_browser.py` — let an agent choose browser actions and read the screenshots.
 
-## Required practicals and optional challenge
+Add each lesson’s code blocks to its named file in order and save before running. The lessons tell you when to run, which command to use and where to find the result. Keep your answers and short terminal excerpts in `evidence.md`.
 
-All required code is given: paste the complete program, read its collapsed explanation, run the specified steps and explain the observed results. The supplied small/full Batman task switch and RAG/vision/browser data changes are exact guided edits. Only adding a third agent is an optional independent coding challenge. The English lesson gives hints for that extension rather than a completed solution.
-
-The first Batman run prints one-location research. The given final-call change runs the full task and can create `outputs/batman-report.html`. Preserve actual outputs in `evidence-files` before comparisons; see the lessons for copy/rename instructions.
-
-## Environment
-
-Use Python 3.11 and a separate `.venv`; install `requirements.txt` using the Windows/Mac steps in the setup lesson. Chrome is needed for the browser part. Selenium Manager may obtain a compatible driver on first use.
-
-Groq model calls send prompts, retrieved passages and images to a remote model. Enter the key with hidden input; never put credentials in scripts or evidence. The direct retrieval/browser checks can work without a model call. Completion requires the actual observations specified in each lesson.
-
-## Downloads
-
-You have extracted a complete English Week 4 pack. The three download names contain the same files; no second ZIP is needed. Start with `lessons/en/week-4-preview.md`.
+`prepare_visuals.py` creates `assets/venue.png` and `assets/venue.html`. Later programs create reports and screenshots. Copy results into `evidence-files` before a comparison run replaces them.
 
 ## Week 03 context
 
-Understand CodeAgent's model → Python action → tool observation loop and function/class tools. Week 03 made Agentic RAG optional; Week 04 makes its continuation required and supplies the five source-labeled party notes, so prior RAG files are not needed.
+For RAG coding, return to [Week 3 — Building Agentic RAG Systems](https://ampere-qiu.github.io/agent-lab/week-3-retrieval/) in your `First_agent_template` folder. Topic 14 checks your understanding using earlier results or its provided example; you do not need another RAG program for Week 4.
+
+If you already started Week 4, save a copy of your work and extract the latest pack to a fresh folder. Use that download’s helper files with the code in the current lessons.
+
+## Batman research limits
+
+The first task checks one filming claim. It allows 3 manager steps, 4 specialist steps, one search and two page attempts per delegation. Page excerpts are limited to 1,600 characters, printed observations to 1,800 characters, and model output to 800 tokens.
+
+For the full task, follow Topic 15’s changes to research one place per delegation, with 3 page attempts, 5 specialist steps and 6 manager steps. A blocked page counts as an attempt. Keep any missing evidence in your notes instead of increasing the limits to force an answer. Groq’s shared limits may still require you to stop and wait.
+
+## Optional challenge
+
+Copy your working Batman team to `my_batman_verified.py` and add a verifier agent. Have it check one researched record, then test whether it catches an intentionally false claim. Topic 15 includes hints to help you get started.
+
+## Environment
+
+Use Python 3.11 and the Week 4 `.venv`. Follow the setup’s Windows or Mac commands to install `requirements.txt`. You also need Chrome for the browser work and internet for model and search requests. Selenium may download a compatible Chrome driver on the first run.
+
+Enter your Groq key when prompted. Task text, page observations and image inputs are sent to Groq. Keep the key out of scripts and notes. The direct tool and browser checks do not call a model.
+
+## Downloads
+
+The three Week 4 download names contain the same files. Extract only one and choose `lessons/en/week-4-preview.md` or `lessons/ja/week-4-preview.md`.
 
 ## Credits
 
-Adapted from Hugging Face Agents Course Unit 2.1, Apache-2.0 (see `HF-LICENSE.txt`):
+Adapted from Hugging Face Agents Course Unit 2.1 under Apache-2.0. See `HF-LICENSE.txt` and `NOTICE.md`.
 
-- https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents
-- https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems
-- https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents
+- [Retrieval Agents](https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents)
+- [Multi-Agent Systems](https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems)
+- [Vision and Browser Agents](https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents)
 
-Original HF instructional figures are preserved unchanged with URLs/hashes in `lessons/en/images/huggingface-week04/sources.json`. The venue assets and bounded classroom tools are original adaptations. Batman/Wayne Manor are fictional teaching references; no DC artwork is bundled. See `NOTICE.md`.
+Original HF figures retain source URLs and hashes in `lessons/en/images/huggingface-week04/sources.json`. The download also includes two course diagrams and the fictional venue assets.

@@ -1,130 +1,78 @@
-# 14 · Agentic RAG continuation { #week-4-retrieval }
+# 14 · Check your Week 3 RAG understanding { #week-4-retrieval }
 
-!!! note "Required in Week 4"
+**Quick recap:** RAG retrieves relevant passages so the model can answer from evidence. Agentic RAG lets the agent choose when and what to retrieve. Check the source; say when evidence is missing.
 
-    We revisit the Agentic RAG work from Week 3. Start with [13 · Week 3 completion checks](week-3-completion.md), then review [12 · Building Agentic RAG Systems](week-3-retrieval.md). RAG was optional in Week 3; **this review and continuation are required in Week 4**.
+**Objective:** check whether an answer is supported by retrieved text.
 
-**Goal:** distinguish a retrieved passage from a model claim. If you completed the earlier RAG exercise, bring its output for comparison. If you skipped it, review the retrieval loop in the linked lesson, then complete the exercise below. Prepare the [Week 04 files](week-4-preview.md#exercise-files); this download supplies the retrieval notes and support code you need.
+!!! note "Return to Week 3 for the practical"
 
-**Before starting:** finish [Week 4 setup](week-4-preview.md#exercise-files), including [creating `evidence.md`](week-4-preview.md#evidence-file). Work in `week04-exercises`, not the Week 3 folder.
+    If you have not done the RAG practical, return to [12 · Building Agentic RAG Systems](week-3-retrieval.md) and follow its existing setup, file-creation and run instructions in **`First_agent_template`**. If you already did it, review your saved code and trace. [13 · Week 3 completion checks](week-3-completion.md#optional-rag) lists the earlier files. Do not recreate them in `week04-exercises` or install RAG packages in the Week 4 environment.
 
-| File | Status in this lesson |
-| --- | --- |
-| `week04_common.py`, `week04_retriever.py` | Already supplied. The five notes are inside the retriever file; no separate note-data file is missing. |
-| `my_rag_continuation.py` | Not supplied; create it below. |
-| `evidence.md` | You created it during Week 4 setup. Open and update that existing file. |
+Answer the questions using your Week 3 results or the provided example below. Label your notes **“Week 3 run”** or **“provided example”** so you can tell which evidence you used. You do not need a new Python program for this review.
+
+**Where to write:** open the existing `evidence.md` you created in [Week 4 setup](week-4-preview.md#evidence-file), under **Topic 14 — Week 3 RAG review**. Write your answers in that file.
 
 ## What is BM25? { #bm25 }
 
-**BM25 is a keyword-based method for ranking documents against a search query.** It helps the retriever decide which notes to return first. It does not write an answer or check whether a claim is true.
+**BM25 ranks documents using keyword matches.** It considers how often query words occur, how distinctive they are across the collection, and document length; repeated matches have diminishing benefit. It retrieves candidate passages; it does not generate an answer or verify a claim.
 
-It considers:
+In the Week 3 example BM25 searches five local party notes, without an LLM, embeddings or a vector database. The model separately chooses a query and writes an answer from the returned observations. The tool requests up to five results from five short notes, so it can return notes even when none contains the requested fact. A high rank is not proof that an answer exists, and keyword matching does not automatically resolve synonyms.
 
-- **Matching words:** which query terms occur in a document.
-- **How distinctive they are:** words that occur in fewer documents usually carry more weight.
-- **How often they occur:** repeated matches can help, but their benefit levels off.
-- **Document length:** longer documents are adjusted so they do not gain an advantage simply by containing more words.
+Reference: [BM25 scoring and normalization](https://www.elastic.co/docs/reference/elasticsearch/index-settings/similarity#bm25-similarity-default). No formula is required for this review.
 
-In this exercise, BM25 runs locally over the five supplied party notes. It uses no LLM, embeddings, or vector database. The Groq model separately chooses a query, receives the returned passages as observations, and generates an answer.
+## Read the evidence { #retrieve-first }
 
-**Example:** a note naming superhero dishes can support a dish suggestion. It cannot establish an allergy policy that is absent from the notes, even if the retriever ranks it highly. Word matching also does not automatically understand synonyms.
+**Read this example; do not paste it into a Python file or run it.** It shows the main steps of the Week 3 retrieval loop. Your own tool output may contain several notes.
 
-Our tool requests the top **five** results from a collection of **five** short notes. It can therefore return all five even when the query has little or no useful evidence. **Returned results are candidates to inspect, not proof that an answer exists.**
+```text
+Task: Suggest a superhero dish and cite its source.
+Agent action: party_planning_retriever(query="superhero catering")
+Tool observation:
+  For catering, serve dishes named after superheroes, like
+  'The Hulk's Green Smoothie' and 'Iron Man's Power Steak.'
+  Source: Catering Ideas
+Final answer: Try The Hulk's Green Smoothie [Catering Ideas].
 
-**Technical reference:** [BM25 scoring and normalization](https://www.elastic.co/docs/reference/elasticsearch/index-settings/similarity#bm25-similarity-default). You do not need its formula to complete this exercise.
-
-## Retrieve first, then generate { #retrieve-first }
-
-1. In your code editor, open the **`week04-exercises`** folder that contains `requirements.txt` and `week04_common.py`.
-2. Choose **File → New Text File**, then **File → Save As**. Save it as **`my_rag_continuation.py`** directly in that folder. **This file is not included in the ZIP; you create it now.**
-3. Paste the complete code below into that file.
-4. Save with **Ctrl + S** on Windows or **Command + S** on Mac. The filename must end in `.py`, not `.py.txt`. Do not save inside `.venv`, `lessons`, or `assets`.
-
-**What this file does — `my_rag_continuation.py`:** Searches the supplied five party notes locally, then asks a Groq agent to retrieve and answer with source labels. The first terminal section uses no LLM; the second uses an LLM. Inspect both outputs.
-
-```python title="my_rag_continuation.py"
-from smolagents import CodeAgent
-from week04_common import build_model, agent_options, run_task
-from week04_retriever import party_planning_retriever
-
-if __name__ == "__main__":
-    print("DIRECT RETRIEVAL — NO LLM")
-    print(party_planning_retriever("superhero catering"))
-    agent = CodeAgent(tools=[party_planning_retriever], model=build_model(), **agent_options())
-    run_task(agent, "Use party_planning_retriever for superhero catering. Suggest one dish and cite its source label. Then say whether these notes establish the caterer's allergy policy. Do not invent a policy.")
+Second query: caterer allergy policy
+Observation: the five party notes contain no allergy policy.
 ```
 
-??? info "Explain my_rag_continuation.py"
+## Compare and check understanding { #compare }
 
-    | Code | What it means |
-    | --- | --- |
-    | The imports | Load CodeAgent, the supplied Groq/settings helpers and the supplied retrieval-tool object. You do not copy its implementation into this file. |
-    | `if __name__ == "__main__":` | Run these steps when you run this file as a program. |
-    | The first `print` | Label the direct check so you can distinguish it from the agent trace. |
-    | `party_planning_retriever("superhero catering")` | Search the supplied notes directly on your PC, without a model call. |
-    | `CodeAgent(tools=[party_planning_retriever], ...)` | Register that same tool so the model can request retrieval during its own loop. |
-    | `build_model()` | Prepare the Groq connection and ask for your hidden key if needed. |
-    | `**agent_options()` | Insert the classroom action format, step limit and terminal logging settings. |
-    | `run_task(agent, "...")` | Give the task to the model, run its actions and print the final result. |
+Try each question before opening its answer. Quote the action, passage and source from either your Week 3 results or the provided example.
 
-    The direct tool result is not the agent's action. Check the later trace separately. BM25 may return documents even when the answer is absent; the model must inspect their contents.
+**1. Underline the passage and source label supporting the suggested dish. What does that passage establish?**
 
-**Run:** `python my_rag_continuation.py`. Enter your Groq key if prompted. Read the terminal, not a browser chat.
+??? success "Answer 1 — passage and source"
 
-**What to check:** first find `DIRECT RETRIEVAL — NO LLM` and its returned notes. Then find the agent's separate retrieval call, its observation and final answer. Under Topic 14 in your existing `evidence.md`, paste one passage/source and the actual agent call. You do not create another output file for this program; its results are printed in the terminal.
+    Mark **“The Hulk's Green Smoothie”** in the catering passage and **`Source: Catering Ideas`**. They support the dish suggestion, not ingredients or allergy handling. In your note, use bold text or quote the exact words.
 
-## Compare and understand { #compare }
+**2. Which line demonstrates agent retrieval? How does it differ from a direct Python tool check?**
 
-These are guided code-reading and result checks, not independent coding challenges. Try each question before expanding its answer. Record answers 1–4 under **Topic 14** in your existing `evidence.md`; select/copy a short terminal excerpt where requested. To “underline,” mark the passage with `**...**` in your note or identify its exact sentence and source label. The answers describe what to look for; keep what happened in **your** run.
+??? success "Answer 2 — an executed retrieval action"
 
-**1. Underline the returned passage and its source label that support the suggested dish.**
+    The agent action `party_planning_retriever(query="superhero catering")`, followed by its returned passage, demonstrates retrieval in the loop. A direct tool test alone does not show the model chose a retrieval action. Matching the final claim to the passage shows available support; it cannot prove the model used no prior knowledge.
 
-??? success "Answer 1 — supporting passage and source"
+**3. For the second query, do the notes contain an allergy policy? Why might BM25 still return results?**
 
-    If the model suggests **The Hulk's Green Smoothie** or **Iron Man's Power Steak**, underline that dish name in the returned catering passage and **`Source: Catering Ideas`**. That passage supports the dish idea; it says nothing about ingredients or allergy policy. If your model suggests another dish, check whether the notes actually name it; do not invent supporting evidence.
+??? success "Answer 3 — missing evidence"
 
-**2. Find the actual retrieval call in the agent trace. Did the model use the passage or answer from memory?**
+    **No.** Ranking the top five notes does not require any note to contain a policy. Say **“The supplied notes do not provide the caterer's allergy policy.”** This does not establish that the caterer has no policy.
 
-??? success "Answer 2 — retrieval evidence"
-
-    Look for an executed **`party_planning_retriever(query=...)`** call, followed by the returned passage/source label and a final answer consistent with that observation. The earlier **`DIRECT RETRIEVAL — NO LLM`** output is a direct Python call, not evidence that the agent retrieved anything. If the agent never called the tool, it has not demonstrated Agentic RAG. A trace shows the retrieved evidence available to the model; it does not prove that the model used no prior knowledge.
-
-**3. Change the query to `caterer allergy policy`. Run again. Do the returned notes contain a policy?**
-
-First paste the baseline query/task and result into the existing `evidence.md`. Then open the **existing `my_rag_continuation.py`** and **replace its entire contents** with the complete policy-query version below. The title is a version label: save the file with the same name `my_rag_continuation.py`, not a new longer name. Do not append this program to the original.
-
-**What this version does — `my_rag_continuation.py`:** runs a direct local search and a Groq agent search for the supplied allergy-policy question. The data still comes from the same five notes, and results appear in the terminal. You do not write another prompt yourself.
-
-```python title="my_rag_continuation.py — policy-query version"
-from smolagents import CodeAgent
-from week04_common import build_model, agent_options, run_task
-from week04_retriever import party_planning_retriever
-
-if __name__ == "__main__":
-    print("DIRECT RETRIEVAL — NO LLM")
-    print(party_planning_retriever("caterer allergy policy"))
-    agent = CodeAgent(tools=[party_planning_retriever], model=build_model(), **agent_options())
-    run_task(agent, "Use party_planning_retriever to search for caterer allergy policy. State whether the returned notes establish a policy. Cite any supporting source; if none does, say the policy is not provided.")
-```
-
-??? info "Explain the policy-query version"
-
-    The imports and agent wiring are unchanged. The direct query and the supplied agent task both now ask about allergy policy. BM25 can still return party notes; the model must say when those notes lack the requested policy. Replacing only the direct-call query would not change the agent's task, which is why the complete replacement is given here.
-
-Save and run **`python my_rag_continuation.py`** again. Record the actual result under Topic 14 in the existing note.
-
-??? success "Answer 3 — unsupported query"
-
-    **No.** The five notes contain party ideas, including dishes, but no caterer's allergy policy. BM25 can still return notes because this tool returns the top five without an evidence threshold. A suitable answer is: **“The supplied notes do not provide the caterer's allergy policy.”** This does not mean that the caterer has no policy; it means this collection does not establish one.
-
-**4. Explain why a cautious answer is better supported than a detailed invented policy.**
+**4. Rewrite this unsupported answer: “The caterer guarantees a nut-free menu and checks every guest's allergies.” What should happen next?**
 
 ??? success "Answer 4 — a supported limitation"
 
-    “The notes do not provide this policy” accurately describes the available evidence. A detailed policy would add unsupported claims, such as ingredients, allergen handling, or guarantees. The next step is to obtain an authoritative policy from the caterer, then answer from that source. More detail does not make an unsupported answer more reliable.
+    **“The notes do not establish the allergy policy; obtain the caterer's authoritative policy before answering.”** A detailed guarantee would invent evidence. More confident wording cannot repair a missing source.
 
-**Checkpoint:** save `my_rag_continuation.py` and `evidence.md`. Show one successful direct retrieval, one executed agent retrieval, a source-supported claim, and an unsupported-policy result. Restore the original query/task if you want to repeat the baseline later; do not delete the comparison from your note.
+**5. Put these in order: final answer, retrieval observation, model chooses a query, tool searches the notes. Which part runs without an LLM?**
 
-**Credit:** adapted from [HF Retrieval Agents](https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents); original five-document BM25 example, Apache-2.0. The supplied `HF-LICENSE.txt` retains the license.
+??? success "Answer 5 — the loop"
 
-**Next:** [15 · Batman multi-agent exercise](week-4-batman.md).
+    Model chooses a query → tool searches the notes → retrieval observation → final answer. BM25's local search does not use an LLM; query selection and answer generation do.
+
+**Checkpoint:** save answers 1–5 in `evidence.md` and name the evidence you used. For more coding practice, return to [Week 3’s RAG practical](week-3-retrieval.md). Next, you will build a team of agents.
+
+**Credit:** review adapted from [HF Retrieval Agents](https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents), Apache-2.0. See Week 3 for the RAG practical.
+
+**Next:** [15 · Build the Batman agent team](week-4-batman.md).
