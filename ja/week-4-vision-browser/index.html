@@ -23,7 +23,7 @@
     
     
       
-        <title>16 · Vision & Browser（日本語版は準備中） - Agent Lab</title>
+        <title>16 · 画像・ブラウザエージェント - Agent Lab</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#where-and-when" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16 · Vision & Browser（日本語版は準備中）
+              16 · 画像・ブラウザエージェント
             
           </span>
         </div>
@@ -944,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    第04週 · 日本語版は準備中 (To be released)
+    第04週 · smolagents Part 2
   
 
     
@@ -960,7 +965,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    第04週 · 日本語版は準備中 (To be released)
+    第04週 · smolagents Part 2
   
 
           </label>
@@ -980,7 +985,7 @@
   <span class="md-ellipsis">
     
   
-    第04週 · 日本語版 To be released
+    第04週 · 学習計画とダウンロード
   
 
     
@@ -1008,7 +1013,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG（日本語版は準備中）
+    14 · 第03週のRAG理解度チェック
   
 
     
@@ -1036,7 +1041,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman（日本語版は準備中）
+    15 · マルチエージェントシステム
   
 
     
@@ -1064,6 +1069,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 · 画像・ブラウザエージェント
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1071,7 +1094,7 @@
   <span class="md-ellipsis">
     
   
-    16 · Vision & Browser（日本語版は準備中）
+    16 · 画像・ブラウザエージェント
   
 
     
@@ -1080,6 +1103,189 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#where-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        いつ、どこで実行するか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vision-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        画像が観測としてループに入る仕組み
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 画像を見て予想する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 画像エージェントを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B. 画像エージェントを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b1-load-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1. 入力画像を読み込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2-create-the-image-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2. 画像エージェントを作る
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3-give-your-agent-the-pixels-and-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3. 画像とタスクを渡す
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. LLMなしでブラウザ操作を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. ブラウザエージェントを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="D. ブラウザエージェントを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-import-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. 必要な機能を読み込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-define-the-browser-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. ブラウザエージェントを定義する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-open-the-browser-and-add-the-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. ブラウザを開いてタスクを追加する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最初の結果を残してページを変更する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トラブル対処と出典
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1100,7 +1306,7 @@
   <span class="md-ellipsis">
     
   
-    17 · 完了確認（日本語版は準備中）
+    17 · 完了確認
   
 
     
@@ -1228,6 +1434,180 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#where-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        いつ、どこで実行するか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vision-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        画像が観測としてループに入る仕組み
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 画像を見て予想する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 画像エージェントを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B. 画像エージェントを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b1-load-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1. 入力画像を読み込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2-create-the-image-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2. 画像エージェントを作る
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3-give-your-agent-the-pixels-and-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3. 画像とタスクを渡す
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. LLMなしでブラウザ操作を確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. ブラウザエージェントを作る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="D. ブラウザエージェントを作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-import-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. 必要な機能を読み込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-define-the-browser-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. ブラウザエージェントを定義する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-open-the-browser-and-add-the-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. ブラウザを開いてタスクを追加する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最初の結果を残してページを変更する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トラブル対処と出典
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1243,10 +1623,408 @@
 
 
 
-<h1 id="week-4-vision-browser">Japanese edition — To be released<a class="headerlink" href="#week-4-vision-browser" title="この見出しへのリンク">&para;</a></h1>
-<p><strong>Week 04 Japanese edition: To be released.</strong></p>
-<p>第04週の日本語版は準備中です。現在は英語版のみ公開しています。</p>
-<p>Use the <strong>EN</strong> language switch above to read the released English lesson.</p>
+<h1 id="week-4-vision-browser">16 · 画像・ブラウザエージェント<a class="headerlink" href="#week-4-vision-browser" title="この見出しへのリンク">&para;</a></h1>
+<p><strong>目標：</strong>画像を読むエージェントと、スクリーンショットを使ってウェブページを確認するエージェントを作ります。</p>
+<p><strong>始める前に：</strong><a href="../week-4-preview/#exercise-files">第04週の準備</a>と、<a href="../week-4-preview/#evidence-file">記録用の<code translate="no">evidence.md</code>、<code translate="no">evidence-files</code>の作成</a>を終えてください。同じ<code translate="no">week04-exercises</code>内の、有効化したターミナルを使います。ブラウザの実習にはChromeが必要です。</p>
+<table>
+<thead>
+<tr>
+<th>ファイルなど</th>
+<th>状態と使い方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">week04_common.py</code>、<code translate="no">week04_browser.py</code>、<code translate="no">prepare_visuals.py</code></td>
+<td>ZIPに入っています。指定されたときに既存のファイルを開きます。</td>
+</tr>
+<tr>
+<td><code translate="no">assets/venue.png</code>、<code translate="no">assets/venue.html</code></td>
+<td>準備で配布の<code translate="no">prepare_visuals.py</code>を実行すると生成されます。ない場合はAの前に実行します。</td>
+</tr>
+<tr>
+<td><code translate="no">my_vision.py</code>、<code translate="no">my_browser_check.py</code>、<code translate="no">my_browser.py</code></td>
+<td>配布されません。下の手順で別々に作ります。</td>
+</tr>
+<tr>
+<td><code translate="no">before.png</code>、<code translate="no">after.png</code></td>
+<td>ブラウザの直接操作テストで生成されます。成功するまではありません。</td>
+</tr>
+<tr>
+<td><code translate="no">outputs/browser-*.png</code></td>
+<td>ブラウザエージェントのコールバックが生成します。実行するまではありません。</td>
+</tr>
+<tr>
+<td><code translate="no">evidence.md</code>、<code translate="no">evidence-files</code></td>
+<td>準備で自分で作成しました。同じメモとフォルダーに結果を残します。</td>
+</tr>
+</tbody>
+</table>
+<p>エージェントの回答はターミナルで読みます。会場図と保存したスクリーンショットは画像ビューアーで確認します。ブラウザ演習では別のChromeウィンドウが開きます。</p>
+<h2 id="where-and-when">いつ、どこで実行するか<a class="headerlink" href="#where-and-when" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>Pythonはコードエディターに書いて保存し、コマンドはターミナルで実行します。</strong>Windowsは<strong>コマンドプロンプト</strong>、Macは<strong>ターミナル</strong>を使い、第04週の環境を有効にしてください。現在のフォルダーは、<code translate="no">requirements.txt</code>、補助ファイル、自分の<code translate="no">my_*.py</code>がある<strong><code translate="no">week04-exercises</code></strong>です。プロンプトに<strong><code translate="no">(.venv)</code></strong>があるか確認します。新しいターミナルを開いた場合は、<a href="../week-4-preview/#activate-environment">第04週のフォルダー移動と有効化</a>を先に行ってください。</p>
+<p>各<strong>実行</strong>欄のコマンドだけを入力し、<strong>Enter</strong>を押します。Pythonの<code translate="no">&gt;&gt;&gt;</code>、教材のウェブページ、Chromeの開発者コンソールには入力しません。処理が終わり、ターミナルの入力待ちに戻ってから次のコマンドへ進みます。</p>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>実行するタイミング</th>
+<th>コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aの前</td>
+<td>会場のファイルがない場合のみ。ページを編集する前に行います。</td>
+<td><code translate="no">python prepare_visuals.py</code></td>
+</tr>
+<tr>
+<td>B・最初の画像</td>
+<td>B1〜B3を<code translate="no">my_vision.py</code>に追加して保存し、予想を書いた後。</td>
+<td><code translate="no">python my_vision.py</code></td>
+</tr>
+<tr>
+<td>B・質問の変更</td>
+<td>最初の回答を残し、タスクの質問を変えて同じファイルを保存した後。</td>
+<td><code translate="no">python my_vision.py</code></td>
+</tr>
+<tr>
+<td>C・ブラウザの直接確認</td>
+<td><code translate="no">my_browser_check.py</code>を作成して保存した後。Dの前に成功させます。</td>
+<td><code translate="no">python my_browser_check.py</code></td>
+</tr>
+<tr>
+<td>D・ブラウザエージェント</td>
+<td>Cが成功し、D1〜D3を<code translate="no">my_browser.py</code>に追加・保存した後。</td>
+<td><code translate="no">python my_browser.py</code></td>
+</tr>
+<tr>
+<td>D・ページの変更</td>
+<td>元のスクリーンショットを保存し、<code translate="no">assets/venue.html</code>を編集・保存し、予想を書いた後。</td>
+<td><code translate="no">python my_browser.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>すべて<strong>同じ、有効化済みの<code translate="no">week04-exercises</code>のターミナル</strong>で実行します。AはPythonを動かさず画像を観察します。<code translate="no">my_vision.py</code>はB1〜B3、<code translate="no">my_browser.py</code>はD1〜D3を終えてから実行してください。CとDではプログラムがChromeを開いて操作するため、HTMLを先に手動で開く必要はありません。</p>
+<p>架空の会場図を使います。画像には部屋の名前があり、ブラウザのページはクリック後に追加の利用案内を表示します。検索結果や取得したページの文章と、実際に描画された画面を見て操作することは区別してください。</p>
+<h2 id="vision-memory">画像が観測としてループに入る仕組み<a class="headerlink" href="#vision-memory" title="この見出しへのリンク">&para;</a></h2>
+<p>画像と言語を扱うモデルは、文章だけでなくピクセルも受け取ります。最初に<code translate="no">images=[image]</code>を渡すと、タスクの入力に画像が付きます。ブラウザでは操作後に初めて重要な情報が現れることがあるため、その変化を判断するには新しいスクリーンショットが必要です。</p>
+<p><a class="course-figure-link" href="../images/huggingface-week04/vision-memory.png"><img alt="CodeAgentの最初の画像入力と操作後のスクリーンショット観測を示すHFの図" src="../images/huggingface-week04/vision-memory.png" /></a></p>
+<details class="info">
+<summary>この図の説明を読む</summary>
+<p>最初の画像は、依頼と一緒に<strong>TaskStep</strong>へ渡されます。その後、モデルがアクションを選び、PCが実行します。ブラウザの操作後に撮った画像は<strong>ActionStep</strong>の観測となり、次のモデル問い合わせへ送られます。最初の画像を与えることと、操作後の新しい画面を観測させることを分けて読んでください。</p>
+<p>図の記録名には古い表記もあります。この演習のコードでは、画像を入れる場所は<code translate="no">ActionStep.observations_images</code>、履歴は<code translate="no">agent.memory.steps</code>です。PNGをディスクへ保存するだけではモデルに画像は届きません。コールバックが観測へ追加し、その画像を受けたモデルが次の判断をします。図をクリックすると拡大できます。</p>
+</details>
+<p><a href="../images/huggingface-week04/vision-memory.png">元の大きさで開く</a></p>
+<p><em>元の図を変更せず使用：<a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">HF Vision and Browser Agents</a>。タスクの画像から、その後のアクションのスクリーンショットへ流れをたどってください。</em></p>
+<p>図で、タスク入力から操作後の観測へ画像がどう渡るかを確認します。コールバックが撮影し、次の行動を決めるのはモデルです。使うコードでは<code translate="no">ActionStep.observations_images</code>に画像を付け、<code translate="no">agent.memory.steps</code>に履歴を保存します。</p>
+<p><strong>コードを書く前に：</strong>最初の画像を使うループとブラウザのループを1つずつ描き、新しい画像が入る場所を示してください。コールバックがPNGを保存するだけで、観測に付けなかった場合を予想します。後のブラウザ実行では、操作、画像、その後の回答を対応させます。</p>
+<details class="success">
+<summary>考え方を確認する</summary>
+<p>ファイルを保存することとモデルへ画像を届けることは別です。後の問い合わせで送る観測に画像を含める必要があります。それがなければ、モデルは古い画面や推測に基づいて答える可能性があります。</p>
+</details>
+<p>別の例として、任意の<a href="https://www.youtube.com/watch?v=rObJel7-OLc">HFブラウザ実演動画</a>も見られます。操作の直後で止め、次のスクリーンショットを探してください。以下の実習はダウンロード内の会場図を使います。</p>
+<h2 id="predict">A. 画像を見て予想する<a class="headerlink" href="#predict" title="この見出しへのリンク">&para;</a></h2>
+<p>エクスプローラー／Finderで<strong><code translate="no">week04-exercises</code> → <code translate="no">assets</code> → <code translate="no">venue.png</code></strong>を開きます。<strong>準備で生成プログラムを実行すれば存在する画像</strong>です。空の同名ファイルを作らないでください。ない場合は上の準備リンクへ戻ります。</p>
+<p>モデルを呼ぶ前に、<code translate="no">evidence.md</code>の<strong>Topic 16 → Image predictions</strong>に次の回答を書いてください。</p>
+<p><strong>1. 画像から直接分かることを3つ、この画像では答えられない質問を1つ挙げてください。</strong></p>
+<details class="success">
+<summary>画像の解答1 — 見える事実と不足する情報</summary>
+<p>例として、左上にENTRANCE（入口）、右上にSTAGE（舞台）、左下にBUFFET（ビュッフェ）があります。右下にはEXIT（出口）があります。今その出口が開いているかは分かりません。実際に見えるものを3つ選び、本当に不足している情報を1つ挙げます。</p>
+</details>
+<p><strong>2. 出口は開いていますか？</strong></p>
+<details class="success">
+<summary>画像の解答2 — 出口の利用状況</summary>
+<p>EXITのラベルはありますが、現在の開閉状況は示されていません。「出口の表示がある」は裏付けられても、「今利用できる」とは判断できません。</p>
+</details>
+<p><strong>3. 色の付いた四角形だけで、利用可能なバリアフリー経路を確認できますか？</strong></p>
+<details class="success">
+<summary>画像の解答3 — アクセシビリティ</summary>
+<p>できません。色や位置だけでは、段差、通路、扉の幅、現在の利用状況は分かりません。見える配置と、別の根拠が必要な情報を分けます。</p>
+</details>
+<p>予想を保存します。会場図を作る配布プログラムはLLMを使いませんが、次のプログラムでは使います。</p>
+<h2 id="initial-image">B. 画像エージェントを作る<a class="headerlink" href="#initial-image" title="この見出しへのリンク">&para;</a></h2>
+<p>コードエディターの<strong>新しいテキストファイル → 名前を付けて保存</strong>で、<strong><code translate="no">week04-exercises</code>内の<code translate="no">week04_common.py</code>と同じ場所</strong>に<strong><code translate="no">my_vision.py</code></strong>を作ります。配布ファイルではありません。<strong>Ctrl + S</strong>または<strong>Command + S</strong>で、拡張子を<code translate="no">.py</code>にして保存します。既存のファイルを置き換える場合は、先にコピーを残してください。</p>
+<p>同じファイルへ<strong>B1 → B2 → B3</strong>の順に追加し、各段階で保存します。実行するのはB3の後です。</p>
+<p><strong>このファイルの役割 — <code translate="no">my_vision.py</code>：</strong>Groq上の画像対応モデルを使い、生成された会場図を読みます。独自の検索・ブラウザツールは登録しません。ターミナルの回答を、開いた画像と比較します。</p>
+<h3 id="b1-load-the-input">B1. 入力画像を読み込む<a class="headerlink" href="#b1-load-the-input" title="この見出しへのリンク">&para;</a></h3>
+<p>最初にこのブロックを貼り付け、<code translate="no">assets/venue.png</code>を画像として開きます。</p>
+<div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">"assets/venue.png"</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>B1の説明 — 画像オブジェクト</summary>
+<p><code translate="no">root</code>は保存したスクリプト自身のフォルダーを示します。Pillowが生成済みのPNGを読み、色の形式を変えます。この段階ではエージェントを作らず、Groqへ画像も送りません。ファイル名の文字列だけでは画像入力になりません。</p>
+</details>
+<h3 id="b2-create-the-image-agent">B2. 画像エージェントを作る<a class="headerlink" href="#b2-create-the-image-agent" title="この見出しへのリンク">&para;</a></h3>
+<p>B1の下に追加します。<code translate="no">tools=[]</code>と、トピック15のWeb調査役のツール一覧を比較してください。検索ツールがなくても、このエージェントには何ができるでしょうか？<code translate="no">evidence.md</code>に回答を書きます。</p>
+<div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[],</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>B2の説明 — 画像エージェントの作成</summary>
+<p>ここで新しい<code translate="no">CodeAgent</code>を作ります。<code translate="no">tools=[]</code>は独自の検索・ブラウザツールを登録しない指定です。組み込みの最終回答ツールは使えます。<code translate="no">model=build_model()</code>でGroqにつなぎ、<code translate="no">max_steps=3</code>でアクションの上限を指定します。画像は検索ツールではなく、次の段階で入力として渡します。</p>
+</details>
+<h3 id="b3-give-your-agent-the-pixels-and-a-task">B3. 画像とタスクを渡す<a class="headerlink" href="#b3-give-your-agent-the-pixels-and-a-task" title="この見出しへのリンク">&para;</a></h3>
+<p>最後のブロックを追加し、同じファイルを保存します。実行前に、確認できそうなラベル1つと、分からない情報1つを予想してください。</p>
+<div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">"Inspect this fictional venue plan. Name the labeled areas and their relative positions. Separate visible facts from assumptions. Can the image prove whether the exit is currently open? State uncertainty."</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>B3の説明 — パスではなく画像を送る</summary>
+<p><code translate="no">run_task</code>で実行が始まります。<code translate="no">images=[image]</code>が実際の画像をタスクへ付けます。質問文にファイルパスを書くだけでは画像を添付できません。モデルが正しく読めたと決めつけず、自分の予想と回答を比較してください。</p>
+</details>
+<p><strong>確認：</strong>どの段階でエージェントを作り、どの段階で画像を渡しますか？検索ツールがないのはなぜですか？</p>
+<details class="success">
+<summary>作成の解答 — 画像エージェント</summary>
+<p><strong>B2で作り、B3で画像を付けて実行します。</strong>B3で渡した画像はウェブ検索なしで説明できます。B1は入力を読み込むだけです。独自ツールが空でも、LLMを使わないという意味ではありません。</p>
+</details>
+<p><strong>いつ：</strong>B1〜B3をすべて追加・保存し、確認問題と画像の予想を書いた後です。<strong>どこで：</strong>現在のフォルダーが<strong><code translate="no">week04-exercises</code></strong>になっている、有効化済みのターミナルです。</p>
+<p><strong>実行：</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>my_vision.py
+</code></pre></div>
+<p>必要ならGroqキーを入力し、最終結果が表示されて入力待ちに戻るまで待ちます。<strong>確認すること：</strong>ラベルや位置の説明を実際の画像と比べてください。裏付けられる記述と、不確か／裏付けのない記述を<code translate="no">evidence.md</code>に1つずつ残します。このプログラムは文章を表示し、新しい画像は生成しません。</p>
+<p><strong>別の質問を試す：</strong>元のタスク文と回答をメモに残します。既存の<strong><code translate="no">my_vision.py</code></strong>の下にある<code translate="no">run_task(...)</code>全体だけを、次のブロックに置き換えてください。上のインポート、画像の読み込み、エージェント作成は変えず、同じファイルへ保存します。</p>
+<p><strong>変更の役割：</strong>同じ画像と同じGroqエージェントに、段差のない経路について質問します。結果はターミナルに表示されます。</p>
+<div class="highlight"><span class="filename">Replace only the run_task call in existing my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">"Describe a step-free route from ENTRANCE to BUFFET. Separate visible layout from missing accessibility information."</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>変更の説明を読む</summary>
+<p>変わるのはタスクの文章だけです。<code translate="no">images=[image]</code>で同じ画像を送り、同じ種類のエージェントとモデルを使います。同じ根拠に別の質問をした結果を比べられます。</p>
+</details>
+<p><strong>いつ：</strong>最初のタスクと結果を<code translate="no">evidence.md</code>に残し、上のタスク呼び出しだけを変更して<strong><code translate="no">my_vision.py</code>を再保存した後</strong>です。<strong>どこで：</strong>同じ<strong><code translate="no">week04-exercises</code></strong>の有効化済みターミナルです。</p>
+<p><strong>再実行：</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>my_vision.py
+</code></pre></div>
+<p>結果を待ち、変更した質問と実際の回答を同じ<code translate="no">evidence.md</code>に記します。</p>
+<p><strong>4. この画像だけで、段差のない経路を確認できますか？どの情報が不足していますか？</strong></p>
+<details class="success">
+<summary>画像の解答4 — 質問を変えた結果</summary>
+<p>できません。相対的な配置は分かっても、スロープ、段差、幅、通路の状態は確認できません。位置関係を説明し、足りないアクセシビリティ情報を示します。次のブラウザでは文章の利用案内が加わりますが、それも新しい観測であり、現地の経路を独立に確認したことにはなりません。</p>
+</details>
+<p><strong>確認：</strong>2つの質問と回答の比較、回答1〜4を<code translate="no">evidence.md</code>に残します。<code translate="no">my_vision.py</code>は保存したまま使い、別の画像用プログラムは作りません。</p>
+<h2 id="browser-check">C. LLMなしでブラウザ操作を確認する<a class="headerlink" href="#browser-check" title="この見出しへのリンク">&para;</a></h2>
+<ol>
+<li>エディターで<strong><code translate="no">week04-exercises</code></strong>を開き、<code translate="no">requirements.txt</code>と<code translate="no">week04_common.py</code>を確認します。</li>
+<li><strong>ファイル → 新しいテキストファイル → 名前を付けて保存</strong>で、同じ場所に<strong><code translate="no">my_browser_check.py</code></strong>を作ります。<strong>ZIPには入っていません。ここで作成します。</strong></li>
+<li>次のコード全体を貼り付けます。</li>
+<li><strong>Ctrl + S</strong>または<strong>Command + S</strong>で保存します。<code translate="no">.py.txt</code>ではなく<code translate="no">.py</code>とし、<code translate="no">.venv</code>、<code translate="no">lessons</code>、<code translate="no">assets</code>の中には保存しません。</li>
+</ol>
+<p><strong>このファイルの役割 — <code translate="no">my_browser_check.py</code>：</strong>別のChromeでローカルの会場ページを開き、詳細ボタンを押し、<code translate="no">before.png</code>と<code translate="no">after.png</code>を保存します。Seleniumを使い、LLMは使いません。2つの画像を開いて、観測の変化を確認します。</p>
+<div class="highlight"><span class="filename">my_browser_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"before.png"</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">1</span><span class="p">]())</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"after.png"</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Compare before.png and after.png"</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<details class="info">
+<summary>コードの説明を読む</summary>
+<table>
+<thead>
+<tr>
+<th>コード</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">BrowserSession()</code></td>
+<td>配布の補助クラスで別のChromeセッションを開始します。対応ドライバーを取得することがあります。LLMは使いません。</td>
+</tr>
+<tr>
+<td><code translate="no">browser.tools[0]()</code></td>
+<td><code translate="no">open_venue</code>を直接呼び、生成済みのローカルHTMLを開きます。</td>
+</tr>
+<tr>
+<td>最初の<code translate="no">save_screenshot</code></td>
+<td>ターミナルの現在のフォルダーへ<code translate="no">before.png</code>を生成します。</td>
+</tr>
+<tr>
+<td><code translate="no">browser.tools[1]()</code></td>
+<td><code translate="no">show_access_details</code>を呼び、ページのボタンをクリックします。</td>
+</tr>
+<tr>
+<td>2つ目の<code translate="no">save_screenshot</code></td>
+<td>クリック後の<code translate="no">after.png</code>を生成します。</td>
+</tr>
+<tr>
+<td><code translate="no">finally: browser.close()</code></td>
+<td>途中で失敗してもChromeを閉じます。</td>
+</tr>
+</tbody>
+</table>
+<p>Chromeがすぐ閉じても、後で保存したPNGを確認できます。モデルを加える前に、ページと操作ツールが動くか調べるテストです。成功という文字列だけでなく、画像を確認してください。</p>
+</details>
+<p><strong>いつ：</strong><code translate="no">my_browser_check.py</code>にコード全体を貼り付けて保存し、<code translate="no">assets/venue.html</code>があることを確認した後です。<strong>Dの作成・実行の前にこのテストを成功させます。</strong> <strong>どこで：</strong>有効化済みの<strong><code translate="no">week04-exercises</code></strong>のターミナルです。</p>
+<p><strong>実行：</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>my_browser_check.py
+</code></pre></div>
+<p>プログラムがChromeを開き、クリックし、撮影して自動で閉じます。ターミナルが入力待ちに戻るまで待ってください。Chromeやドライバーのエラーは、エージェントを動かす前に解決します。</p>
+<p><strong>確認すること：</strong>Chromeが閉じたら、エクスプローラー／Finderで<code translate="no">week04-exercises</code>直下の<strong><code translate="no">before.png</code></strong>と<strong><code translate="no">after.png</code></strong>を開きます。プログラムが生成する画像で、自分で作ったりダウンロードしたりしません。ない場合はエラーを確認します。再実行すると同名の画像は置き換わります。</p>
+<p><strong>1. クリック後に何が変わりましたか？</strong></p>
+<details class="success">
+<summary>ブラウザの解答1 — 観測の変化</summary>
+<p><code translate="no">before.png</code>には利用案内の段落がなく、<code translate="no">after.png</code>には「The east exit is closed for maintenance（東側の出口は整備のため閉鎖）」と「Use the north entrance for accessible entry（利用しやすい入口として北側を使用）」が表示されるはずです。自分の画像にその文字があるか確認してください。見えていなければ成功とはしません。</p>
+</details>
+<p><strong>2. この直接テストから何が分かり、何は分かりませんか？</strong></p>
+<details class="success">
+<summary>ブラウザの解答2 — 直接テストの範囲</summary>
+<p>ローカルページの読み込み、クリック、画像の変化を確認できます。モデルは使わないため、モデルがクリックを選んだことや、画像を受け取って理解したことは示せません。</p>
+</details>
+<p><code translate="no">evidence.md</code>に両方の画像名、変わった文章、回答1〜2を記します。確認用にPNGを残し、画像の代わりにHTMLソースを貼らないでください。</p>
+<h2 id="browser-loop">D. ブラウザエージェントを作る<a class="headerlink" href="#browser-loop" title="この見出しへのリンク">&para;</a></h2>
+<p><strong><code translate="no">week04-exercises</code>内のほかのプログラムと同じ場所</strong>に<strong><code translate="no">my_browser.py</code></strong>を作ります。配布ファイルではありません。同じファイルへD1、D2、D3の順に追加し、保存します。古い版を置き換える場合は、先に作業のコピーを残してください。</p>
+<p>このエージェントはローカルページを開き、詳細ボタンを押し、新しいスクリーンショットから質問に答えます。コールバックが各ブラウザ操作と、次にモデルが受け取る画像をつなぎます。</p>
+<p><strong>このファイルの役割 — <code translate="no">my_browser.py</code>：</strong>Groqがローカルページで行う操作を選び、操作後の画像を受け取ります。SeleniumがChromeを操作し、観測画像を<code translate="no">outputs/browser-*.png</code>に保存します。ターミナル、画像の順番、最終回答を確認します。</p>
+<h3 id="d1-import-the-parts">D1. 必要な機能を読み込む<a class="headerlink" href="#d1-import-the-parts" title="この見出しへのリンク">&para;</a></h3>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
+</code></pre></div>
+<details class="info">
+<summary>D1の説明 — ツールとスクリーンショット</summary>
+<p><code translate="no">BrowserSession</code>が操作ツールと撮影コールバックを用意します。インポートだけではモデルを使うエージェントは作られません。次のブロックで<code translate="no">CodeAgent</code>を作ります。</p>
+</details>
+<h3 id="d2-define-the-browser-agent">D2. ブラウザエージェントを定義する<a class="headerlink" href="#d2-define-the-browser-agent" title="この見出しへのリンク">&para;</a></h3>
+<p>D1の下にこの関数を追加します。ブラウザツールと撮影コールバックを持つエージェントを作る関数で、D3から呼びます。</p>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_browser_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">browser</span><span class="p">):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">return</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="n">tools</span><span class="o">=</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="n">step_callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">browser</span><span class="o">.</span><span class="n">capture</span><span class="p">],</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>D2の説明 — 操作後の画像を受け取る</summary>
+<p><code translate="no">tools=browser.tools</code>が開く・クリックする操作を登録します。<code translate="no">step_callbacks=[browser.capture]</code>は各ステップ後に画像を撮影して観測へ付けます。コールバックはPNGを<code translate="no">outputs</code>へ保存し、<code translate="no">ActionStep.observations_images</code>と現在のURLを設定し、古い画像を履歴から外します。保存だけではモデルに画像は届きません。コールバックは観測を用意し、操作を選ぶのはエージェントです。</p>
+</details>
+<h3 id="d3-open-the-browser-and-add-the-task">D3. ブラウザを開いてタスクを追加する<a class="headerlink" href="#d3-open-the-browser-and-add-the-task" title="この見出しへのリンク">&para;</a></h3>
+<p>最後のブロックを追加します。<code translate="no">try</code>の内側を表示どおり字下げし、<code translate="no">finally</code>は<code translate="no">try</code>と同じ位置にします。正常終了やエラーの後にChromeを閉じるための処理です。実行前に保存してください。</p>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">agent</span> <span class="o">=</span> <span class="n">build_browser_agent</span><span class="p">(</span><span class="n">build_model</span><span class="p">(),</span> <span class="n">browser</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s2">"""Use open_venue first, then inspect its screenshot.</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s2">In a separate action step call show_access_details. Inspect the NEW screenshot</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s2">before answering: which exit is closed and which entrance is recommended?</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s2">Describe the visual evidence and explain what the original venue plan alone</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s2">could not establish. Do not combine both tool calls in one action step.</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s2">"""</span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<details class="info">
+<summary>D3の説明 — 作成・実行・終了処理</summary>
+<p>セッションがChromeを起動します。<code translate="no">build_browser_agent</code>でそのセッションを使う新しいエージェントを作り、<code translate="no">run_task</code>で判断を始めます。タスクは開く操作の後に別ステップのクリックを求め、2つの画面を比較できるようにします。<code translate="no">finally</code>は成功時も失敗時もChromeを閉じます。番号付きのPNGは実行時に生成されます。<code translate="no">browser-*.png</code>は複数のファイルを表す書き方で、<code translate="no">*</code>を含む名前のファイルを自分で作る指示ではありません。</p>
+</details>
+<p><strong>確認：</strong>B2のエージェントと比べてください。操作と新しい観測をつなぐ2つの設定は何ですか？コールバックがなかったらどうなりますか？</p>
+<details class="success">
+<summary>作成の解答 — ブラウザエージェント</summary>
+<p><code translate="no">tools=browser.tools</code>で操作を使え、<code translate="no">step_callbacks=[browser.capture]</code>で操作後の新しい画像を受け取れます。コールバックがなければ、このプログラムの観測ループでは新しい画面をモデルへ渡せません。「クリックした」という文字だけでは、何が表示されたか分かりません。</p>
+</details>
+<p><strong>いつ：</strong>Cが成功し、D1〜D3をすべて<code translate="no">my_browser.py</code>に追加・保存し、確認問題に答えた後です。<strong>どこで：</strong>有効化済みの<strong><code translate="no">week04-exercises</code></strong>のターミナルです。</p>
+<p><strong>実行：</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python<span class="w"> </span>my_browser.py
+</code></pre></div>
+<p>必要ならGroqキーを入力します。プログラムがChromeを操作し、最終結果とターミナルの入力待ちが戻るまで待ちます。<strong>確認すること：</strong><code translate="no">open_venue</code>と<code translate="no">show_access_details</code>が別々に呼ばれたか調べ、<strong><code translate="no">week04-exercises/outputs</code></strong>の番号付きPNGを開いて操作と照合してください。他のステップ後も撮影するため、画像が2枚より多い場合があります。枚数を決めつけず、実際のファイル名を使います。</p>
+<p><strong>1. 閉鎖されている出口と推奨される入口はどれですか？何が根拠ですか？</strong></p>
+<details class="success">
+<summary>エージェントの解答1 — 最初の根拠</summary>
+<p>クリック後の画面に、東側の出口が閉鎖中で、北側の入口を使うよう表示されます。最初の会場図だけでは分からなかった情報です。「Clicked」というツールの文字だけでなく、クリック後に返された画像が根拠になっているか確認します。</p>
+</details>
+<p><strong>2. 両方のツールが1つのアクションステップで実行されたらどうなりますか？</strong></p>
+<details class="success">
+<summary>エージェントの解答2 — 異なる画面を比べる</summary>
+<p>ステップ末尾の撮影では、最後の画面だけが残る場合があります。その場合は最終状態しか得られなかったと記します。D3のタスクが全部コピーされ、別ステップでの実行を求めているか確認してください。前後比較には各操作後の画像が必要です。</p>
+</details>
+<p><strong>3. コールバックの担当は何ですか？</strong></p>
+<details class="success">
+<summary>エージェントの解答3 — 観測と判断</summary>
+<p>操作を選ぶのはエージェント／モデルです。コールバックは現在の画面を撮影し、次のモデル呼び出し用にステップへ追加します。クリックを選んだり、正しい読み取りを保証したりはしません。<code translate="no">images=[image]</code>は最初のタスク画像、コールバックは操作後の新しい観測です。</p>
+</details>
+<h3 id="browser-comparison">最初の結果を残してページを変更する<a class="headerlink" href="#browser-comparison" title="この見出しへのリンク">&para;</a></h3>
+<p><strong>次の実行前に、生成された結果を残してください。</strong></p>
+<ol>
+<li>準備で作った<strong><code translate="no">evidence-files</code></strong>を開き、ファイルマネージャーの<strong>新しいフォルダー</strong>で中に<strong><code translate="no">browser-baseline</code></strong>を作ります。自分で作る保存先であり、Pythonが生成するフォルダーではありません。</li>
+<li>実際の<code translate="no">outputs/browser-*.png</code>をそこへコピーします。<code translate="no">evidence.md</code>には最初の操作と回答の抜粋、対応する画像名を記します。</li>
+<li>エディターで<strong>生成済みの<code translate="no">assets/venue.html</code></strong>を開きます。新しいHTMLや教材のページではなく、このファイルの利用案内の段落から次の文章を探してください。</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>The east exit is closed for maintenance. Use the north entrance for accessible entry.
+</code></pre></div>
+<ol>
+<li>この2文だけを次の架空のテスト情報へ置き換えます。HTMLタグとボタンは変えません。</li>
+</ol>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>The west exit is closed for maintenance. Use the south entrance for accessible entry.
+</code></pre></div>
+<ol>
+<li><code translate="no">assets/venue.html</code>を保存し、<code translate="no">evidence.md</code>に新しい回答を予想します。<strong><code translate="no">prepare_visuals.py</code>は再実行しません。</strong>元の文章に戻ってしまいます。</li>
+<li><strong>1〜5を終えてから</strong>、<strong>同じ<code translate="no">week04-exercises</code>の有効化済みターミナル</strong>で<strong><code translate="no">python my_browser.py</code></strong>を再実行します。新しいChromeセッションで保存済みのページが開きます。最終結果と入力待ちが戻ってから7へ進みます。ページの変化に答えが追随するか確認するため、<code translate="no">my_browser.py</code>は変更しません。</li>
+<li><code translate="no">evidence-files</code>内に<strong><code translate="no">browser-revised</code></strong>を作り、新しい<code translate="no">outputs/browser-*.png</code>をコピーします。番号はセッションごとに最初へ戻るため元の出力が上書きされることがあります。2つの保存先を比較に使います。</li>
+</ol>
+<p><strong>4. 新しい回答は変更後のスクリーンショットに合っていますか？</strong></p>
+<details class="success">
+<summary>エージェントの解答4 — ページ変更後の比較</summary>
+<p>保存した編集後の実行では、表示される案内が<strong>西側の出口</strong>と<strong>南側の入口</strong>を示すはずです。保存済みの東／北の画像と比べてください。西／南の画面に対して東／北と答えたら裏付けがありません。保存したか、正しいページを開いたか、新しい画像がエージェントに届いたかを調べ、実際の結果を残します。</p>
+</details>
+<p><strong>5. 回答がページと一致しても、何が不確かなままですか？</strong></p>
+<details class="success">
+<summary>エージェントの解答5 — 残る限界</summary>
+<p>画像はこの架空のページに何と書かれているかを裏付けるもので、現地の経路を独立して確かめたことにはなりません。実際の利用条件は分からず、モデルが読み間違えることもあります。</p>
+</details>
+<p><strong>確認：</strong>3つのPythonファイル、<code translate="no">evidence.md</code>、直接確認の<code translate="no">before.png</code>と<code translate="no">after.png</code>、変更前後の画像フォルダーを保存します。<code translate="no">assets/venue.html</code>には編集を残し、変えた2文も記録してください。記録した後で元の文章に戻しても構いませんが、比較結果は消さないでください。</p>
+<h2 id="credit">トラブル対処と出典<a class="headerlink" href="#credit" title="この見出しへのリンク">&para;</a></h2>
+<p>会場図やページがない場合は、<strong>現在のフォルダーを<code translate="no">week04-exercises</code>にした有効化済みターミナル</strong>で、配布の<strong><code translate="no">python prepare_visuals.py</code></strong>を実行してからAへ戻ります。既存の画像とページを置き換えるため、残したいHTMLの編集は先に記録してください。ChromeのエラーではインストールとSelenium Managerによる対応ドライバーの取得を確認します。学内ネットワークの制限などは教員への相談が必要なこともあります。画像リクエストやモデル制限のエラーでは利用権限を確認し、最新の画像だけを渡します。画像がモデルへ届いていない文章だけの回答では、画像実習の成功とは言えません。</p>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">my_*.py</code>で<code translate="no">No such file</code></td>
+<td>手順どおりに指定ファイルを作り、保存場所と<code translate="no">.py</code>拡張子を確認します。</td>
+</tr>
+<tr>
+<td><code translate="no">week04_...</code>のインポートエラー</td>
+<td>展開先と配布ファイル、<code translate="no">requirements.txt</code>をインストールした環境を使っているか確認します。</td>
+</tr>
+<tr>
+<td><code translate="no">before.png</code>／<code translate="no">after.png</code>がない</td>
+<td>直接テストが成功していないか、違うフォルダーで実行しています。エラーと現在のフォルダーを調べます。</td>
+</tr>
+<tr>
+<td><code translate="no">outputs</code>がない</td>
+<td>レポートや撮影の成功前は存在しない場合があります。空の代わりを作らないでください。</td>
+</tr>
+<tr>
+<td>変更後も元の文章が出る</td>
+<td>別のコピーではなく、保存した<code translate="no">assets/venue.html</code>を確認します。生成プログラムを再実行していないか、新しい画像かも調べます。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>出典：</strong>最初の画像入力とスクリーンショット観測の仕組みは<a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">HF Vision and Browser Agents</a>を参考にしています。Apache-2.0。会場の素材と操作範囲を限定したSeleniumツールはこの教材用です。画像リクエストが拒否された場合は、<a href="https://console.groq.com/docs/vision">Groqの画像入力ガイド</a>と自分のモデル利用権限を確認してください。</p>
+<p><strong>次：</strong><a href="../week-4-completion/">17 · 完了確認</a>。</p>
 
 
 
@@ -1282,7 +2060,7 @@
       <nav class="md-footer__inner md-grid" aria-label="フッター" >
         
           
-          <a href="../week-4-batman/" class="md-footer__link md-footer__link--prev" aria-label="前: 15 · Batman（日本語版は準備中）">
+          <a href="../week-4-batman/" class="md-footer__link md-footer__link--prev" aria-label="前: 15 · マルチエージェントシステム">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1292,20 +2070,20 @@
                 前
               </span>
               <div class="md-ellipsis">
-                15 · Batman（日本語版は準備中）
+                15 · マルチエージェントシステム
               </div>
             </div>
           </a>
         
         
           
-          <a href="../week-4-completion/" class="md-footer__link md-footer__link--next" aria-label="次: 17 · 完了確認（日本語版は準備中）">
+          <a href="../week-4-completion/" class="md-footer__link md-footer__link--next" aria-label="次: 17 · 完了確認">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 次
               </span>
               <div class="md-ellipsis">
-                17 · 完了確認（日本語版は準備中）
+                17 · 完了確認
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1349,6 +2127,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>

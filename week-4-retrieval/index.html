@@ -23,7 +23,7 @@
     
     
       
-        <title>14 · Agentic RAG continuation - Agent Lab</title>
+        <title>14 · Week 3 RAG understanding check - Agent Lab</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              14 · Agentic RAG continuation
+              14 · Week 3 RAG understanding check
             
           </span>
         </div>
@@ -145,10 +145,10 @@
     
       
 
-<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition — To be released">
+<a class="md-header__button md-icon course-translate" href="../ja/week-4-retrieval/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  <span>日本語 · To be released</span>
-</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
 
     
     
@@ -1020,7 +1020,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG continuation
+    14 · Week 3 RAG understanding check
   
 
     
@@ -1038,7 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG continuation
+    14 · Week 3 RAG understanding check
   
 
     
@@ -1076,7 +1076,7 @@
   <a href="#retrieve-first" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Retrieve first, then generate
+        Read the evidence
       
     </span>
   </a>
@@ -1087,7 +1087,7 @@
   <a href="#compare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compare and understand
+        Compare and check understanding
       
     </span>
   </a>
@@ -1117,7 +1117,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman multi-agent exercise
+    15 · Multi-agent systems
   
 
     
@@ -1322,7 +1322,7 @@
   <a href="#retrieve-first" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Retrieve first, then generate
+        Read the evidence
       
     </span>
   </a>
@@ -1333,7 +1333,7 @@
   <a href="#compare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compare and understand
+        Compare and check understanding
       
     </span>
   </a>
@@ -1357,156 +1357,62 @@
 
 
 
-<h1 id="week-4-retrieval">14 · Agentic RAG continuation<a class="headerlink" href="#week-4-retrieval" title="Permanent link">&para;</a></h1>
+<h1 id="week-4-retrieval">14 · Check your Week 3 RAG understanding<a class="headerlink" href="#week-4-retrieval" title="Permanent link">&para;</a></h1>
+<p><strong>Quick recap:</strong> RAG retrieves relevant passages so the model can answer from evidence. Agentic RAG lets the agent choose when and what to retrieve. Check the source; say when evidence is missing.</p>
+<p><strong>Objective:</strong> check whether an answer is supported by retrieved text.</p>
 <div class="admonition note">
-<p class="admonition-title">Required in Week 4</p>
-<p>We revisit the Agentic RAG work from Week 3. Start with <a href="../week-3-completion/">13 · Week 3 completion checks</a>, then review <a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a>. RAG was optional in Week 3; <strong>this review and continuation are required in Week 4</strong>.</p>
+<p class="admonition-title">Return to Week 3 for the practical</p>
+<p>If you have not done the RAG practical, return to <a href="../week-3-retrieval/">12 · Building Agentic RAG Systems</a> and follow its existing setup, file-creation and run instructions in <strong><code translate="no">First_agent_template</code></strong>. If you already did it, review your saved code and trace. <a href="../week-3-completion/#optional-rag">13 · Week 3 completion checks</a> lists the earlier files. Do not recreate them in <code translate="no">week04-exercises</code> or install RAG packages in the Week 4 environment.</p>
 </div>
-<p><strong>Goal:</strong> distinguish a retrieved passage from a model claim. If you completed the earlier RAG exercise, bring its output for comparison. If you skipped it, review the retrieval loop in the linked lesson, then complete the exercise below. Prepare the <a href="../week-4-preview/#exercise-files">Week 04 files</a>; this download supplies the retrieval notes and support code you need.</p>
-<p><strong>Before starting:</strong> finish <a href="../week-4-preview/#exercise-files">Week 4 setup</a>, including <a href="../week-4-preview/#evidence-file">creating <code translate="no">evidence.md</code></a>. Work in <code translate="no">week04-exercises</code>, not the Week 3 folder.</p>
-<table>
-<thead>
-<tr>
-<th>File</th>
-<th>Status in this lesson</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code translate="no">week04_common.py</code>, <code translate="no">week04_retriever.py</code></td>
-<td>Already supplied. The five notes are inside the retriever file; no separate note-data file is missing.</td>
-</tr>
-<tr>
-<td><code translate="no">my_rag_continuation.py</code></td>
-<td>Not supplied; create it below.</td>
-</tr>
-<tr>
-<td><code translate="no">evidence.md</code></td>
-<td>You created it during Week 4 setup. Open and update that existing file.</td>
-</tr>
-</tbody>
-</table>
+<p>Answer the questions using your Week 3 results or the provided example below. Label your notes <strong>“Week 3 run”</strong> or <strong>“provided example”</strong> so you can tell which evidence you used. You do not need a new Python program for this review.</p>
+<p><strong>Where to write:</strong> open the existing <code translate="no">evidence.md</code> you created in <a href="../week-4-preview/#evidence-file">Week 4 setup</a>, under <strong>Topic 14 — Week 3 RAG review</strong>. Write your answers in that file.</p>
 <h2 id="bm25">What is BM25?<a class="headerlink" href="#bm25" title="Permanent link">&para;</a></h2>
-<p><strong>BM25 is a keyword-based method for ranking documents against a search query.</strong> It helps the retriever decide which notes to return first. It does not write an answer or check whether a claim is true.</p>
-<p>It considers:</p>
-<ul>
-<li><strong>Matching words:</strong> which query terms occur in a document.</li>
-<li><strong>How distinctive they are:</strong> words that occur in fewer documents usually carry more weight.</li>
-<li><strong>How often they occur:</strong> repeated matches can help, but their benefit levels off.</li>
-<li><strong>Document length:</strong> longer documents are adjusted so they do not gain an advantage simply by containing more words.</li>
-</ul>
-<p>In this exercise, BM25 runs locally over the five supplied party notes. It uses no LLM, embeddings, or vector database. The Groq model separately chooses a query, receives the returned passages as observations, and generates an answer.</p>
-<p><strong>Example:</strong> a note naming superhero dishes can support a dish suggestion. It cannot establish an allergy policy that is absent from the notes, even if the retriever ranks it highly. Word matching also does not automatically understand synonyms.</p>
-<p>Our tool requests the top <strong>five</strong> results from a collection of <strong>five</strong> short notes. It can therefore return all five even when the query has little or no useful evidence. <strong>Returned results are candidates to inspect, not proof that an answer exists.</strong></p>
-<p><strong>Technical reference:</strong> <a href="https://www.elastic.co/docs/reference/elasticsearch/index-settings/similarity#bm25-similarity-default">BM25 scoring and normalization</a>. You do not need its formula to complete this exercise.</p>
-<h2 id="retrieve-first">Retrieve first, then generate<a class="headerlink" href="#retrieve-first" title="Permanent link">&para;</a></h2>
-<ol>
-<li>In your code editor, open the <strong><code translate="no">week04-exercises</code></strong> folder that contains <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code>.</li>
-<li>Choose <strong>File → New Text File</strong>, then <strong>File → Save As</strong>. Save it as <strong><code translate="no">my_rag_continuation.py</code></strong> directly in that folder. <strong>This file is not included in the ZIP; you create it now.</strong></li>
-<li>Paste the complete code below into that file.</li>
-<li>Save with <strong>Ctrl + S</strong> on Windows or <strong>Command + S</strong> on Mac. The filename must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>. Do not save inside <code translate="no">.venv</code>, <code translate="no">lessons</code>, or <code translate="no">assets</code>.</li>
-</ol>
-<p><strong>What this file does — <code translate="no">my_rag_continuation.py</code>:</strong> Searches the supplied five party notes locally, then asks a Groq agent to retrieve and answer with source labels. The first terminal section uses no LLM; the second uses an LLM. Inspect both outputs.</p>
-<div class="highlight"><span class="filename">my_rag_continuation.py</span><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_retriever</span><span class="w"> </span><span class="kn">import</span> <span class="n">party_planning_retriever</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"DIRECT RETRIEVAL — NO LLM"</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">party_planning_retriever</span><span class="p">(</span><span class="s2">"superhero catering"</span><span class="p">))</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">party_planning_retriever</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">())</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s2">"Use party_planning_retriever for superhero catering. Suggest one dish and cite its source label. Then say whether these notes establish the caterer's allergy policy. Do not invent a policy."</span><span class="p">)</span>
+<p><strong>BM25 ranks documents using keyword matches.</strong> It considers how often query words occur, how distinctive they are across the collection, and document length; repeated matches have diminishing benefit. It retrieves candidate passages; it does not generate an answer or verify a claim.</p>
+<p>In the Week 3 example BM25 searches five local party notes, without an LLM, embeddings or a vector database. The model separately chooses a query and writes an answer from the returned observations. The tool requests up to five results from five short notes, so it can return notes even when none contains the requested fact. A high rank is not proof that an answer exists, and keyword matching does not automatically resolve synonyms.</p>
+<p>Reference: <a href="https://www.elastic.co/docs/reference/elasticsearch/index-settings/similarity#bm25-similarity-default">BM25 scoring and normalization</a>. No formula is required for this review.</p>
+<h2 id="retrieve-first">Read the evidence<a class="headerlink" href="#retrieve-first" title="Permanent link">&para;</a></h2>
+<p><strong>Read this example; do not paste it into a Python file or run it.</strong> It shows the main steps of the Week 3 retrieval loop. Your own tool output may contain several notes.</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Task: Suggest a superhero dish and cite its source.
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Agent action: party_planning_retriever(query="superhero catering")
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Tool observation:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  For catering, serve dishes named after superheroes, like
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  'The Hulk's Green Smoothie' and 'Iron Man's Power Steak.'
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  Source: Catering Ideas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Final answer: Try The Hulk's Green Smoothie [Catering Ideas].
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Second query: caterer allergy policy
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Observation: the five party notes contain no allergy policy.
 </code></pre></div>
-<details class="info">
-<summary>Explain my_rag_continuation.py</summary>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>What it means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The imports</td>
-<td>Load CodeAgent, the supplied Groq/settings helpers and the supplied retrieval-tool object. You do not copy its implementation into this file.</td>
-</tr>
-<tr>
-<td><code translate="no">if __name__ == "__main__":</code></td>
-<td>Run these steps when you run this file as a program.</td>
-</tr>
-<tr>
-<td>The first <code translate="no">print</code></td>
-<td>Label the direct check so you can distinguish it from the agent trace.</td>
-</tr>
-<tr>
-<td><code translate="no">party_planning_retriever("superhero catering")</code></td>
-<td>Search the supplied notes directly on your PC, without a model call.</td>
-</tr>
-<tr>
-<td><code translate="no">CodeAgent(tools=[party_planning_retriever], ...)</code></td>
-<td>Register that same tool so the model can request retrieval during its own loop.</td>
-</tr>
-<tr>
-<td><code translate="no">build_model()</code></td>
-<td>Prepare the Groq connection and ask for your hidden key if needed.</td>
-</tr>
-<tr>
-<td><code translate="no">**agent_options()</code></td>
-<td>Insert the classroom action format, step limit and terminal logging settings.</td>
-</tr>
-<tr>
-<td><code translate="no">run_task(agent, "...")</code></td>
-<td>Give the task to the model, run its actions and print the final result.</td>
-</tr>
-</tbody>
-</table>
-<p>The direct tool result is not the agent's action. Check the later trace separately. BM25 may return documents even when the answer is absent; the model must inspect their contents.</p>
-</details>
-<p><strong>Run:</strong> <code translate="no">python my_rag_continuation.py</code>. Enter your Groq key if prompted. Read the terminal, not a browser chat.</p>
-<p><strong>What to check:</strong> first find <code translate="no">DIRECT RETRIEVAL — NO LLM</code> and its returned notes. Then find the agent's separate retrieval call, its observation and final answer. Under Topic 14 in your existing <code translate="no">evidence.md</code>, paste one passage/source and the actual agent call. You do not create another output file for this program; its results are printed in the terminal.</p>
-<h2 id="compare">Compare and understand<a class="headerlink" href="#compare" title="Permanent link">&para;</a></h2>
-<p>These are guided code-reading and result checks, not independent coding challenges. Try each question before expanding its answer. Record answers 1–4 under <strong>Topic 14</strong> in your existing <code translate="no">evidence.md</code>; select/copy a short terminal excerpt where requested. To “underline,” mark the passage with <code translate="no">**...**</code> in your note or identify its exact sentence and source label. The answers describe what to look for; keep what happened in <strong>your</strong> run.</p>
-<p><strong>1. Underline the returned passage and its source label that support the suggested dish.</strong></p>
+<h2 id="compare">Compare and check understanding<a class="headerlink" href="#compare" title="Permanent link">&para;</a></h2>
+<p>Try each question before opening its answer. Quote the action, passage and source from either your Week 3 results or the provided example.</p>
+<p><strong>1. Underline the passage and source label supporting the suggested dish. What does that passage establish?</strong></p>
 <details class="success">
-<summary>Answer 1 — supporting passage and source</summary>
-<p>If the model suggests <strong>The Hulk's Green Smoothie</strong> or <strong>Iron Man's Power Steak</strong>, underline that dish name in the returned catering passage and <strong><code translate="no">Source: Catering Ideas</code></strong>. That passage supports the dish idea; it says nothing about ingredients or allergy policy. If your model suggests another dish, check whether the notes actually name it; do not invent supporting evidence.</p>
+<summary>Answer 1 — passage and source</summary>
+<p>Mark <strong>“The Hulk's Green Smoothie”</strong> in the catering passage and <strong><code translate="no">Source: Catering Ideas</code></strong>. They support the dish suggestion, not ingredients or allergy handling. In your note, use bold text or quote the exact words.</p>
 </details>
-<p><strong>2. Find the actual retrieval call in the agent trace. Did the model use the passage or answer from memory?</strong></p>
+<p><strong>2. Which line demonstrates agent retrieval? How does it differ from a direct Python tool check?</strong></p>
 <details class="success">
-<summary>Answer 2 — retrieval evidence</summary>
-<p>Look for an executed <strong><code translate="no">party_planning_retriever(query=...)</code></strong> call, followed by the returned passage/source label and a final answer consistent with that observation. The earlier <strong><code translate="no">DIRECT RETRIEVAL — NO LLM</code></strong> output is a direct Python call, not evidence that the agent retrieved anything. If the agent never called the tool, it has not demonstrated Agentic RAG. A trace shows the retrieved evidence available to the model; it does not prove that the model used no prior knowledge.</p>
+<summary>Answer 2 — an executed retrieval action</summary>
+<p>The agent action <code translate="no">party_planning_retriever(query="superhero catering")</code>, followed by its returned passage, demonstrates retrieval in the loop. A direct tool test alone does not show the model chose a retrieval action. Matching the final claim to the passage shows available support; it cannot prove the model used no prior knowledge.</p>
 </details>
-<p><strong>3. Change the query to <code translate="no">caterer allergy policy</code>. Run again. Do the returned notes contain a policy?</strong></p>
-<p>First paste the baseline query/task and result into the existing <code translate="no">evidence.md</code>. Then open the <strong>existing <code translate="no">my_rag_continuation.py</code></strong> and <strong>replace its entire contents</strong> with the complete policy-query version below. The title is a version label: save the file with the same name <code translate="no">my_rag_continuation.py</code>, not a new longer name. Do not append this program to the original.</p>
-<p><strong>What this version does — <code translate="no">my_rag_continuation.py</code>:</strong> runs a direct local search and a Groq agent search for the supplied allergy-policy question. The data still comes from the same five notes, and results appear in the terminal. You do not write another prompt yourself.</p>
-<div class="highlight"><span class="filename">my_rag_continuation.py — policy-query version</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_retriever</span><span class="w"> </span><span class="kn">import</span> <span class="n">party_planning_retriever</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"DIRECT RETRIEVAL — NO LLM"</span><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">party_planning_retriever</span><span class="p">(</span><span class="s2">"caterer allergy policy"</span><span class="p">))</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">party_planning_retriever</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">())</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s2">"Use party_planning_retriever to search for caterer allergy policy. State whether the returned notes establish a policy. Cite any supporting source; if none does, say the policy is not provided."</span><span class="p">)</span>
-</code></pre></div>
-<details class="info">
-<summary>Explain the policy-query version</summary>
-<p>The imports and agent wiring are unchanged. The direct query and the supplied agent task both now ask about allergy policy. BM25 can still return party notes; the model must say when those notes lack the requested policy. Replacing only the direct-call query would not change the agent's task, which is why the complete replacement is given here.</p>
-</details>
-<p>Save and run <strong><code translate="no">python my_rag_continuation.py</code></strong> again. Record the actual result under Topic 14 in the existing note.</p>
+<p><strong>3. For the second query, do the notes contain an allergy policy? Why might BM25 still return results?</strong></p>
 <details class="success">
-<summary>Answer 3 — unsupported query</summary>
-<p><strong>No.</strong> The five notes contain party ideas, including dishes, but no caterer's allergy policy. BM25 can still return notes because this tool returns the top five without an evidence threshold. A suitable answer is: <strong>“The supplied notes do not provide the caterer's allergy policy.”</strong> This does not mean that the caterer has no policy; it means this collection does not establish one.</p>
+<summary>Answer 3 — missing evidence</summary>
+<p><strong>No.</strong> Ranking the top five notes does not require any note to contain a policy. Say <strong>“The supplied notes do not provide the caterer's allergy policy.”</strong> This does not establish that the caterer has no policy.</p>
 </details>
-<p><strong>4. Explain why a cautious answer is better supported than a detailed invented policy.</strong></p>
+<p><strong>4. Rewrite this unsupported answer: “The caterer guarantees a nut-free menu and checks every guest's allergies.” What should happen next?</strong></p>
 <details class="success">
 <summary>Answer 4 — a supported limitation</summary>
-<p>“The notes do not provide this policy” accurately describes the available evidence. A detailed policy would add unsupported claims, such as ingredients, allergen handling, or guarantees. The next step is to obtain an authoritative policy from the caterer, then answer from that source. More detail does not make an unsupported answer more reliable.</p>
+<p><strong>“The notes do not establish the allergy policy; obtain the caterer's authoritative policy before answering.”</strong> A detailed guarantee would invent evidence. More confident wording cannot repair a missing source.</p>
 </details>
-<p><strong>Checkpoint:</strong> save <code translate="no">my_rag_continuation.py</code> and <code translate="no">evidence.md</code>. Show one successful direct retrieval, one executed agent retrieval, a source-supported claim, and an unsupported-policy result. Restore the original query/task if you want to repeat the baseline later; do not delete the comparison from your note.</p>
-<p><strong>Credit:</strong> adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents">HF Retrieval Agents</a>; original five-document BM25 example, Apache-2.0. The supplied <code translate="no">HF-LICENSE.txt</code> retains the license.</p>
-<p><strong>Next:</strong> <a href="../week-4-batman/">15 · Batman multi-agent exercise</a>.</p>
+<p><strong>5. Put these in order: final answer, retrieval observation, model chooses a query, tool searches the notes. Which part runs without an LLM?</strong></p>
+<details class="success">
+<summary>Answer 5 — the loop</summary>
+<p>Model chooses a query → tool searches the notes → retrieval observation → final answer. BM25's local search does not use an LLM; query selection and answer generation do.</p>
+</details>
+<p><strong>Checkpoint:</strong> save answers 1–5 in <code translate="no">evidence.md</code> and name the evidence you used. For more coding practice, return to <a href="../week-3-retrieval/">Week 3’s RAG practical</a>. Next, you will build a team of agents.</p>
+<p><strong>Credit:</strong> review adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents">HF Retrieval Agents</a>, Apache-2.0. See Week 3 for the RAG practical.</p>
+<p><strong>Next:</strong> <a href="../week-4-batman/">15 · Build the Batman agent team</a>.</p>
 
 
 
@@ -1559,13 +1465,13 @@
         
         
           
-          <a href="../week-4-batman/" class="md-footer__link md-footer__link--next" aria-label="Next: 15 · Batman multi-agent exercise">
+          <a href="../week-4-batman/" class="md-footer__link md-footer__link--next" aria-label="Next: 15 · Multi-agent systems">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                15 · Batman multi-agent exercise
+                15 · Multi-agent systems
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1609,6 +1515,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>

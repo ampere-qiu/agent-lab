@@ -23,7 +23,7 @@
     
     
       
-        <title>14 · Agentic RAG（日本語版は準備中） - Agent Lab</title>
+        <title>14 · 第03週のRAG理解度チェック - Agent Lab</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bm25" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              14 · Agentic RAG（日本語版は準備中）
+              14 · 第03週のRAG理解度チェック
             
           </span>
         </div>
@@ -944,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    第04週 · 日本語版は準備中 (To be released)
+    第04週 · smolagents Part 2
   
 
     
@@ -960,7 +965,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    第04週 · 日本語版は準備中 (To be released)
+    第04週 · smolagents Part 2
   
 
           </label>
@@ -980,7 +985,7 @@
   <span class="md-ellipsis">
     
   
-    第04週 · 日本語版 To be released
+    第04週 · 学習計画とダウンロード
   
 
     
@@ -1008,6 +1013,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 · 第03週のRAG理解度チェック
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1015,7 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG（日本語版は準備中）
+    14 · 第03週のRAG理解度チェック
   
 
     
@@ -1024,6 +1047,56 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bm25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BM25とは？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieve-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        根拠を読む
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比較して理解を確かめる
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1044,7 +1117,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman（日本語版は準備中）
+    15 · マルチエージェントシステム
   
 
     
@@ -1072,7 +1145,7 @@
   <span class="md-ellipsis">
     
   
-    16 · Vision & Browser（日本語版は準備中）
+    16 · 画像・ブラウザエージェント
   
 
     
@@ -1100,7 +1173,7 @@
   <span class="md-ellipsis">
     
   
-    17 · 完了確認（日本語版は準備中）
+    17 · 完了確認
   
 
     
@@ -1228,6 +1301,47 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bm25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BM25とは？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieve-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        根拠を読む
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比較して理解を確かめる
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1243,10 +1357,63 @@
 
 
 
-<h1 id="week-4-retrieval">Japanese edition — To be released<a class="headerlink" href="#week-4-retrieval" title="この見出しへのリンク">&para;</a></h1>
-<p><strong>Week 04 Japanese edition: To be released.</strong></p>
-<p>第04週の日本語版は準備中です。現在は英語版のみ公開しています。</p>
-<p>Use the <strong>EN</strong> language switch above to read the released English lesson.</p>
+<h1 id="week-4-retrieval">14 · 第03週のRAGを確認する<a class="headerlink" href="#week-4-retrieval" title="この見出しへのリンク">&para;</a></h1>
+<p><strong>要点：</strong>RAGは関連する文章を取得し、モデルがその根拠を使って回答する仕組みです。Agentic RAGでは、いつ、何を取得するかをエージェントが選びます。出典を確認し、情報がなければ不足していると伝えます。</p>
+<p><strong>目標：</strong>取得した文章が回答を裏付けているか確認します。</p>
+<div class="admonition note">
+<p class="admonition-title">コードの実習は第03週へ</p>
+<p>RAG実習がまだの場合は、<a href="../week-3-retrieval/">12 · Agentic RAGシステムを作る</a>へ戻り、<strong><code translate="no">First_agent_template</code></strong>で準備・ファイル作成・実行の手順を進めてください。実習済みなら、保存したコードと実行記録を見直します。<a href="../week-3-completion/#optional-rag">13 · 第03週の完了確認</a>に対象ファイルの一覧があります。<code translate="no">week04-exercises</code>に同じファイルを作り直したり、第04週の環境にRAG用パッケージを追加したりする必要はありません。</p>
+</div>
+<p>第03週の自分の結果、または下の例を使って問題に答えます。何を根拠にしたか分かるよう、メモに<strong>「Week 3 run（第03週の実行）」</strong>または<strong>「provided example（教材の例）」</strong>と記してください。今回の確認用に新しいPythonプログラムは作りません。</p>
+<p><strong>記入する場所：</strong><a href="../week-4-preview/#evidence-file">第04週の準備</a>で作成した<code translate="no">evidence.md</code>を開き、<strong>Topic 14 — Week 3 RAG review</strong>の下に回答を書きます。</p>
+<h2 id="bm25">BM25とは？<a class="headerlink" href="#bm25" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>BM25は、キーワードの一致を使って文書を順位付けする方法です。</strong>検索語の出現回数、文書全体の中でその語がどれだけ珍しいか、文書の長さなどを考慮します。同じ語を繰り返す効果には上限があります。候補の文章を取得するための方法であり、回答を生成したり、主張の正しさを検証したりするものではありません。</p>
+<p>第03週の例では、BM25がPC上の5つのパーティーメモを検索します。LLM、埋め込み、ベクトルデータベースは使いません。一方、検索語を選び、返された観測結果から回答を書くのはモデルです。ツールは5つの短いメモから最大5件を返すため、質問に必要な情報がなくても結果が出ることがあります。上位に出たというだけでは、答えが含まれている証拠にはなりません。また、キーワード検索が自動で同義語を理解するとは限りません。</p>
+<p>参考：<a href="https://www.elastic.co/docs/reference/elasticsearch/index-settings/similarity#bm25-similarity-default">BM25のスコアと正規化</a>。今回の確認に数式は必要ありません。</p>
+<h2 id="retrieve-first">根拠を読む<a class="headerlink" href="#retrieve-first" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>次は読むための例です。Pythonファイルに貼り付けたり実行したりしないでください。</strong>第03週の検索ループの主な流れを示しています。自分のツール出力には、複数のメモが含まれることがあります。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Task: Suggest a superhero dish and cite its source.
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Agent action: party_planning_retriever(query="superhero catering")
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Tool observation:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  For catering, serve dishes named after superheroes, like
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  'The Hulk's Green Smoothie' and 'Iron Man's Power Steak.'
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  Source: Catering Ideas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Final answer: Try The Hulk's Green Smoothie [Catering Ideas].
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Second query: caterer allergy policy
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Observation: the five party notes contain no allergy policy.
+</code></pre></div>
+<p>例では、エージェントが料理案を検索し、<code translate="no">Catering Ideas</code>という出典ラベルの文章を受け取っています。2つ目の検索語<code translate="no">caterer allergy policy</code>は「ケータリング業者のアレルギー対応方針」です。</p>
+<h2 id="compare">比較して理解を確かめる<a class="headerlink" href="#compare" title="この見出しへのリンク">&para;</a></h2>
+<p>解答を開く前に、自分で答えてください。第03週の出力または教材の例から、実際のアクション、文章、出典を引用します。</p>
+<p><strong>1. おすすめの料理を裏付ける文章と出典ラベルを示してください。その文章から何が分かりますか？</strong></p>
+<details class="success">
+<summary>解答1 — 文章と出典</summary>
+<p>料理の文章にある<strong>「The Hulk's Green Smoothie」</strong>と<strong><code translate="no">Source: Catering Ideas</code></strong>を示します。料理案の根拠にはなりますが、材料やアレルギー対応の根拠にはなりません。メモでは太字にするか、該当する語句をそのまま引用してください。</p>
+</details>
+<p><strong>2. どの行から、エージェントが検索したと分かりますか？Pythonからツールを直接試す場合と何が違いますか？</strong></p>
+<details class="success">
+<summary>解答2 — 実行された検索アクション</summary>
+<p><code translate="no">party_planning_retriever(query="superhero catering")</code>というエージェントのアクションと、その後に返された文章です。ツールを直接呼んだ結果だけでは、モデルが検索を選んだことは示せません。回答と取得文を照合すれば利用可能な根拠を確認できますが、モデルが事前知識を一切使わなかったとまでは証明できません。</p>
+</details>
+<p><strong>3. 2つ目の質問について、メモにアレルギー対応方針はありますか？それでもBM25が結果を返すのはなぜですか？</strong></p>
+<details class="success">
+<summary>解答3 — 根拠の不足</summary>
+<p><strong>ありません。</strong>上位5件を返す処理は、どれかに方針が書いてあることを条件にしていません。<strong>「配布されたメモには、業者のアレルギー対応方針が示されていません」</strong>と答えます。「業者に方針がない」という意味ではありません。</p>
+</details>
+<p><strong>4. 「この業者はナッツを使わないメニューを保証し、全参加者のアレルギーを確認します」という、根拠のない回答を書き直してください。次に何をすべきですか？</strong></p>
+<details class="success">
+<summary>解答4 — 根拠に合った限界の伝え方</summary>
+<p><strong>「このメモではアレルギー対応方針を確認できません。業者の正式な方針を入手してから答える必要があります」</strong>とします。詳しい保証を書くと、根拠を作り足してしまいます。断定的な表現にしても、足りない出典は補えません。</p>
+</details>
+<p><strong>5. 「最終回答」「検索の観測結果」「モデルが検索語を選ぶ」「ツールがメモを検索する」を順番に並べてください。LLMを使わないのはどの部分ですか？</strong></p>
+<details class="success">
+<summary>解答5 — 処理の流れ</summary>
+<p>モデルが検索語を選ぶ → ツールがメモを検索する → 検索の観測結果 → 最終回答、の順です。BM25によるローカル検索はLLMを使いません。検索語の選択と回答の生成にはLLMを使います。</p>
+</details>
+<p><strong>確認：</strong>回答1〜5を<code translate="no">evidence.md</code>に保存し、使った根拠を記してください。コードの練習は<a href="../week-3-retrieval/">第03週のRAG実習</a>へ戻ります。次は複数のエージェントを連携させます。</p>
+<p><strong>出典：</strong><a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/retrieval_agents">HF Retrieval Agents</a>を基にした復習です。Apache-2.0。RAGの実習は第03週にあります。</p>
+<p><strong>次：</strong><a href="../week-4-batman/">15 · Batmanエージェントチームを作る</a>。</p>
 
 
 
@@ -1282,7 +1449,7 @@
       <nav class="md-footer__inner md-grid" aria-label="フッター" >
         
           
-          <a href="../week-4-preview/" class="md-footer__link md-footer__link--prev" aria-label="前: 第04週 · 日本語版 To be released">
+          <a href="../week-4-preview/" class="md-footer__link md-footer__link--prev" aria-label="前: 第04週 · 学習計画とダウンロード">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1292,20 +1459,20 @@
                 前
               </span>
               <div class="md-ellipsis">
-                第04週 · 日本語版 To be released
+                第04週 · 学習計画とダウンロード
               </div>
             </div>
           </a>
         
         
           
-          <a href="../week-4-batman/" class="md-footer__link md-footer__link--next" aria-label="次: 15 · Batman（日本語版は準備中）">
+          <a href="../week-4-batman/" class="md-footer__link md-footer__link--next" aria-label="次: 15 · マルチエージェントシステム">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 次
               </span>
               <div class="md-ellipsis">
-                15 · Batman（日本語版は準備中）
+                15 · マルチエージェントシステム
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1349,6 +1516,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>

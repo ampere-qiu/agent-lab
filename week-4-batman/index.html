@@ -23,7 +23,7 @@
     
     
       
-        <title>15 · Batman multi-agent exercise - Agent Lab</title>
+        <title>15 · Multi-agent systems - Agent Lab</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#why-teams" class="md-skip">
+        <a href="#multi-agent-concepts" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15 · Batman multi-agent exercise
+              15 · Multi-agent systems
             
           </span>
         </div>
@@ -145,10 +145,10 @@
     
       
 
-<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition — To be released">
+<a class="md-header__button md-icon course-translate" href="../ja/week-4-batman/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  <span>日本語 · To be released</span>
-</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
 
     
     
@@ -1013,7 +1013,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG continuation
+    14 · Week 3 RAG understanding check
   
 
     
@@ -1048,7 +1048,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman multi-agent exercise
+    15 · Multi-agent systems
   
 
     
@@ -1066,7 +1066,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman multi-agent exercise
+    15 · Multi-agent systems
   
 
     
@@ -1090,28 +1090,79 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#multi-agent-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part A · Understand multi-agent systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part A · Understand multi-agent systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#why-teams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Understand what a team changes
+        1. What makes a system multi-agent?
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the concept before the example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#batman-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part B · Main exercise: Batman research team
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part B · Main exercise: Batman research team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#team-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See the required team and the optional extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#plan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Read the supplied roles and return contract
+        2. Understand each agent’s role
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#tool-check" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1121,63 +1172,74 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#build-team" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Create the complete two-agent program
+        4. Build the agents one at a time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#small-handoff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Run the supplied one-location handoff
+        5. Test one filming claim
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#full-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Run the supplied full task and inspect the report
+        6. Research four locations and inspect the report
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#audit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Check and explain the supplied program
+        7. Check and explain the team you built
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#research-limits" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        If the service refuses a request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#optional-verifier" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Optional challenge: design and add a new verifier agent
+        8. Optional challenge: add a verifier agent
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1185,6 +1247,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1374,28 +1441,79 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#multi-agent-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part A · Understand multi-agent systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part A · Understand multi-agent systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#why-teams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Understand what a team changes
+        1. What makes a system multi-agent?
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check the concept before the example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#batman-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part B · Main exercise: Batman research team
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part B · Main exercise: Batman research team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#team-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See the required team and the optional extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#plan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Read the supplied roles and return contract
+        2. Understand each agent’s role
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#tool-check" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1405,63 +1523,74 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#build-team" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Create the complete two-agent program
+        4. Build the agents one at a time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#small-handoff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Run the supplied one-location handoff
+        5. Test one filming claim
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#full-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Run the supplied full task and inspect the report
+        6. Research four locations and inspect the report
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#audit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Check and explain the supplied program
+        7. Check and explain the team you built
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#research-limits" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        If the service refuses a request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#optional-verifier" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Optional challenge: design and add a new verifier agent
+        8. Optional challenge: add a verifier agent
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1469,6 +1598,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1489,11 +1623,41 @@
 
 
 
-<h1 id="week-4-batman">15 · Batman: build and investigate an agent team<a class="headerlink" href="#week-4-batman" title="Permanent link">&para;</a></h1>
-<p><strong>Required guided practical: copy the complete code, run it, and explain the manager/web-specialist loop. Optional independent challenge: add a third verifier agent.</strong></p>
+<h1 id="week-4-batman">15 · Multi-agent systems<a class="headerlink" href="#week-4-batman" title="Permanent link">&para;</a></h1>
+<p><em>Reference: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">Hugging Face Multi-Agent Systems</a>. Follow the arrows: a request goes down and evidence must come back up.</em></p>
+<p><strong>Objective:</strong> understand agent roles and delegation, then build the Batman research team.</p>
+<p>Start with <strong>Part A: how agents work together</strong>, then build the Batman team in <strong>Part B</strong>. Adding a third agent is optional.</p>
+<h2 id="multi-agent-concepts">Part A · Understand multi-agent systems<a class="headerlink" href="#multi-agent-concepts" title="Permanent link">&para;</a></h2>
+<p><a class="course-figure-link" href="../images/huggingface-week04/multi-agent-architecture.png"><img alt="HF original manager, code tool, and web-agent architecture" src="../images/huggingface-week04/multi-agent-architecture.png" /></a></p>
+<p><em>Figure from Hugging Face, unchanged. <a href="../images/huggingface-week04/multi-agent-architecture.png">Open the full-size figure</a>.</em></p>
+<h3 id="why-teams">1. What makes a system multi-agent?<a class="headerlink" href="#why-teams" title="Permanent link">&para;</a></h3>
+<p>An <strong>agent</strong> has a model-driven decision loop, instructions, tools and its own execution history. A <strong>multi-agent system</strong> connects two or more of these agents so they can divide work and exchange results. A <strong>role</strong> describes a responsibility; a <strong>handoff</strong> is the request and information passed between agents.</p>
+<p>A single CodeAgent can search, read pages, calculate, and write a report. That makes it a useful baseline: there is only one execution history to inspect. However, a long research task puts search snippets, page text, calculation output, and reporting decisions into that same history. An agent may spend attention on details irrelevant to its current job, repeat searches, or lose the sources needed for a later step.</p>
+<p>A manager/specialist design gives research its own model–action–observation loop. The manager sends a goal; the specialist decides which queries and pages to use; the specialist returns a compact report. The manager continues using that report. This is different from a function tool, which runs the specified Python operation and returns its result without making its own sequence of model decisions.</p>
+<p>Both agents can share one model connection and key while maintaining different histories and available tools. Two agents do not automatically mean parallel execution: in this exercise the manager waits for the specialist's return. The handoff can reduce irrelevant detail in the manager's context, but it can also discard important evidence. Extra model calls and coordination can make a team slower or more expensive. You must evaluate the trace rather than assume that a team is better.</p>
+<p><a class="course-figure-link" href="../images/week04/multi-agent-concept.svg"><img alt="Course diagram showing separate manager and specialist decision loops, request and evidence arrows, and tools outside the agent count" src="../images/week04/multi-agent-concept.svg" /></a></p>
+<p><em>Course diagram: </em><em>2 agents</em><em> with separate loops. Tools are not additional agents. <a href="../images/week04/multi-agent-concept.svg">Enlarge the diagram</a>.</em></p>
+<h3 id="concept-check">Check the concept before the example<a class="headerlink" href="#concept-check" title="Permanent link">&para;</a></h3>
+<p><strong>1. A manager delegates to one researcher and calls a calculator. How many agents are there?</strong></p>
+<details class="success">
+<summary>Concept answer 1 — count the loops</summary>
+<p><strong>Two agents:</strong> manager and researcher. The calculator is a tool that runs a defined operation; it is not a third model-driven loop.</p>
+</details>
+<p><strong>2. If both agents share one model connection, are they the same agent?</strong></p>
+<details class="success">
+<summary>Concept answer 2 — connection versus agent</summary>
+<p>No. They remain separate agent objects with their own histories, instructions and available tools. A different model is not required for each role.</p>
+</details>
+<p><strong>3. Does a manager/specialist diagram mean the agents run in parallel or that the answer is verified?</strong></p>
+<details class="success">
+<summary>Concept answer 3 — inspect execution</summary>
+<p>No. In this exercise the manager waits for the specialist. Check the trace for actual delegation and inspect the returned sources; an extra agent or a diagram does not guarantee correctness.</p>
+</details>
+<h2 id="batman-exercise">Part B · Main exercise: Batman research team<a class="headerlink" href="#batman-exercise" title="Permanent link">&para;</a></h2>
+<p><strong>Your task:</strong> build a web specialist and a manager that work together to research locations, check sources and create a report.</p>
 <p>Alfred needs a shortlist of places where a replacement Batmobile might be found. Your team must research <strong>three Batman filming locations and one supercar factory</strong>, preserve the evidence for their roles and coordinates, calculate a classroom cargo-flight estimate to fictional Gotham, and produce a sourced table and colored coordinate map.</p>
-<p>The learning goal is to <strong>understand the supplied code and trace the information crossing the agent boundary</strong>. As in Week 3, the required programs below are complete: paste them into the named files, read the collapsed code explanations, run the given steps, and answer the checks. You do not invent role descriptions, tool wiring, task text or a required code improvement. The only independent coding challenge is the optional third agent at the end.</p>
-<p><strong>Before starting:</strong> complete <a href="../week-4-preview/#exercise-files">Week 4 setup</a> and <a href="../week-4-preview/#evidence-file">create <code translate="no">evidence.md</code> and <code translate="no">evidence-files</code></a>. If you have not done that setup, stop here and create them now. Throughout this lesson, reopen that <strong>existing</strong> note under Topic 15; do not look for a supplied <code translate="no">evidence.md</code>.</p>
+<p>First, check the research tools. Then create the specialist and manager, connect them, and test one filming claim before researching all four locations. Answer each check as you go and keep your results in <code translate="no">evidence.md</code>.</p>
+<p><strong>Before starting:</strong> complete <a href="../week-4-preview/#exercise-files">Week 4 setup</a> and <a href="../week-4-preview/#evidence-file">create <code translate="no">evidence.md</code> and <code translate="no">evidence-files</code></a>. Use the <strong>Topic 15</strong> section of that note for your answers and results.</p>
 <table>
 <thead>
 <tr>
@@ -1508,7 +1672,7 @@
 </tr>
 <tr>
 <td><code translate="no">my_batman_tools.py</code>, <code translate="no">my_batman.py</code></td>
-<td>Not supplied as files. Create each below by copying the complete given code directly into <code translate="no">week04-exercises</code>.</td>
+<td>Create these in <code translate="no">week04-exercises</code> by following steps 3 and 4.</td>
 </tr>
 <tr>
 <td><code translate="no">my_batman_verified.py</code></td>
@@ -1525,31 +1689,28 @@
 </tbody>
 </table>
 <p>Use the same activated <code translate="no">week04-exercises</code> terminal throughout. The research and model traces appear there; only the generated report is opened in a browser.</p>
-<h2 id="why-teams">1. Understand what a team changes<a class="headerlink" href="#why-teams" title="Permanent link">&para;</a></h2>
-<p>A single CodeAgent can search, read pages, calculate, and write a report. That makes it a useful baseline: there is only one execution history to inspect. However, a long research task puts search snippets, page text, calculation output, and reporting decisions into that same history. An agent may spend attention on details irrelevant to its current job, repeat searches, or lose the sources needed for a later step.</p>
-<p>A manager/specialist design gives research its own model–action–observation loop. The manager sends a goal; the specialist decides which queries and pages to use; the specialist returns a compact report. The manager continues using that report. This is different from a function tool, which runs the specified Python operation and returns its result without making its own sequence of model decisions.</p>
-<p>Both agents can share one model connection and key while maintaining different histories and available tools. Two agents do not automatically mean parallel execution: in this exercise the manager waits for the specialist's return. The handoff can reduce irrelevant detail in the manager's context, but it can also discard important evidence. Extra model calls and coordination can make a team slower or more expensive. You must evaluate the trace rather than assume that a team is better.</p>
-<p><img alt="HF original manager, code tool, and web-agent architecture" src="../images/huggingface-week04/multi-agent-architecture.png" /></p>
-<p><a href="../images/huggingface-week04/multi-agent-architecture.png">Open the full-size original</a></p>
-<p><em>Original figure, unchanged: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">Hugging Face Multi-Agent Systems</a>. Follow the arrows: a request goes down and evidence must come back up.</em></p>
-<p><strong>Think before coding:</strong> suppose the specialist returns only “Wollaton Hall is a good candidate.” What can the manager verify? What is missing for a map or a source audit?</p>
+<h3 id="team-roles">See the required team and the optional extension<a class="headerlink" href="#team-roles" title="Permanent link">&para;</a></h3>
+<p><a class="course-figure-link" href="../images/week04/batman-agent-roles.svg"><img alt="Course diagram comparing the required two-agent Batman team with the optional three-agent team, showing each role, tools and the verifier connection" src="../images/week04/batman-agent-roles.svg" /></a></p>
+<p><em>Course diagram: </em><em>required = manager + web specialist (2 agents)</em><em>. </em><em>Optional = add a verifier (3 agents total)</em><em>. <a href="../images/week04/batman-agent-roles.svg">Enlarge the diagram</a>.</em></p>
+<p>The web specialist researches. The manager coordinates, calculates and saves. In the optional challenge, add a verifier that independently checks one researched record and returns a verdict. Both specialists report to the manager; the verifier is a separate agent, not a second name for the researcher. The search/page tools, calculator and report writer do not increase the agent count.</p>
+<p><strong>Think before coding:</strong> suppose the specialist returns only “Wollaton Hall is a good candidate.” What can the manager verify? What information would you need to draw the map and check the source?</p>
 <details class="success">
 <summary>Reasoning check</summary>
 <p>The statement lacks a supporting page, coordinates and their source, the filming/factory category, and uncertainty. A persuasive summary is not a usable research record. The manager cannot reconstruct missing evidence reliably from the specialist's confidence.</p>
 </details>
-<h2 id="plan">2. Read the supplied roles and return contract<a class="headerlink" href="#plan" title="Permanent link">&para;</a></h2>
-<p>The code below already assigns the responsibilities. <strong>Read this table; you do not need to design or fill in a configuration.</strong> In the existing <code translate="no">evidence.md</code>, explain each role in your own words under Topic 15.</p>
+<h3 id="plan">2. Understand each agent’s role<a class="headerlink" href="#plan" title="Permanent link">&para;</a></h3>
+<p>The table shows what each agent will do. Before writing the code, explain the two roles in your own words under Topic 15 in <code translate="no">evidence.md</code>.</p>
 <table>
 <thead>
 <tr>
 <th>Part</th>
-<th>What the provided program gives it</th>
+<th>What you will give it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Web specialist</td>
-<td><code translate="no">WebSearchTool()</code> and <code translate="no">VisitWebpageTool()</code>; a supplied name and description requiring source-backed research and uncertainty.</td>
+<td><code translate="no">WebSearchTool(budget=budget)</code> and <code translate="no">PageExcerptTool(budget=budget)</code>; the name <code translate="no">web_specialist</code> and a description of its research role.</td>
 </tr>
 <tr>
 <td>Manager</td>
@@ -1578,15 +1739,15 @@
 </code></pre></div>
 <p><strong>1. Why does the specialist have search/page tools while the manager has the calculator/report tools?</strong></p>
 <details class="success">
-<summary>Answer 1 — supplied responsibilities</summary>
+<summary>Answer 1 — each agent’s role</summary>
 <p>The specialist gathers evidence in its own loop. The manager requests that research, uses the returned coordinates for calculations and saves the report. This separation makes delegation visible; the manager has no direct search tool to bypass it.</p>
 </details>
-<p><strong>2. Why must source URLs and uncertainty survive the handoff?</strong></p>
+<p><strong>2. Why should the specialist include source URLs and any uncertainty in its reply?</strong></p>
 <details class="success">
 <summary>Answer 2 — usable evidence</summary>
-<p>The manager and student need to check what supports each claim and coordinate. A conclusion without its evidence cannot reliably support the calculation or audit. Missing fields should remain explicitly missing until resolved.</p>
+<p>You and the manager need to check what supports each claim and coordinate. A conclusion without its evidence cannot reliably support the calculation or audit. Missing fields should remain explicitly missing until resolved.</p>
 </details>
-<h2 id="tool-check">3. Check tools and explain the estimate<a class="headerlink" href="#tool-check" title="Permanent link">&para;</a></h2>
+<h3 id="tool-check">3. Check tools and explain the estimate<a class="headerlink" href="#tool-check" title="Permanent link">&para;</a></h3>
 <p><strong>Goal:</strong> test the supplied tools without an LLM before asking a team to use them.</p>
 <ol>
 <li>In your editor, open <strong><code translate="no">week04-exercises</code></strong>, where <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> are visible.</li>
@@ -1594,15 +1755,14 @@
 <li>Paste the complete code below, then save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac).</li>
 <li>Check the name ends in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>. Keep this file out of <code translate="no">.venv</code>, <code translate="no">lessons</code> and <code translate="no">assets</code>.</li>
 </ol>
-<p>Use the supplied query and URL for this required check. Read what each call returns; you are not asked to write another query or tool. If the site is unavailable, record the actual failure and ask the instructor for an alternate source before continuing.</p>
+<p>Start with the query and URL in the code below. Read what each call returns. If the page is unavailable, record the error and check the source in your browser.</p>
 <p><strong>What this file does — <code translate="no">my_batman_tools.py</code>:</strong> Searches public web data, fetches one page, and checks a fixed coordinate through the supplied calculator. It uses no LLM. Inspect the terminal output and source page.</p>
-<div class="highlight"><span class="filename">my_batman_tools.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">VisitWebpageTool</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargo_time</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Same-coordinate classroom estimate:"</span><span class="p">,</span> <span class="n">cargo_time</span><span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">))</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">WebSearchTool</span><span class="p">()(</span><span class="s2">"Batman Wollaton Hall filming official"</span><span class="p">))</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">VisitWebpageTool</span><span class="p">()(</span><span class="s2">"https://wollatonhall.org.uk/hall-and-museum/history/"</span><span class="p">)[:</span><span class="mi">2000</span><span class="p">])</span>
+<div class="highlight"><span class="filename">my_batman_tools.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span><span class="p">,</span> <span class="n">PageExcerptTool</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargo_time</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Same-coordinate classroom estimate:"</span><span class="p">,</span> <span class="n">cargo_time</span><span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">))</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">WebSearchTool</span><span class="p">()(</span><span class="s2">"Batman Wollaton Hall filming official"</span><span class="p">))</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">PageExcerptTool</span><span class="p">()(</span><span class="s2">"https://wollatonhall.org.uk/hall-and-museum/history/"</span><span class="p">,</span> <span class="n">focus</span><span class="o">=</span><span class="s2">"Wayne Manor Batman"</span><span class="p">))</span>
 </code></pre></div>
 <details class="info">
 <summary>Explain the code</summary>
@@ -1616,7 +1776,7 @@
 <tbody>
 <tr>
 <td><code translate="no">from ... import ...</code></td>
-<td>Load the supplied search class, smolagents page-reader class and supplied calculator.</td>
+<td>Load the supplied bounded search/page classes and calculator.</td>
 </tr>
 <tr>
 <td><code translate="no">cargo_time(40.7128, -74.0060)</code></td>
@@ -1627,159 +1787,207 @@
 <td>Create a tool instance, then call it with the query. It contacts the search service and returns snippets/URLs.</td>
 </tr>
 <tr>
-<td><code translate="no">VisitWebpageTool()("...")</code></td>
-<td>Fetch text from the specified page; it does not control Chrome.</td>
-</tr>
-<tr>
-<td><code translate="no">[:2000]</code></td>
-<td>Print only the first 2,000 characters of the fetched text. Missing text may simply be farther down the page.</td>
+<td><code translate="no">PageExcerptTool()("...", focus="...")</code></td>
+<td>Fetch a focused, partial source excerpt of at most 1,600 characters. It does not control Chrome.</td>
 </tr>
 </tbody>
 </table>
-<p>Search discovers candidate sources; a fetched passage supports a specific claim. For this exercise open the returned URL yourself as well. If the relevant passage is beyond the printed slice, read it on the page or increase the slice and rerun. Do not interpret a truncated printout as the whole source.</p>
+<p>Search results help you find sources. Open a source in your browser to check whether the excerpt supports the claim. Keep the output cap: an excerpt is only part of a page, so note any information it does not establish.</p>
 </details>
 <p><strong>Run:</strong> <code translate="no">python my_batman_tools.py</code>. <strong>What to check:</strong> the same-coordinate estimate is <code translate="no">1.0</code>; search returns actual URLs; the page call returns text or an explicit failure. In the existing <code translate="no">evidence.md</code>, save one snippet URL and the page passage that supports or fails to support the claim. A blocked page is a failed observation; try another credible source and record the failure.</p>
-<p>Open the <strong>supplied, existing</strong> <code translate="no">week04_tools.py</code> beside your new runner and find <code translate="no">cargo_time</code>. Read this function in place; you do not create or paste another calculator. The formula is <code translate="no">round(distance_km * 1.1 / 750 + 1, 2)</code>: great-circle distance from fictional Gotham <code translate="no">(40.7128, -74.0060)</code>, a 10% distance allowance, 750 km/h, and a fixed hour. It is a <strong>cargo-plane classroom estimate</strong>, not a shipping schedule. The function accepts destination latitude and longitude and returns hours; it does not search for coordinates or check that a location appeared in a film.</p>
+<p>Open the supplied <code translate="no">week04_tools.py</code> and find <code translate="no">cargo_time</code>. Read the function before continuing; you will import it into your program. The formula is <code translate="no">round(distance_km * 1.1 / 750 + 1, 2)</code>: great-circle distance from fictional Gotham <code translate="no">(40.7128, -74.0060)</code>, a 10% distance allowance, 750 km/h, and a fixed hour. It is a <strong>cargo-plane classroom estimate</strong>, not a shipping schedule. The function accepts destination latitude and longitude and returns hours; it does not search for coordinates or check that a location appeared in a film.</p>
 <p><strong>Your calculation checkpoint:</strong> why does the same coordinate return <code translate="no">1.0</code>, not zero? If the assumed speed falls, does the travel estimate rise or fall? Explain which parts are assumptions and which must come from sources.</p>
 <details class="success">
 <summary>Check the estimate</summary>
 <p>The fixed hour remains even when distance is zero. Lower speed increases the distance/speed term. Source-backed coordinates are research inputs; speed, route allowance and fixed overhead are teaching assumptions. Correct arithmetic does not validate a location claim.</p>
 </details>
-<h2 id="build-team">4. Create the complete two-agent program<a class="headerlink" href="#build-team" title="Permanent link">&para;</a></h2>
-<p><strong>Goal:</strong> understand how the supplied program creates and connects two agents. All required values and connections are already written.</p>
+<h3 id="build-team">4. Build the agents one at a time<a class="headerlink" href="#build-team" title="Permanent link">&para;</a></h3>
+<p><strong>Goal:</strong> create the web specialist and manager, then connect them so the manager can delegate research.</p>
 <ol>
 <li>In your editor, open <strong><code translate="no">week04-exercises</code></strong>, where <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> are visible.</li>
-<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_batman.py</code></strong> directly beside those files. <strong>The file is not in the ZIP; you create it by copying the code below.</strong></li>
-<li>Paste the <strong>entire code block</strong>, from the imports through the final <code translate="no">run_task</code> line. There are no blanks to fill.</li>
-<li>Save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac). The filename must be <code translate="no">my_batman.py</code>, not <code translate="no">.py.txt</code>; keep it out of <code translate="no">.venv</code>, <code translate="no">lessons</code> and <code translate="no">assets</code>.</li>
-<li>If you already made the earlier scaffold, first save any results you want in <code translate="no">evidence.md</code>, then <strong>replace its contents</strong> with this complete version. Do not append a second program below it.</li>
+<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_batman.py</code></strong> directly beside them. This file is not included in the ZIP.</li>
+<li>Add blocks <strong>4A → 4B → 4C → 4D</strong> in that order to this <strong>same file</strong>. Each block goes at the bottom, after the previous one; do not replace earlier blocks or repeat the imports. Keep all lines at the indentation shown.</li>
+<li>Save after each stage with <strong>Ctrl + S</strong> or <strong>Command + S</strong>. The filename must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>. Do not run until you finish 4D; the earlier stages construct objects but do not yet assign a task.</li>
+<li>If you have an older <code translate="no">my_batman.py</code>, preserve its evidence first, then clear that file once and rebuild it in these stages. Do not append the new version to an old complete program.</li>
 </ol>
-<p><strong>What this file does — <code translate="no">my_batman.py</code>:</strong> uses Groq and live web tools to run a manager and a web specialist. The first run uses the provided one-location task and prints a sourced handoff in the terminal. The same file also contains the provided full task; a later exact one-line edit runs it and can generate <code translate="no">outputs/batman-report.html</code>.</p>
-<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span><span class="p">,</span> <span class="n">VisitWebpageTool</span>
+<p><strong>What this file does — <code translate="no">my_batman.py</code>:</strong> uses Groq and live web tools to run the two agents you create. The manager asks the web specialist for evidence, then uses local calculation/report tools. The small task prints a handoff in the terminal; the later full task can generate <code translate="no">outputs/batman-report.html</code>.</p>
+<h4 id="4a-start-the-file-imports-and-model">4A. Start the file: imports and model<a class="headerlink" href="#4a-start-the-file-imports-and-model" title="Permanent link">&para;</a></h4>
+<p>Paste this as the first block. No agents are created by these imports.</p>
+<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSearchTool</span><span class="p">,</span> <span class="n">PageExcerptTool</span><span class="p">,</span> <span class="n">ResearchBudget</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargo_time</span><span class="p">,</span> <span class="n">save_report</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">TASK</span> <span class="o">=</span> <span class="s2">"""Alfred needs a Batmobile replacement research shortlist.</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s2">First delegate research to web_specialist. Find three Batman filming locations</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s2">and one supercar factory. Visit sources to support each filming/factory claim</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s2">and coordinates. Return location, kind (filming or factory), latitude, longitude,</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s2">source_url, coordinate_source_url, evidence and uncertainty. Never invent sources</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s2">or coordinates. Mark unavailable evidence and stop short of a complete report</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s2">if four verified entries cannot be obtained.</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s2">Then use cargo_time for each verified entry and save_report with a JSON list</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s2">of these rows. Final answer: report path, source URLs, assumptions and gaps.</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s2">"""</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="n">ONE_LOCATION_TASK</span> <span class="o">=</span> <span class="s2">"""Delegate to web_specialist: check whether Wollaton Hall</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s2">was used as Wayne Manor in a Batman film. Search and visit an appropriate source.</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s2">Return the supported claim and source URL. State whether a coordinate source was</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s2">found; mark it missing if not established. Preserve the source and uncertainty in</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s2">your final answer. Do not calculate a transfer time or save a report in this test.</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s2">"""</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_team</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="n">specialist</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">WebSearchTool</span><span class="p">(),</span> <span class="n">VisitWebpageTool</span><span class="p">()],</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">"web_specialist"</span><span class="p">,</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="n">description</span><span class="o">=</span><span class="s2">"Researches filming locations and factories; visits sources and returns evidence, coordinates, source URLs and uncertainties."</span><span class="p">,</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="p">)</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="n">manager</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">cargo_time</span><span class="p">,</span> <span class="n">save_report</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="n">managed_agents</span><span class="o">=</span><span class="p">[</span><span class="n">specialist</span><span class="p">],</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="p">)</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="k">return</span> <span class="n">manager</span><span class="p">,</span> <span class="n">specialist</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>    <span class="n">manager</span><span class="p">,</span> <span class="n">specialist</span> <span class="o">=</span> <span class="n">build_team</span><span class="p">(</span><span class="n">build_model</span><span class="p">())</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="n">manager</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">ONE_LOCATION_TASK</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </code></pre></div>
 <details class="info">
-<summary>Explain my_batman.py</summary>
+<summary>Explain 4A — shared connection</summary>
+<p><code translate="no">CodeAgent</code> is the class you will use twice. The remaining imports load supplied connection, search, calculation and report helpers. <code translate="no">build_model(max_tokens=800)</code> prepares one Groq model connection with a smaller output allowance and asks for the key when the completed file runs. It does not itself search or create an agent. Sharing the connection does not merge the agents' histories.</p>
+</details>
+<p><strong>Check A:</strong> how many agents have you created so far?</p>
+<details class="success">
+<summary>Build answer A</summary>
+<p><strong>Zero.</strong> Importing a class and preparing a model connection are not <code translate="no">CodeAgent(...)</code> calls.</p>
+</details>
+<h4 id="4b-create-the-web-specialist">4B. Create the web specialist<a class="headerlink" href="#4b-create-the-web-specialist" title="Permanent link">&para;</a></h4>
+<p>Append this block below <code translate="no">model = build_model(max_tokens=800)</code>. This is the <strong>first agent you create</strong>. Before continuing, point to its name, role description, model and tools in your file.</p>
+<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">budget</span> <span class="o">=</span> <span class="n">ResearchBudget</span><span class="p">(</span><span class="n">max_searches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_pages</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">specialist</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">WebSearchTool</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">),</span> <span class="n">PageExcerptTool</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">)],</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"web_specialist"</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Researches ONE named place per call. Visit sources and return a concise claim, URL and quote. Seek coordinates only when explicitly requested. Respect tool limits; stop after sufficient evidence or mark gaps. Return at most 500 characters."</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">budget</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">specialist</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain 4B — construct a specialist</summary>
 <table>
 <thead>
 <tr>
-<th>Code</th>
-<th>What it means</th>
+<th>Setting</th>
+<th>Why you add it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code translate="no">from smolagents import ...</code></td>
-<td>Load the agent class and ready-made page-reader class.</td>
+<td><code translate="no">specialist = CodeAgent(...)</code></td>
+<td>Create a distinct agent object and keep it in the variable <code translate="no">specialist</code>.</td>
 </tr>
 <tr>
-<td><code translate="no">from week04_... import ...</code></td>
-<td>Load the supplied helpers and tools from existing files in the same folder. You do not rewrite those modules.</td>
+<td><code translate="no">budget = ResearchBudget(max_searches=1, max_pages=2)</code></td>
+<td>Allow one search and two page attempts per specialist task. Failed/blocked pages count; retrying the same URL is refused.</td>
 </tr>
 <tr>
-<td><code translate="no">TASK = """..."""</code></td>
-<td>Store the full research request. Triple quotes keep several lines together as one string. Defining it does not run the task.</td>
+<td><code translate="no">tools=[WebSearchTool(budget=budget), PageExcerptTool(budget=budget)]</code></td>
+<td>Give both tools the same attempt counter. Search returns at most two snippets; page reading returns a focused excerpt of at most 1,600 characters.</td>
 </tr>
 <tr>
-<td><code translate="no">ONE_LOCATION_TASK = """..."""</code></td>
-<td>Store the smaller supplied request for inspecting one handoff first.</td>
+<td><code translate="no">model=model</code></td>
+<td>Give it the connection from 4A.</td>
 </tr>
 <tr>
-<td><code translate="no">build_team(model)</code></td>
-<td>Build the two agents using the same model connection and return both objects.</td>
+<td><code translate="no">name="web_specialist"</code></td>
+<td>Give the manager a callable agent name. The Python variable name and callable name serve different purposes.</td>
 </tr>
 <tr>
-<td><code translate="no">tools=[WebSearchTool(), VisitWebpageTool()]</code></td>
-<td>Create the two class-tool instances for the specialist. The parentheses create objects; the web requests occur when those tools are called.</td>
+<td><code translate="no">description=...</code></td>
+<td>Tell the manager when to delegate and what evidence should return.</td>
 </tr>
 <tr>
-<td><code translate="no">name="web_specialist"</code> and <code translate="no">description=...</code></td>
-<td>Give the specialist a callable name and explain its role to the manager. These values are already supplied.</td>
+<td><code translate="no">**agent_options(max_steps=4, compact=True)</code></td>
+<td>Limit the specialist to four action steps and each printed observation to 1,800 characters.</td>
 </tr>
 <tr>
-<td><code translate="no">tools=[cargo_time, save_report]</code></td>
-<td>Register the supplied function tools on the manager without calling them during setup.</td>
-</tr>
-<tr>
-<td><code translate="no">managed_agents=[specialist]</code></td>
-<td>Register a separate agent the manager may delegate to. This is the connection, not proof the manager used it.</td>
-</tr>
-<tr>
-<td><code translate="no">**agent_options(max_steps=...)</code></td>
-<td>Insert the supplied Python-action instructions, logging and limit for each agent's loop. A step limit is a boundary, not a promise of completion.</td>
-</tr>
-<tr>
-<td><code translate="no">return manager, specialist</code></td>
-<td>Return both objects so the main program can use or inspect them.</td>
-</tr>
-<tr>
-<td><code translate="no">if __name__ == "__main__":</code></td>
-<td>Run the main block when you execute this saved file.</td>
-</tr>
-<tr>
-<td><code translate="no">build_team(build_model())</code></td>
-<td>Prepare the Groq connection, ask for the key if needed, then create the agents.</td>
-</tr>
-<tr>
-<td><code translate="no">manager.visualize()</code></td>
-<td>Print the configured agent/tool tree. This does not itself call the model or research a location.</td>
-</tr>
-<tr>
-<td><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code></td>
-<td>Run the first, smaller supplied task and print the actual trace/result.</td>
+<td><code translate="no">budget.bind(specialist)</code></td>
+<td>Tie the counters to this agent’s task. A new delegation resets them with the new task history; extra calls within that task cannot bypass them.</td>
 </tr>
 </tbody>
 </table>
-<p>Each agent has its own model/action/observation history. The manager waits for the specialist's returned report, then continues. Sharing a model/key does not merge those histories or make this example parallel.</p>
 </details>
-<p><strong>Code-reading check:</strong> which tools should appear under each agent in the printed tree? What does <code translate="no">managed_agents=[specialist]</code> add?</p>
+<p><strong>Check B:</strong> could this specialist save the final report using <code translate="no">save_report</code> as a registered tool?</p>
 <details class="success">
-<summary>Answer — configuration before execution</summary>
-<p>Expect <code translate="no">web_search</code> and <code translate="no">visit_webpage</code> under the specialist, and <code translate="no">cargo_time</code> and <code translate="no">save_report</code> under the manager. The framework may also show its built-in <code translate="no">final_answer</code>. The managed-agent registration lets the manager call the specialist, which can run its own loop. The tree checks configuration; the next step checks execution.</p>
+<summary>Build answer B</summary>
+<p><strong>No.</strong> Its registered custom tools are search and page reading. You will give the report tool to the manager.</p>
 </details>
-<h2 id="small-handoff">5. Run the supplied one-location handoff<a class="headerlink" href="#small-handoff" title="Permanent link">&para;</a></h2>
-<p>Leave the last line exactly as supplied: <strong><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code></strong>. You do not write a test prompt.</p>
+<h4 id="4c-create-the-manager-and-connect-the-team">4C. Create the manager and connect the team<a class="headerlink" href="#4c-create-the-manager-and-connect-the-team" title="Permanent link">&para;</a></h4>
+<p>Append the next block. This is the <strong>second agent you create</strong>. Locate the line that connects the already-created specialist; a shared model alone would not connect the two agents.</p>
+<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">manager</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">cargo_time</span><span class="p">,</span> <span class="n">save_report</span><span class="p">],</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">managed_agents</span><span class="o">=</span><span class="p">[</span><span class="n">specialist</span><span class="p">],</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">manager</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain 4C — manager and connection</summary>
+<p><code translate="no">manager = CodeAgent(...)</code> creates another object with its own execution history. <code translate="no">cargo_time</code> and <code translate="no">save_report</code> are supplied function tools: register their names without calling them here. <code translate="no">managed_agents=[specialist]</code> gives this manager access to the first agent. <code translate="no">visualize()</code> prints the configured tree; it does not demonstrate an actual delegation. The manager waits for the specialist to return; this example does not run both agents in parallel.</p>
+</details>
+<p><strong>Check C:</strong> draw the tree from your code before running it. Which agent can search, which can save, and what line would break delegation if removed?</p>
+<details class="success">
+<summary>Build answer C</summary>
+<p>Manager → <code translate="no">cargo_time</code>, <code translate="no">save_report</code>, and web specialist → <code translate="no">web_search</code>, <code translate="no">visit_webpage</code>. The framework may also show <code translate="no">final_answer</code>. Removing <code translate="no">managed_agents=[specialist]</code> removes the manager's delegation connection.</p>
+</details>
+<h4 id="4d-add-the-tasks-only-after-both-agents-exist">4D. Add the tasks only after both agents exist<a class="headerlink" href="#4d-add-the-tasks-only-after-both-agents-exist" title="Permanent link">&para;</a></h4>
+<p>Append this last block at the bottom of the same file. Start with <code translate="no">ONE_LOCATION_TASK</code>, which checks one filming claim. <code translate="no">TASK</code> contains the four-location research request for step 6.</p>
+<div class="highlight"><span class="filename">my_batman.py</span><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">TASK</span> <span class="o">=</span> <span class="s2">"""Alfred needs three Batman filming locations and one supercar factory.</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s2">Use at most FOUR separate web_specialist calls, ONE named candidate per call:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">Wollaton Hall, Knebworth House, Mentmore Towers, and Lamborghini Sant'Agata Bolognese.</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s2">Use ONE delegation per manager action step; do not combine delegations in a loop.</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s2">These are candidates to VERIFY, not facts to assume. For each, request a supported</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s2">filming/factory claim, coordinates, source_url, coordinate_source_url and a short</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s2">evidence quote. Ask the specialist to use focused page excerpts, at most one search</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s2">and three page attempts, and return one compact record under 500 characters.</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s2">Preserve each record before the next delegation. Do not request all four places</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s2">in one specialist call. Do not repeat a failed delegation or invent missing data.</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s2">If four supported rows are unavailable, report the gaps without saving a complete report.</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s2">Otherwise calculate all four cargo estimates and call save_report in ONE Python</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s2">action using the compact rows; do not print the whole JSON again. Then finish with</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s2">the report path, sources and assumptions. Keep responses and printed output short.</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s2">"""</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">ONE_LOCATION_TASK</span> <span class="o">=</span> <span class="s2">"""Delegate ONCE to web_specialist: check ONLY whether</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s2">Wollaton Hall was used as Wayne Manor in a Batman film. First read</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s2">https://wollatonhall.org.uk/hall-and-museum/history/ with focus="Wayne Manor Batman".</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="s2">If blocked or insufficient, use at most one search and one alternate page.</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s2">Stop as soon as a relevant page supports the claim. Do NOT research coordinates,</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s2">transport, opening times or other places. Return the claim, source URL, one short</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="s2">quote and uncertainty in at most 500 characters. If unsupported, mark it missing.</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s2">The manager should preserve that evidence and finish. No calculation or report.</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="s2">"""</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="n">run_task</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">ONE_LOCATION_TASK</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain 4D — construction versus execution</summary>
+<p>Triple-quoted text stores each task as one multi-line string. Defining <code translate="no">TASK</code> does not run it. <code translate="no">run_task(manager, ONE_LOCATION_TASK)</code> starts the manager's model/action/observation loop using the smaller request. The manager may then call the separately created specialist. That specialist has its own loop and must return its evidence.</p>
+</details>
+<p><strong>Check D:</strong> which line starts model reasoning, and does the tree prove the specialist has been called?</p>
+<details class="success">
+<summary>Build answer D</summary>
+<p><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code> starts the task loop. The tree proves only configuration; the trace must show an actual <code translate="no">web_specialist(task=...)</code> call.</p>
+</details>
+<p><strong>Before running:</strong> your file should now have one import/model section, one specialist constructor, one manager constructor, the two tasks and one <code translate="no">run_task</code> call. Explain the two constructors and the connecting line to a partner or in <code translate="no">evidence.md</code>; then save and continue below.</p>
+<h3 id="small-handoff">5. Test one filming claim<a class="headerlink" href="#small-handoff" title="Permanent link">&para;</a></h3>
+<p><strong>For the first run, check only the filming claim.</strong> Leave coordinate research for step 6. Check the returned quote against its source.</p>
+<table>
+<thead>
+<tr>
+<th>Enforced limit</th>
+<th>First run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manager action steps</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Specialist action steps</td>
+<td>4 per delegation</td>
+</tr>
+<tr>
+<td>Search attempts</td>
+<td>1 per delegation, at most 2 short results</td>
+</tr>
+<tr>
+<td>Page attempts</td>
+<td>2 per delegation, including failures; no repeat URL</td>
+</tr>
+<tr>
+<td>Page excerpt / printed observation</td>
+<td>At most 1,600 / 1,800 characters</td>
+</tr>
+<tr>
+<td>Model output allowance</td>
+<td>800 tokens per response; this is not an input-token limit</td>
+</tr>
+</tbody>
+</table>
+<p>These are limits, not a required step count. A failed task may make one extra framework final-answer request at its step limit. A page refusal or exhausted research budget should lead to a short incomplete answer, not more retries.</p>
+<p>After saving steps 4A–4D, check that the last line is <strong><code translate="no">run_task(manager, ONE_LOCATION_TASK)</code></strong>.</p>
 <p><strong>Run:</strong> <code translate="no">python my_batman.py</code>. Enter your Groq key if prompted. The code first prints the tree, then the manager should delegate the supplied Wollaton Hall task to the specialist.</p>
 <p><strong>What to check:</strong> copy a short actual trace excerpt into <strong>Topic 15 → One-location handoff</strong> in your existing <code translate="no">evidence.md</code>:</p>
 <table>
@@ -1796,7 +2004,7 @@
 </tr>
 <tr>
 <td>Specialist action</td>
-<td>Its actual search and page-reading call.</td>
+<td>Its page-reading call and any permitted search fallback. A successful first source needs no search.</td>
 </tr>
 <tr>
 <td>Observation</td>
@@ -1804,7 +2012,7 @@
 </tr>
 <tr>
 <td>Specialist return</td>
-<td>The claim, source URL and any missing coordinate evidence.</td>
+<td>The filming claim, source URL, short quote and uncertainty. Coordinates are not requested in this test.</td>
 </tr>
 <tr>
 <td>Manager response</td>
@@ -1825,24 +2033,27 @@
 <p><strong>3. What if the manager never delegates, a page fails, or the run reaches its limit?</strong></p>
 <details class="success">
 <summary>Answer 3 — an incomplete run</summary>
-<p>Record the actual failure and mark this run incomplete. A final answer alone is insufficient. Check that you copied the complete given file and that the direct tools worked, then ask the instructor before repeating a failing model/network run. You are not required to invent new agent instructions to fix it.</p>
+<p>Record the actual failure and mark this run incomplete. A final answer alone is insufficient. Check the four build stages, both agent constructors, the managed-agent connection and the direct tools. Keep the limits; record the failure rather than repeatedly retrying. Use the <a href="#research-limits">research-limit guidance</a> to decide what to check next.</p>
 </details>
-<h2 id="full-run">6. Run the supplied full task and inspect the report<a class="headerlink" href="#full-run" title="Permanent link">&para;</a></h2>
-<p>The complete four-entry request is already stored in <code translate="no">TASK</code>. Make this <strong>one exact guided edit</strong> in the existing <code translate="no">my_batman.py</code>:</p>
-<ul>
-<li>Find the last line: <code translate="no">run_task(manager, ONE_LOCATION_TASK)</code>.</li>
-<li>Replace it with: <strong><code translate="no">run_task(manager, TASK)</code></strong>.</li>
-<li>Save the same file. Do not change the role description, tool lists or task strings. No new Python file is needed.</li>
-</ul>
-<p>The given full task requests research → source/coordinate handoff → calculation → saved report. The specialist gathers evidence; the manager calculates and saves. You can follow this sequence in the trace rather than designing a plan yourself.</p>
-<p><strong>Run:</strong> <code translate="no">python my_batman.py</code>. Check the terminal trace. If <code translate="no">save_report</code> succeeded, it creates <strong><code translate="no">outputs/batman-report.html</code></strong> beside your runner's folder. In File Explorer/Finder, open <code translate="no">week04-exercises</code> → <code translate="no">outputs</code> and double-click <code translate="no">batman-report.html</code> to view it in your browser. <strong>Do not create this HTML file manually.</strong> If it is absent, find the missing/failed report call in the trace rather than making an empty stand-in.</p>
-<p>Copy the generated HTML in your file manager into the <strong>existing <code translate="no">evidence-files</code> folder</strong>, keeping its name <strong><code translate="no">batman-report.html</code></strong>. This is a copy of an output, not a new program. Paste the actual sources/trace into <code translate="no">evidence.md</code>. You are not required to make a revised agent or produce a second report. The report writer recalculates hours and writes a table and coordinate plot. It checks basic input shape/URLs, not whether a webpage supports the claim. Its output file can exist even when research is weak; file existence is not the completion criterion.</p>
-<p><img alt="HF original Batman research example output map" src="../images/huggingface-week04/batman-output-map.png" /></p>
+<h3 id="full-run">6. Research four locations and inspect the report<a class="headerlink" href="#full-run" title="Permanent link">&para;</a></h3>
+<p>The full task covers <strong>three filming sites and one factory</strong>, but uses <strong>one place per specialist delegation</strong>. Each call starts a fresh specialist history, so whole pages from the earlier location do not accumulate there. The manager retains only the compact returned records.</p>
+<p>In the <strong>existing <code translate="no">my_batman.py</code></strong>, make these changes, then save:</p>
+<ol>
+<li>Change <code translate="no">ResearchBudget(max_searches=1, max_pages=2)</code> to <strong><code translate="no">ResearchBudget(max_searches=1, max_pages=3)</code></strong>. This allows a claim page, a coordinate page and at most one alternate.</li>
+<li>In the specialist constructor, change <code translate="no">agent_options(max_steps=4, compact=True)</code> to <strong><code translate="no">agent_options(max_steps=5, compact=True)</code></strong>.</li>
+<li>In the manager constructor, change <code translate="no">agent_options(max_steps=3, compact=True)</code> to <strong><code translate="no">agent_options(max_steps=6, compact=True)</code></strong>.</li>
+<li>Change the final call from <code translate="no">run_task(manager, ONE_LOCATION_TASK)</code> to <strong><code translate="no">run_task(manager, TASK)</code></strong>.</li>
+</ol>
+<p>Keep the excerpt, print and model-output caps. Do not raise limits to force a complete report. The task requests at most four short delegations, then combined calculation/report writing and a final answer. If a claim or coordinate cannot be supported within the budget, an honest gap is the expected result.</p>
+<p><strong>What to inspect:</strong> each <code translate="no">web_specialist(task=...)</code> should name only one place, in a separate manager action step. Its step counter starts again for that task. The manager should keep each source-backed record and should not ask a new specialist run to rediscover an earlier result. Printing all four handoffs in one action could clip the last record, so keep each delegation in a separate step.</p>
+<p><strong>Run:</strong> <code translate="no">python my_batman.py</code>. Check the terminal trace. If <code translate="no">save_report</code> succeeded, it creates <strong><code translate="no">outputs/batman-report.html</code></strong> inside <code translate="no">week04-exercises</code>. In File Explorer/Finder, open <code translate="no">week04-exercises</code> → <code translate="no">outputs</code> and double-click <code translate="no">batman-report.html</code> to view it in your browser. If the file is missing, look for the <code translate="no">save_report</code> call and any error in the terminal.</p>
+<p>Copy the generated HTML in your file manager into the <strong>existing <code translate="no">evidence-files</code> folder</strong>, keeping its name <strong><code translate="no">batman-report.html</code></strong>. This is a copy of an output, not a new program. Paste the actual sources/trace into <code translate="no">evidence.md</code>. The report writer recalculates hours and writes a table and coordinate plot. It checks basic input shape/URLs, not whether a webpage supports the claim. Check every source and coordinate even if the report file was created successfully.</p>
+<p><a class="course-figure-link" href="../images/huggingface-week04/batman-output-map.png"><img alt="HF original Batman research example output map" src="../images/huggingface-week04/batman-output-map.png" /></a></p>
 <p><a href="../images/huggingface-week04/batman-output-map.png">Open the full-size original</a></p>
 <p><em>Original example output, unchanged: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">Hugging Face Multi-Agent Systems</a>. Use it to discuss marker position, color, labels and evidence; it is not an answer key for your research.</em></p>
-<p><strong>How final checks differ from another agent:</strong> smolagents can run Python <code translate="no">final_answer_checks</code> before accepting an answer. A check can reject missing output or inconsistent data, but that callback is not automatically a third agent. Our required exercise uses a manual source/map audit; the optional extension adds a separately instructed agent with its own research loop. Explain what evidence either form of checking actually examines.</p>
+<p><strong>How final checks differ from another agent:</strong> smolagents can run Python <code translate="no">final_answer_checks</code> before accepting an answer. A check can reject missing output or inconsistent data, but that callback is not automatically a third agent. Here, you check the sources and map yourself. In the optional challenge, you add another agent to check a researched record. Compare the evidence each type of check can examine.</p>
 <p>Your classroom output uses a lightweight longitude/latitude coordinate plot without a geographic basemap. Check the printed legend: purple means under five estimated hours; red means five or more. A neat visual can still hide wrong coordinates, overlapping locations or unsupported film associations.</p>
-<p><strong>Your map audit:</strong> choose one marker, locate the corresponding row, check both source URLs, and recompute its time. Would a longitude-sign error move it to the other side of the map? Does the color agree with the estimate? Note one limitation of this simplified map and one limitation of the flight assumption.</p>
+<p><strong>Check your map:</strong> choose one marker, locate the corresponding row, check both source URLs, and recompute its time. Would a longitude-sign error move it to the other side of the map? Does the color agree with the estimate? Note one limitation of this simplified map and one limitation of the flight assumption.</p>
 <details class="success">
 <summary>Map answer 1 — location and longitude sign</summary>
 <p>Check the marker's name against the row and both source pages. Changing the sign of longitude reflects its horizontal position across the zero-longitude line; for a western location it can place the marker far to the east. A plausible-looking marker does not verify the source coordinate.</p>
@@ -1855,11 +2066,11 @@
 <summary>Map answer 3 — limits and final checks</summary>
 <p>The coordinate plot has no geographic basemap and can overlap markers; the flight estimate ignores real routing, schedules and handling constraints. A Python final-answer check can test a file or data rule. A verifier agent has its own model/tool loop and must show which sources it checked. Neither proves that a claim is correct without suitable evidence.</p>
 </details>
-<h2 id="audit">7. Check and explain the supplied program<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h2>
-<p><strong>Required understanding checks:</strong> use the actual output in your existing <code translate="no">evidence.md</code>. You do not have to replace a candidate, invent a task or improve the code independently.</p>
+<h3 id="audit">7. Check and explain the team you built<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h3>
+<p><strong>Check your results:</strong> use your report and terminal output to answer the questions below in <code translate="no">evidence.md</code>.</p>
 <p><strong>1. Does every row have a supported role and coordinate?</strong> Open both source links for each of the three filming sites and one factory. Write one supported example and any gap you find.</p>
 <details class="success">
-<summary>Answer 1 — evidence audit</summary>
+<summary>Answer 1 — check the evidence</summary>
 <p>A claim source must support the film/factory role; a coordinate source must establish the location used in the calculation. A working URL or plausible number alone is not enough. Record gaps honestly; do not label an unsupported four-row report complete.</p>
 </details>
 <p><strong>2. Where do the model decisions end and the supplied Python tool's work begin?</strong></p>
@@ -1872,38 +2083,46 @@
 <summary>Answer 3 — team trade-off</summary>
 <p>No. One agent may be simpler for a small task. A team separates responsibilities and histories, but adds calls, coordination and possible handoff losses. Judge actual supported results, not the number of agents.</p>
 </details>
-<p><strong>Checkpoint:</strong> keep the two required Python files, the one-location trace, the full-run trace, checked source links, one recalculated estimate and your understanding answers in the existing evidence note. Keep the generated report and its archive copy if the full task succeeded. Failures should be marked incomplete and discussed with the instructor; independent redesign is not required.</p>
-<h2 id="optional-verifier">8. Optional challenge: design and add a new verifier agent<a class="headerlink" href="#optional-verifier" title="Permanent link">&para;</a></h2>
-<p><strong>Yes: in this extension you add a new agent yourself.</strong> First complete the manager/web-specialist exercise. Then create the optional file as follows:</p>
+<p><strong>Checkpoint:</strong> keep the two required Python files, the one-location trace, the full-run trace, checked source links, one recalculated estimate and your understanding answers in the existing evidence note. Keep the generated report and its archive copy if the full task succeeded. If a run failed, keep the error message and note which checks remain incomplete.</p>
+<h3 id="research-limits">If the service refuses a request<a class="headerlink" href="#research-limits" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Page 403:</strong> the website blocked the request. It counts as an attempt; use one permitted alternate or mark the source unavailable. Do not retry the blocked URL.</li>
+<li><strong>Research limit reached:</strong> return the evidence collected and identify missing fields. A refusal does not prove a fact is false.</li>
+<li><strong>Groq 413 / request too large:</strong> stop that run. Check that your helper files match the latest download and that you are using <code translate="no">ONE_LOCATION_TASK</code>; start a fresh small run after correcting it. Waiting alone does not shrink a large history.</li>
+<li><strong>Groq 429:</strong> stop and respect the service’s retry interval before a fresh run. Calls share the account’s token/request limits; these local caps reduce usage but do not guarantee capacity.</li>
+</ul>
+<p>See <a href="https://console.groq.com/docs/rate-limits">Groq’s rate-limit explanation</a>. A local character cap is not an exact token count. Do not paste a whole page into the task or increase the step limits to work around a service refusal.</p>
+<h3 id="optional-verifier">8. Optional challenge: add a verifier agent<a class="headerlink" href="#optional-verifier" title="Permanent link">&para;</a></h3>
+<p>Add a third agent that independently checks one result from your Batman research. Complete the two-agent exercise first, then save a copy for this challenge:</p>
 <ol>
 <li>Open your working, saved <strong><code translate="no">my_batman.py</code></strong> in the editor.</li>
 <li>Choose <strong>File → Save As</strong> and save a copy as <strong><code translate="no">my_batman_verified.py</code></strong> directly in <code translate="no">week04-exercises</code>. Keep <code translate="no">my_batman.py</code> as the two-agent version.</li>
 <li>Confirm that both filenames appear in the editor's file list, and that you are now editing <strong><code translate="no">my_batman_verified.py</code></strong>. This file is not supplied in the ZIP.</li>
-<li>In the copied <code translate="no">build_team</code> function, <strong>you</strong> create the verifier <strong>after</strong> <code translate="no">specialist</code> and <strong>before</strong> <code translate="no">manager</code>. Register both with the manager. Keep <code translate="no">return manager, specialist</code> and the existing main block; you do not need another runner file.</li>
-<li>Update the copied file's <code translate="no">TASK</code> to request checking before saving, confirm its last call uses <code translate="no">TASK</code>, then save the changes. This is the only independent coding challenge in Week 4; the required two-agent work above is already complete.</li>
+<li>In the copied file, <strong>you</strong> create the verifier <strong>after</strong> the <code translate="no">specialist = CodeAgent(...)</code> block and <strong>before</strong> <code translate="no">manager = CodeAgent(...)</code>. Register both with the manager; keep the same model connection. Keep the changes in this copied file.</li>
+<li>Replace the copied file's <code translate="no">TASK</code> with your own <strong>one-row research and verification request</strong>, using one entry from the existing report as a candidate to recheck. Request both delegations and a sourced verdict, <strong>without saving another report</strong>. Keep each specialist at four steps, with its own one-search/two-page budget. Give the copied manager four steps. Confirm its last call uses your new <code translate="no">TASK</code>, then save. Use the hints below if you get stuck.</li>
 </ol>
-<p><strong>What this file does — <code translate="no">my_batman_verified.py</code>:</strong> your copied and edited Groq program adds an independent checking loop to the same research task. It uses live research tools and prints both handoffs/verdicts in the terminal. The manager alone calls <code translate="no">save_report</code>; preserve its generated output in <code translate="no">evidence-files</code> if you want to compare it.</p>
-<p>Write a verifier design before coding:</p>
+<p><strong>What this file does — <code translate="no">my_batman_verified.py</code>:</strong> your copied and edited Groq program adds an independent checking loop for one candidate row. It uses live research tools and prints both handoffs/verdicts in the terminal. Compare with your existing report; this bounded optional test does not overwrite it. Checking all four rows would require separate fresh one-row runs, rather than packing eight delegations into the six-step required full task.</p>
+<p>Before adding the verifier, decide:</p>
 <ol>
 <li>Give it a distinct name, a description and a narrow checking responsibility. Decide which tools it needs and why it must read the cited pages independently.</li>
 <li>Define a verdict format with <code translate="no">pass</code>, <code translate="no">fail</code> or <code translate="no">uncertain</code> for each row, plus the checked URL, supported/disputed claim, and correction or missing evidence. State what makes a verdict credible.</li>
 <li>Decide when the manager should call the verifier and what the manager should do with each verdict. Who can author the report? Who can block an unsupported row?</li>
-<li>Add a new <code translate="no">CodeAgent</code> object. Register it <strong>alongside</strong> the web specialist in the manager's <code translate="no">managed_agents</code> list. Update the manager task so the sourced rows reach the verifier before saving.</li>
+<li>Add a new <code translate="no">CodeAgent</code> object. Register it <strong>alongside</strong> the web specialist in the manager's <code translate="no">managed_agents</code> list. Update the manager task so the one sourced record reaches the verifier before the manager accepts it.</li>
 <li>Inspect the tree: it should have a manager and two different specialists. Then inspect execution: both specialist calls must actually occur.</li>
 </ol>
 <p><strong>Challenge test:</strong> in this same optional file, first copy your normal final call into <code translate="no">evidence.md</code>. Temporarily replace its final call with <code translate="no">run_task(manager, "YOUR FALSE-CLAIM TEST REQUEST")</code>—no new test file is needed. In your request, supply one deliberately wrong label, such as “Wollaton Hall is a supercar factory,” and the <a href="https://wollatonhall.org.uk/hall-and-museum/history/">official hall history source</a>. Ask for a verdict without saving a report. Predict the result, then inspect whether the verifier reads the page and rejects or marks the claim uncertain. Label the claim as an intentional test error in your evidence; do not submit it as a research result.</p>
-<p><strong>Optional run:</strong> save and run <code translate="no">python my_batman_verified.py</code> for the false-claim test, then restore <code translate="no">run_task(manager, TASK)</code>, save and rerun for the full verified task. Keep both results under <strong>Topic 15 → Optional verifier</strong> in your existing <code translate="no">evidence.md</code>. Compare with the two-agent run: did the new agent catch the injected error? Did it supply a checked source or merely repeat the researcher's wording? Record added model calls and one case where the verdict remained uncertain.</p>
+<p><strong>Optional run:</strong> save and run <code translate="no">python my_batman_verified.py</code> for the false-claim test, then restore <code translate="no">run_task(manager, TASK)</code>, save and rerun your one-row research/verification task. Keep both results under <strong>Topic 15 → Optional verifier</strong> in your existing <code translate="no">evidence.md</code>. Compare with the existing two-agent report: did the new agent catch the injected error? Did it supply a checked source or merely repeat the researcher's wording? Record added model calls and any remaining uncertainty.</p>
 <details class="tip">
 <summary>Hint 1 — create a different agent</summary>
 <p>Give the verifier its own <code translate="no">name</code>, <code translate="no">description</code> and <code translate="no">CodeAgent</code> object. Assigning the existing specialist to a second variable does not create a new loop.</p>
 </details>
 <details class="tip">
 <summary>Hint 2 — connect the new agent</summary>
-<p>Use <code translate="no">managed_agents=[specialist, verifier]</code> on the copied manager. Give the verifier the search/page tools it needs, not the report-writing tool.</p>
+<p>Use <code translate="no">managed_agents=[specialist, verifier]</code> on the copied manager. Give the verifier its own <code translate="no">ResearchBudget(max_searches=1, max_pages=2)</code>, bounded search/page tools and at most four steps. Bind that budget to the verifier; do not share its counters with the researcher or give it the report-writing tool. Check one row per delegation and keep verdicts short.</p>
 </details>
 <details class="tip">
 <summary>Hint 3 — request verification</summary>
-<p>Registration is not execution. Update the manager task to hand over sourced rows before saving and specify what happens after <code translate="no">fail</code> or <code translate="no">uncertain</code>.</p>
+<p>Registration is not execution. Update the manager task to hand over the sourced row and request a verdict. Specify what happens after <code translate="no">fail</code> or <code translate="no">uncertain</code>; this bounded extension does not save a new report.</p>
 </details>
 <details class="success">
 <summary>Verifier answer 1 — name, scope and tools</summary>
@@ -1914,8 +2133,8 @@
 <p>Return pass/fail/uncertain for each claim, checked URL, the evidence, and a correction or missing field. A verdict without an inspected source is only another assertion.</p>
 </details>
 <details class="success">
-<summary>Verifier answer 3 — when to save</summary>
-<p>Call the verifier after research and before reporting. The manager can request repairs for failed claims, retain honest uncertainty, and withhold unsupported rows from a complete report. The verifier reports; the manager writes the file.</p>
+<summary>Verifier answer 3 — when to accept a row</summary>
+<p>Call the verifier after research and before accepting the row. Return an evidence-backed verdict or honest uncertainty; do not start repair loops after the budget is exhausted. This test leaves the existing report unchanged. In a later reporting workflow, only the manager would write a verified report.</p>
 </details>
 <details class="success">
 <summary>Verifier answer 4 — expected configuration and execution</summary>
@@ -1923,16 +2142,16 @@
 </details>
 <details class="success">
 <summary>Verifier answer 5 — false-claim test</summary>
-<p>A hall's filming/history page does not establish that it is a supercar factory. After reading the source, a verifier should reject that factory claim or mark it unsupported/uncertain. Record the actual result if it misses the error. Then restore the normal task and compare the full run; an extra agent does not guarantee a useful correction.</p>
+<p>A hall's filming/history page does not establish that it is a supercar factory. After reading the source, a verifier should reject that factory claim or mark it unsupported/uncertain. Record the actual result if it misses the error. Then restore your normal one-row task and compare the verdicts; an extra agent does not guarantee a useful correction.</p>
 </details>
 <details class="success">
 <summary>What counts as the extension?</summary>
-<p>A third object in a diagram is insufficient. Show the new design, the actual second delegation, a page observation, and a verdict linked to evidence. An independent checker may still be wrong; your manual audit remains necessary.</p>
+<p>A third object in a diagram is insufficient. Show the new design, the actual second delegation, a page observation, and a verdict linked to evidence. An independent checker may still be wrong; you still need to check its sources.</p>
 </details>
-<h2 id="reference">Code-reading recap<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
-<p>The required <code translate="no">my_batman.py</code> is the complete visible program in step 4; there is no separate hidden required solution to assemble. You create that file by pasting the whole block and use the exact final-call change in step 6. The optional third-agent file is made only if you choose the independent extension.</p>
-<p><strong>Credit:</strong> scenario, hierarchy, estimate and unchanged figures adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">HF Multi-Agent Systems</a>, Apache-2.0. This class uses one Groq setup, complete required programs, code explanations and guided observation checks. The local output uses a simplified coordinate plot.</p>
-<p><strong>Next:</strong> <a href="../week-4-vision-browser/">16 · Vision &amp; Browser Agents</a>. Bring the supplied-code explanations, actual handoffs and source/map audit to <a href="../week-4-completion/">completion review</a>.</p>
+<h3 id="reference">Code-reading recap<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h3>
+<p>You created the specialist in <strong>4B</strong> and the manager in <strong>4C</strong>. In your file, find where each agent is created and where <code translate="no">managed_agents=[specialist]</code> connects them. Step 6 gives the exact small-to-full changes while keeping short excerpts and fresh specialist tasks. Keep the two-agent file so you can compare it with the optional verifier version.</p>
+<p><strong>Credit:</strong> scenario, hierarchy, estimate and unchanged figures adapted from <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems">HF Multi-Agent Systems</a>, Apache-2.0. The research runs through Groq, and the report uses a simplified coordinate plot.</p>
+<p><strong>Next:</strong> <a href="../week-4-vision-browser/">16 · Vision &amp; Browser Agents</a>. Keep your explanations, handoff results and source/map checks for the <a href="../week-4-completion/">completion review</a>.</p>
 
 
 
@@ -1968,7 +2187,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../week-4-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14 · Agentic RAG continuation">
+          <a href="../week-4-retrieval/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14 · Week 3 RAG understanding check">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1978,7 +2197,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                14 · Agentic RAG continuation
+                14 · Week 3 RAG understanding check
               </div>
             </div>
           </a>
@@ -2035,6 +2254,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 800" role="img" aria-labelledby="title desc">
+<title id="title">Batman: two required agents and one optional verifier</title><desc id="desc">The manager delegates research to the web specialist. The optional verifier is a third distinct agent reporting directly to the manager. The manager alone calculates and saves reports. Research and checking are separate loops. Tools are not counted as agents.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#475569"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#172033}.title{font-size:27px;font-weight:700}.label{font-size:21px;font-weight:700}.body{font-size:17px}.small{font-size:15px}.muted{fill:#475569}.line{fill:none;stroke:#475569;stroke-width:2.5;marker-end:url(#arrow)}.optional{stroke-dasharray:8 6}</style>
+<rect width="100%" height="100%" fill="#fff" rx="20"/>
+<text x="30" y="45" class="title" text-anchor="start">Batman team: 2 required agents + 1 optional</text>
+<text x="30" y="78" class="body" text-anchor="start">Each numbered box is one agent. Tools are listed inside its box.</text>
+<rect x="210" y="125" width="480" height="175" rx="14" fill="#f0eaff" stroke="#7957b5" stroke-width="2"/><text x="235" y="166" class="label" text-anchor="start">1 · MANAGER</text>
+<text x="235" y="204" class="body" text-anchor="start">Coordinates the task; keeps sources and gaps</text>
+<text x="235" y="240" class="body" text-anchor="start">Tools: cargo_time + save_report</text>
+<text x="235" y="275" class="body" text-anchor="start">Only this agent writes the report + map</text>
+<path d="M280 300 V355 H120 V450" class="line"/>
+<text x="35" y="380" class="small" text-anchor="start">Research request ↓</text>
+<path d="M335 460 V405 H385 V310" class="line"/>
+<text x="340" y="435" class="small" text-anchor="start">↑ Evidence</text>
+<path d="M620 300 V355 H780 V450" class="line optional"/>
+<text x="647" y="380" class="small" text-anchor="start">Check request ↓</text>
+<path d="M565 460 V405 H515 V310" class="line optional"/>
+<text x="470" y="435" class="small" text-anchor="start">Verdict ↑</text>
+<rect x="30" y="460" width="390" height="185" rx="14" fill="#eaf4ff" stroke="#3c7cad" stroke-width="2"/><text x="50" y="499" class="label" text-anchor="start">2 · WEB SPECIALIST</text>
+<text x="50" y="536" class="body" text-anchor="start">Finds 3 filming sites + 1 supercar factory</text>
+<text x="50" y="571" class="body" text-anchor="start">Reads claim + coordinate sources</text>
+<text x="50" y="606" class="small" text-anchor="start">Tools: web_search + visit_webpage</text>
+<text x="50" y="631" class="small" text-anchor="start">Required</text>
+<rect x="480" y="460" width="390" height="185" rx="14" fill="#fff6e5" stroke="#b78125" stroke-width="2" stroke-dasharray="8 6"/><text x="500" y="499" class="label" text-anchor="start">3 · VERIFIER · OPTIONAL</text>
+<text x="500" y="536" class="body" text-anchor="start">Independently checks the cited sources</text>
+<text x="500" y="571" class="body" text-anchor="start">Returns pass / fail / uncertain + evidence</text>
+<text x="500" y="606" class="small" text-anchor="start">Tools: search + page reading</text>
+<text x="500" y="631" class="small" text-anchor="start">You design and add this agent</text>
+<text x="30" y="691" class="label" text-anchor="start">Required: manager + web specialist = 2 agents</text>
+<text x="30" y="726" class="label" text-anchor="start">Optional: add the verifier = 3 agents total</text>
+<text x="30" y="770" class="small" text-anchor="start">Course diagram · Dashed branch is optional. Both specialists report directly to the manager.</text>
+</svg>

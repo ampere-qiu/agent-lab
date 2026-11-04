@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vision-memory" class="md-skip">
+        <a href="#where-and-when" class="md-skip">
           Skip to content
         </a>
       
@@ -145,10 +145,10 @@
     
       
 
-<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition — To be released">
+<a class="md-header__button md-icon course-translate" href="../ja/week-4-vision-browser/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  <span>日本語 · To be released</span>
-</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
 
     
     
@@ -1013,7 +1013,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG continuation
+    14 · Week 3 RAG understanding check
   
 
     
@@ -1041,7 +1041,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman multi-agent exercise
+    15 · Multi-agent systems
   
 
     
@@ -1118,6 +1118,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where and when to run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vision-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1143,10 +1154,49 @@
   <a href="#initial-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        B. Supply an image at the start
+        B. Build the image agent
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="B. Build the image agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b1-load-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1. Load the input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2-create-the-image-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2. Create the image agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3-give-your-agent-the-pixels-and-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3. Give your agent the pixels and a task
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1165,13 +1215,46 @@
   <a href="#browser-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        D. Build the screenshot observation loop
+        D. Build the browser agent
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="D. Build the screenshot observation loop">
+    <nav class="md-nav" aria-label="D. Build the browser agent">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-import-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. Import the parts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-define-the-browser-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. Define the browser agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-open-the-browser-and-add-the-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. Open the browser and add the task
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#browser-comparison" class="md-nav__link">
@@ -1358,6 +1441,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#where-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where and when to run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vision-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1383,10 +1477,49 @@
   <a href="#initial-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        B. Supply an image at the start
+        B. Build the image agent
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="B. Build the image agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b1-load-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1. Load the input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2-create-the-image-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2. Create the image agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3-give-your-agent-the-pixels-and-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3. Give your agent the pixels and a task
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1405,13 +1538,46 @@
   <a href="#browser-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        D. Build the screenshot observation loop
+        D. Build the browser agent
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="D. Build the screenshot observation loop">
+    <nav class="md-nav" aria-label="D. Build the browser agent">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-import-the-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. Import the parts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-define-the-browser-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. Define the browser agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-open-the-browser-and-add-the-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. Open the browser and add the task
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#browser-comparison" class="md-nav__link">
@@ -1458,7 +1624,7 @@
 
 
 <h1 id="week-4-vision-browser">16 · Vision &amp; Browser Agents<a class="headerlink" href="#week-4-vision-browser" title="Permanent link">&para;</a></h1>
-<p><strong>Objective — required guided practical:</strong> create three small programs by copying complete given code, understand their parts, distinguish visible evidence from inference, and trace a browser action/screenshot loop. All required prompt/page changes are supplied exactly; no independent coding challenge is assigned here.</p>
+<p><strong>Objective:</strong> build an agent that reads an image and another that checks a webpage using screenshots.</p>
 <p><strong>Before starting:</strong> finish <a href="../week-4-preview/#exercise-files">Week 4 setup</a>, including <a href="../week-4-preview/#evidence-file">creating <code translate="no">evidence.md</code> and <code translate="no">evidence-files</code></a>. Use the same activated terminal in <code translate="no">week04-exercises</code>. Chrome is required for the browser sections.</p>
 <table>
 <thead>
@@ -1474,7 +1640,7 @@
 </tr>
 <tr>
 <td><code translate="no">assets/venue.png</code>, <code translate="no">assets/venue.html</code></td>
-<td>Generated by running the supplied <code translate="no">prepare_visuals.py</code> during setup. They are not manually authored starter files. If absent, return to setup and run that program.</td>
+<td>Generated by running the supplied <code translate="no">prepare_visuals.py</code> during setup. If they are missing, run that program before starting A.</td>
 </tr>
 <tr>
 <td><code translate="no">my_vision.py</code>, <code translate="no">my_browser_check.py</code>, <code translate="no">my_browser.py</code></td>
@@ -1494,20 +1660,65 @@
 </tr>
 </tbody>
 </table>
-<p>The Python programs print results in the terminal. The image opens in an image viewer; the practice page opens in Chrome. Do not look for a chat interface in this course website.</p>
-<p>We use an original fictional venue plan, not a real person's identity. The image contains room labels; the browser page reveals additional access information only after a click. Search snippets and fetched page text are different from seeing and interacting with a rendered page.</p>
+<p>Read your agent’s answers in the terminal. Use an image viewer to check the venue plan and saved screenshots; the browser exercises open a separate Chrome window.</p>
+<h2 id="where-and-when">Where and when to run<a class="headerlink" href="#where-and-when" title="Permanent link">&para;</a></h2>
+<p><strong>Write and save Python in your code editor. Run the commands in your terminal:</strong> <strong>Command Prompt on Windows</strong> or <strong>Terminal on Mac</strong>, using the activated Week 4 environment. The terminal's current folder must be <strong><code translate="no">week04-exercises</code></strong>, where <code translate="no">requirements.txt</code>, the supplied helpers and your <code translate="no">my_*.py</code> files are together. Look for <strong><code translate="no">(.venv)</code></strong> in the prompt. If you opened a fresh terminal, follow <a href="../week-4-preview/#activate-environment">the Week 4 folder and activation instructions</a> before continuing.</p>
+<p>Type only the command shown in each <strong>Run</strong> block, then press <strong>Enter</strong>. Do not type it into a Python <code translate="no">&gt;&gt;&gt;</code> prompt, the course webpage or Chrome's developer console. Wait for the program to finish and the terminal prompt to return before the next command.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>When to run</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before A</td>
+<td>Only if the venue assets are missing, before making any page edits.</td>
+<td><code translate="no">python prepare_visuals.py</code></td>
+</tr>
+<tr>
+<td>B · Initial image</td>
+<td>After B1–B3 are assembled in <code translate="no">my_vision.py</code>, saved, and your predictions are recorded.</td>
+<td><code translate="no">python my_vision.py</code></td>
+</tr>
+<tr>
+<td>B · Changed question</td>
+<td>After preserving the first answer, changing the task question and saving the same file.</td>
+<td><code translate="no">python my_vision.py</code></td>
+</tr>
+<tr>
+<td>C · Direct browser check</td>
+<td>After <code translate="no">my_browser_check.py</code> is created and saved. Complete this successfully before D.</td>
+<td><code translate="no">python my_browser_check.py</code></td>
+</tr>
+<tr>
+<td>D · Browser agent</td>
+<td>After D1–D3 are assembled in <code translate="no">my_browser.py</code>, saved, and C has succeeded.</td>
+<td><code translate="no">python my_browser.py</code></td>
+</tr>
+<tr>
+<td>D · Changed page</td>
+<td>After archiving the baseline screenshots, editing and saving <code translate="no">assets/venue.html</code>, and recording your prediction.</td>
+<td><code translate="no">python my_browser.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>All commands above run from the <strong>same activated <code translate="no">week04-exercises</code> terminal</strong>. In A, inspect the image without running Python. Finish B1–B3 before running <code translate="no">my_vision.py</code>, and D1–D3 before running <code translate="no">my_browser.py</code>. The program opens and controls its own Chrome window in C and D; you do not need to open the HTML page manually first.</p>
+<p>You will use a fictional venue plan. The image contains room labels; the browser page reveals additional access information only after a click. Search snippets and fetched page text are different from seeing and interacting with a rendered page.</p>
 <h2 id="vision-memory">How image observations enter the agent loop<a class="headerlink" href="#vision-memory" title="Permanent link">&para;</a></h2>
 <p>A vision-language model receives pixels as well as text. Passing <code translate="no">images=[image]</code> at the start attaches task input. In browser work, the important information may appear only after an action; the agent needs a new screenshot in a later observation before it can reason about the changed page.</p>
-<p><img alt="HF original diagram of image inputs and screenshot observations in CodeAgent" src="../images/huggingface-week04/vision-memory.png" /></p>
+<p><a class="course-figure-link" href="../images/huggingface-week04/vision-memory.png"><img alt="HF original diagram of image inputs and screenshot observations in CodeAgent" src="../images/huggingface-week04/vision-memory.png" /></a></p>
 <p><a href="../images/huggingface-week04/vision-memory.png">Open the full-size original</a></p>
 <p><em>Original figure, unchanged: <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">HF Vision and Browser Agents</a>. Follow the task image into the task step, then the screenshot into an action step.</em></p>
-<p>Read the figure in three passes: identify what the model receives, identify which code/tool action runs locally, then identify what is recorded for the next model call. The callback captures an observation; it does not choose the next action or establish that the model interpreted the pixels correctly. The original figure uses historical log/method labels. In our pinned implementation the actual screenshot field is <code translate="no">ActionStep.observations_images</code> and history is in <code translate="no">agent.memory.steps</code>.</p>
+<p>Follow the image through the diagram: first as task input, then as an observation after an action. The callback captures the screenshot; the model decides what to do next. In the code you will use, screenshots are attached to <code translate="no">ActionStep.observations_images</code>, and the agent’s history is stored in <code translate="no">agent.memory.steps</code>.</p>
 <p><strong>Before coding:</strong> draw one loop for the initial image and a second loop for the browser. Mark where new pixels enter. Predict what would go wrong if the callback saved a PNG file but never attached it to the step. After the browser run, show the action, saved screenshot, and next answer that used it.</p>
 <details class="success">
 <summary>Reasoning check</summary>
 <p>Saving a file is not the same as delivering an image to the model. The screenshot must be included in the observation sent on a later call. Without that new observation the agent may reason from old pixels or guess what changed.</p>
 </details>
-<p>The <a href="https://www.youtube.com/watch?v=rObJel7-OLc">original HF browser demonstration</a> is an optional reference. Pause after an action and identify the next visual observation. The local exercise below remains runnable without the video. HF's <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">original vision lesson</a> also links its comic-character input photos; our guided runs use the supplied original venue-plan asset.</p>
+<p>For another example, watch the optional <a href="https://www.youtube.com/watch?v=rObJel7-OLc">HF browser demonstration</a>. Pause after an action and look for the next screenshot. The exercises below use the venue plan from your download.</p>
 <h2 id="predict">A. Predict from the image<a class="headerlink" href="#predict" title="Permanent link">&para;</a></h2>
 <p>In File Explorer/Finder, open <strong><code translate="no">week04-exercises</code> → <code translate="no">assets</code> → <code translate="no">venue.png</code></strong>. This image already exists <strong>after setup's generator run</strong>; do not create an empty file with that name. If it is missing, follow the setup link above.</p>
 <p>Under <strong>Topic 16 → Image predictions</strong> in your existing <code translate="no">evidence.md</code>, answer these before calling a model:</p>
@@ -1527,14 +1738,12 @@
 <p>No. Colors and room positions do not establish step-free paths, door widths or current access conditions. The model should separate the visible layout from information that needs another source.</p>
 </details>
 <p>Save your predictions. The supplied asset generator uses no LLM; the next program does.</p>
-<h2 id="initial-image">B. Supply an image at the start<a class="headerlink" href="#initial-image" title="Permanent link">&para;</a></h2>
-<ol>
-<li>In your code editor, open <strong><code translate="no">week04-exercises</code></strong>, with <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> visible.</li>
-<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_vision.py</code></strong> directly beside them. <strong>This file is not in the ZIP; create it now.</strong></li>
-<li>Paste the complete code below.</li>
-<li>Save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac). The name must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>; do not save inside <code translate="no">.venv</code>, <code translate="no">lessons</code> or <code translate="no">assets</code>.</li>
-</ol>
-<p><strong>What this file does — <code translate="no">my_vision.py</code>:</strong> Sends the supplied venue image to the Groq vision-capable model through smolagents. It uses an LLM but no browser or search tool. Compare the terminal description with the image you opened.</p>
+<h2 id="initial-image">B. Build the image agent<a class="headerlink" href="#initial-image" title="Permanent link">&para;</a></h2>
+<p>Create <strong><code translate="no">my_vision.py</code></strong> in your code editor, directly inside <strong><code translate="no">week04-exercises</code></strong>, beside <code translate="no">week04_common.py</code>. Use <strong>New Text File → Save As</strong>; it is not supplied. Save with <strong>Ctrl + S</strong> or <strong>Command + S</strong>, with a <code translate="no">.py</code> extension. If you already have this file, save a copy before replacing its contents.</p>
+<p>Add the blocks in <strong>B1 → B2 → B3</strong> to this same file, in order. Save it after each part, and run it only after B3.</p>
+<p><strong>What this file does — <code translate="no">my_vision.py</code>:</strong> uses a Groq vision-capable model to inspect the generated venue plan. It has no custom search/browser tools. The answer appears in the terminal, where you compare it with the image you opened.</p>
+<h3 id="b1-load-the-input">B1. Load the input<a class="headerlink" href="#b1-load-the-input" title="Permanent link">&para;</a></h3>
+<p>Paste this first block to open <code translate="no">assets/venue.png</code> as an image.</p>
 <div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
@@ -1542,67 +1751,64 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">"assets/venue.png"</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="p">[],</span> <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="s2">"Inspect this fictional venue plan. Name the labeled areas and their relative positions. Separate visible facts from assumptions. Can the image prove whether the exit is currently open? State uncertainty."</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">)</span>
 </code></pre></div>
 <details class="info">
-<summary>Explain the code</summary>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>What it means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code translate="no">Path(__file__).resolve().parent</code></td>
-<td>Locate this saved program's own folder so it can find the generated asset.</td>
-</tr>
-<tr>
-<td><code translate="no">Image.open(...).convert("RGB")</code></td>
-<td>Read the existing PNG into an image object; this does not create the asset or call an LLM.</td>
-</tr>
-<tr>
-<td><code translate="no">CodeAgent(tools=[], ...)</code></td>
-<td>Create an agent without custom browser/search tools. It can still call the framework's final-answer tool.</td>
-</tr>
-<tr>
-<td><code translate="no">build_model()</code></td>
-<td>Prepare the Groq connection and request the key if needed.</td>
-</tr>
-<tr>
-<td><code translate="no">images=[image]</code></td>
-<td>Include actual pixels with the task; sending a filename as text would not do this.</td>
-</tr>
-<tr>
-<td><code translate="no">run_task(...)</code></td>
-<td>Run the model/action loop and print its result in the terminal.</td>
-</tr>
-</tbody>
-</table>
-<p>The model may describe the pixels incorrectly. Compare the actual labels/positions and separate an observation from a claim about a real route.</p>
+<summary>Explain B1 — the image object</summary>
+<p><code translate="no">root</code> locates your saved script's folder. Pillow reads the existing generated PNG and converts its color mode. This neither creates an agent nor sends pixels to Groq. A filename alone is not the image input.</p>
 </details>
-<p><strong>Run:</strong> <code translate="no">python my_vision.py</code>. Enter the Groq key if prompted. <strong>What to check:</strong> compare each reported label/position with the open image. In the existing <code translate="no">evidence.md</code>, paste one supported statement and one uncertain or unsupported statement. This program prints text; it does not generate a new image file.</p>
-<p><strong>Guided change in the same file:</strong> first copy the original task sentence and its result into your note. In the <strong>existing <code translate="no">my_vision.py</code></strong>, replace only the complete <code translate="no">run_task(...)</code> call at the bottom with the exact block below. Keep the imports, image loading and agent creation above it unchanged. This is a given input change, not a new file or an independently written prompt.</p>
-<p><strong>What this replacement does:</strong> the same Groq vision agent receives the same image with a supplied step-free-route question; its answer is printed in the terminal.</p>
-<div class="highlight"><span class="filename">Replace only the run_task call in existing my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="s2">"Describe a step-free route from ENTRANCE to BUFFET. Separate visible layout from missing accessibility information."</span><span class="p">,</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span>
+<h3 id="b2-create-the-image-agent">B2. Create the image agent<a class="headerlink" href="#b2-create-the-image-agent" title="Permanent link">&para;</a></h3>
+<p>Add this block below B1. Compare <code translate="no">tools=[]</code> with the web specialist’s tool list from Topic 15. What can this agent do without a search tool? Write your answer in <code translate="no">evidence.md</code>.</p>
+<div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[],</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
 </code></pre></div>
 <details class="info">
-<summary>Explain the given change</summary>
+<summary>Explain B2 — create the image agent</summary>
+<p>You create a new <code translate="no">CodeAgent</code> object here. <code translate="no">tools=[]</code> provides no custom search or browser tools; the built-in final-answer tool is still available. <code translate="no">model=build_model()</code> connects the agent to Groq, and <code translate="no">max_steps=3</code> limits its action steps. Image input is attached in the next stage, not by adding a search tool.</p>
+</details>
+<h3 id="b3-give-your-agent-the-pixels-and-a-task">B3. Give your agent the pixels and a task<a class="headerlink" href="#b3-give-your-agent-the-pixels-and-a-task" title="Permanent link">&para;</a></h3>
+<p>Append this last block, then save the same file. Before running, predict one supported label and one unavailable fact.</p>
+<div class="highlight"><span class="filename">my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">"Inspect this fictional venue plan. Name the labeled areas and their relative positions. Separate visible facts from assumptions. Can the image prove whether the exit is currently open? State uncertainty."</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain B3 — send pixels, not a path</summary>
+<p><code translate="no">run_task</code> starts execution. <code translate="no">images=[image]</code> attaches actual pixels to this task; a path written in the question would not attach them. Compare the model's answer with your own prediction rather than assuming it interpreted the image correctly.</p>
+</details>
+<p><strong>Build check:</strong> which stage creates an agent, which supplies pixels, and why is the search tool absent?</p>
+<details class="success">
+<summary>Vision build answer</summary>
+<p><strong>B2 creates the agent; B3 attaches pixels and starts it.</strong> The agent can describe the image you pass in B3 without searching the web. B1 only loads the input. Empty custom tools do not mean there is no LLM.</p>
+</details>
+<p><strong>When:</strong> after completing and saving <strong>all three blocks B1–B3</strong>, your build-check answer and image predictions. <strong>Where:</strong> in the activated terminal, with its current folder set to <strong><code translate="no">week04-exercises</code></strong>.</p>
+<p><strong>Run:</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>my_vision.py
+</code></pre></div>
+<p>Enter the Groq key if prompted. Wait for the final result and terminal prompt. <strong>What to check:</strong> compare each reported label/position with the open image. In the existing <code translate="no">evidence.md</code>, paste one supported statement and one uncertain or unsupported statement. This program prints text; it does not generate a new image file.</p>
+<p><strong>Try a different question:</strong> first copy the original task sentence and its result into your note. In the <strong>existing <code translate="no">my_vision.py</code></strong>, replace only the complete <code translate="no">run_task(...)</code> call at the bottom with the exact block below. Keep the imports, image loading and agent creation above it unchanged. Save the change in the same file.</p>
+<p><strong>What this replacement does:</strong> the same Groq vision agent receives the same image with a question about a step-free route; its answer is printed in the terminal.</p>
+<div class="highlight"><span class="filename">Replace only the run_task call in existing my_vision.py</span><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">"Describe a step-free route from ENTRANCE to BUFFET. Separate visible layout from missing accessibility information."</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain the change</summary>
 <p>Only the task text changes. The image is still attached with <code translate="no">images=[image]</code>, and the same agent/model is used. This lets you compare a new question against the same visible evidence.</p>
 </details>
-<p>Save and rerun <strong><code translate="no">python my_vision.py</code></strong>. Record the supplied question and actual answer in your existing <code translate="no">evidence.md</code>.</p>
+<p><strong>When:</strong> after copying the first task/result into <code translate="no">evidence.md</code>, replacing only the task call above and <strong>saving <code translate="no">my_vision.py</code> again</strong>. <strong>Where:</strong> the same activated terminal in <strong><code translate="no">week04-exercises</code></strong>.</p>
+<p><strong>Run again:</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>my_vision.py
+</code></pre></div>
+<p>Wait for the result, then record the changed question and actual answer in your existing <code translate="no">evidence.md</code>.</p>
 <p><strong>4. Does the image contain enough information for a verified step-free route, and what observation is missing?</strong></p>
 <details class="success">
 <summary>Image answer 4 — changed prompt</summary>
-<p>No. It shows relative areas but no verified ramps, thresholds, widths or passage conditions. A suitable answer can describe their relative positions and explicitly say a verified step-free route cannot be established. The next browser section adds a written access instruction, which is a new observation—not independent physical inspection of a route.</p>
+<p>No. It shows relative areas but no verified ramps, thresholds, widths or passage conditions. Describe the relative positions, then state which accessibility details are missing. The next browser section adds a written access instruction, which is a new observation—not independent physical inspection of a route.</p>
 </details>
 <p><strong>Checkpoint:</strong> save both task/result comparisons and your four answers in the existing <code translate="no">evidence.md</code>. Keep <code translate="no">my_vision.py</code> saved; no second vision program is needed.</p>
 <h2 id="browser-check">C. Test a real browser action without an LLM<a class="headerlink" href="#browser-check" title="Permanent link">&para;</a></h2>
@@ -1613,17 +1819,17 @@
 <li>Save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac). The name must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>; do not save inside <code translate="no">.venv</code>, <code translate="no">lessons</code> or <code translate="no">assets</code>.</li>
 </ol>
 <p><strong>What this file does — <code translate="no">my_browser_check.py</code>:</strong> Opens the local venue page in a separate Chrome window, clicks its details button, and saves <code translate="no">before.png</code> and <code translate="no">after.png</code>. It uses Selenium, not an LLM. Open the two screenshots to check the changed observation.</p>
-<div class="highlight"><span class="filename">my_browser_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"before.png"</span><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">1</span><span class="p">]())</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"after.png"</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Compare before.png and after.png"</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">finally</span><span class="p">:</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight"><span class="filename">my_browser_check.py</span><pre><span></span><code translate="no"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"before.png"</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="mi">1</span><span class="p">]())</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s2">"after.png"</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Compare before.png and after.png"</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 <details class="info">
 <summary>Explain the code</summary>
@@ -1663,7 +1869,11 @@
 </table>
 <p>The Chrome window may close quickly; inspect the saved PNGs afterwards. This direct test establishes the browser/tool setup before adding a model. Tool success strings are not a substitute for the images.</p>
 </details>
-<p><strong>Run:</strong> <code translate="no">python my_browser_check.py</code>. If Chrome or its driver fails, resolve this direct check before the agent run.</p>
+<p><strong>When:</strong> after creating <code translate="no">my_browser_check.py</code>, pasting the <strong>whole block</strong> and saving it; the generated <code translate="no">assets/venue.html</code> must already exist. Run this direct check <strong>before building/running the browser agent in D</strong>. <strong>Where:</strong> the activated terminal in <strong><code translate="no">week04-exercises</code></strong>.</p>
+<p><strong>Run:</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>my_browser_check.py
+</code></pre></div>
+<p>The program opens Chrome, performs the click, saves the screenshots and closes Chrome automatically. Wait for the terminal prompt to return. If Chrome or its driver fails, resolve this direct check before the agent run.</p>
 <p><strong>What to check:</strong> after Chrome closes, open <strong><code translate="no">before.png</code></strong> and <strong><code translate="no">after.png</code></strong> directly inside <code translate="no">week04-exercises</code> in File Explorer/Finder. These are <strong>generated screenshots</strong>, not files you create or download. If absent, inspect the terminal error. Rerunning this check replaces same-name screenshots.</p>
 <p><strong>1. What changed after the click?</strong></p>
 <details class="success">
@@ -1676,72 +1886,61 @@
 <p>It shows that the local page loaded, the supplied click operated and the screenshot changed. It uses no model, so it cannot demonstrate a model choosing the click or receiving/understanding pixels.</p>
 </details>
 <p>In the existing <code translate="no">evidence.md</code>, record both screenshot names, the changed text and your two answers. Keep the PNGs in place for review; do not paste HTML source as a substitute for the screenshots.</p>
-<h2 id="browser-loop">D. Build the screenshot observation loop<a class="headerlink" href="#browser-loop" title="Permanent link">&para;</a></h2>
-<ol>
-<li>In your code editor, open <strong><code translate="no">week04-exercises</code></strong>, with <code translate="no">requirements.txt</code> and <code translate="no">week04_common.py</code> visible.</li>
-<li>Choose <strong>File → New Text File → Save As</strong> and save <strong><code translate="no">my_browser.py</code></strong> directly beside them. <strong>This file is not in the ZIP; create it now.</strong></li>
-<li>Paste the complete code below.</li>
-<li>Save with <strong>Ctrl + S</strong> (Windows) or <strong>Command + S</strong> (Mac). The name must end in <code translate="no">.py</code>, not <code translate="no">.py.txt</code>; do not save inside <code translate="no">.venv</code>, <code translate="no">lessons</code> or <code translate="no">assets</code>.</li>
-</ol>
-<p><strong>What this file does — <code translate="no">my_browser.py</code>:</strong> Runs a Groq browser agent that chooses actions and receives actual screenshots after each action. The supplied tools control the local page; screenshots are saved in <code translate="no">outputs/browser-*.png</code>. Inspect the terminal trace, image sequence, and final answer.</p>
-<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">agent</span> <span class="o">=</span> <span class="n">CodeAgent</span><span class="p">(</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">tools</span><span class="o">=</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(),</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">step_callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">browser</span><span class="o">.</span><span class="n">capture</span><span class="p">],</span> <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="p">)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s2">"""Use open_venue first, then inspect its screenshot.</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s2">In a separate action step call show_access_details. Inspect the NEW screenshot</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s2">before answering: which exit is closed and which entrance is recommended?</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s2">Describe the visual evidence and explain what the original venue plan alone</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s2">could not establish. Do not combine both tool calls in one action step.</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s2">"""</span><span class="p">)</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="k">finally</span><span class="p">:</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<h2 id="browser-loop">D. Build the browser agent<a class="headerlink" href="#browser-loop" title="Permanent link">&para;</a></h2>
+<p>Create <strong><code translate="no">my_browser.py</code></strong> directly in <strong><code translate="no">week04-exercises</code></strong>, beside the other scripts. This file is not supplied. Add D1, D2 and D3 to the same file in that order, then save it. If you are replacing an earlier version, save a copy of your work first.</p>
+<p>This agent will open the local page, click its details button and use the new screenshot to answer a question. The screenshot callback connects each browser action to the image the model receives next.</p>
+<p><strong>What this file does — <code translate="no">my_browser.py</code>:</strong> uses Groq to choose actions on the local page and receive fresh screenshots after them. Selenium tools operate Chrome; <code translate="no">outputs/browser-*.png</code> stores observations. Inspect the terminal trace, image sequence and final answer.</p>
+<h3 id="d1-import-the-parts">D1. Import the parts<a class="headerlink" href="#d1-import-the-parts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeAgent</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_common</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span><span class="p">,</span> <span class="n">agent_options</span><span class="p">,</span> <span class="n">run_task</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">week04_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserSession</span>
 </code></pre></div>
 <details class="info">
-<summary>Explain the code</summary>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>What it means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code translate="no">tools=browser.tools</code></td>
-<td>Register the supplied opening/clicking tools; the model can choose to call them.</td>
-</tr>
-<tr>
-<td><code translate="no">step_callbacks=[browser.capture]</code></td>
-<td>After each step, call the supplied capture function.</td>
-</tr>
-<tr>
-<td><code translate="no">**agent_options(max_steps=6)</code></td>
-<td>Insert the action-format instructions, logging and this run's step limit.</td>
-</tr>
-<tr>
-<td>The multi-line task</td>
-<td>Require an opening action and a later click action, then an answer from the new screenshot.</td>
-</tr>
-<tr>
-<td><code translate="no">run_task(...)</code></td>
-<td>Start the model/action/observation loop.</td>
-</tr>
-<tr>
-<td><code translate="no">finally</code></td>
-<td>Close the browser session when the run ends or fails.</td>
-</tr>
-</tbody>
-</table>
-<p>The existing <code translate="no">week04_browser.py</code> callback writes the PNG to <code translate="no">outputs/browser-*.png</code>, attaches pixels to <code translate="no">ActionStep.observations_images</code> and adds the current URL. It removes older images from model history so the next call sees the latest screenshot. Saving the PNG alone would not send it to the model. <code translate="no">browser-*.png</code> means all matching numbered filenames, not a literal file containing <code translate="no">*</code>.</p>
+<summary>Explain D1 — tools and screenshots</summary>
+<p><code translate="no">BrowserSession</code> supplies tools and a screenshot callback. Importing it does not create a model agent. You create the <code translate="no">CodeAgent</code> in the next block.</p>
 </details>
-<p><strong>Run:</strong> <code translate="no">python my_browser.py</code>. <strong>What to check:</strong> find separate <code translate="no">open_venue</code> and <code translate="no">show_access_details</code> calls in the terminal, then open the generated numbered PNGs inside <strong><code translate="no">week04-exercises/outputs</code></strong> and match the images to the actions. There may be more than two PNGs because the callback also runs after other steps. Use the actual filenames, not an assumed count.</p>
+<h3 id="d2-define-the-browser-agent">D2. Define the browser agent<a class="headerlink" href="#d2-define-the-browser-agent" title="Permanent link">&para;</a></h3>
+<p>Add this function below D1. It creates the agent with browser tools and a screenshot callback. You will call the function in D3.</p>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_browser_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">browser</span><span class="p">):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">return</span> <span class="n">CodeAgent</span><span class="p">(</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="n">tools</span><span class="o">=</span><span class="n">browser</span><span class="o">.</span><span class="n">tools</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="n">step_callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">browser</span><span class="o">.</span><span class="n">capture</span><span class="p">],</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="o">**</span><span class="n">agent_options</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain D2 — receive screenshots after actions</summary>
+<p><code translate="no">tools=browser.tools</code> registers opening/clicking actions. <code translate="no">step_callbacks=[browser.capture]</code> captures and attaches pixels after each step. The supplied callback writes PNGs to <code translate="no">outputs</code>, sets <code translate="no">ActionStep.observations_images</code>, records the URL and removes older images from history. Saving a PNG without attaching it would not send it to the model. The callback supplies observations; the agent chooses actions.</p>
+</details>
+<h3 id="d3-open-the-browser-and-add-the-task">D3. Open the browser and add the task<a class="headerlink" href="#d3-open-the-browser-and-add-the-task" title="Permanent link">&para;</a></h3>
+<p>Append this final block. Keep the <code translate="no">try</code> body indented as shown and <code translate="no">finally</code> aligned with <code translate="no">try</code>. <code translate="no">finally</code> ensures that Chrome closes when the program finishes or an error occurs. Save before running.</p>
+<div class="highlight"><span class="filename">my_browser.py</span><pre><span></span><code translate="no"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">browser</span> <span class="o">=</span> <span class="n">BrowserSession</span><span class="p">()</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">agent</span> <span class="o">=</span> <span class="n">build_browser_agent</span><span class="p">(</span><span class="n">build_model</span><span class="p">(),</span> <span class="n">browser</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="n">run_task</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s2">"""Use open_venue first, then inspect its screenshot.</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s2">In a separate action step call show_access_details. Inspect the NEW screenshot</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s2">before answering: which exit is closed and which entrance is recommended?</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s2">Describe the visual evidence and explain what the original venue plan alone</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s2">could not establish. Do not combine both tool calls in one action step.</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s2">"""</span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<details class="info">
+<summary>Explain D3 — construction, execution and cleanup</summary>
+<p>The session starts Chrome. Calling <code translate="no">build_browser_agent</code> constructs your new agent using that session; <code translate="no">run_task</code> starts its decisions. The task requires a later click so the model can compare two states. <code translate="no">finally</code> closes Chrome on success or error. Numbered PNGs are generated during execution; <code translate="no">browser-*.png</code> is a filename pattern, not a file you create.</p>
+</details>
+<p><strong>Build check:</strong> compare this agent with B2. Which two settings connect actions and fresh observations, and what would happen if the callback were absent?</p>
+<details class="success">
+<summary>Browser build answer</summary>
+<p><code translate="no">tools=browser.tools</code> enables actions; <code translate="no">step_callbacks=[browser.capture]</code> supplies fresh pixels after them. Without the callback this program would not deliver the new screenshot through its observation loop, so a click-success message alone would not establish what became visible.</p>
+</details>
+<p><strong>When:</strong> after C has succeeded, <strong>all three blocks D1–D3</strong> are assembled and saved in <code translate="no">my_browser.py</code>, and you have answered the build check. <strong>Where:</strong> the activated terminal in <strong><code translate="no">week04-exercises</code></strong>.</p>
+<p><strong>Run:</strong></p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python<span class="w"> </span>my_browser.py
+</code></pre></div>
+<p>Enter the Groq key if prompted. Let the program control its Chrome window and wait for the final result and terminal prompt. <strong>What to check:</strong> find separate <code translate="no">open_venue</code> and <code translate="no">show_access_details</code> calls in the terminal, then open the generated numbered PNGs inside <strong><code translate="no">week04-exercises/outputs</code></strong> and match the images to the actions. There may be more than two PNGs because the callback also runs after other steps. Use the actual filenames, not an assumed count.</p>
 <p><strong>1. Which exit is closed and which entrance is recommended? What supports the answer?</strong></p>
 <details class="success">
 <summary>Agent answer 1 — baseline evidence</summary>
@@ -1750,7 +1949,7 @@
 <p><strong>2. What if both tools ran in one action step?</strong></p>
 <details class="success">
 <summary>Agent answer 2 — separate states</summary>
-<p>One end-of-step capture may show only the final page. Keep that trace as an incomplete two-state comparison. Check that the complete given multi-line task is still present in <code translate="no">my_browser.py</code>, then ask the instructor before rerunning if the model keeps combining the steps. You are not asked to invent a new prompt. You need opening/click actions and corresponding different observations.</p>
+<p>One end-of-step capture may show only the final page. Record that you only received the final state. Check that the task in D3 is copied in full: it asks for the two tools to run in separate steps. To compare before and after, you need a screenshot after each action.</p>
 </details>
 <p><strong>3. What is the callback responsible for?</strong></p>
 <details class="success">
@@ -1764,16 +1963,16 @@
 <li>Copy the actual <code translate="no">outputs/browser-*.png</code> files into that folder. In the existing <code translate="no">evidence.md</code>, paste the baseline action/answer excerpt and list the relevant screenshot names.</li>
 <li>In your code editor, open the <strong>existing generated <code translate="no">assets/venue.html</code></strong>. Do not create a new HTML file or edit a lesson page. Find this exact text in its access-details paragraph:</li>
 </ol>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>The east exit is closed for maintenance. Use the north entrance for accessible entry.
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>The east exit is closed for maintenance. Use the north entrance for accessible entry.
 </code></pre></div>
 <ol>
 <li>Replace only those two sentences with the following fictional test data. Leave the HTML tags and button unchanged:</li>
 </ol>
-<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>The west exit is closed for maintenance. Use the south entrance for accessible entry.
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>The west exit is closed for maintenance. Use the south entrance for accessible entry.
 </code></pre></div>
 <ol>
 <li>Save <code translate="no">assets/venue.html</code>. In <code translate="no">evidence.md</code>, predict the new answer. <strong>Do not rerun <code translate="no">prepare_visuals.py</code></strong>, which would restore the original text.</li>
-<li>Run the same existing agent again: <strong><code translate="no">python my_browser.py</code></strong>. The helper starts a new Chrome session and opens your saved local page. No Python code or new runner file is needed for this data change.</li>
+<li><strong>Only after steps 1–5 are complete</strong>, return to the <strong>same activated terminal in <code translate="no">week04-exercises</code></strong> and run <strong><code translate="no">python my_browser.py</code></strong> again. The helper starts a new Chrome session and opens your saved local page. Wait for the final result and terminal prompt before step 7. Keep <code translate="no">my_browser.py</code> unchanged so you can test whether the answer follows the edited page.</li>
 <li>Create <strong><code translate="no">browser-revised</code></strong> inside the existing <code translate="no">evidence-files</code> folder and copy the new <code translate="no">outputs/browser-*.png</code> files there. The callback starts numbering again for each session, so the original outputs may be replaced; use the two archive folders for comparison.</li>
 </ol>
 <p><strong>4. Does the new answer follow the changed screenshot?</strong></p>
@@ -1788,7 +1987,7 @@
 </details>
 <p><strong>Checkpoint:</strong> save the three Python files, your existing <code translate="no">evidence.md</code>, direct <code translate="no">before.png</code>/<code translate="no">after.png</code>, and both archived agent-run screenshot folders. Keep <code translate="no">assets/venue.html</code> with your edit, and record the exact two-sentence change. You can restore the original text in that same file after saving the evidence; do not erase the comparison.</p>
 <h2 id="credit">Troubleshooting and credit<a class="headerlink" href="#credit" title="Permanent link">&para;</a></h2>
-<p>If the generated image/page is missing, run the <strong>supplied</strong> <code translate="no">python prepare_visuals.py</code> in <code translate="no">week04-exercises</code> following setup. That replaces existing assets, so first save any page edit you want to preserve in your evidence note. For Chrome errors, confirm Chrome is installed and allow Selenium Manager to obtain its compatible driver; institutional network restrictions may need instructor help. For image-request errors or model limits, check model access and keep only the latest screenshot. A text-only response without an image reaching the model is not a completed vision run.</p>
+<p>If the generated image/page is missing, run the <strong>supplied</strong> <code translate="no">python prepare_visuals.py</code> in the <strong>activated terminal with <code translate="no">week04-exercises</code> as its current folder</strong>, before returning to A. That replaces existing assets, so first save any page edit you want to preserve in your evidence note. For Chrome errors, confirm Chrome is installed and allow Selenium Manager to obtain its compatible driver; institutional network restrictions may need instructor help. For image-request errors or model limits, check model access and keep only the latest screenshot. A text-only response without an image reaching the model is not a completed vision run.</p>
 <table>
 <thead>
 <tr>
@@ -1819,7 +2018,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Credits:</strong> <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">HF Vision and Browser Agents</a>, Apache-2.0, inspired the initial-image and screenshot-observation structure. This course supplies original venue assets and bounded Selenium tools. The model is documented in <a href="https://console.groq.com/docs/vision">Groq image-input guidance</a>; check model access before class. The guided exercise is self-contained.</p>
+<p><strong>Credits:</strong> <a href="https://huggingface.co/learn/agents-course/en/unit2/smolagents/vision_agents">HF Vision and Browser Agents</a>, Apache-2.0, inspired the initial-image and screenshot-observation structure. This course supplies original venue assets and bounded Selenium tools. The model is documented in <a href="https://console.groq.com/docs/vision">Groq image-input guidance</a>; check your model access if an image request is rejected.</p>
 <p><strong>Next:</strong> <a href="../week-4-completion/">17 · Completion checks</a>.</p>
 
 
@@ -1856,7 +2055,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../week-4-batman/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 15 · Batman multi-agent exercise">
+          <a href="../week-4-batman/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 15 · Multi-agent systems">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1866,7 +2065,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                15 · Batman multi-agent exercise
+                15 · Multi-agent systems
               </div>
             </div>
           </a>
@@ -1923,6 +2122,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>

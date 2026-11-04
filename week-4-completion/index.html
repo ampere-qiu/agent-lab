@@ -145,10 +145,10 @@
     
       
 
-<span class="md-header__button md-icon course-translate" aria-disabled="true" data-course-language-pending title="Japanese edition — To be released">
+<a class="md-header__button md-icon course-translate" href="../ja/week-4-completion/" data-course-language lang="ja" hreflang="ja" title="Read this lesson in Japanese" aria-label="Switch language to Japanese for this lesson">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-  <span>日本語 · To be released</span>
-</span>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
 
     
     
@@ -1013,7 +1013,7 @@
   <span class="md-ellipsis">
     
   
-    14 · Agentic RAG continuation
+    14 · Week 3 RAG understanding check
   
 
     
@@ -1041,7 +1041,7 @@
   <span class="md-ellipsis">
     
   
-    15 · Batman multi-agent exercise
+    15 · Multi-agent systems
   
 
     
@@ -1336,33 +1336,33 @@
 
 
 <h1 id="week-4-completion">17 · Week 04 completion checks<a class="headerlink" href="#week-4-completion" title="Permanent link">&para;</a></h1>
-<p><strong>Objective:</strong> explain what you built and show actual results from required Topics 14–16. This review creates no new Python program.</p>
-<p><strong>Before starting:</strong> open your <strong>existing <code translate="no">week04-exercises</code> folder</strong> and the <strong><code translate="no">evidence.md</code> file you created in <a href="../week-4-preview/#evidence-file">Week 4 setup</a></strong>. If you skipped creating the note, follow that linked step now; it was never a supplied download file. You will fill its existing <strong>Topic 17</strong> heading, not create a second evidence file.</p>
+<p><strong>Objective:</strong> explain how your agents work and check their answers against their evidence.</p>
+<p><strong>Before starting:</strong> open your <strong>existing <code translate="no">week04-exercises</code> folder</strong> and the <strong><code translate="no">evidence.md</code> file you created in <a href="../week-4-preview/#evidence-file">Week 4 setup</a></strong>. If the note is missing, create it using the linked setup instructions. Add this review under its <strong>Topic 17</strong> heading.</p>
 <h2 id="required">Required evidence<a class="headerlink" href="#required" title="Permanent link">&para;</a></h2>
-<p>Use the table to locate each item and check its result. A file's presence alone does not prove the required action ran.</p>
+<p>Open the files and results below. Check what happened in each run and note anything that remains incomplete.</p>
 <table>
 <thead>
 <tr>
 <th>Topic</th>
-<th>Student-created files</th>
-<th>Generated result / evidence to review</th>
+<th>Your files</th>
+<th>Results to check</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../week-4-retrieval/">14 · RAG</a></td>
-<td><code translate="no">my_rag_continuation.py</code></td>
-<td>Terminal direct/agent retrieval, source-supported dish claim, unsupported-policy run and answers 1–4 in <code translate="no">evidence.md</code>. This runner does not save a separate report.</td>
+<td><a href="../week-4-retrieval/">14 · Week 3 RAG review</a></td>
+<td>No new Python file</td>
+<td>Answers 1–5 in <code translate="no">evidence.md</code>, labeled “Week 3 run” or “provided example.” Use the Week 3 lesson and folder for any RAG coding.</td>
 </tr>
 <tr>
 <td><a href="../week-4-batman/">15 · Batman</a></td>
 <td><code translate="no">my_batman_tools.py</code>, <code translate="no">my_batman.py</code></td>
-<td>Your explanation of the supplied code, actual one-location delegation, full four-entry research/source/coordinate audit, one recalculation and understanding answers in <code translate="no">evidence.md</code>. The report tool generates <code translate="no">outputs/batman-report.html</code>; preserve a copy as <code translate="no">evidence-files/batman-report.html</code> using the lesson's copy step. No independent role/task design or code improvement is required.</td>
+<td>Your answers to checks A–D, the one-location handoff, the four-location results, checked source links and one recalculated flight estimate in <code translate="no">evidence.md</code>. The report tool generates <code translate="no">outputs/batman-report.html</code>; preserve a copy as <code translate="no">evidence-files/batman-report.html</code> as described in Topic 15.</td>
 </tr>
 <tr>
 <td><a href="../week-4-vision-browser/">16 · Vision &amp; Browser</a></td>
 <td><code translate="no">my_vision.py</code>, <code translate="no">my_browser_check.py</code>, <code translate="no">my_browser.py</code></td>
-<td>Image predictions and changed-question answers in <code translate="no">evidence.md</code>; generated direct <code translate="no">before.png</code> and <code translate="no">after.png</code>; generated agent screenshots copied into student-created <code translate="no">evidence-files/browser-baseline</code> and <code translate="no">evidence-files/browser-revised</code> folders. Record the saved HTML edit and observed answer change.</td>
+<td>Your image predictions, answers and comparison of the two agents in <code translate="no">evidence.md</code>; the direct-check screenshots <code translate="no">before.png</code> and <code translate="no">after.png</code>; browser-agent screenshots saved in <code translate="no">evidence-files/browser-baseline</code> and <code translate="no">evidence-files/browser-revised</code> folders. Record the saved HTML edit and observed answer change.</td>
 </tr>
 <tr>
 <td>Optional Topic 15 verifier</td>
@@ -1371,9 +1371,9 @@
 </tr>
 </tbody>
 </table>
-<p><code translate="no">week04_common.py</code>, <code translate="no">week04_retriever.py</code>, <code translate="no">week04_search.py</code>, <code translate="no">week04_tools.py</code>, <code translate="no">week04_browser.py</code> and <code translate="no">prepare_visuals.py</code> are <strong>supplied helpers</strong>. You do not need to create replacements. <code translate="no">assets/venue.png</code> and <code translate="no">assets/venue.html</code> are <strong>generated during setup</strong>; the Topic 16 edit changes that existing HTML file. <code translate="no">evidence-files</code> and its archive subfolders are <strong>created by you</strong> to preserve generated results.</p>
-<p>For each required row, write <strong>complete</strong> or <strong>incomplete</strong> under Topic 17 in the existing <code translate="no">evidence.md</code>, followed by the actual supporting action/observation or the error. Save the note with <strong>Ctrl + S</strong> or <strong>Command + S</strong>. Missing outputs should lead you back to the relevant creation/run step; do not create blank output files or substitute example answers.</p>
-<p>The <strong>RAG continuation, two-agent Batman team and guided vision/browser work are required in Week 4</strong>. All required code is given in full; explain it and show what actually ran. A third verifier is optional and is the only independent coding challenge. A correct diagram or direct tool test is preparation; a required agent checkpoint also needs successful model/tool execution evidence. Do not share keys in your notes or terminal excerpts.</p>
+<p><code translate="no">week04_common.py</code>, <code translate="no">week04_search.py</code>, <code translate="no">week04_tools.py</code>, <code translate="no">week04_browser.py</code> and <code translate="no">prepare_visuals.py</code> are <strong>supplied helpers</strong>. You do not need to create replacements. <code translate="no">assets/venue.png</code> and <code translate="no">assets/venue.html</code> are <strong>generated during setup</strong>; the Topic 16 edit changes that existing HTML file. <code translate="no">evidence-files</code> and its archive subfolders are <strong>created by you</strong> to preserve generated results.</p>
+<p>For each topic, write <strong>complete</strong> or <strong>incomplete</strong> under Topic 17 in <code translate="no">evidence.md</code>. Include a short result that supports your choice, or the error you need to resolve. Save with <strong>Ctrl + S</strong> or <strong>Command + S</strong>. If an output is missing, return to that lesson’s run instructions.</p>
+<p><strong>Complete Topics 14–16 before this review.</strong> The third verifier agent is optional. For each agent, keep a trace showing its action, the returned observation and its final answer. Remove API keys from any notes or terminal excerpts you share.</p>
 <h2 id="explain">Explain the system<a class="headerlink" href="#explain" title="Permanent link">&para;</a></h2>
 <p>Write your own answers 1–5 under <strong>Topic 17</strong> in your existing <code translate="no">evidence.md</code>, then expand the answers to compare. Use one short example from your actual run wherever possible.</p>
 <p><strong>1. Why is delegating to an agent different from calling a function tool?</strong></p>
@@ -1381,15 +1381,15 @@
 <summary>Answer 1 — another execution loop</summary>
 <p>A function tool executes its specified Python operation and returns a value/error. A specialist agent has its own model/action/observation loop and may choose several searches/page reads before returning a report. Show the manager's specialist call and one specialist tool action from your run.</p>
 </details>
-<p><strong>2. What must survive the specialist-to-manager handoff?</strong></p>
+<p><strong>2. What information must the specialist return to the manager?</strong></p>
 <details class="success">
-<summary>Answer 2 — evidence contract</summary>
-<p>The location and role, coordinates, claim source URL, coordinate source URL, supporting evidence and uncertainty must remain available. Without them, the manager cannot reliably calculate or audit the report. In your trace, identify the returned fields rather than assuming they survived.</p>
+<summary>Answer 2 — information to return</summary>
+<p>The location and role, coordinates, claim source URL, coordinate source URL, supporting evidence and uncertainty must remain available. Without them, the manager cannot calculate the estimate or check the report. In your trace, identify the returned fields rather than assuming they survived.</p>
 </details>
 <p><strong>3. Why does successful retrieval not establish every requested fact?</strong></p>
 <details class="success">
 <summary>Answer 3 — returned passages versus support</summary>
-<p>Retrieval ranks candidate passages; they may be irrelevant or lack the requested fact. Our top-five search can return all five notes despite no allergy policy being present. The answer should state that the supplied notes do not establish the policy, not invent one or claim no real policy exists.</p>
+<p>Retrieval ranks candidate passages; they may be irrelevant or lack the requested fact. The Week 3 top-five search can return all five notes despite no allergy policy being present. The answer should state that the supplied notes do not establish the policy, not invent one or claim no real policy exists.</p>
 </details>
 <p><strong>4. How does <code translate="no">images=[image]</code> differ from a screenshot callback?</strong></p>
 <details class="success">
@@ -1401,7 +1401,7 @@
 <summary>Answer 5 — coordination costs and errors</summary>
 <p>Extra calls, latency, lost sources, unclear responsibility and repeated unsupported assertions can outweigh specialization. A verifier is useful only when its checks add evidence or catch a problem. More agents and agreement do not guarantee correctness.</p>
 </details>
-<p><strong>Final checkpoint:</strong> keep the supplied helpers, your six required <code translate="no">my_*.py</code> programs created from the given code, existing evidence note, generated assets/results and archived comparisons together in <code translate="no">week04-exercises</code>. The optional seventh runner is needed only if you attempted the verifier. Be ready to open a named file, point to an actual action/observation and explain one limitation. There is no new submission script, publishing, certification or account-gated quiz for this review.</p>
+<p><strong>Final checkpoint:</strong> keep the supplied helpers, your five <code translate="no">my_*.py</code> programs, existing evidence note, generated assets/results and archived comparisons together in <code translate="no">week04-exercises</code>. Include <code translate="no">my_batman_verified.py</code> if you attempted the optional challenge. Be ready to open a named file, point to an actual action/observation and explain one limitation.</p>
 <p>Return to the <a href="../week-4-preview/">Week 04 plan</a>, <a href="../week-4-batman/">Batman exercise</a>, or <a href="../week-4-vision-browser/">Vision &amp; Browser exercise</a>.</p>
 
 
@@ -1505,6 +1505,8 @@
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
       
     
   </body>
