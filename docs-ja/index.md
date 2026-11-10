@@ -1,6 +1,6 @@
 <div class="course-hero" markdown>
 
-<p class="eyebrow">Agent Lab / 第01〜04週</p>
+<p class="eyebrow">Agent Lab / 第01〜05週</p>
 
 # はじめてのAIエージェントを作ろう { #build-your-first-ai-agent }
 
@@ -9,11 +9,13 @@
 Hugging Face Agents Courseとそのスターターテンプレートを基にした、ローカル環境で学ぶ教材です。
 
 [第1週を始める](week-1-learning-plan.md){ .md-button .md-button--primary }
-[第2週の内容を見る](week-2-learning-plan.md){ .md-button }
+[現在の単元を見る：第5週・LlamaIndex](week-5-learning-plan.md){ .md-button }
 
-<p class="course-meta">Windows・Mac対応 · アプリはローカル、LLMはリモート · 第1〜4週 · ローカル実習</p>
+<p class="course-meta">Windows・Mac対応 · ローカル実習 · 第1〜5週 · LLMへの問い合わせはリモート</p>
 
 </div>
+
+**現在の単元 — 第5週：** [LlamaIndex](week-5-learning-plan.md)では、Hugging Face Unit 2.2の順に学びます。ローカルで動く実習を通して、コンポーネント、ツール、エージェント、イベント駆動型ワークフローをつなぎます。
 
 **第04週：** [smolagents Part 2](week-4-preview.md)では、第03週のRAGを小テストで振り返り、Batman調査チームと画像・ブラウザ演習に取り組みます。
 
@@ -38,6 +40,7 @@ Hugging Face Agents Courseとそのスターターテンプレートを基にし
 
 3. **第03週 — ターミナル用エージェントを作る：**[環境準備とファイル作成の手順](week-3-learning-plan.md)に沿ってプログラムを動かし、[関数型・クラス型のツール](week-3-custom-tool.md)を変更し、任意で[Agentic RAG](week-3-retrieval.md)を予習できます。RAGは第04週であらためて扱います。
 4. **第04週 — smolagents Part 2：** [Batmanチーム](week-4-batman.md)と[画像・ブラウザ演習](week-4-vision-browser.md)に取り組み、[完了確認](week-4-completion.md)を行います。[学習計画とダウンロード](week-4-preview.md)から始めます。
+5. **第5週 — LlamaIndex：** [セットアップ](week-5-learning-plan.md)の後、コンポーネントとRAG、ツール、エージェント、ワークフローの順に進みます。[完了ページ](week-5-completion.md)で、提示して説明する内容を確認できます。
 
 学習目標と、各週の振り返りで示す内容は、[コース全体の流れ](course-route.md)を参照してください。
 

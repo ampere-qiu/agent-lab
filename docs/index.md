@@ -1,6 +1,6 @@
 <div class="course-hero" markdown>
 
-<p class="eyebrow">Agent Lab / Weeks 01–04</p>
+<p class="eyebrow">Agent Lab / Weeks 01–05</p>
 
 # Build your first AI agent { #build-your-first-ai-agent }
 
@@ -9,11 +9,13 @@ Understand the model. Connect the tools. Watch your agent take action.
 A local course adapted from Hugging Face’s Agents Course and starter template.
 
 [Start Week 1](week-1-learning-plan.md){ .md-button .md-button--primary }
-[Explore Week 2](week-2-learning-plan.md){ .md-button }
+[Go to the current unit: Week 5 · LlamaIndex](week-5-learning-plan.md){ .md-button }
 
-<p class="course-meta">Windows & Mac · Local app, remote LLM · Weeks 1–4 · Local practicals</p>
+<p class="course-meta">Windows & Mac · Local practicals · Weeks 1–5 · Remote LLM calls</p>
 
 </div>
+
+**Current unit — Week 5:** [LlamaIndex](week-5-learning-plan.md) follows Hugging Face Unit 2.2. Connect components, tools, agents, and event-driven workflows through runnable local exercises.
 
 **Week 04:** [smolagents Part 2](week-4-preview.md) reviews Week 3 RAG with a quiz, then guides you to create the Batman manager/web specialist team and Vision & Browser Agents in stages.
 
@@ -35,8 +37,9 @@ New to terminals or editing Python? Read [Before you start](before-you-start.md)
 
 1. **Week 1 — understand and trace the loop:** read [agent foundations](unit-1-walkthrough.md), complete the two quick quizzes, [prepare your local environment](prepare-your-computer.md), and [build the three-stage dummy agent](dummy-agent-local.md).
 2. **Week 2 — run and extend a working agent:** [run the template](run-your-first-agent.md), [understand its components](understand-the-template.md), [enable and verify tools](first-agent-practical.md), and complete the [practical checks](quizzes.md#finish-the-practical).
-3. **Week 03 — create terminal-based agents:** follow [the setup and file-creation steps](week-3-learning-plan.md), run your programs, modify [function/class tools](week-3-custom-tool.md), and optionally preview [Agentic RAG](week-3-retrieval.md), which we will revisit in Week 04.
+3. **Week 03 — create terminal-based agents:** follow [the setup and file-creation steps](week-3-learning-plan.md), run your programs, modify [function/class tools](week-3-custom-tool.md), and optionally preview [Agentic RAG](week-3-retrieval.md), which we revisit in Week 04.
 4. **Week 04 — smolagents Part 2:** build the required [Batman team](week-4-batman.md), complete [Vision & Browser Agents](week-4-vision-browser.md), and collect [completion evidence](week-4-completion.md). Begin with the [plan and downloads](week-4-preview.md).
+5. **Week 05 — LlamaIndex:** follow [the setup](week-5-learning-plan.md), then work through components and RAG, tools, agents, and workflows in order. The [completion page](week-5-completion.md) lists what to show and explain.
 
 See the [course route](course-route.md) for learning objectives and the evidence to bring to each week's review.
 
