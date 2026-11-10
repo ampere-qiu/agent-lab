@@ -93,7 +93,7 @@ class CourseTests(unittest.TestCase):
     def test_all_pages_are_authored_in_both_languages(self):
         self.assertEqual({p.name for p in self.shared_pages},
                          {p.name for p in (ROOT / 'docs-ja').glob('*.md')})
-        self.assertEqual(len(self.shared_pages), 24)
+        self.assertEqual(len(self.shared_pages), 34)
         self.assertEqual({p.name for p in self.pages} - {p.name for p in self.shared_pages}, self.english_only)
         for en in self.shared_pages:
             with self.subTest(page=en.name):

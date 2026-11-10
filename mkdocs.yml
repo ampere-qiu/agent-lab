@@ -76,6 +76,17 @@ nav:
   - 15 · Multi-agent systems: week-4-batman.md
   - 16 · Vision & Browser Agents: week-4-vision-browser.md
   - 17 · Completion checks: week-4-completion.md
+- Week 05 · LlamaIndex:
+  - Week 05 · Plan and setup: week-5-learning-plan.md
+  - 18 · Introduction to LlamaIndex: week-5-introduction.md
+  - 19 · LlamaHub integrations: week-5-llamahub.md
+  - 20 · Components and RAG: week-5-components.md
+  - 21 · Tools in LlamaIndex: week-5-tools.md
+  - Quiz 1 · Components and tools: week-5-quiz-1.md
+  - 22 · Agents in LlamaIndex: week-5-agents.md
+  - 23 · Agentic workflows: week-5-workflows.md
+  - Quiz 2 · Agents and workflows: week-5-quiz-2.md
+  - Week 05 · Conclusion and completion: week-5-completion.md
 - Reference:
   - Course route: course-route.md
 hooks:

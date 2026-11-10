@@ -1,0 +1,13 @@
+# Python 3.11; install in the separate Week 5 environment.
+llama-index-core==0.14.25
+llama-index-workflows==2.26.1
+llama-index-llms-groq==0.6.1
+llama-index-embeddings-huggingface==0.8.0
+llama-index-vector-stores-chroma==0.6.0
+llama-index-utils-workflow==0.11.0
+pyvis==0.3.2
+python-dotenv==1.2.4
+chromadb==1.5.9
+sentence-transformers==6.2.0
+# Read complete persona text from the original dataset if the preview service fails.
+pyarrow==26.0.1

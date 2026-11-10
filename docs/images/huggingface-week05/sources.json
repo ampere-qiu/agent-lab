@@ -1,0 +1,66 @@
+[
+  {
+    "file": "thumbnail.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/thumbnail.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/introduction",
+    "sha256": "b1cc0d7a6c9da310d334dc57af51deaff6d5071e65ba7f997a255b4fd25b4fed",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "llama-hub.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/llama-hub.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/llama-hub",
+    "sha256": "91f1e48963e79c07dd3996bad48bfc6052cbb340f13cffa38380c6de0a3af321",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "rag.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/rag.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/components",
+    "sha256": "9065b3d6b1dd054ad8a74c335c5f0cee35e23fed04db66ceb811ff11398c8db0",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "tools.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/tools.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/tools",
+    "sha256": "e6ad9e9a57a5fdfd4382849ede66277273d47ce42f58479e9ec196a5b5af98f1",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "agents.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/agents.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/agents",
+    "sha256": "3843c244b5dab07ef39309466cf834ec69575f3db637a8872e77a920784809eb",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "agentic-rag.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/agentic-rag.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/agents",
+    "sha256": "a092c1f77e988b8ff484bff22b5e0192e8a00563b5b9f50f1bced23a399cf56d",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "workflows.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/workflows.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/workflows",
+    "sha256": "59ed4d01fb5d92ee6a27adb6659e26288a9a62ed883873bd663cbcb5dda1e815",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  },
+  {
+    "file": "workflow-draw.png",
+    "source": "https://huggingface.co/datasets/agents-course/course-images/resolve/d500ca088f407051ab7a1ef0789bdee1d2d01a3f/en/unit2/llama-index/workflow-draw.png",
+    "lesson": "https://huggingface.co/learn/agents-course/en/unit2/llama-index/workflows",
+    "sha256": "7321f8620e57e889b93c847cb503724c9ee2aeabfe3070d0b2b52d61879dc85f",
+    "unchanged": true,
+    "revision": "d500ca088f407051ab7a1ef0789bdee1d2d01a3f"
+  }
+]

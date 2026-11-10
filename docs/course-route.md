@@ -1,6 +1,6 @@
 # Course route { #two-week-course-route }
 
-This local course adapts Hugging Face Agents Course Unit 1, its starter, and Unit 2.1 for Groq and local execution. Weeks 1–2 cover Unit 1; Week 03 deepens the smolagents and tool work from Week 2 through Unit 2.1. Lessons are available in English and Japanese. External HF lesson pages are optional references. Original HF quizzes remain external activities.
+This local course adapts Hugging Face Agents Course Unit 1, its starter, and Units 2.1–2.2 for Groq and local execution. Weeks 1–2 cover Unit 1; Week 03 deepens the smolagents and tool work from Week 2 through Unit 2.1. Lessons are available in English and Japanese. External HF lesson pages are optional references. Original HF quizzes remain external activities.
 
 | Week | Focus | Evidence of completion |
 | --- | --- | --- |
@@ -8,6 +8,7 @@ This local course adapts Hugging Face Agents Course Unit 1, its starter, and Uni
 | [2](week-2-learning-plan.md) | Working chat template, CodeAgent, time and search tools | A model response, direct tool tests, executed agent calls, and a verified source |
 | [3](week-3-learning-plan.md) | Terminal agents, action formats, tools, and optional Agentic RAG | Saved files, direct checks, and tool modifications; RAG evidence is optional this week |
 | [4](week-4-preview.md) | Week 3 RAG quiz; build Batman, Vision & Browser Agents | Required two-agent delegation, sourced table/map, image input and screenshot evidence |
+| [5](week-5-learning-plan.md) | HF Unit 2.2: LlamaHub, components/RAG, tools, agents and workflows | Persona retrieval and source checks, tool traces, memory/handoffs, typed events and shared state |
 
 The [custom-tool challenge](first-agent-practical.md#6-optional-create-your-own-tool) is an optional extension in Week 2.
 

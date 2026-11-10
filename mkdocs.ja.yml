@@ -49,6 +49,17 @@ nav:
   - 15 · マルチエージェントシステム: week-4-batman.md
   - 16 · 画像・ブラウザエージェント: week-4-vision-browser.md
   - 17 · 完了確認: week-4-completion.md
+- 第05週 · LlamaIndex:
+  - 第05週 · 学習計画と準備: week-5-learning-plan.md
+  - 18 · LlamaIndex入門: week-5-introduction.md
+  - 19 · LlamaHubの連携機能: week-5-llamahub.md
+  - 20 · コンポーネントとRAG: week-5-components.md
+  - 21 · LlamaIndexのツール: week-5-tools.md
+  - 小テスト1 · コンポーネントとツール: week-5-quiz-1.md
+  - 22 · LlamaIndexのエージェント: week-5-agents.md
+  - 23 · イベントで処理をつなぐ: week-5-workflows.md
+  - 小テスト2 · エージェントとワークフロー: week-5-quiz-2.md
+  - 第05週 · まとめと完了確認: week-5-completion.md
 - 参考:
   - コース全体の流れ: course-route.md
 markdown_extensions:

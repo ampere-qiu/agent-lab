@@ -1,6 +1,6 @@
 # コース全体の流れ { #two-week-course-route }
 
-このローカル教材は、Hugging Face Agents Course Unit 1とそのスターター、Unit 2.1を、Groqとローカル実行に合わせて構成しています。第1〜2週はUnit 1、第03週はUnit 2.1を通して、第2週のsmolagentsとツールの学習を深めます。英語版と日本語版を用意しています。外部のHFレッスンは補足資料で、原典の小テストは外部サイトで取り組みます。
+このローカル教材は、Hugging Face Agents Course Unit 1とそのスターター、Unit 2.1〜2.2を、Groqとローカル実行に合わせて構成しています。第1〜2週はUnit 1、第03週はUnit 2.1を通して、第2週のsmolagentsとツールの学習を深めます。英語版と日本語版を用意しています。外部のHFレッスンは補足資料で、原典の小テストは外部サイトで取り組みます。
 
 | 週 | 内容 | 完了の根拠 |
 | --- | --- | --- |
@@ -8,6 +8,7 @@
 | [2](week-2-learning-plan.md) | チャットテンプレート、CodeAgent、時刻・検索ツール | モデルの応答、ツールの直接テスト、エージェントによる呼び出し、根拠を確認した情報源を示す |
 | [3](week-3-learning-plan.md) | ターミナル用エージェント、アクション形式、ツール、任意のAgentic RAG | 保存したファイル、直接テスト、ツールの変更を示す。RAGの実行は今週は任意 |
 | [4](week-4-preview.md) | smolagents Part 2：RAGの理解度チェック、Batmanチーム、画像・ブラウザ | 必須の2体による委任、出典付き表・地図、画像入力とスクリーンショットの根拠 |
+| [5](week-5-learning-plan.md) | HF Unit 2.2：LlamaHub、コンポーネントとRAG、ツール、エージェント、ワークフロー | 人物像の検索と出典、ツール記録、記憶と受け渡し、型のあるイベントと共有状態 |
 
 [独自ツールの課題](first-agent-practical.md#6-optional-create-your-own-tool)は第2週の任意の発展課題です。
 
