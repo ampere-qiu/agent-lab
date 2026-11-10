@@ -1,0 +1,2286 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="日英のAI Agent Lab教材。基礎、ツール、smolagents、マルチエージェント調査、画像・ブラウザ実習を学びます。">
+      
+      
+      
+      
+        <link rel="prev" href="../week-4-completion/">
+      
+      
+        <link rel="next" href="../week-5-introduction/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第05週 · 学習計画と準備 - Agent Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#route" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Agent Lab" class="md-header__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Agent Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第05週 · 学習計画と準備
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      
+
+<a class="md-header__button md-icon course-translate" href="../../week-5-learning-plan/" data-course-language lang="en" hreflang="en" title="このレッスンを英語で読む" aria-label="言語を英語に切り替える：このレッスン">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+  <span><span lang="en">EN</span> / <span lang="ja">日本語</span></span>
+</a>
+
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Agent Lab" class="md-nav__button md-logo" aria-label="Agent Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    Agent Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第1週 · 基礎とダミーエージェント
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-1-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../before-you-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    始める前に
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基礎と小テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prepare-your-computer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · ローカル環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dummy-agent-local/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · ダミーエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週 · テンプレートとツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第2週 · テンプレートとツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2週の学習計画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run-your-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · テンプレートを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../understand-the-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 仕組みを理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-agent-practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · ツールの登録とテスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 学習の完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03週 · smolagents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第03週 · smolagents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-learning-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03週 · 学習計画とダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · smolagents入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-code-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · CodeAgentを動かす
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-action-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Pythonコードと構造化ツール呼び出し
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-custom-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · 関数とクラスで作るツール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Agentic RAGシステムを作る（任意）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-3-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 · 完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04週 · smolagents Part 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第04週 · smolagents Part 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04週 · 学習計画とダウンロード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 · 第03週のRAG理解度チェック
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-batman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 · マルチエージェントシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-vision-browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 · 画像・ブラウザエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-4-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 · 完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05週 · LlamaIndex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第05週 · LlamaIndex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05週 · 学習計画と準備
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05週 · 学習計画と準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習の順番
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ZIPを展開してフォルダーを開く
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 専用の環境を作って有効にする
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 専用の環境を作って有効にする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-the-terminal-and-check-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ターミナルを選び、Pythonを確認する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-week-5-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第5週のパッケージをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 自分のPC用の設定を作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 結果を記録するメモを作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        必要なときのヘルプ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="必要なときのヘルプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-run-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初回のメッセージを読む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        途中で止まった場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 · LlamaIndex入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-llamahub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 · LlamaHubの連携機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 · コンポーネントとRAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 · LlamaIndexのツール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-quiz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小テスト1 · コンポーネントとツール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 · LlamaIndexのエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 · イベントで処理をつなぐ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-quiz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小テスト2 · エージェントとワークフロー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-5-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05週 · まとめと完了確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース全体の流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習の順番
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ZIPを展開してフォルダーを開く
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 専用の環境を作って有効にする
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 専用の環境を作って有効にする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-the-terminal-and-check-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ターミナルを選び、Pythonを確認する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-week-5-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第5週のパッケージをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 自分のPC用の設定を作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 結果を記録するメモを作る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        必要なときのヘルプ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="必要なときのヘルプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-run-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初回のメッセージを読む
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        途中で止まった場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-5-plan">第05週 · LlamaIndex<a class="headerlink" href="#week-5-plan" title="この見出しへのリンク">&para;</a></h1>
+<p><strong>目標：</strong>文書を検索し、ツールを使い、明確な手順で仕事を受け渡すアシスタントを作ります。</p>
+<p>先に<a href="../week-4-completion/">第4週</a>を終えてください。今週は<strong>HF Unit 2.2と同じ順序</strong>で学びます。以前の作業を残し、新しい<strong><code translate="no">week05-exercises</code></strong>フォルダー、Python 3.11、エディター、ターミナルを使います。ノートブックやGPUは不要です。英語版と日本語版は、同じコードと演習を使います。</p>
+<h2 id="route">学習の順番<a class="headerlink" href="#route" title="この見出しへのリンク">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>順番</th>
+<th>レッスン</th>
+<th>行うこと</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>準備</td>
+<td>このページ</td>
+<td>専用の環境を作り、人物像の説明文10件を取得する。</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="../week-5-introduction/">入門</a></td>
+<td>コンポーネント、ツール、エージェント、ワークフローを区別する。</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a href="../week-5-llamahub/">LlamaHub</a></td>
+<td>パッケージとimportを対応させ、モデル接続を試す。</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="../week-5-components/">コンポーネント</a></td>
+<td>読み込み、分割、埋め込み、保存、検索、質問と根拠の確認。</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="../week-5-tools/">ツール</a></td>
+<td>関数ツール、検索ツール、ローカルのツールの集まりを作る。</td>
+</tr>
+<tr>
+<td>確認</td>
+<td><a href="../week-5-quiz-1/">小テスト1</a></td>
+<td>エージェントを作る前に、部品とツールを説明する。</td>
+</tr>
+<tr>
+<td>22</td>
+<td><a href="../week-5-agents/">エージェント</a></td>
+<td>計算、Bobの記憶、人物像の検索、仕事の受け渡し。</td>
+</tr>
+<tr>
+<td>23</td>
+<td><a href="../week-5-workflows/">ワークフロー</a></td>
+<td>イベントとステップ、制限付きループ、作図、状態の共有。</td>
+</tr>
+<tr>
+<td>確認</td>
+<td><a href="../week-5-quiz-2/">小テスト2</a></td>
+<td>判断、イベント、記憶、共有状態を説明する。</td>
+</tr>
+<tr>
+<td>振り返り</td>
+<td><a href="../week-5-completion/">まとめと完了確認</a></td>
+<td>作成ファイルを示し、実際の結果を説明する。</td>
+</tr>
+</tbody>
+</table>
+<p>人物像の検索、練習用の天気、計算、Bobの会話、ワークフローは<a href="https://huggingface.co/learn/agents-course/en/unit2/llama-index/introduction">HFの単元</a>に沿っています。保存したPythonファイルとしてPCで実行します。これまでの授業用Groq接続を使うので、新しいモデル提供元のアカウントは不要です。</p>
+<h2 id="download">1. ZIPを展開してフォルダーを開く<a class="headerlink" href="#download" title="この見出しへのリンク">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../downloads/week05-llamaindex.zip">第5週の英語・日本語スターターをダウンロード</a></p>
+<ol>
+<li>ZIPを保存します。Windowsは右クリックして<strong>すべて展開</strong>、MacはFinderでダブルクリックします。</li>
+<li>展開先で、<code translate="no">requirements.txt</code>と<code translate="no">week05_common.py</code>が入っているフォルダーを探します。Macでは通常、展開された<code translate="no">week05-exercises</code>自体です。Windowsではその外にもう1つフォルダーがある場合があります。ファイルが入ったほうを<strong><code translate="no">agent-course</code></strong>内の以前の演習フォルダーの隣へ移し、名前を<strong><code translate="no">week05-exercises</code></strong>にします。</li>
+<li>VS Codeの<strong>ファイル → フォルダーを開く</strong>で<code translate="no">week05-exercises</code>を開きます。<code translate="no">requirements.txt</code>、<code translate="no">prepare_personas.py</code>、<code translate="no">week05_common.py</code>、<code translate="no">week05_rag.py</code>が同じ場所にあることを確認します。</li>
+<li>配布ヘルパーは残します。<strong><code translate="no">my_*.py</code>はZIPに入っていません。</strong>各レッスンのコードを使い、ヘルパーの隣に自分で作成します。Web版、または<code translate="no">lessons/en</code>と<code translate="no">lessons/ja</code>のMarkdownを読んで進めてください。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>配布ファイル</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">requirements.txt</code></td>
+<td>smolagentsとは分けた第5週用のパッケージ。</td>
+</tr>
+<tr>
+<td><code translate="no">prepare_personas.py</code></td>
+<td>LLMを使わず、公開された人物像10件を取得する。</td>
+</tr>
+<tr>
+<td><code translate="no">week05_common.py</code></td>
+<td>設定を読み、Groqへ接続し、ツールの結果を表示する。</td>
+</tr>
+<tr>
+<td><code translate="no">week05_rag.py</code></td>
+<td>後の演習で保存済みのインデックスを再利用する。</td>
+</tr>
+<tr>
+<td><code translate="no">README.md</code>、<code translate="no">NOTICE.md</code>、<code translate="no">HF-LICENSE.txt</code></td>
+<td>準備の要約、出典、ライセンス。</td>
+</tr>
+<tr>
+<td><code translate="no">lessons/en</code>、<code translate="no">lessons/ja</code></td>
+<td>英語版と日本語版のレッスン。</td>
+</tr>
+<tr>
+<td><code translate="no">images/huggingface-week05</code></td>
+<td>元のHFの図。クリックすると拡大できる。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment">2. 専用の環境を作って有効にする<a class="headerlink" href="#environment" title="この見出しへのリンク">&para;</a></h2>
+<p>対応するWindows／Macで<strong>64ビットのPython 3.11</strong>を使います。パッケージとモデル用の空き容量を確認してください。Macでの検証では環境だけで約1.6 GB使い、PCによって変わります。ローカル埋め込み用の大きなパッケージも含みます。インストール、人物像の取得、最初のモデル取得、Groqへの問い合わせには通信が必要です。取得後の検索や通常のワークフローはPCで動きます。有効にしたターミナルをそのまま使ってください。</p>
+<h3 id="choose-the-terminal-and-check-python">ターミナルを選び、Pythonを確認する<a class="headerlink" href="#choose-the-terminal-and-check-python" title="この見出しへのリンク">&para;</a></h3>
+<p><strong>WindowsのVS Code：</strong>［ターミナル → 新しいターミナル］を開きます。入力欄が<code translate="no">PS</code>で始まる場合はPowerShellです。ターミナルの<strong>＋の横の矢印 → Command Prompt</strong>を選び、コマンドプロンプトを開いてください。以後も使う場合は、<strong>Ctrl + Shift + P → Terminal: Select Default Profile → Command Prompt</strong>を選び、新しいターミナルを開きます。日本語表示では「ターミナル：既定のプロファイルの選択」を探します。下のコマンドはコマンドプロンプト用です。<a href="https://code.visualstudio.com/docs/terminal/profiles">VS Codeの説明</a>も参照できます。</p>
+<p>環境を作る前に確認します。</p>
+<ul>
+<li><strong>Windowsのコマンドプロンプト：</strong><code translate="no">py -3.11 --version</code>。</li>
+<li><strong>Macのターミナル：</strong><code translate="no">python3.11 --version</code>。</li>
+</ul>
+<p><code translate="no">Python 3.11.x</code>と出たら先へ進みます。コマンドがない、または3.11が見つからない場合は、先に下を開いてください。</p>
+<details class="help">
+<summary>Python 3.11が見つからない場合</summary>
+<p><strong>Windows 10／11：</strong><a href="https://www.python.org/downloads/windows/">python.org</a>から<strong>Python install manager</strong>をインストールします。VS Codeを閉じて開き直し、新しいコマンドプロンプトで次を1行ずつ実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pymanager install 3.11
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>py -3.11 --version
+</code></pre></div>
+<p><code translate="no">pymanager</code>は古い<code translate="no">py</code>ランチャーとの競合を避けるために使います。まだコマンドが見つからない場合は<a href="https://docs.python.org/3/using/windows.html#troubleshooting">PythonのWindows向け対処</a>を参照するか、実行したコマンドとエラーを教員へ伝えてください。</p>
+<p><strong>Mac：</strong>Homebrewが入っていれば、次を実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.11
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python3.11<span class="w"> </span>--version
+</code></pre></div>
+<p><code translate="no">brew</code>がない場合は<a href="https://brew.sh/">brew.sh</a>の手順で導入し、インストーラーの<strong>Next steps</strong>にあるターミナルの設定も行ってから、上の2行を実行します。<a href="https://formulae.brew.sh/formula/python@3.11">HomebrewのPython 3.11のページ</a>で対応OSを確認できます。管理対象や非対応のPCでは、先へ進む前に教員へ相談してください。</p>
+</details>
+<h3 id="install-the-week-5-packages">第5週のパッケージをインストールする<a class="headerlink" href="#install-the-week-5-packages" title="この見出しへのリンク">&para;</a></h3>
+<p><strong>Windows — コマンドプロンプト：</strong>1行ずつ実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">cd</span> /d <span class="s2">"</span><span class="nv">%USERPROFILE%</span><span class="s2">\agent-course\week05-exercises"</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>py -3.11 -m venv .venv
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>.venv\Scripts\activate.bat
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>python --version
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>python -m pip install -r requirements.txt
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>python -m pip check
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>python week05_common.py
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>python prepare_personas.py
+</code></pre></div>
+<p><strong>Mac — ターミナル：</strong>1行ずつ実行します。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/agent-course/week05-exercises
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>python<span class="w"> </span>--version
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>check
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>python<span class="w"> </span>week05_common.py
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>python<span class="w"> </span>prepare_personas.py
+</code></pre></div>
+<p>保存場所が異なる場合は、自分のフォルダーのパスへ置き換えてください。<code translate="no">(.venv)</code>、Python <code translate="no">3.11.x</code>、<code translate="no">No broken requirements found.</code>、<strong><code translate="no">Week 5 starter version: 2026-11-10.2</code></strong>、<strong><code translate="no">Saved 10 persona files in data/ (no LLM, no Groq tokens).</code></strong>を確認します。順に「環境が有効」「依存関係の不整合なし」「ヘルパーの版」「10件の保存完了」という意味です。版の確認はモデルを呼びません。取得時は<code translate="no">dataset-source.json</code>も生成します。<code translate="no">data/persona_0.txt</code>を開くと、シンシナティの美術史家の説明があるはずです。これは人物像の説明で、実在する人を特定した情報ではありません。不完全な説明も、推測で補わず使います。</p>
+<p><code translate="no">prepare_personas.py</code>はHFのノートブックと同じ<a href="https://huggingface.co/datasets/dvilasuero/finepersonas-v0.1-tiny">人物像データ</a>の先頭10件を取得します。通常の取得先が失敗したり文章を省略したりする場合は、元のデータファイル約35 MBを取得・検証し、同じ10件の全文だけを保存します。HFのトークンは不要です。空でない<code translate="no">data</code>を上書きしません。保存完了まで待ち、止まった場合は表示された原因に沿って対処してください。最初の埋め込みでは<code translate="no">BAAI/bge-small-en-v1.5</code>をこのフォルダーの<code translate="no">.cache/huggingface</code>へ取得します。その後は完全なキャッシュをPCから読み、HFへ確認しません。CPUで動き、Groqのトークンは使いません。</p>
+<p>新しいターミナルでは、フォルダー移動と有効化の行だけを繰り返します。毎回環境を作り直す必要はありません。</p>
+<h2 id="settings">3. 自分のPC用の設定を作る<a class="headerlink" href="#settings" title="この見出しへのリンク">&para;</a></h2>
+<p><strong>第4週のキーを再利用する場合：</strong><code translate="no">GROQ_API_KEY</code>の値だけを新しいファイルへコピーします。<code translate="no">.env</code>全体をコピーした場合は、<code translate="no">GROQ_MODEL</code>を下の行へ置き換えてください。第4週の<code translate="no">groq/</code>のような接頭辞は、今週のモデルIDには付けません。第4週のファイルは残します。</p>
+<p>エディターで<code translate="no">week05-exercises</code>の直下、<code translate="no">week05_common.py</code>の隣に<strong><code translate="no">.env</code></strong>を作ります。<code translate="no">.env.txt</code>ではなく<code translate="no">.env</code>として保存し、次を貼ってキーの仮の値を置き換えます。</p>
+<div class="highlight"><pre><span></span><code translate="no"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>GROQ_API_KEY=your_own_groq_api_key
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>GROQ_MODEL=qwen/qwen3.8-27b
+</code></pre></div>
+<p>ヘルパーは<code translate="no">load_dotenv</code>を呼んでから設定を読みます。ファイルを作るだけではPythonは読み込みません。ターミナルに既にある環境変数が優先されます。以前このターミナルに<code translate="no">GROQ_MODEL</code>を設定した場合は、Windowsのコマンドプロンプトで<code translate="no">set GROQ_MODEL=</code>、Macで<code translate="no">unset GROQ_MODEL</code>として消してから再実行します。キーはPCに残し、<code translate="no">.env</code>をGitHub、スクリーンショット、提出メモへ含めないでください。</p>
+<p>モデルは<a href="https://console.groq.com/docs/models">Groqのモデル一覧</a>で2026-11-09に確認しています。プレビューモデルなので、失敗時は現在の提供状況と権限を確認してください。上のモデルIDを使います。ヘルパーは先頭の<code translate="no">groq/</code>を取り除けますが、古いモデル名まで更新するわけではありません。この演習では依頼と検索した公開文章をGroqへ送ります。</p>
+<p>モデルを使うプログラムは1つずつ実行します。エージェントの反復は最大6回で、APIの自動再試行はありません。検索ツール1回で複数のモデル呼び出しが起きる場合があります。<strong>429</strong>が返ったら止め、アカウントの制限・クレジット・再試行間隔を確認します。待つことで短い制限期間がリセットされる場合はありますが、クレジットは増えず、成功も保証されません。</p>
+<h2 id="evidence">4. 結果を記録するメモを作る<a class="headerlink" href="#evidence" title="この見出しへのリンク">&para;</a></h2>
+<p>同じフォルダーに<strong><code translate="no">evidence.md</code></strong>を作り、下の見出しを貼って保存します。各レッスンの後に短い出力と自分の説明を追記します。Pythonプログラムではありません。見出しは英語のまま使い、説明は日本語で構いません。</p>
+<div class="highlight"><span class="filename">evidence.md</span><pre><span></span><code translate="no"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gh"># Week 5 evidence</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="gu">## 18 — Components, tools, agents, workflows</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="gu">## 19 — Integration and model connection</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="gu">## 20 — Ingestion, retrieval, answer, sources, evaluation</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="gu">## 21 — Function tool, query tool, ToolSpec and utility tools</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="gu">## Quiz 1</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="gu">## 22 — Tool calls, Bob memory, RAG and handoff</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="gu">## 23 — Events, loop, flow diagram and shared counter</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="gu">## Quiz 2</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="gu">## Completion — complete/incomplete and limitations</span>
+</code></pre></div>
+<p>以後のファイルは、<strong>ファイル → 新しいテキストファイル → 名前を付けて保存</strong>で、指定どおりの<code translate="no">.py</code>名をヘルパーの隣に付けます。ブロックを順に貼り、<strong>Ctrl + S</strong>／<strong>Command + S</strong>で保存します。<code translate="no">.venv</code>や<code translate="no">lessons</code>内には入れません。</p>
+<p><strong>1つずつ作って実行します。</strong>先に全部作る必要はありません。各ページ末尾の一覧でファイルと結果を確認し、後からimportする以前のファイルも残します。全体では必須の小さなプログラム17個と、任意の評価用1個があります。準備の段階で全部を理解・作成する必要はありません。</p>
+<p><strong>準備の確認：</strong>配布ヘルパー、<code translate="no">.venv</code>、<code translate="no">.env</code>、<code translate="no">evidence.md</code>、<code translate="no">dataset-source.json</code>、<code translate="no">data/persona_0.txt</code>〜<code translate="no">data/persona_9.txt</code>がそろっていますか？まだ<code translate="no">my_*.py</code>は不要です。最初の1つはLlamaHubのレッスンで作ります。</p>
+<p><strong>開始：</strong><a href="../week-5-introduction/">18 · LlamaIndex入門</a>。</p>
+<h2 id="help">必要なときのヘルプ<a class="headerlink" href="#help" title="この見出しへのリンク">&para;</a></h2>
+<p>コマンドが止まった場合は、該当する説明を開いてから先へ進みます。</p>
+<h3 id="first-run-messages">初回のメッセージを読む<a class="headerlink" href="#first-run-messages" title="この見出しへのリンク">&para;</a></h3>
+<details class="help">
+<summary>インストールとモデル読み込みのメッセージ</summary>
+<table>
+<thead>
+<tr>
+<th>表示・段階</th>
+<th>行うこと</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">Collecting</code>、<code translate="no">Downloading</code>、<code translate="no">Installing</code>が続く</td>
+<td>インストール中です。入力待ちに戻るまで次の行を実行せず待ちます。</td>
+</tr>
+<tr>
+<td><code translate="no">No broken requirements found.</code></td>
+<td>依存関係の確認に通りました。データ取得へ進みます。</td>
+</tr>
+<tr>
+<td><code translate="no">Downloading ten public persona records...</code></td>
+<td>10件の取得中です。<code translate="no">Saved 10 persona files...</code>まで待ちます。代替元の表示だけでは保存完了ではありません。</td>
+</tr>
+<tr>
+<td><code translate="no">No complete model cache...</code>、<code translate="no">Loading weights</code></td>
+<td>最初の完全なモデル取得には通信が必要です。以後の<code translate="no">Loaded the cached CPU embedding model locally</code>はHFへ接続せず読めた意味です。各演習の完了出力を待ちます。</td>
+</tr>
+<tr>
+<td>モデル取得時に<code translate="no">HF_TOKEN</code>を勧める警告</td>
+<td>この公開モデルにトークンは不要です。完全なキャッシュがあれば次からローカルで読みます。</td>
+</tr>
+<tr>
+<td>pipの<code translate="no">huggingface-hub ... does not provide the extra 'inference'</code></td>
+<td>埋め込み用の接続パッケージが、現在のHubにはない古い任意機能名を要求しています。この警告だけでは検証時のローカル埋め込みは失敗しませんでした。終了後に<code translate="no">No broken requirements found.</code>と演習の結果を確認し、指定バージョンを維持します。</td>
+</tr>
+<tr>
+<td>PyTorchのmacOSではredirects非対応という表示</td>
+<td>検証時は、この表示があっても完了しました。続く期待結果で判断します。</td>
+</tr>
+<tr>
+<td><code translate="no">Run incomplete</code>、エラーの詳細、0以外の終了値</td>
+<td>未完了です。下の対処表を使い、完了とは記録しません。</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="troubleshooting">途中で止まった場合<a class="headerlink" href="#troubleshooting" title="この見出しへのリンク">&para;</a></h3>
+<details class="help">
+<summary>エラーに合う次の操作を探す</summary>
+<table>
+<thead>
+<tr>
+<th>表示・状態</th>
+<th>次の操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no">python: can't open file</code></td>
+<td>ターミナルの場所、ヘルパーの隣に保存したファイル名、<code translate="no">.py.txt</code>になっていないかを確認します。</td>
+</tr>
+<tr>
+<td>版が違う・表示されない</td>
+<td>現在の第5週ZIPから<code translate="no">week05_common.py</code>だけを入れ直し、<code translate="no">python week05_common.py</code>を実行します。<code translate="no">.env</code>、データ、自作プログラムは残します。</td>
+</tr>
+<tr>
+<td><code translate="no">ModuleNotFoundError</code></td>
+<td>上の手順で今週の<code translate="no">.venv</code>を有効にし、<code translate="no">python -m pip install -r requirements.txt</code>を再実行します。第4週へは入れません。</td>
+</tr>
+<tr>
+<td>データ取得が止まる</td>
+<td>HTTP 503はサーバー側の失敗なので後で試します。通信のタイムアウトなら接続を確認します。チェックサムの不一致は、元のファイルが不完全か変化した意味です。これらの失敗時は人物像を保存しません。表示を教員へ伝えます。</td>
+</tr>
+<tr>
+<td><code translate="no">persona_*.txt</code>が不足</td>
+<td><code translate="no">python prepare_personas.py</code>を実行します。不完全な<code translate="no">data</code>を上書きできない場合は<code translate="no">data-backup</code>へ名前を変えて残し、再取得します。</td>
+</tr>
+<tr>
+<td>埋め込みモデルを読み終えない</td>
+<td>通信と空き容量を確認して同じプログラムを再実行します。繰り返し失敗する場合はプログラムを閉じ、<code translate="no">.cache/huggingface</code>を<code translate="no">.cache/huggingface-backup</code>へ変え、安定した接続で再取得します。データとコードは残します。取得にGroqのトークンは使いません。</td>
+</tr>
+<tr>
+<td>索引がない・不完全</td>
+<td>10件の取得後に<code translate="no">python my_ingest.py</code>を実行します。途中のDBがある場合は利用中のプログラムを閉じ、<code translate="no">alfred_chroma_db</code>をバックアップ名へ変えてから作り直します。</td>
+</tr>
+<tr>
+<td><code translate="no">NameError</code>、<code translate="no">TypeError</code>、<code translate="no">ValueError</code></td>
+<td>表示されたファイル名と行番号で、名前、引用符、字下げを教材の該当箇所と比べます。</td>
+</tr>
+<tr>
+<td>Groq 401</td>
+<td>ローカルの<code translate="no">.env</code>のキーを確認します。表示や提出はしません。</td>
+</tr>
+<tr>
+<td>Groq 403／404</td>
+<td>今週のモデルIDと利用権限を確認します。第4週の設定をコピーした場合は手順3でモデル行を置き換えます。</td>
+</tr>
+<tr>
+<td>Groq 413</td>
+<td>小さいデータと短い依頼を使います。待っても大きな入力は小さくなりません。</td>
+</tr>
+<tr>
+<td>Groq 429</td>
+<td>停止して<a href="#settings">手順3</a>の制限についての説明を確認します。</td>
+</tr>
+<tr>
+<td><code translate="no">flow.html</code>が真っ白</td>
+<td><a href="../week-5-workflows/#draw">レッスン23の作図の確認</a>へ進みます。現在のヘルパーは図のライブラリをHTMLに含めるため、閲覧に通信は不要です。</td>
+</tr>
+</tbody>
+</table>
+<p>今の確認項目を直してから、それに依存するプログラムへ進みます。相談時はファイル名、コマンド、エラーの種類を記録し、<code translate="no">.env</code>やキーは含めないでください。</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../week-4-completion/" class="md-footer__link md-footer__link--prev" aria-label="前: 17 · 完了確認">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                17 · 完了確認
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week-5-introduction/" class="md-footer__link md-footer__link--next" aria-label="次: 18 · LlamaIndex入門">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                18 · LlamaIndex入門
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">SI Labの学生向けにAmpereが作成 · 原典：Hugging Face</div>
+  
+  
+    
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a> で作成
+    
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/language.js"></script>
+      
+        <script src="../javascripts/figure-viewer.js"></script>
+      
+    
+  </body>
+</html>
